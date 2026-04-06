@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JSXGraph + Asy Library Test</title>
+    <script type="text/javascript" charset="UTF-8"
+     src="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraphcore.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraph.css" />
+    
+    <script src="../asymptote.js"></script>
+</head>
+<body>
+    <div id="jxgbox" class="jxgbox" style="width:500px; height:500px;"></div>
+
+    <script>
+        var board = JXG.JSXGraph.initBoard('jxgbox', {boundingbox: [-5, 5, 5, -5], axis: true});
+
+        var p1 = board.create('point', [-3, -2], {name: 'A'});
+        var p2 = board.create('point', [3, 4], {name: 'B'});
+
+        // Use the library function!
+        // We wrap it in a function so it updates when A or B move.
+        var p3 = board.create('point', [
+            function() { return asy.interp(p1, p2, 0.25)[0]; },
+            function() { return asy.interp(p1, p2, 0.25)[1]; }
+        ], {name: '1/4 Way', color: 'orange'});
+        
+        var line = board.create('line', [p1, p2], {straightFirst:false, straightLast:false, dash:2});
+    </script>
+</body>
+</html>
