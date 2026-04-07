@@ -28,5 +28,48 @@
         
         var line = board.create('line', [p1, p2], {straightFirst:false, straightLast:false, dash:2});
     </script>
+
+    <h3>Centroid of a Triangle</h3>
+    <div id="jxgbox" class="jxgbox" style="width:500px; height:500px;"></div>
+
+    <script>
+        var board = JXG.JSXGraph.initBoard('jxgbox', {boundingbox: [-5, 5, 5, -5], axis: true, zoom: {wheel: true, needShift: false}, pan: {enabled: true, needShift: false, needCtrl: false}});
+
+        // 2. Create the vertices
+var A = board.create('point', [-3, -2], {name: 'A'});
+var B = board.create('point', [3, -2], {name: 'B'});
+var C = board.create('point', [0, 4], {name: 'C'});
+
+// 3. Create the triangle (Polygon)
+var tri = board.create('polygon', [A, B, C], {
+    fillColor: '#ffff00', 
+    fillOpacity: 0.2
+});
+
+// 4. Calculate the midpoints using your jg library
+// We use the arrow function so they are dynamic!
+var Ma = board.create('point', () => jg.midpoint(B, C), {visible: false});
+var Mb = board.create('point', () => jg.midpoint(A, C), {visible: false});
+var Mc = board.create('point', () => jg.midpoint(A, B), {visible: false});
+
+// 5. Draw the Medians
+var medA = board.create('segment', [A, Ma], {dash: 2, strokeColor: 'gray'});
+var medB = board.create('segment', [B, Mb], {dash: 2, strokeColor: 'gray'});
+var medC = board.create('segment', [C, Mc], {dash: 2, strokeColor: 'gray'});
+
+// 6. Create the Centroid using your new jg.centroid function
+var G = board.create('point', () => jg.centroid(A, B, C), {
+    name: 'G', 
+    color: 'red', 
+    fixed: false // It moves as A, B, C move
+});
+
+// 7. Add a title inside the board
+board.create('text', [-4.5, 4.5], "Triangle Centroid & Medians", {
+    fontSize: 16, 
+    fontWeight: 'bold',
+    fixed: true
+});
+    </script>
 </body>
 </html>
