@@ -64,9 +64,24 @@ var tri = boardcentroid.create('polygon', [A, B, C], {
 });
 
 // Wrap the arrow function in [ ]
-var Ma = boardcentroid.create('midpoint', [B, C]);
-var Mb = boardcentroid.create('point', [function() {return jg.midpoint(A,C);}]);
-var Mc = boardcentroid.create('point', [function() {return jg.midpoint(A,B);}]);
+var Ma = boardcentroid.create('midpoint', [B, C], {
+    size: 2,             // Default is usually 3 or 4; 2 is nice and small
+    strokeColor: 'black', // The outline of the point
+    fillColor: 'black',   // The inside of the point
+    name: ''             // Optional: removes the label if you don't want 'Ma' showing
+});
+var Mb = boardcentroid.create('midpoint', [A, C], {
+    size: 2,             // Default is usually 3 or 4; 2 is nice and small
+    strokeColor: 'black', // The outline of the point
+    fillColor: 'black',   // The inside of the point
+    name: ''             // Optional: removes the label if you don't want 'Ma' showing
+});
+var Mc = boardcentroid.create('midpoint', [A, B], {
+    size: 2,             // Default is usually 3 or 4; 2 is nice and small
+    strokeColor: 'black', // The outline of the point
+    fillColor: 'black',   // The inside of the point
+    name: ''             // Optional: removes the label if you don't want 'Ma' showing
+});
         
 
 // 5. Draw the Medians
