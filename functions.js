@@ -3,7 +3,7 @@
  * License: MIT
  */
 
-const asy = {
+const jg = {
     /**
      * Point Functions
      */
@@ -52,4 +52,4 @@ centroid: function(A, B, C) {
 };
 
 // Make it available globally
-window.asy = asy;
+window.jg = jg;
