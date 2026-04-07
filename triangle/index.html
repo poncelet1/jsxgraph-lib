@@ -53,7 +53,7 @@ var C = boardcentroid.create('point', [0, 4], {name: 'C'});
 var tri = boardcentroid.create('polygon', [A, B, C], {
     fillColor: '#ffff00', 
     fillOpacity: 0.2,
-    fixed: true
+    borders: { isDraggable: false, fixed: true }
 });
 
 // Wrap the arrow function in [ ]
