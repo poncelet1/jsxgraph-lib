@@ -21,22 +21,10 @@
     <h1>Triangle Graphs</h1>
 
     <h3>Interp Function</h3>
-    <div id="jxg-interp" class="jxgbox" style="width:500px; height:500px;"></div>
-
-    <script>
-        var boardinterp = JXG.JSXGraph.initBoard('jxg-interp', {boundingbox: [-5, 5, 5, -5], axis: true, zoom: {wheel: true, needShift: false}, pan: {enabled: true, needShift: false, needCtrl: false}});
-
-        var p1 = boardinterp.create('point', [-3, -2], {name: 'A'});
-        var p2 = boardinterp.create('point', [3, 4], {name: 'B'});
-
-        // Use the library function!
-        // We wrap it in a function so it updates when A or B move.
-        var p3 = boardinterp.create('point', [function() { 
-            return jg.interp(p1, p2, 0.25); 
-        }], {name: '1/4 Way', color: 'orange'});
-        
-        var line = boardinterp.create('line', [p1, p2], {straightFirst:false, straightLast:false, dash:2});
-    </script>
+    <p>Drag the vertices to see how the medians always intersect at point G.</p>
+    <div class="graph-container">
+        <iframe src="interp.html"></iframe>
+    </div>
 
     <h3>Centroid of a Triangle</h3>
     <div id="jxg-centroid" class="jxgbox" style="width:500px; height:500px;"></div>
