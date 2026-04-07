@@ -32,7 +32,7 @@ const jg = {
      */
     midpoint: function(A, B) {
         return this.interp(A, B, 0.5);
-    }
+    },
 
     /**
      * Triangle Functions
