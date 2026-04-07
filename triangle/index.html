@@ -59,7 +59,8 @@ var tri = boardcentroid.create('polygon', [A, B, C], {
         highlight: false // Prevents the edges from turning dark when hovered
     },
     fixed: true,
-    isDraggable: false
+    isDraggable: false,
+    hightlight: false
 });
 
 // Wrap the arrow function in [ ]
@@ -68,9 +69,9 @@ var Mb = boardcentroid.create('point', [function() {return jg.midpoint(A,C);}]);
 var Mc = boardcentroid.create('point', [function() {return jg.midpoint(A,B);}]);
 
 // 5. Draw the Medians
-var medA = boardcentroid.create('segment', [A, Ma], {dash: 2, strokeColor: 'gray'});
-var medB = boardcentroid.create('segment', [B, Mb], {dash: 2, strokeColor: 'gray'});
-var medC = boardcentroid.create('segment', [C, Mc], {dash: 2, strokeColor: 'gray'});
+var medA = boardcentroid.create('segment', [A, Ma], {dash: 2, strokeColor: 'gray'}, highlight: false);
+var medB = boardcentroid.create('segment', [B, Mb], {dash: 2, strokeColor: 'gray'}, highlight: false);
+var medC = boardcentroid.create('segment', [C, Mc], {dash: 2, strokeColor: 'gray'}, highlight: false);
 
 // Centroid Point
         var G = boardcentroid.create('point', [() => jg.centroid(A, B, C)], {
