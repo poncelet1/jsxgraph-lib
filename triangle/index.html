@@ -55,11 +55,10 @@ var tri = boardcentroid.create('polygon', [A, B, C], {
     fillOpacity: 0.2
 });
 
-// 4. Calculate the midpoints using your jg library
-// We use the arrow function so they are dynamic!
-var Ma = boardcentroid.create('point', () => jg.midpoint(B, C), {visible: false});
-var Mb = boardcentroid.create('point', () => jg.midpoint(A, C), {visible: false});
-var Mc = boardcentroid.create('point', () => jg.midpoint(A, B), {visible: false});
+// Wrap the arrow function in [ ]
+var Ma = boardcentroid.create('point', [() => jg.midpoint(B, C)], {visible: false});
+var Mb = boardcentroid.create('point', [() => jg.midpoint(A, C)], {visible: false});
+var Mc = boardcentroid.create('point', [() => jg.midpoint(A, B)], {visible: false});
 
 // 5. Draw the Medians
 var medA = boardcentroid.create('segment', [A, Ma], {dash: 2, strokeColor: 'gray'});
