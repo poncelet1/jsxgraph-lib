@@ -12,10 +12,10 @@
     <h1>Triangle Graphs</h1>
 
     <h3>Interp Function</h3>
-    <div id="jxg-interp" class="jxgbox" style="width:500px; height:500px;"></div>
+    <div id="jxg-interp" class="jxg-interp" style="width:500px; height:500px;"></div>
 
     <script>
-        var board-interp = JXG.JSXGraph.initBoard('jxgbox', {boundingbox: [-5, 5, 5, -5], axis: true, zoom: {wheel: true, needShift: false}, pan: {enabled: true, needShift: false, needCtrl: false}});
+        var board-interp = JXG.JSXGraph.initBoard('jxg-interp', {boundingbox: [-5, 5, 5, -5], axis: true, zoom: {wheel: true, needShift: false}, pan: {enabled: true, needShift: false, needCtrl: false}});
 
         var p1 = board-interp.create('point', [-3, -2], {name: 'A'});
         var p2 = board-interp.create('point', [3, 4], {name: 'B'});
@@ -28,10 +28,10 @@
     </script>
 
     <h3>Centroid of a Triangle</h3>
-    <div id="jxg-centroid" class="jxgbox" style="width:500px; height:500px;"></div>
+    <div id="jxg-centroid" class="jxg-centroid" style="width:500px; height:500px;"></div>
 
     <script>
-        var board = JXG.JSXGraph.initBoard('jxgbox', {boundingbox: [-5, 5, 5, -5], axis: true, zoom: {wheel: true, needShift: false}, pan: {enabled: true, needShift: false, needCtrl: false}});
+        var board = JXG.JSXGraph.initBoard('jxg-centroid', {boundingbox: [-5, 5, 5, -5], axis: true, zoom: {wheel: true, needShift: false}, pan: {enabled: true, needShift: false, needCtrl: false}});
 
         // 2. Create the vertices
 var A = board.create('point', [-3, -2], {name: 'A'});
