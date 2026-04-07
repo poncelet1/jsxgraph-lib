@@ -7,6 +7,15 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraph.css" />
     
     <script src="../functions.js"></script>
+
+    <style>
+        /* This forces the border to show up on your custom IDs */
+        .jxgbox { 
+            border: 1px solid #ccc; 
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
     <h1>Triangle Graphs</h1>
@@ -22,7 +31,9 @@
 
         // Use the library function!
         // We wrap it in a function so it updates when A or B move.
-        var p3 = boardinterp.create('point', () => jg.interp(p1, p2, 0.25), {name: '1/4 Way', color: 'orange'});
+        var p3 = boardinterp.create('point', [function() { 
+            return jg.interp(p1, p2, 0.25); 
+        }], {name: '1/4 Way', color: 'orange'});
         
         var line = boardinterp.create('line', [p1, p2], {straightFirst:false, straightLast:false, dash:2});
     </script>
@@ -55,12 +66,11 @@ var medA = boardcentroid.create('segment', [A, Ma], {dash: 2, strokeColor: 'gray
 var medB = boardcentroid.create('segment', [B, Mb], {dash: 2, strokeColor: 'gray'});
 var medC = boardcentroid.create('segment', [C, Mc], {dash: 2, strokeColor: 'gray'});
 
-// 6. Create the Centroid using your new jg.centroid function
-var G = boardcentroid.create('point', () => jg.centroid(A, B, C), {
-    name: 'G', 
-    color: 'red', 
-    fixed: false // It moves as A, B, C move
-});
+// Centroid Point
+        var G = boardcentroid.create('point', [() => jg.centroid(vA, vB, vC)], {
+            name: 'G', 
+            color: 'red'
+        });
 
 // 7. Add a title inside the board
 boardcentroid.create('text', [-4.5, 4.5], "Triangle Centroid & Medians", {
