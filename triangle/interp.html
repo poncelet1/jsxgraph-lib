@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraphcore.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraph.css" />
+    <script src="../lib/functions.js"></script>
+    <style>
+        body { margin: 0; overflow: hidden; } /* Removes scrollbars inside the frame */
+        .jxgbox { width: 100vw; height: 100vh; border: none; } /* Fills the frame */
+    </style>
+</head>
+<body>
+    <div id="jxgbox" class="jxgbox"></div>
+    <script>
+        var boardinterp = JXG.JSXGraph.initBoard('jxg-interp', {boundingbox: [-5, 5, 5, -5], axis: true, zoom: {wheel: true, needShift: false}, pan: {enabled: true, needShift: false, needCtrl: false}});
+
+        var p1 = boardinterp.create('point', [-3, -2], {name: 'A'});
+        var p2 = boardinterp.create('point', [3, 4], {name: 'B'});
+
+        // Use the library function!
+        // We wrap it in a function so it updates when A or B move.
+        var p3 = boardinterp.create('point', [function() { 
+            return jg.interp(p1, p2, 0.25); 
+        }], {name: '1/4 Way', color: 'orange'});
+        
+        var line = boardinterp.create('line', [p1, p2], {straightFirst:false, straightLast:false, dash:2});
+    </script>
+</body>
+</html>
