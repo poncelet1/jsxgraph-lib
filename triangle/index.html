@@ -67,7 +67,7 @@ var medB = boardcentroid.create('segment', [B, Mb], {dash: 2, strokeColor: 'gray
 var medC = boardcentroid.create('segment', [C, Mc], {dash: 2, strokeColor: 'gray'});
 
 // Centroid Point
-        var G = boardcentroid.create('point', [() => jg.centroid(vA, vB, vC)], {
+        var G = boardcentroid.create('point', [() => jg.centroid(A, B, C)], {
             name: 'G', 
             color: 'red'
         });
