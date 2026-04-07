@@ -52,7 +52,8 @@ var C = boardcentroid.create('point', [0, 4], {name: 'C'});
 // 3. Create the triangle (Polygon)
 var tri = boardcentroid.create('polygon', [A, B, C], {
     fillColor: '#ffff00', 
-    fillOpacity: 0.2
+    fillOpacity: 0.2,
+    fixed: true
 });
 
 // Wrap the arrow function in [ ]
