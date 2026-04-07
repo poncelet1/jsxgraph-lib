@@ -131,7 +131,7 @@ var tri = boardcircumcircle.create('polygon', [A, B, C], {
 
 // Centroid Point
     var O = boardcircumcircle.create('circumcenter', [A, B, C]);
-    var circABC = boardcircumcircle.create('circumcircle', [p1, p2, p3]);
+    var circABC = boardcircumcircle.create('circumcircle', [A, B, C]);
 
 // 7. Add a title inside the board
 boardcircumcircle.create('text', [-4.5, 4.5], "Triangle circumcircle", {
