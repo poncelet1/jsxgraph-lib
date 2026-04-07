@@ -64,9 +64,10 @@ var tri = boardcentroid.create('polygon', [A, B, C], {
 });
 
 // Wrap the arrow function in [ ]
-var Ma = boardcentroid.create('point', [function() {return jg.midpoint(B,C);}]);
+var Ma = board.create('midpoint', [B, C]);
 var Mb = boardcentroid.create('point', [function() {return jg.midpoint(A,C);}]);
 var Mc = boardcentroid.create('point', [function() {return jg.midpoint(A,B);}]);
+        
 
 // 5. Draw the Medians
 var medA = boardcentroid.create('segment', [A, Ma], {dash: 2, strokeColor: 'gray', highlight: false});
