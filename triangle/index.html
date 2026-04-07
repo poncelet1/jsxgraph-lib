@@ -15,18 +15,16 @@
     <div id="jxg-interp" class="jxgbox" style="width:500px; height:500px;"></div>
 
     <script>
-        var board = JXG.JSXGraph.initBoard('jxgbox', {boundingbox: [-5, 5, 5, -5], axis: true, zoom: {wheel: true, needShift: false}, pan: {enabled: true, needShift: false, needCtrl: false}});
+        var board-interp = JXG.JSXGraph.initBoard('jxgbox', {boundingbox: [-5, 5, 5, -5], axis: true, zoom: {wheel: true, needShift: false}, pan: {enabled: true, needShift: false, needCtrl: false}});
 
-        var p1 = board.create('point', [-3, -2], {name: 'A'});
-        var p2 = board.create('point', [3, 4], {name: 'B'});
+        var p1 = board-interp.create('point', [-3, -2], {name: 'A'});
+        var p2 = board-interp.create('point', [3, 4], {name: 'B'});
 
         // Use the library function!
         // We wrap it in a function so it updates when A or B move.
-        var p3 = board.create('point', [
-            () => jg.interp(p1, p2, 0.25)
-        ], {name: '1/4 Way', color: 'orange'});
+        var p3 = board-interp.create('point', () => jg.interp(p1, p2, 0.25), {name: '1/4 Way', color: 'orange'});
         
-        var line = board.create('line', [p1, p2], {straightFirst:false, straightLast:false, dash:2});
+        var line = board-interp.create('line', [p1, p2], {straightFirst:false, straightLast:false, dash:2});
     </script>
 
     <h3>Centroid of a Triangle</h3>
