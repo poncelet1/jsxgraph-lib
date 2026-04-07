@@ -102,5 +102,43 @@ boardcentroid.create('text', [-4.5, 4.5], "Triangle Centroid & Medians", {
     fixed: true
 });
     </script>
+
+    <h3>Circumcircle of a Triangle</h3>
+    <div id="jxg-circumcircle" class="jxgbox" style="width:500px; height:500px;"></div>
+
+    <script>
+        var boardcircumcircle = JXG.JSXGraph.initBoard('jxg-circumcircle', {boundingbox: [-5, 5, 5, -5], axis: true, zoom: {wheel: true, needShift: false}, pan: {enabled: true, needShift: false, needCtrl: false}});
+
+        // 2. Create the vertices
+var A = boardcircumcircle.create('point', [-3, -2], {name: 'A'});
+var B = boardcircumcircle.create('point', [3, -2], {name: 'B'});
+var C = boardcircumcircle.create('point', [0, 4], {name: 'C'});
+
+// 3. Create the triangle (Polygon)
+var tri = boardcircumcircle.create('polygon', [A, B, C], {
+    fillColor: '#ffff00', 
+    fillOpacity: 0.2,
+    borders: {
+        fixed: true,
+        isDraggable: false,
+        highlight: false // Prevents the edges from turning dark when hovered
+    },
+    fixed: true,
+    isDraggable: false,
+    highlight: false
+});
+
+
+// Centroid Point
+    var O = boardcircumcenter.create('circumcenter', [A, B, C]);
+    var circABC = boardcircumcenter.create('circumcircle', [p1, p2, p3]);
+
+// 7. Add a title inside the board
+boardcircumcircle.create('text', [-4.5, 4.5], "Triangle circumcircle", {
+    fontSize: 16, 
+    fontWeight: 'bold',
+    fixed: true
+});
+    </script>
 </body>
 </html>
