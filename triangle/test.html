@@ -59,8 +59,13 @@ var medA = board.create('segment', [A, Ma], {dash: 2, strokeColor: 'gray', highl
 var medB = board.create('segment', [B, Mb], {dash: 2, strokeColor: 'gray', highlight: false});
 var medC = board.create('segment', [C, Mc], {dash: 2, strokeColor: 'gray', highlight: false});
 
+var G1 = board.create('point', [() => jg.centroid(A, Mb, Mc)], {name: 'G1', color: 'red'});
+var G2 = board.create('point', [() => jg.centroid(Ma, B, Mc)], {name: 'G2', color: 'red'});
+var G3 = board.create('point', [() => jg.centroid(Ma, Mb, C)], {name: 'G3', color: 'red'});
+        
+
 // Centroid Point
-        var G = board.create('point', [() => jg.centroid(A, B, C)], {
+        var G = board.create('point', [() => jg.centroid(G1, G2, G3)], {
             name: 'G', 
             color: 'red'
         });
