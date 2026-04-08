@@ -12,7 +12,7 @@
 <body>
     <div id="jxgbox" class="jxgbox"></div>
     <script>
-        const board = JXG.JSXGraph.initBoard('jxgbox', ...jg.boardStyle);
+        const board = JXG.JSXGraph.initBoard('jxgbox', jg.boardStyle);
 
         // 2. Create the vertices
 const A = board.create('point', [-1.8, 3.1], {name: 'A'});
@@ -20,7 +20,7 @@ const B = board.create('point', [-3.3, -1.7], {name: 'B'});
 const C = board.create('point', [3.4, -2.6], {name: 'C'});
 
 // 3. Create the triangle (Polygon)
-const tri = board.create('polygon', [A, B, C], {
+const triABC = board.create('polygon', [A, B, C], {
     fillColor: '#ffff00', 
     fillOpacity: 0.2,
     ...jg.triangleStyle
