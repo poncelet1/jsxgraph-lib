@@ -15,9 +15,9 @@
         const board = JXG.JSXGraph.initBoard('jxgbox', {boundingbox: [-5, 5, 5, -5], axis: true, zoom: {wheel: true, needShift: false}, pan: {enabled: true, needShift: false, needCtrl: false}});
 
         // 2. Create the vertices
-const A = board.create('point', [-3, -2], {name: 'A'});
-const B = board.create('point', [3, -2], {name: 'B'});
-const C = board.create('point', [0, 4], {name: 'C'});
+const A = board.create('point', [-1.8, 3.1], {name: 'A'});
+const B = board.create('point', [-3.3, -1.7], {name: 'B'});
+const C = board.create('point', [3.4, -2.6], {name: 'C'});
 
 // 3. Create the triangle (Polygon)
 const tri = board.create('polygon', [A, B, C], {
