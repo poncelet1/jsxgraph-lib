@@ -5,6 +5,21 @@
 
 const jg = {
     /**
+     * Style Defaults
+     */
+
+    triangleStyle: {
+      borders: {
+                fixed: true,
+                isDraggable: false,
+                highlight: false 
+       },
+            fixed: true,
+            isDraggable: false,
+            highlight: false
+    },
+    
+    /**
      * Point Functions
      */
      
