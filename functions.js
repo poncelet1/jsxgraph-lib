@@ -25,7 +25,8 @@ const jg = {
         size: 2,             // Default is usually 3 or 4; 2 is nice and small
         strokeColor: 'black', // The outline of the point
         fillColor: 'black',   // The inside of the point
-        highlight: false
+        highlight: false,
+        showInfobox: false
     },
 
     pointStyleNoLabel: {
@@ -160,11 +161,11 @@ const jg = {
 },
 
     /**
-     * Given points A, B, C, returns the A-excenter of triangle ABC
+     * Given points A, B, C, returns the A-exradius of triangle ABC
      * @param A first point
      * @param B second point
      * @param C third point
-     * @returns A-excenter
+     * @returns A-exradius
      */
    exradius: function(A, B, C) {
        const a = B.Dist(C);
@@ -187,7 +188,23 @@ const jg = {
        const c = A.Dist(B);
 
        return this.barycoord(A, B, C, -a, b, c);
-   }
+   },
+
+    /**
+ * Creates the A-excircle of triangle ABC on a given board
+ * @param board JSXGraph board
+ * @param A first point
+ * @param B second point
+ * @param C third point
+ * @param style optional circle style
+ * @returns JSXGraph circle object
+ */
+excircle: function(board, A, B, C, style = this.circleStyle) {
+    const center = this.excenter(A, B, C);
+    const radius = this.exradius(A, B, C);
+    
+    return board.create('circle', [center, radius], style);
+}
    
 };
 
