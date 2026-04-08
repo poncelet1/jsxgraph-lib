@@ -19,9 +19,7 @@
 
         // Use the library function!
         // We wrap it in a function so it updates when A or B move.
-        const p3 = board.create('point', [function() { 
-            return jg.interp(p1, p2, 0.25); 
-        }], {name: '1/4 Way', color: 'orange'});
+        const p3 = board.create('point', () => jg.interp(p1, p2, 0.25), {name: '1/4 Way', color: 'orange'});
         
         const line = board.create('line', [p1, p2], {straightFirst:false, straightLast:false, dash:2});
     </script>
