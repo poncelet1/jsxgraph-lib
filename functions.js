@@ -35,7 +35,7 @@ const jg = {
     },
 
     lineStyle: {
-        strokeWidth: 2,
+        strokeWidth: 1,
         highlight: false
     },
     
