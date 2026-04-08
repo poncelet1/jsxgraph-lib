@@ -38,6 +38,10 @@ const jg = {
      * Triangle Functions
      */
 
+    semiperimeter: function(A, B, C) {
+        return (B.dist(C) + C.dist(A) + A.dist(B))/2;
+    },
+
     // Add this to your jg object in jg.js
 centroid: function(A, B, C) {
     const ax = (typeof A.X === 'function') ? A.X() : A[0];
@@ -48,7 +52,28 @@ centroid: function(A, B, C) {
     const cy = (typeof C.Y === 'function') ? C.Y() : C[1];
 
     return [(ax + bx + cx) / 3, (ay + by + cy) / 3];
-}
+},
+
+    barycoord: function(A, B, C, x, y, z) {
+    const ax = (typeof A.X === 'function') ? A.X() : A[0];
+    const ay = (typeof A.Y === 'function') ? A.Y() : A[1];
+    const bx = (typeof B.X === 'function') ? B.X() : B[0];
+    const by = (typeof B.Y === 'function') ? B.Y() : B[1];
+    const cx = (typeof C.X === 'function') ? C.X() : C[0];
+    const cy = (typeof C.Y === 'function') ? C.Y() : C[1];
+
+    return [(ax * x + bx * y + cx * z)/(x + y + z), (ay * x + by * y + cy * z)/(x + y + z)];
+},
+
+   excenter: function(A, B, C) {
+       const a = B.dist(C);
+       const b = C.dist(A);
+       const c = A.dist(B);
+       const s = semiperimeter(A, B, C);
+
+       return barycoord(A, B, C, -(s - a), s - b, s - c);
+   }
+   
 };
 
 // Make it available globally
