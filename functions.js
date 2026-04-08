@@ -14,7 +14,7 @@ const jg = {
       borders: {
                 fixed: true,
                 isDraggable: false,
-                highlight: false 
+                highlight: false
        },
             fixed: true,
             isDraggable: false,
