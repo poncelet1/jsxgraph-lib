@@ -172,7 +172,7 @@ const jg = {
        const K = this.area(A, B, C);
 
        return K/(s - a);
-   }
+   },
        
     /**
      * Given points A, B, C, returns the A-excenter of triangle ABC
