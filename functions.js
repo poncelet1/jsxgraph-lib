@@ -38,6 +38,12 @@ const jg = {
         strokeWidth: 1,
         highlight: false
     },
+
+    circleStyle: {
+        fixed: true,
+        isDraggable: false,
+        highlight: false
+    },
     
     /**
      * Point Functions
