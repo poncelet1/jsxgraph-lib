@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraphcore.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraph.css" />
+    <script src="../functions.js"></script>
+    <style>
+        body { margin: 0; overflow: hidden; } /* Removes scrollbars inside the frame */
+        .jxgbox { width: 100vw; height: 100vh; border: none; } /* Fills the frame */
+    </style>
+</head>
+<body>
+    <div id="jxgbox" class="jxgbox"></div>
+    <script>
+        const board = JXG.JSXGraph.initBoard('jxgbox', {boundingbox: [-5, 5, 5, -5], axis: true, zoom: {wheel: true, needShift: false}, pan: {enabled: true, needShift: false, needCtrl: false}});
+
+        // 2. Create the vertices
+const A = board.create('point', [-3, -2], {name: 'A'});
+const B = board.create('point', [3, -2], {name: 'B'});
+const C = board.create('point', [0, 4], {name: 'C'});
+
+const incircABC = board.create('incircle', [A, B, C]);
+
+const lineAB = board.create('line', [A, B]);
+const lineAC = board.create('line', [A, C]);
+const lineBC = board.create('line', [B, C]);
+
+const IA = board.create('point', [() => jg.excenter(A, B, C)], {
+            name: 'IA', 
+            color: 'black'
+        });
+
+    </script>
+</body>
+</html>
