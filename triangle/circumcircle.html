@@ -12,15 +12,15 @@
 <body>
     <div id="jxgbox" class="jxgbox"></div>
     <script>
-        var board = JXG.JSXGraph.initBoard('jxgbox', {boundingbox: [-5, 5, 5, -5], axis: true, zoom: {wheel: true, needShift: false}, pan: {enabled: true, needShift: false, needCtrl: false}});
+        const board = JXG.JSXGraph.initBoard('jxgbox', {boundingbox: [-5, 5, 5, -5], axis: true, zoom: {wheel: true, needShift: false}, pan: {enabled: true, needShift: false, needCtrl: false}});
 
         // 2. Create the vertices
-var A = board.create('point', [-3, -2], {name: 'A'});
-var B = board.create('point', [3, -2], {name: 'B'});
-var C = board.create('point', [0, 4], {name: 'C'});
+const A = board.create('point', [-3, -2], {name: 'A'});
+const B = board.create('point', [3, -2], {name: 'B'});
+const C = board.create('point', [0, 4], {name: 'C'});
 
 // 3. Create the triangle (Polygon)
-var tri = board.create('polygon', [A, B, C], {
+const tri = board.create('polygon', [A, B, C], {
     fillColor: '#ffff00', 
     fillOpacity: 0.2,
     borders: {
@@ -35,8 +35,8 @@ var tri = board.create('polygon', [A, B, C], {
 
 
 // Centroid Point
-    var O = board.create('circumcenter', [A, B, C]);
-    var circABC = board.create('circumcircle', [A, B, C]);
+    const O = board.create('circumcenter', [A, B, C]);
+    const circABC = board.create('circumcircle', [A, B, C]);
 
 // 7. Add a title inside the board
 board.create('text', [-4.5, 4.5], "Triangle circumcircle", {
