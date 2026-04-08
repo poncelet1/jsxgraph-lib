@@ -9,11 +9,11 @@ const jg = {
      */
      
     /**
-     * Linear interpolation between two points A and B.
-     * @param {Point|Array} A - Starting point (JSXGraph point or [x,y])
-     * @param {Point|Array} B - Ending point (JSXGraph point or [x,y])
-     * @param {Number} t - Interpolation factor (0 to 1)
-     * @returns {Array} [x, y] coordinates
+     * Given points A, B and real number t, returns the point P such that AP:AB = t
+     * @param A first point
+     * @param B second point
+     * @param t real number
+     * @returns interpolated point
      */
     interp: function(A, B, t) {
         const ax = (typeof A.X === 'function') ? A.X() : A[0];
@@ -28,22 +28,28 @@ const jg = {
     },
 
     /**
-     * Returns the midpoint between two points.
-     */
-    midpoint: function(A, B) {
-        return this.interp(A, B, 0.5);
-    },
-
-    /**
      * Triangle Functions
      */
 
+   /**
+     * Given points A, B, C, returns the semiperimeter of triangle ABC
+     * @param A first point
+     * @param B second point
+     * @param C third point
+     * @returns semiperimeter
+     */
     semiperimeter: function(A, B, C) {
         return (B.Dist(C) + C.Dist(A) + A.Dist(B))/2;
     },
 
-    // Add this to your jg object in jg.js
-centroid: function(A, B, C) {
+   /**
+     * Given points A, B, C, returns the centroid of triangle ABC
+     * @param A first point
+     * @param B second point
+     * @param C third point
+     * @returns centroid
+     */
+    centroid: function(A, B, C) {
     const ax = (typeof A.X === 'function') ? A.X() : A[0];
     const ay = (typeof A.Y === 'function') ? A.Y() : A[1];
     const bx = (typeof B.X === 'function') ? B.X() : B[0];
@@ -54,6 +60,16 @@ centroid: function(A, B, C) {
     return [(ax + bx + cx) / 3, (ay + by + cy) / 3];
 },
 
+    /**
+     * Given points A, B, C and real numbers x, y, z, returns the point with barycentric coordinates x:y:z
+     * @param A first point
+     * @param B second point
+     * @param C third point
+     * @param x A-coordinate
+     * @param y B-coordinate
+     * @param z C-coordinate
+     * @returns barycentric point
+     */
     barycoord: function(A, B, C, x, y, z) {
     const ax = (typeof A.X === 'function') ? A.X() : A[0];
     const ay = (typeof A.Y === 'function') ? A.Y() : A[1];
@@ -65,6 +81,13 @@ centroid: function(A, B, C) {
     return [(ax * x + bx * y + cx * z)/(x + y + z), (ay * x + by * y + cy * z)/(x + y + z)];
 },
 
+    /**
+     * Given points A, B, C, returns the A-excenter of triangle ABC
+     * @param A first point
+     * @param B second point
+     * @param C third point
+     * @returns A-excenter
+     */
    excenter: function(A, B, C) {
        const a = B.Dist(C);
        const b = C.Dist(A);
