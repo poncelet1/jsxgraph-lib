@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraphcore.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraph.css" />
+    <script src="../functions.js"></script>
+    <style>
+        body { margin: 0; overflow: hidden; } /* Removes scrollbars inside the frame */
+        .jxgbox { width: 100vw; height: 100vh; border: none; } /* Fills the frame */
+    </style>
+</head>
+<body>
+    <div id="jxgbox" class="jxgbox"></div>
+    <script>
+const disc = (a, b, c) => Math.sqrt(a * b + a * c + b * c);
+
+
+        const board = JXG.JSXGraph.initBoard('jxgbox', {boundingbox: [-5, 5, 5, -5], axis: true, zoom: {wheel: true, needShift: false}, pan: {enabled: true, needShift: false, needCtrl: false}});
+
+        // 2. Create the vertices
+const A = board.create('point', [-1, 2], {name: 'A'});
+const B = board.create('point', [-3, 0], {name: 'B'});
+const C = board.create('point', [4, -1], {name: 'C'});
+
+// 3. Create the triangle (Polygon)
+const tri = board.create('polygon', [A, B, C], {
+    fillColor: '#ffff00', 
+    fillOpacity: 0.2,
+    borders: {
+        fixed: true,
+        isDraggable: false,
+        highlight: false // Prevents the edges from turning dark when hovered
+    },
+    fixed: true,
+    isDraggable: false,
+    highlight: false
+});
+
+
+// Centroid Point
+    const O = board.create('circumcenter', [A, B, C]);
+    const circABC = board.create('circumcircle', [A, B, C]);
+
+// 7. Add a title inside the board
+board.create('text', [-4.5, 4.5], "Triangle circumcircle", {
+    fontSize: 16, 
+    fontWeight: 'bold',
+    fixed: true
+});
+    </script>
+</body>
+</html>
