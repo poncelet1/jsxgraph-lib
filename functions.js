@@ -20,6 +20,13 @@ const jg = {
             isDraggable: false,
             highlight: false
     },
+
+    pointStyleNoLabel: {
+        size: 2,             // Default is usually 3 or 4; 2 is nice and small
+        strokeColor: 'black', // The outline of the point
+        fillColor: 'black',   // The inside of the point
+        withLabel: false
+    }
     
     /**
      * Point Functions
