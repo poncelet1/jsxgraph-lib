@@ -35,7 +35,7 @@ const jg = {
     },
 
     lineStyle: {
-        hightlight: false
+        highlight: false
     }
     
     /**
