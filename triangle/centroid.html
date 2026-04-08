@@ -12,15 +12,15 @@
 <body>
     <div id="jxgbox" class="jxgbox"></div>
     <script>
-        var board = JXG.JSXGraph.initBoard('jxgbox', {boundingbox: [-5, 5, 5, -5], axis: true, zoom: {wheel: true, needShift: false}, pan: {enabled: true, needShift: false, needCtrl: false}});
+        const board = JXG.JSXGraph.initBoard('jxgbox', {boundingbox: [-5, 5, 5, -5], axis: true, zoom: {wheel: true, needShift: false}, pan: {enabled: true, needShift: false, needCtrl: false}});
 
         // 2. Create the vertices
-var A = board.create('point', [-3, -2], {name: 'A'});
-var B = board.create('point', [3, -2], {name: 'B'});
-var C = board.create('point', [0, 4], {name: 'C'});
+const A = board.create('point', [-3, -2], {name: 'A'});
+const B = board.create('point', [3, -2], {name: 'B'});
+const C = board.create('point', [0, 4], {name: 'C'});
 
 // 3. Create the triangle (Polygon)
-var tri = board.create('polygon', [A, B, C], {
+const tri = board.create('polygon', [A, B, C], {
     fillColor: '#ffff00', 
     fillOpacity: 0.2,
     borders: {
@@ -34,19 +34,19 @@ var tri = board.create('polygon', [A, B, C], {
 });
 
 // Wrap the arrow function in [ ]
-var Ma = board.create('midpoint', [B, C], {
+const Ma = board.create('midpoint', [B, C], {
     size: 2,             // Default is usually 3 or 4; 2 is nice and small
     strokeColor: 'black', // The outline of the point
     fillColor: 'black',   // The inside of the point
     name: ''             // Optional: removes the label if you don't want 'Ma' showing
 });
-var Mb = board.create('midpoint', [A, C], {
+const Mb = board.create('midpoint', [A, C], {
     size: 2,             // Default is usually 3 or 4; 2 is nice and small
     strokeColor: 'black', // The outline of the point
     fillColor: 'black',   // The inside of the point
     name: ''             // Optional: removes the label if you don't want 'Ma' showing
 });
-var Mc = board.create('midpoint', [A, B], {
+const Mc = board.create('midpoint', [A, B], {
     size: 2,             // Default is usually 3 or 4; 2 is nice and small
     strokeColor: 'black', // The outline of the point
     fillColor: 'black',   // The inside of the point
@@ -55,9 +55,9 @@ var Mc = board.create('midpoint', [A, B], {
         
 
 // 5. Draw the Medians
-var medA = board.create('segment', [A, Ma], {dash: 2, strokeColor: 'gray', highlight: false});
-var medB = board.create('segment', [B, Mb], {dash: 2, strokeColor: 'gray', highlight: false});
-var medC = board.create('segment', [C, Mc], {dash: 2, strokeColor: 'gray', highlight: false});
+const medA = board.create('segment', [A, Ma], {dash: 2, strokeColor: 'gray', highlight: false});
+const medB = board.create('segment', [B, Mb], {dash: 2, strokeColor: 'gray', highlight: false});
+const medC = board.create('segment', [C, Mc], {dash: 2, strokeColor: 'gray', highlight: false});
 
 // Centroid Point
         var G = board.create('point', [() => jg.centroid(A, B, C)], {
