@@ -18,26 +18,20 @@
 const A = board.create('point', [-1.8, 3.1], {name: 'A'});
 const B = board.create('point', [-3.3, -1.7], {name: 'B'});
 const C = board.create('point', [3.4, -2.6], {name: 'C'});
+const MA = board.create('midpoint', [B, C], jg.pointStyleNoLabel);
+const MB = board.create('midpoint', [A, C], jg.pointStyleNoLabel);
+const MC = board.create('midpoint', [A, B], jg.pointStyleNoLabel);
+const G = board.create('point', [() => jg.centroid(A, B, C)], {name: 'G', ...jg.pointStyle});
 
-// 3. Create the triangle (Polygon)
+const medA = board.create('segment', [A, MA], jg.lineStyle);
+const medB = board.create('segment', [B, MB], jg.lineStyle);
+const medC = board.create('segment', [C, MC], jg.lineStyle);
+        
 const triABC = board.create('polygon', [A, B, C], {
     fillColor: '#ffff00', 
     fillOpacity: 0.2,
     ...jg.triangleStyle
 });
-
-const MA = board.create('midpoint', [B, C], jg.pointStyleNoLabel);
-const MB = board.create('midpoint', [A, C], jg.pointStyleNoLabel);
-const MC = board.create('midpoint', [A, B], jg.pointStyleNoLabel);
-
-// 5. Draw the Medians
-const medA = board.create('segment', [A, MA], jg.lineStyle);
-const medB = board.create('segment', [B, MA], jg.lineStyle);
-const medC = board.create('segment', [C, MA], jg.lineStyle);
-
-// Centroid Point
-var G = board.create('point', [() => jg.centroid(A, B, C)], {name: 'G', ...jg.pointStyle});
-
     </script>
 </body>
 </html>
