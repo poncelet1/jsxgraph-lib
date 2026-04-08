@@ -70,6 +70,9 @@ var G3 = board.create('point', [() => jg.centroid(Ma, Mb, C)], {name: 'G3', colo
             color: 'red'
         });
 
+var P = board.create('point', [-1, 1], {name: 'P'});
+var circP = board.crate('circle', [P,1]);
+        
 // 7. Add a title inside the board
 board.create('text', [-4.5, 4.5], "Triangle Centroid & Medians", {
     fontSize: 16, 
