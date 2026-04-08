@@ -31,12 +31,12 @@ const MB = board.create('midpoint', [A, C], jg.pointStyleNoLabel);
 const MC = board.create('midpoint', [A, B], jg.pointStyleNoLabel);
 
 // 5. Draw the Medians
-const medA = board.create('segment', [A, MA], ...lineStyle);
-const medB = board.create('segment', [B, MA], ...lineStyle);
-const medC = board.create('segment', [C, MA], ...lineStyle);
+const medA = board.create('segment', [A, MA], jg.lineStyle);
+const medB = board.create('segment', [B, MA], jg.lineStyle);
+const medC = board.create('segment', [C, MA], jg.lineStyle);
 
 // Centroid Point
-var G = board.create('point', [() => jg.centroid(A, B, C)], {name: 'G', ..pointStyle});
+var G = board.create('point', [() => jg.centroid(A, B, C)], {name: 'G', ...jg.pointStyle});
 
     </script>
 </body>
