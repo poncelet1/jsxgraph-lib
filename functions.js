@@ -40,6 +40,7 @@ const jg = {
     },
 
     circleStyle: {
+        strokeWidth: 1,
         fixed: true,
         isDraggable: false,
         highlight: false
