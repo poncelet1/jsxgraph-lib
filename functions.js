@@ -36,7 +36,7 @@ const jg = {
 
     lineStyle: {
         highlight: false
-    }
+    },
     
     /**
      * Point Functions
