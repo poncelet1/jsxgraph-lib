@@ -12,7 +12,7 @@
 <body>
     <div id="jxgbox" class="jxgbox"></div>
     <script>
-        const board = JXG.JSXGraph.initBoard('jxgbox', {boundingbox: [-5, 5, 5, -5], axis: true, zoom: {wheel: true, needShift: false}, pan: {enabled: true, needShift: false, needCtrl: false}});
+        const board = JXG.JSXGraph.initBoard('jxgbox', ...jg.boardStyle);
 
         // 2. Create the vertices
 const A = board.create('point', [-1.8, 3.1], {name: 'A'});
