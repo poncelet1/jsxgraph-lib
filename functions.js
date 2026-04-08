@@ -8,6 +8,8 @@ const jg = {
      * Style Defaults
      */
 
+    boardStyle: {boundingbox: [-5, 5, 5, -5], axis: true, zoom: {wheel: true, needShift: false}, pan: {enabled: true, needShift: false, needCtrl: false}},
+
     triangleStyle: {
       borders: {
                 fixed: true,
