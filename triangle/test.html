@@ -71,7 +71,7 @@ const G3 = board.create('point', [() => jg.centroid(Ma, Mb, C)], {name: 'G3', co
         });
 
 const P = board.create('point', [-1, 1], {name: 'P'});
-const circP = board.create('circle', [P,1]);
+const circP = board.create('circle', [P,-2]);
         
 // 7. Add a title inside the board
 board.create('text', [-4.5, 4.5], "Triangle Centroid & Medians", {
