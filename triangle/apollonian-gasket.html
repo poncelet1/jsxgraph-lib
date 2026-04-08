@@ -25,7 +25,7 @@ const A = board.create('point', [-1, 2], {name: 'A'});
 const B = board.create('point', [-3, 0], {name: 'B'});
 const C = board.create('point', [4, -1], {name: 'C'});
 
-const circA = board.create('circle', [A, A.dist(B)]);
+const circA = board.create('circle', [A, A.Dist(B)]);
 
 // 7. Add a title inside the board
 board.create('text', [-4.5, 4.5], "Triangle circumcircle", {
