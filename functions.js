@@ -39,7 +39,7 @@ const jg = {
      */
 
     semiperimeter: function(A, B, C) {
-        return (B.dist(C) + C.dist(A) + A.dist(B))/2;
+        return (B.Dist(C) + C.Dist(A) + A.Dist(B))/2;
     },
 
     // Add this to your jg object in jg.js
@@ -66,12 +66,11 @@ centroid: function(A, B, C) {
 },
 
    excenter: function(A, B, C) {
-       const a = B.dist(C);
-       const b = C.dist(A);
-       const c = A.dist(B);
-       const s = semiperimeter(A, B, C);
+       const a = B.Dist(C);
+       const b = C.Dist(A);
+       const c = A.Dist(B);
 
-       return barycoord(A, B, C, -(s - a), s - b, s - c);
+       return this.barycoord(A, B, C, -a, b, c);
    }
    
 };
