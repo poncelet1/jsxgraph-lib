@@ -25,7 +25,7 @@ const lineBC = board.create('line', [B, C], jg.lineStyle);
         
 const incircABC = board.create('incircle', [A, B, C], jg.circleStyle);
 const IA = board.create('point', [() => jg.excenter(A, B, C)], {name: 'IA', ...jg.pointStyle});
-const excircA = excircle(board, A, B, C);
+const excircA = js.excircle(board, A, B, C);
     </script>
 </body>
 </html>
