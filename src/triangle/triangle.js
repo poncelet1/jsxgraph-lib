@@ -1,5 +1,6 @@
 import { getXY } from '../core/core.js';
 import { dist } from '../point/point.js';
+import { circleStyle } from '../style/style.js';
 
 /**
      * Given points A, B, C, returns the semiperimeter of triangle ABC
@@ -110,4 +111,19 @@ export function excenter(A, B, C) {
     const c = dist(A, B);
 
     return barycoord(A, B, C, -a, b, c);
+}
+
+  /**
+ * Creates the A-excircle of triangle ABC on a given board
+ * @param board JSXGraph board
+ * @param A first point
+ * @param B second point
+ * @param C third point
+ * @param style optional circle style
+ * @returns A-excircle
+ */
+export function excircle(board, A, B, C, style = circleStyle) {
+    const center = () => excenter(A, B, C);
+    const radius = () => exradius(A, B, C);
+    return board.create('circle', [center, radius], style);
 }
