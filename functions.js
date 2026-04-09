@@ -59,7 +59,7 @@ const jg = {
      * @param P point
      * @returns [x, y]
      */
-    getXY(P) {
+    getXY: function(P) {
     return (typeof P.X === 'function')
         ? [P.X(), P.Y()]
         : P;
