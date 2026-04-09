@@ -107,7 +107,7 @@ const jg = {
     area: function(A, B, C) {
     const [ax, ay] = this.getXY(A);
     const [bx, by] = this.getXY(B);
-    const [cx, by] = this.getXY(C);
+    const [cx, cy] = this.getXY(C);
         return Math.abs(ax * by + bx * cy + cx * ay - ay * bx - by * cx - cy * ax)/2;
     },
 
@@ -121,7 +121,7 @@ const jg = {
     signedArea: function(A, B, C) {
     const [ax, ay] = this.getXY(A);
     const [bx, by] = this.getXY(B);
-    const [cx, by] = this.getXY(C);
+    const [cx, cy] = this.getXY(C);
         return (ax * by + bx * cy + cx * ay - ay * bx - by * cx - cy * ax)/2;
     },
 
@@ -135,7 +135,7 @@ const jg = {
     centroid: function(A, B, C) {
     const [ax, ay] = this.getXY(A);
     const [bx, by] = this.getXY(B);
-    const [cx, by] = this.getXY(C);
+    const [cx, cy] = this.getXY(C);
 
     return [(ax + bx + cx) / 3, (ay + by + cy) / 3];
 },
@@ -153,7 +153,7 @@ const jg = {
     barycoord: function(A, B, C, x, y, z) {
     const [ax, ay] = this.getXY(A);
     const [bx, by] = this.getXY(B);
-    const [cx, by] = this.getXY(C);
+    const [cx, cy] = this.getXY(C);
 
     return [(ax * x + bx * y + cx * z)/(x + y + z), (ay * x + by * y + cy * z)/(x + y + z)];
 },
