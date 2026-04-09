@@ -73,11 +73,9 @@ const jg = {
      * @returns interpolated point
      */
     interp: function(A, B, t) {
-        const ax = (typeof A.X === 'function') ? A.X() : A[0];
-        const ay = (typeof A.Y === 'function') ? A.Y() : A[1];
-        const bx = (typeof B.X === 'function') ? B.X() : B[0];
-        const by = (typeof B.Y === 'function') ? B.Y() : B[1];
-
+        const [ax, ay] = this.getXY(A);
+        const [bx, by] = this.getXY(B);
+        
         return [
             ax + t * (bx - ax),
             ay + t * (by - ay)
@@ -107,12 +105,9 @@ const jg = {
      * @returns area
      */
     area: function(A, B, C) {
-    const ax = (typeof A.X === 'function') ? A.X() : A[0];
-    const ay = (typeof A.Y === 'function') ? A.Y() : A[1];
-    const bx = (typeof B.X === 'function') ? B.X() : B[0];
-    const by = (typeof B.Y === 'function') ? B.Y() : B[1];
-    const cx = (typeof C.X === 'function') ? C.X() : C[0];
-    const cy = (typeof C.Y === 'function') ? C.Y() : C[1];
+    const [ax, ay] = this.getXY(A);
+    const [bx, by] = this.getXY(B);
+    const [cx, by] = this.getXY(C);
         return Math.abs(ax * by + bx * cy + cx * ay - ay * bx - by * cx - cy * ax)/2;
     },
 
@@ -124,12 +119,9 @@ const jg = {
      * @returns signed area
      */
     signedArea: function(A, B, C) {
-    const ax = (typeof A.X === 'function') ? A.X() : A[0];
-    const ay = (typeof A.Y === 'function') ? A.Y() : A[1];
-    const bx = (typeof B.X === 'function') ? B.X() : B[0];
-    const by = (typeof B.Y === 'function') ? B.Y() : B[1];
-    const cx = (typeof C.X === 'function') ? C.X() : C[0];
-    const cy = (typeof C.Y === 'function') ? C.Y() : C[1];
+    const [ax, ay] = this.getXY(A);
+    const [bx, by] = this.getXY(B);
+    const [cx, by] = this.getXY(C);
         return (ax * by + bx * cy + cx * ay - ay * bx - by * cx - cy * ax)/2;
     },
 
@@ -141,12 +133,9 @@ const jg = {
      * @returns centroid
      */
     centroid: function(A, B, C) {
-    const ax = (typeof A.X === 'function') ? A.X() : A[0];
-    const ay = (typeof A.Y === 'function') ? A.Y() : A[1];
-    const bx = (typeof B.X === 'function') ? B.X() : B[0];
-    const by = (typeof B.Y === 'function') ? B.Y() : B[1];
-    const cx = (typeof C.X === 'function') ? C.X() : C[0];
-    const cy = (typeof C.Y === 'function') ? C.Y() : C[1];
+    const [ax, ay] = this.getXY(A);
+    const [bx, by] = this.getXY(B);
+    const [cx, by] = this.getXY(C);
 
     return [(ax + bx + cx) / 3, (ay + by + cy) / 3];
 },
@@ -162,12 +151,9 @@ const jg = {
      * @returns barycentric point
      */
     barycoord: function(A, B, C, x, y, z) {
-    const ax = (typeof A.X === 'function') ? A.X() : A[0];
-    const ay = (typeof A.Y === 'function') ? A.Y() : A[1];
-    const bx = (typeof B.X === 'function') ? B.X() : B[0];
-    const by = (typeof B.Y === 'function') ? B.Y() : B[1];
-    const cx = (typeof C.X === 'function') ? C.X() : C[0];
-    const cy = (typeof C.Y === 'function') ? C.Y() : C[1];
+    const [ax, ay] = this.getXY(A);
+    const [bx, by] = this.getXY(B);
+    const [cx, by] = this.getXY(C);
 
     return [(ax * x + bx * y + cx * z)/(x + y + z), (ay * x + by * y + cy * z)/(x + y + z)];
 },
