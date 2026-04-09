@@ -94,7 +94,7 @@ const jg = {
      * @returns semiperimeter
      */
     semiperimeter: function(A, B, C) {
-        return (B.Dist(C) + C.Dist(A) + A.Dist(B))/2;
+        return (dist(A,B) + dist(A,C) + dist(B,C))/2;
     },
 
     /**
