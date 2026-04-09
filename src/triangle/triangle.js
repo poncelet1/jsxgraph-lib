@@ -63,7 +63,6 @@ export function barycoord(A, B, C, x, y, z) {
     const [ax, ay] = getXY(A);
     const [bx, by] = getXY(B);
     const [cx, cy] = getXY(C);
-
     const s = x + y + z;
 
     return [
@@ -81,6 +80,50 @@ export function barycoord(A, B, C, x, y, z) {
      */
 export function centroid(A, B, C) {
   return barycoord(A, B, C, 1, 1, 1);
+}
+
+/**
+     * Given points A, B, C, returns the inradius of triangle ABC
+     * @param A first point
+     * @param B second point
+     * @param C third point
+     * @returns inradius
+     */
+export function inradius(A, B, C) {
+    const s = semiperimeter(A, B, C);
+    const K = area(A, B, C);
+
+    return K / s;
+}
+
+/**
+     * Given points A, B, C, returns the incenter of triangle ABC
+     * @param A first point
+     * @param B second point
+     * @param C third point
+     * @returns incenter
+     */
+export function incenter(A, B, C) {
+    const a = dist(B, C);
+    const b = dist(C, A);
+    const c = dist(A, B);
+
+    return barycoord(A, B, C, a, b, c);
+}
+
+/**
+ * Creates the incircle of triangle ABC on a given board
+ * @param board JSXGraph board
+ * @param A first point
+ * @param B second point
+ * @param C third point
+ * @param style optional circle style
+ * @returns incircle
+ */
+export function incircle(board, A, B, C, style = circleStyle) {
+    const center = () => incenter(A, B, C);
+    const radius = () => inradius(A, B, C);
+    return board.create('circle', [center, radius], style);
 }
 
 /**
