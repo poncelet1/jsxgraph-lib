@@ -272,3 +272,52 @@ export function innerSoddyCircle(board, A, B, C, style = circleStyle) {
     const radius = () => innerSoddyRadius(A, B, C);
     return board.create('circle', [center, radius], style);
 }
+
+/**
+     * Given points A, B, C, returns the outer Soddy radius of triangle ABC
+     * @param A first point
+     * @param B second point
+     * @param C third point
+     * @returns outer Soddy radius
+     */
+export function outerSoddyRadius(A, B, C) {
+    const r = inradius(A, B, C);
+    const R = circumradius(A, B, C);
+    const s = semiperimeter(A, B, C);
+    const K = area(A, B, C);
+
+    return K / (4 * R + r - 2 * s);
+}
+
+/**
+     * Given points A, B, C, returns the outer Soddy center of triangle ABC
+     * @param A first point
+     * @param B second point
+     * @param C third point
+     * @returns outer Soddy center
+     */
+export function outerSoddyCenter(A, B, C) {
+    const a = dist(B,C);
+    const b = dist(A,C);
+    const c = dist(A,B);
+    const rA = exradius(A, B, C);
+    const rB = exradius(B, C, A);
+    const rC = exradius(C, A, B);
+
+    return barycoord(A, B, C, -a + rA, -b + rB, -c + rC);
+}
+
+/**
+ * Creates the outer Soddy circle of triangle ABC on a given board
+ * @param board JSXGraph board
+ * @param A first point
+ * @param B second point
+ * @param C third point
+ * @param style optional circle style
+ * @returns outer Soddy circle
+ */
+export function outerSoddyCircle(board, A, B, C, style = circleStyle) {
+    const center = () => outerSoddyCenter(A, B, C);
+    const radius = () => outerSoddyRadius(A, B, C);
+    return board.create('circle', [center, radius], style);
+}
