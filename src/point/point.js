@@ -72,3 +72,21 @@ export function interp(A, B, t) {
         ay + t * (by - ay)
     ];
 }
+
+/**
+     * Given points A, B, C returns the projection of C onto line AB
+     * @param A first point
+     * @param B second point
+     * @param C second point
+     * @returns projection
+     */
+export function projection(A, B, C) {
+    const [ax, ay] = getXY(A);
+    const [bx, by] = getXY(B);
+    const [cx, cy] = getXY(C);
+
+    return [
+        ((cx - ax)*(bx - ax) + (cy - ay)*(by - ay))*(bx - ax)/dist(A,B) ** 2 + ax,
+        ((cx - ax)*(bx - ax) + (cy - ay)*(by - ay))*(by - ay)/dist(A,B) ** 2 + ay
+    ];
+}
