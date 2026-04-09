@@ -178,7 +178,7 @@ const jg = {
      * @returns A-exradius
      */
    exradius: function(A, B, C) {
-       const a = B.Dist(C);
+       const a = this.dist(B,C);
        const s = this.semiperimeter(A, B, C);
        const K = this.area(A, B, C);
 
@@ -193,9 +193,9 @@ const jg = {
      * @returns A-excenter
      */
    excenter: function(A, B, C) {
-       const a = B.Dist(C);
-       const b = C.Dist(A);
-       const c = A.Dist(B);
+       const a = this.dist(B,C);
+       const b = this.dist(A,C);
+       const c = this.dist(A,B);
 
        return this.barycoord(A, B, C, -a, b, c);
    },
