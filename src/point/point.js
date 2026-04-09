@@ -104,3 +104,20 @@ export function reflect(A, B, C) {
 
     return [2*px - cx, 2*py - cy];
 }
+
+/**
+     * Given point C, real number t, and point P, returns the rotation of P around C by an angle of t
+     * @param C center of rotation
+     * @param t angle of rotation
+     * @param P point being rotated
+     * @returns rotated point
+     */
+export function rotate(C, t, P) {
+    const [cx, cy] = getXY(C);
+    const [px, py] = getXY(P);
+
+    return [
+        (px - cx) * Math.cos(t) - (py - cy) * Math.sin(t) + cx,
+        (px - cx) * Math.sin(t) + (py - cy) * Math.cos(t) + cy
+    ];
+}
