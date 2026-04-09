@@ -19,17 +19,13 @@ const A = board.create('point', [-3, -2], {name: 'A'});
 const B = board.create('point', [3, -2], {name: 'B'});
 const C = board.create('point', [0, 4], {name: 'C'});
 
-const incircABC = board.create('incircle', [A, B, C]);
-
-const lineAB = board.create('line', [A, B]);
-const lineAC = board.create('line', [A, C]);
-const lineBC = board.create('line', [B, C]);
-
-const IA = board.create('point', [() => jg.excenter(A, B, C)], {
-            name: 'IA', 
-            color: 'black'
-        });
-
+const lineAB = board.create('line', [A, B], lineStyle);
+const lineAC = board.create('line', [A, C], lineStyle);
+const lineBC = board.create('line', [B, C], lineStyle);
+        
+const incircABC = board.create('incircle', [A, B, C], jg.circleStyle);
+const IA = board.create('point', [() => jg.excenter(A, B, C)], {name: 'IA', ...jg.pointStyle});
+const excricA = excircle(board, A, B, C);
     </script>
 </body>
 </html>
