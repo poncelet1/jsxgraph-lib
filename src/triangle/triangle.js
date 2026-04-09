@@ -239,3 +239,36 @@ export function innerSoddyRadius(A, B, C) {
 
     return K / (4 * R + r + 2 * s);
 }
+
+/**
+     * Given points A, B, C, returns the inner Soddy center of triangle ABC
+     * @param A first point
+     * @param B second point
+     * @param C third point
+     * @returns inner Soddy center
+     */
+export function innerSoddyCenter(A, B, C) {
+    const a = dist(B,C);
+    const b = dist(A,C);
+    const c = dist(A,B);
+    const rA = exradius(A, B, C);
+    const rB = exradius(A, B, C);
+    const rC = exradius(A, B, C);
+
+    return barycoord(A, B, C, a + rA, b + rB, c + rc);
+}
+
+/**
+ * Creates the inner Soddy circle of triangle ABC on a given board
+ * @param board JSXGraph board
+ * @param A first point
+ * @param B second point
+ * @param C third point
+ * @param style optional circle style
+ * @returns inner Soddy circle
+ */
+export function innerSoddyCircle(board, A, B, C, style = circleStyle) {
+    const center = () => innerSoddyCenter(A, B, C);
+    const radius = () => innerSoddyRadius(A, B, C);
+    return board.create('circle', [center, radius], style);
+}
