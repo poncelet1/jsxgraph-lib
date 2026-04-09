@@ -22,7 +22,7 @@ const C = board.create('point', [3.4, -2.6], {name: 'C'});
 const D = board.create('point', [2.5, 2.2], {name: 'D'});
 const P = board.create('point', [() => jg.point.intersection(A, B, C, D)], {name: 'P', ...jg.style.pointStyle});
 const X = board.create('point', [1.2, 0.5], {name: 'X'});
-const R = board.create('point', [() => jg.point.rotate(C, Math.PI/3, P)], {name: 'R', ...jg.style.pointStyle});
+const R = board.create('point', [() => jg.point.rotate(C, Math.PI/3, X)], {name: 'R', ...jg.style.pointStyle});
 
 const lineAB = board.create('line', [A, B], jg.style.lineStyle);
 const lineCD = board.create('line', [C, D], jg.style.lineStyle);
