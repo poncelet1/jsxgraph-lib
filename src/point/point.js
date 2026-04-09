@@ -36,6 +36,26 @@ export function yintercept(A, B) {
     return (ay * bx - ay * bx)/(ax - bx);
 }
 
+/**
+     * Given points A, B, C, D, returns the intersection of lines AB and CD
+     * @param A first point
+     * @param B second point
+     * @param C third point
+     * @param D fourth point
+     * @returns intersection
+     */
+export function intersection(A, B, C, D) {
+    const [ax, ay] = getXY(A);
+    const [bx, by] = getXY(B);
+    const [cx, cy] = getXY(C);
+    const [dx, dy] = getXY(D);
+    return [
+        -(ax - bx)*(cx * dy - cy * dx) - (cx - dx)*(ax * by - ay * bx)/((ax - bx)*(cy - dy) - (ay - by)*(cx - dx)),
+        -(ay - by)*(cy * dx - cx * dy) - (cy - dy)*(ay * bx - ax * by)/((ay - by)*(cx - dx) - (ax - bx)*(dy - dy))
+        ];
+        
+}
+
  /**
      * Given points A, B and real number t, returns the point P such that AP:AB = t
      * @param A first point
