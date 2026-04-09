@@ -199,11 +199,11 @@ const jg = {
  * @param style optional circle style
  * @returns JSXGraph circle object
  */
-excircle: function(board, A, B, C, style = this.circleStyle) {
-    const center = this.excenter(A, B, C);
-    const radius = this.exradius(A, B, C);
-    
-    return board.create('circle', [center, radius], style);
+    excircle: function(board, A, B, C, style = this.circleStyle) {
+      return board.create('circle', [
+        () => this.excenter(A, B, C), 
+        () => this.exradius(A, B, C)
+    ]  , style);
 }
    
 };
