@@ -252,8 +252,8 @@ export function innerSoddyCenter(A, B, C) {
     const b = dist(A,C);
     const c = dist(A,B);
     const rA = exradius(A, B, C);
-    const rB = exradius(A, B, C);
-    const rC = exradius(A, B, C);
+    const rB = exradius(B, C, A);
+    const rC = exradius(C, A, B);
 
     return barycoord(A, B, C, a + rA, b + rB, c + rC);
 }
