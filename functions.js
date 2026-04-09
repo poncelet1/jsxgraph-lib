@@ -53,6 +53,17 @@ const jg = {
     /**
      * Point Functions
      */
+
+    /**
+     * Given point P, returns x and y coordinates
+     * @param P point
+     * @returns [x, y]
+     */
+    getXY(P) {
+    return (typeof P.X === 'function')
+        ? [P.X(), P.Y()]
+        : P;
+    },
      
     /**
      * Given points A, B and real number t, returns the point P such that AP:AB = t
