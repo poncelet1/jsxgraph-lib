@@ -1,5 +1,5 @@
 import { getXY } from '../core/core.js';
-import { dist, intersection, midpoint, rotate } from '../point/point.js';
+import { dist, intersection, midpoint, project, rotate } from '../point/point.js';
 import { circleStyle } from '../style/style.js';
 
 /**
@@ -211,6 +211,17 @@ export function circumcircle(board, A, B, C, style = circleStyle) {
     const center = () => circumcenter(A, B, C);
     const radius = () => circumradius(A, B, C);
     return board.create('circle', [center, radius], style);
+}
+
+/**
+     * Given points A, B, C, returns the orthocenter of triangle ABC
+     * @param A first point
+     * @param B second point
+     * @param C third point
+     * @returns orthocenter
+     */
+export function orthocenter(A, B, C) {
+    return intersection(A, project(B, C, A), B, project(C, A, B));
 }
 
 /**
