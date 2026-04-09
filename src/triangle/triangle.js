@@ -1,5 +1,5 @@
 import { getXY } from '../core/core.js';
-import { dist, intersection, rotate } from '../point/point.js';
+import { dist, intersection, midpoint, rotate } from '../point/point.js';
 import { circleStyle } from '../style/style.js';
 
 /**
@@ -195,7 +195,7 @@ export function circumradius(A, B, C) {
      * @returns circumcenter
      */
 export function circumcenter(A, B, C) {
-    return intersection(
+    return intersection(midpoint(A, B), rotate(midpoint(A,B), Math.PI/2, A), midpoint(A, C), rotate(midpoint(A, C), Math.PI/2, A));
 }
 
 /**
