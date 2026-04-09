@@ -50,8 +50,8 @@ export function intersection(A, B, C, D) {
     const [cx, cy] = getXY(C);
     const [dx, dy] = getXY(D);
     return [
-        -(ax - bx)*(cx * dy - cy * dx) - (cx - dx)*(ax * by - ay * bx)/((ax - bx)*(cy - dy) - (ay - by)*(cx - dx)),
-        -(ay - by)*(cy * dx - cx * dy) - (cy - dy)*(ay * bx - ax * by)/((ay - by)*(cx - dx) - (ax - bx)*(dy - dy))
+        (-(ax - bx)*(cx * dy - cy * dx) - (cx - dx)*(ax * by - ay * bx))/((ax - bx)*(cy - dy) - (ay - by)*(cx - dx)),
+        (-(ay - by)*(cy * dx - cx * dy) - (cy - dy)*(ay * bx - ax * by))/((ay - by)*(cx - dx) - (ax - bx)*(cy - dy))
         ];
         
 }
