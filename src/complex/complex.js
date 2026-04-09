@@ -1,10 +1,44 @@
+const TOLERANCE = 1e-10;
+
 /**
-     * Given point Z, returns the complex conjugate of Z
-     * @param Z point
+     * Given point A, returns the complex conjugate of A
+     * @param A point
      * @returns conjugate
      */
-export function complexConjugate(Z) {
-    const [zx, zy] = getXY(Z);
+export function complexConjugate(A) {
+    const [ax, ay] = getXY(A);
     
-    return [zx, -zy];
+    return [ax, -ay];
+}
+
+/**
+     * Given points A, B, returns the complex product of A and B
+     * @param A first point
+     * @param B second dpoint
+     * @returns product
+     */
+export function complexProduct(A, B) {
+    const [ax, ay] = getXY(A);
+    const [bx, by] = getXY(B);
+    
+    return [
+        ax * bx - ay * by,
+        ax * by + ay * bx
+    ];
+}
+
+/**
+     * Given points A, B, returns the complex quotient of A and B
+     * @param A first point
+     * @param B second dpoint
+     * @returns quotient
+     */
+export function complexQuotient(A, B) {
+    const [ax, ay] = getXY(A);
+    const [bx, by] = getXY(B);
+    
+    return [
+        (ax * bx + ay * by)/(bx ** 2 + by ** 2),
+        (ay * bx - ax * by)/(bx ** 2 + by ** 2)
+    ];
 }
