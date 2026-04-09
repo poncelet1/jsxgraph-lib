@@ -1,5 +1,5 @@
 import { getXY } from '../core/core.js';
-import { dist } from '../point/point.js';
+import { dist, intersection, rotate } from '../point/point.js';
 import { circleStyle } from '../style/style.js';
 
 /**
@@ -185,6 +185,17 @@ export function circumradius(A, B, C) {
     const K = area(A, B, C);
 
     return (a * b * c)/(4 * K);
+}
+
+/**
+     * Given points A, B, C, returns the circumcenter of triangle ABC
+     * @param A first point
+     * @param B second point
+     * @param C third point
+     * @returns circumcenter
+     */
+export function circumcenter(A, B, C) {
+    return intersection(
 }
 
 /**
