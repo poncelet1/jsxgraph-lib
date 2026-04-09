@@ -100,7 +100,7 @@ export function project(A, B, C) {
      */
 export function reflect(A, B, C) {
     const [cx, cy] = getXY(C);
-    const [px, py] = getXY(projection(A, B, C));
+    const [px, py] = getXY(project(A, B, C));
 
     return [2*px - cx, 2*py - cy];
 }
