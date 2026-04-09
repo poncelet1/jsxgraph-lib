@@ -11,14 +11,14 @@ const jg = {
     boardStyle: {boundingbox: [-5, 5, 5, -5], axis: true, zoom: {wheel: true, needShift: false}, pan: {enabled: true, needShift: false, needCtrl: false}},
 
     triangleStyle: {
-      borders: {
-                fixed: true,
-                isDraggable: false,
-                highlight: false
-       },
-            fixed: true,
-            isDraggable: false,
-            highlight: false
+    fixed: true,
+    draggable: false,
+    highlight: false,
+    borders: {
+        fixed: true,
+        draggable: false,
+        highlight: false
+    }
     },
 
     pointStyle: {
