@@ -80,7 +80,7 @@ export function interp(A, B, t) {
      * @param C second point
      * @returns projection
      */
-export function projection(A, B, C) {
+export function project(A, B, C) {
     const [ax, ay] = getXY(A);
     const [bx, by] = getXY(B);
     const [cx, cy] = getXY(C);
