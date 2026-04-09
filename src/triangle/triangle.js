@@ -198,6 +198,21 @@ export function circumcenter(A, B, C) {
     return intersection(midpoint(A, B), rotate(midpoint(A,B), Math.PI/2, A), midpoint(A, C), rotate(midpoint(A, C), Math.PI/2, A));
 }
 
+ /**
+ * Creates the circumcircle of triangle ABC on a given board
+ * @param board JSXGraph board
+ * @param A first point
+ * @param B second point
+ * @param C third point
+ * @param style optional circle style
+ * @returns circumcircle
+ */
+export function circumcircle(board, A, B, C, style = circleStyle) {
+    const center = () => circumcenter(A, B, C);
+    const radius = () => circumradius(A, B, C);
+    return board.create('circle', [center, radius], style);
+}
+
 /**
      * Given points A, B, C, returns the inner Soddy radius of triangle ABC
      * @param A first point
