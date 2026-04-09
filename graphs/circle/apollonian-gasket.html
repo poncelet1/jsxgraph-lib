@@ -29,6 +29,7 @@ const circA = board.create('circle', [A, function() {return (A.Dist(B) - B.Dist(
 const circB = board.create('circle', [B, function() {return (A.Dist(B) + B.Dist(C) - C.Dist(A))/2;}], jg.style.circleStyle);
 const circC = board.create('circle', [C, function() {return (-A.Dist(B) + B.Dist(C) + C.Dist(A))/2;}], jg.style.circleStyle);
 const innerSoddyCircle = jg.triangle.innerSoddyCircle(board, A, B, C);
+const outerSoddyCircle = jg.triangle.outerSoddyCircle(board, A, B, C);
 
     </script>
 </body>
