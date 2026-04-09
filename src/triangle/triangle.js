@@ -232,8 +232,10 @@ export function orthocenter(A, B, C) {
      * @returns inner Soddy radius
      */
 export function innerSoddyRadius(A, B, C) {
+    const r = inradius(A, B, C);
+    const R = circumradius(A, B, C);
     const s = semiperimeter(A, B, C);
     const K = area(A, B, C);
 
-    return K / s;
+    return K / (4 * R + r + 2 * s);
 }
