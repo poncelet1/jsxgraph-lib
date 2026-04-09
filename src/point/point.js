@@ -74,6 +74,16 @@ export function interp(A, B, t) {
 }
 
 /**
+     * Given points A, B, returns the midpoint of AB
+     * @param A first point
+     * @param B second point
+     * @returns midpoint
+     */
+export function midpoint(A, B) {
+    return interp(A, B, 1/2);
+}
+
+/**
      * Given points A, B, C returns the projection of C onto line AB
      * @param A first point
      * @param B second point
