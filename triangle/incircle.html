@@ -12,16 +12,16 @@
 <body>
     <div id="jxgbox" class="jxgbox"></div>
     <script>
-        const board = JXG.JSXGraph.initBoard('jxgbox', js.boardStyle);
+        const board = JXG.JSXGraph.initBoard('jxgbox', jg.boardStyle);
 
         // 2. Create the vertices
 const A = board.create('point', [-1.8, 3.1], {name: 'A'});
 const B = board.create('point', [-3.3, -1.7], {name: 'B'});
 const C = board.create('point', [3.4, -2.6], {name: 'C'});
 
-const lineAB = board.create('line', [A, B], lineStyle);
-const lineAC = board.create('line', [A, C], lineStyle);
-const lineBC = board.create('line', [B, C], lineStyle);
+const lineAB = board.create('line', [A, B], jg.lineStyle);
+const lineAC = board.create('line', [A, C], jg.lineStyle);
+const lineBC = board.create('line', [B, C], jg.lineStyle);
         
 const incircABC = board.create('incircle', [A, B, C], jg.circleStyle);
 const IA = board.create('point', [() => jg.excenter(A, B, C)], {name: 'IA', ...jg.pointStyle});
