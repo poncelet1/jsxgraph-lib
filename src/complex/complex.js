@@ -12,6 +12,38 @@ export function complexConjugate(A) {
 }
 
 /**
+     * Given points A, B, returns the complex sum of A and B
+     * @param A first point
+     * @param B second dpoint
+     * @returns sum
+     */
+export function complexSum(A, B) {
+    const [ax, ay] = getXY(A);
+    const [bx, by] = getXY(B);
+    
+    return [
+        ax + bx,
+        ay + by
+    ];
+}
+
+/**
+     * Given points A, B, returns the complex difference of A and B
+     * @param A first point
+     * @param B second dpoint
+     * @returns difference
+     */
+export function complexDifference(A, B) {
+    const [ax, ay] = getXY(A);
+    const [bx, by] = getXY(B);
+    
+    return [
+        ax - bx,
+        ay - by
+    ];
+}
+
+/**
      * Given points A, B, returns the complex product of A and B
      * @param A first point
      * @param B second dpoint
