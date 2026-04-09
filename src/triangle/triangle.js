@@ -170,3 +170,33 @@ export function excircle(board, A, B, C, style = circleStyle) {
     const radius = () => exradius(A, B, C);
     return board.create('circle', [center, radius], style);
 }
+
+/**
+     * Given points A, B, C, returns the circumradius of triangle ABC
+     * @param A first point
+     * @param B second point
+     * @param C third point
+     * @returns circumradius
+     */
+export function circumradius(A, B, C) {
+    const a = dist(B,C);
+    const b = dist(A,C);
+    const c = dist(A,B);
+    const K = area(A, B, C);
+
+    return (a * b * c)/(4 * K);
+}
+
+/**
+     * Given points A, B, C, returns the inner Soddy radius of triangle ABC
+     * @param A first point
+     * @param B second point
+     * @param C third point
+     * @returns inner Soddy radius
+     */
+export function innerSoddyRadius(A, B, C) {
+    const s = semiperimeter(A, B, C);
+    const K = area(A, B, C);
+
+    return K / s;
+}
