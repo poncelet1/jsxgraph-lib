@@ -18,14 +18,18 @@
 const A = board.create('point', [-1.8, 3.1], {name: 'A'});
 const B = board.create('point', [-3.3, -1.7], {name: 'B'});
 const C = board.create('point', [3.4, -2.6], {name: 'C'});
+const IA = board.create('point', [() => jg.excenter(A, B, C)], {name: 'IA', ...jg.pointStyle});
+const IB = board.create('point', [() => jg.excenter(B, C, A)], {name: 'IB', ...jg.pointStyle});
+const IC = board.create('point', [() => jg.excenter(C, A, B)], {name: 'IC', ...jg.pointStyle});
 
 const lineAB = board.create('line', [A, B], jg.lineStyle);
 const lineAC = board.create('line', [A, C], jg.lineStyle);
 const lineBC = board.create('line', [B, C], jg.lineStyle);
         
 const incircABC = board.create('incircle', [A, B, C], jg.circleStyle);
-const IA = board.create('point', [() => jg.excenter(A, B, C)], {name: 'IA', ...jg.pointStyle});
 const excircA = jg.excircle(board, A, B, C);
+const excircB = jg.excircle(board, B, C, A);
+const excircC = jg.excircle(board, C, A, B);
     </script>
 </body>
 </html>
