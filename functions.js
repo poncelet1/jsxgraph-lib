@@ -64,6 +64,18 @@ const jg = {
         ? [P.X(), P.Y()]
         : P;
     },
+
+    /**
+     * Given points A, B, returns the distance betweeen A and B
+     * @param A first point
+     * @param B second point
+     * @returns distance
+     */
+    dist(A, B) {
+    const [ax, ay] = this.getXY(A);
+    const [bx, by] = this.getXY(B);
+    return Math.hypot(bx - ax, by - ay);
+    }
      
     /**
      * Given points A, B and real number t, returns the point P such that AP:AB = t
@@ -94,7 +106,7 @@ const jg = {
      * @returns semiperimeter
      */
     semiperimeter: function(A, B, C) {
-        return (dist(A,B) + dist(A,C) + dist(B,C))/2;
+        return (this.dist(A,B) + this.dist(A,C) + this.dist(B,C))/2;
     },
 
     /**
