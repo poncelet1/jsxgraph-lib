@@ -18,6 +18,7 @@
 const A = board.create('point', [-1.8, 3.1], {name: 'A'});
 const B = board.create('point', [-3.3, -1.7], {name: 'B'});
 const C = board.create('point', [3.4, -2.6], {name: 'C'});
+const I = board.create('incenter', [A, B, C], {name: 'I', ...jg.pointStyle});
 const IA = board.create('point', [() => jg.excenter(A, B, C)], {name: 'IA', ...jg.pointStyle});
 const IB = board.create('point', [() => jg.excenter(B, C, A)], {name: 'IB', ...jg.pointStyle});
 const IC = board.create('point', [() => jg.excenter(C, A, B)], {name: 'IC', ...jg.pointStyle});
