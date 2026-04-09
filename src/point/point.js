@@ -90,3 +90,17 @@ export function projection(A, B, C) {
         ((cx - ax)*(bx - ax) + (cy - ay)*(by - ay))*(by - ay)/dist(A,B) ** 2 + ay
     ];
 }
+
+/**
+     * Given points A, B, C returns the reflection of C over line AB
+     * @param A first point
+     * @param B second point
+     * @param C second point
+     * @returns reflection
+     */
+export function reflect(A, B, C) {
+    const [cx, cy] = getXY(C);
+    const [px, py] = getXY(projection(A, B, C));
+
+    return [2*px - cx, 2*py - cy];
+}
