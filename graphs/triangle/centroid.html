@@ -13,25 +13,25 @@
 <body>
     <div id="jxgbox" class="jxgbox"></div>
     <script>
-        const board = JXG.JSXGraph.initBoard('jxgbox', jg.boardStyle);
+        const board = JXG.JSXGraph.initBoard('jxgbox', jg.style.boardStyle);
 
         // 2. Create the vertices
 const A = board.create('point', [-1.8, 3.1], {name: 'A'});
 const B = board.create('point', [-3.3, -1.7], {name: 'B'});
 const C = board.create('point', [3.4, -2.6], {name: 'C'});
-const MA = board.create('midpoint', [B, C], jg.pointStyleNoLabel);
-const MB = board.create('midpoint', [A, C], jg.pointStyleNoLabel);
-const MC = board.create('midpoint', [A, B], jg.pointStyleNoLabel);
-const G = board.create('point', [() => jg.centroid(A, B, C)], {name: 'G', ...jg.pointStyle});
+const MA = board.create('midpoint', [B, C], jg.style.pointStyleNoLabel);
+const MB = board.create('midpoint', [A, C], jg.style.pointStyleNoLabel);
+const MC = board.create('midpoint', [A, B], jg.style.pointStyleNoLabel);
+const G = board.create('point', [() => jg.triangle.centroid(A, B, C)], {name: 'G', ...jg.style.pointStyle});
 
-const medA = board.create('segment', [A, MA], jg.lineStyle);
-const medB = board.create('segment', [B, MB], jg.lineStyle);
-const medC = board.create('segment', [C, MC], jg.lineStyle);
+const medA = board.create('segment', [A, MA], jg.style.lineStyle);
+const medB = board.create('segment', [B, MB], jg.style.lineStyle);
+const medC = board.create('segment', [C, MC], jg.style.lineStyle);
         
 const triABC = board.create('polygon', [A, B, C], {
     fillColor: '#ffff00', 
     fillOpacity: 0.2,
-    ...jg.triangleStyle
+    ...jg.style.triangleStyle
 });
     </script>
 </body>
