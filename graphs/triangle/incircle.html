@@ -18,7 +18,7 @@
 const A = board.create('point', [-1.8, 3.1], {name: 'A'});
 const B = board.create('point', [-3.3, -1.7], {name: 'B'});
 const C = board.create('point', [3.4, -2.6], {name: 'C'});
-const I = board.create('incenter', [A, B, C], {name: 'I', ...jg.style.pointStyle});
+const I = board.create('point', [() => jg.triangle.incenter(A, B, C)], {name: 'I', ...jg.style.pointStyle});
 const IA = board.create('point', [() => jg.triangle.excenter(A, B, C)], {name: 'IA', ...jg.style.pointStyle});
 const IB = board.create('point', [() => jg.triangle.excenter(B, C, A)], {name: 'IB', ...jg.style.pointStyle});
 const IC = board.create('point', [() => jg.triangle.excenter(C, A, B)], {name: 'IC', ...jg.style.pointStyle});
@@ -27,7 +27,7 @@ const lineAB = board.create('line', [A, B], jg.style.lineStyle);
 const lineAC = board.create('line', [A, C], jg.style.lineStyle);
 const lineBC = board.create('line', [B, C], jg.style.lineStyle);
         
-const incircABC = board.create('incircle', [A, B, C], jg.style.circleStyle);
+const incircABC = jg.triangle.incircle(board, A, B, C);
 const excircA = jg.triangle.excircle(board, A, B, C);
 const excircB = jg.triangle.excircle(board, B, C, A);
 const excircC = jg.triangle.excircle(board, C, A, B);
