@@ -207,7 +207,7 @@ const jg = {
  * @param B second point
  * @param C third point
  * @param style optional circle style
- * @returns JSXGraph circle object
+ * @returns A-excircle
  */
     excircle: function(board, A, B, C, style = this.circleStyle) {
       return board.create('circle', [
