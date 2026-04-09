@@ -75,7 +75,7 @@ const jg = {
     const [ax, ay] = this.getXY(A);
     const [bx, by] = this.getXY(B);
     return Math.hypot(bx - ax, by - ay);
-    }
+    },
      
     /**
      * Given points A, B and real number t, returns the point P such that AP:AB = t
