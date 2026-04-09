@@ -10,7 +10,7 @@ import { circleStyle } from '../style/style.js';
      * @returns semiperimeter
      */
 export function semiperimeter(A, B, C) {
-    return (dist(B, C) + dist(C, A) + dist(A, B)) / 2;
+    return (dist(A, B) + dist(A, C) + dist(B, C)) / 2;
 }
 
 /**
