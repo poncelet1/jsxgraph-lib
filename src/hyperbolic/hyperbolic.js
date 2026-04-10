@@ -80,3 +80,15 @@ export function hyperCircle(board, A, r, style = circleStyle) {
 export function hyperRot(C, t, P) {
     return movePointFromOrigin(rotate([0, 0], t, movePointToOrigin(P, C)), C);
 }
+
+/**
+     * Given points A, B, returns the center of the cline passing through A and B
+     * @param A first point
+     * @param B second point
+     * @returns center of cline
+     */
+export function clineCenter(A, B) {
+    const N = complexDifference(pointScale(A, 1 + dist(B) ** 2), pointscale(B, 1 + dist(A) ** 2));
+    const D = complexDifference(complexProduct(A, complexConjugate(B)), complexProduct(complexConjugate(A), B));
+    return complexQuotient(N, D);
+}
