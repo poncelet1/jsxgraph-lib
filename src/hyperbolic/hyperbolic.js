@@ -39,12 +39,13 @@ export function hyperDist(A, B) {
 }
 
 /**
-     * Given points A, B, returns hyperbolic distance between A and B
-     * @param A first point
-     * @param B second point
-     * @returns hyperbolic distance
+     * Given point A and number r, returns the (Euclidean) center of the hyperbolic circle centered at A with radius r
+     * @param A center
+     * @param r radius
+     * @returns (Euclidean) center of hyperbolic circle
      */
-export function hyperDist(A, B) {
+export function hyperCircleCenter(A, r) {
+    const p = (Math.exp(r) - 1)/(Math.exp(r) + 1);
     const Bp = movePointToOrigin(B, A);
-    return Math.log((1 + Bp.L())/(1 - Bp.L()));
+    return pointScale(A, (1 - p ** 2)/(1 - p ** 2 * A.L() ** 2));
 }
