@@ -138,4 +138,3 @@ export function hyperline(board, A, B, style = circleStyle) {
         () => orientation() > 0 ? getQ() : getP()
     ], style);
 }
-}
