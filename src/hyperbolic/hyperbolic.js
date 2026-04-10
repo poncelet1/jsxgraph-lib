@@ -47,7 +47,6 @@ export function hyperDist(A, B) {
      */
 export function hyperCircleCenter(A, r) {
     const p = (Math.exp(r) - 1)/(Math.exp(r) + 1);
-    const Bp = movePointToOrigin(B, A);
     return pointScale(A, (1 - p ** 2)/(1 - p ** 2 * A.L() ** 2));
 }
 
@@ -59,7 +58,6 @@ export function hyperCircleCenter(A, r) {
      */
 export function hyperCircleRadius(A, r) {
     const p = (Math.exp(r) - 1)/(Math.exp(r) + 1);
-    const Bp = movePointToOrigin(B, A);
     return p * (1 - A.L() ** 2)/(1 - p ** 2 * A.L() ** 2);
 }
 
