@@ -116,3 +116,23 @@ export function hyperlineEndPoint(A, B) {
     const Ep = pointScale(Bp, -1/dist(Bp));
     return movePointFromOrigin(Ep, A);
 }
+
+/**
+ * Creates hyperline AB on a given board
+ * @param board JSXGraph board
+ * @param A first point
+ * @param B second point
+ * @param style optional circle style
+ * @returns hyperline
+ */
+export function hyperline(board, A, B, style = circleStyle) {
+    const P = hyperlineEndPoint(A, B);
+    const Q = hyperlineEndPoint(B, A);
+    const C = clinecenter(A, B);
+
+    if (signedArea(C, A, B) > 0) {
+      return board.create('arc', [P, C, Q]);
+    } else {
+      return board.create('arc', [Q, C, P]);
+    }
+}
