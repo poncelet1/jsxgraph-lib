@@ -5,6 +5,13 @@ export const boardStyle = {
     pan: { enabled: true, needShift: false, needCtrl: false }
 };
 
+export const boardStyleHyperbolic = {
+    boundingbox: [-1.2, 1.2, 1.2, -1.2],
+    axis: true,
+    zoom: { wheel: true, needShift: false },
+    pan: { enabled: true, needShift: false, needCtrl: false }
+};
+
 export const pointStyle = {
     size: 2,
     strokeColor: 'black',
