@@ -152,8 +152,8 @@ export function hyperline2(board, A, B, style = circleStyle) {
     const orientation = () => signedArea(C(), A, B);
 
     return board.create('arc', [
+                C,
         () => orientation() > 0 ? P() : Q(),
-        C,
         () => orientation() > 0 ? Q() : P()
     ], {
         ...style,
