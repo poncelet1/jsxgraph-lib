@@ -127,13 +127,13 @@ export function hyperlineEndPoint(A, B) {
  * @returns hyperline
  */
 export function hyperline(board, A, B, style = circleStyle) {
-    const P = hyperlineEndPoint(A, B);
-    const Q = hyperlineEndPoint(B, A);
-    const C = clineCenter(A, B);
+    const getP = () => hyperlineEndPoint(A, B);
+    const getQ = () => hyperlineEndPoint(B, A);
+    const getC = () => clineCenter(A, B);
 
-    if (signedArea(C, A, B) > 0) {
-      return board.create('arc', [C, P, Q]);
-    } else {
-      return board.create('arc', [C, Q, P]);
-    }
+    return board.create('arc', [
+        () => getC(),
+        () => (signedArea(getC(), A, B) > 0 ? getP() : getQ()),
+        () => (signedArea(getC(), A, B) > 0 ? getQ() : getP())
+    ], style);
 }
