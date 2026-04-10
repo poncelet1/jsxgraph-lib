@@ -1,5 +1,3 @@
-const TOLERANCE = 1e-10;
-
 /**
      * Given point A, returns the complex conjugate of A
      * @param A point
