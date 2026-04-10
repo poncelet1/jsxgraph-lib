@@ -133,8 +133,8 @@ export function hyperline(board, A, B, style = circleStyle) {
     const orientation = () => signedArea(getC(), A, B);
 
     return board.create('arc', [
+        () => getC(),
         () => orientation() > 0 ? getP() : getQ(),
-        C,
         () => orientation() > 0 ? getQ() : getP()
     ], style);
 }
