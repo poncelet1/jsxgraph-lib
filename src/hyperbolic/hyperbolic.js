@@ -1,7 +1,7 @@
 import { getXY } from '../core/core.js';
 import { complexConjugate, complexDifference, complexProduct, complexQuotient, complexSum } from '../complex/complex.js';
 import { circleStyle } from '../style/style.js';
-import { pointScale } from '../point/point.js';
+import { dist, pointScale } from '../point/point.js';
 
 /**
      * Given points Z, A, returns (Z - A)/(1 - conj(A)*Z)
@@ -37,7 +37,7 @@ export function movePointFromOrigin(Z, A) {
      */
 export function hyperDist(A, B) {
     const Bp = movePointToOrigin(B, A);
-    return Math.log((1 + Bp.L())/(1 - Bp.L()));
+    return Math.log((1 + dist(Bp))/(1 - dist(Bp)));
 }
 
 /**
@@ -48,7 +48,7 @@ export function hyperDist(A, B) {
      */
 export function hyperCircleCenter(A, r) {
     const p = (Math.exp(r) - 1)/(Math.exp(r) + 1);
-    return pointScale(A, (1 - p ** 2)/(1 - p ** 2 * A.L() ** 2));
+    return pointScale(A, (1 - p ** 2)/(1 - p ** 2 * dist(A) ** 2));
 }
 
 /**
@@ -59,7 +59,7 @@ export function hyperCircleCenter(A, r) {
      */
 export function hyperCircleRadius(A, r) {
     const p = (Math.exp(r) - 1)/(Math.exp(r) + 1);
-    return p * (1 - A.L() ** 2)/(1 - p ** 2 * A.L() ** 2);
+    return p * (1 - dist(A) ** 2)/(1 - p ** 2 * dist(A) ** 2);
 }
 
 /**
