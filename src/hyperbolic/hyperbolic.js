@@ -169,9 +169,9 @@ export function hyperlineSegment(board, A, B, style = circleStyle) {
 }
 
 export function hyperlineSegment2(board, A, B, style = circleStyle) {
-    const getC = () => clineCenter(A, B);
     const getA = () => [A.X(), A.Y()];
     const getB = () => [B.X(), B.Y()];
+    const getC = () => clineCenter(A, B);
 
     const arcCenter = board.create('point', [() => getC()], { visible: false, withLabel: false });
 
