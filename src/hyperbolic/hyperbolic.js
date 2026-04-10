@@ -170,14 +170,17 @@ export function hyperlineSegment(board, A, B, style = circleStyle) {
 
 export function hyperlineSegment2(board, A, B, style = circleStyle) {
     const getC = () => clineCenter(A, B);
+    const getA = () => [A.X(), A.Y()];
+    const getB = () => [B.X(), B.Y()];
+
     const arcCenter = board.create('point', [() => getC()], { visible: false, withLabel: false });
 
     const startPoint = board.create('point', [
-        () => signedArea(getC(), A, B) > 0 ? [A.X(), A.Y()] : [B.X(), B.Y()]
+        () => signedArea(getC(), A, B) > 0 ? getA() : getB()
     ], { visible: false, withLabel: false });
 
     const endPoint = board.create('point', [
-        () => signedArea(getC(), A, B) > 0 ? [B.X(), B.Y()] : [A.X(), A.Y()]
+        () => signedArea(getC(), A, B) > 0 ? getB() : getA()
     ], { visible: false, withLabel: false });
 
     return board.create('arc', [arcCenter, startPoint, endPoint], style);
