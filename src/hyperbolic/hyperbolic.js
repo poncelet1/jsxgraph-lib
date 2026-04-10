@@ -136,5 +136,5 @@ export function hyperline(board, A, B, style = circleStyle) {
         () => getC(),
         () => orientation() > 0 ? getP() : getQ(),
         () => orientation() > 0 ? getQ() : getP()
-    ], style);
+    ], {...style, withLines: false, visible: true});
 }
