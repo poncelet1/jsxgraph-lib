@@ -131,8 +131,13 @@ export function hyperline(board, A, B, style = circleStyle) {
     const getP = () => hyperlineEndPoint(A, B);
     const getQ = () => hyperlineEndPoint(B, A);
     
-    const startPoint = board.create('point', [() => signedArea(clineCenter(A, B), A, B) > 0 ? () => getP() : () => getQ()], { visible : false });
-    const endPoint = board.create('point', [() => signedArea(clineCenter(A, B), A, B) > 0 ? () => getQ() : () => getP()], { visible : false });
+    const startPoint = board.create('point', [
+        () => signedArea(getC(), A, B) > 0 ? getP() : getQ()
+    ], { visible: false, withLabel: false });
+
+    const endPoint = board.create('point', [
+        () => signedArea(getC(), A, B) > 0 ? getQ() : getP()
+    ], { visible: false, withLabel: false });
     
-    return board.create('arc', [() => getC(), startPoint, endPoint]);
+    return board.create('arc', [() => getC(), startPoint, endPoint], style);
 }
