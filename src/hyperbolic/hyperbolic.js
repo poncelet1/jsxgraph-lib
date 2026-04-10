@@ -172,9 +172,13 @@ export function hyperlineSegment2(board, A, B, style = circleStyle) {
     const getC = () => clineCenter(A, B);
     const arcCenter = board.create('point', [() => getC()], { visible: false, withLabel: false });
 
-    if (signedArea(getC(), A, B) > 0) {
-        return board.create('arc', [arcCenter, A, B], style);
-    } else {
-        return board.create('arc', [arcCenter, B, A], style);
-    }
+    const startPoint = board.create('point', [
+        () => signedArea(getC(), A, B) > 0 ? [A.X(), A.Y()] : [B.X(), B.Y()]
+    ], { visible: false, withLabel: false });
+
+    const endPoint = board.create('point', [
+        () => signedArea(getC(), A, B) > 0 ? [B.X(), B.Y()] : [A.X(), A.Y()]
+    ], { visible: false, withLabel: false });
+
+    return board.create('arc', [arcCenter, startPoint, endPoint], style);
 }
