@@ -119,7 +119,7 @@ export function hyperlineEndPoint(A, B) {
 }
 
 /**
- * Creates hyperline AB on a given board
+ * Creates hyperbolic line AB on a given board
  * @param board JSXGraph board
  * @param A first point
  * @param B second point
@@ -139,6 +139,30 @@ export function hyperline(board, A, B, style = circleStyle) {
 
     const endPoint = board.create('point', [
         () => signedArea(getC(), A, B) > 0 ? getQ() : getP()
+    ], { visible: false, withLabel: false });
+    
+    return board.create('arc', [arcCenter, startPoint, endPoint], style);
+}
+
+/**
+ * Creates hyperbolic line segment AB on a given board
+ * @param board JSXGraph board
+ * @param A first point
+ * @param B second point
+ * @param style optional circle style
+ * @returns hyperline
+ */
+export function hyperlineSegment(board, A, B, style = circleStyle) {
+    const getC = () => clineCenter(A, B);
+    
+    const arcCenter = board.create('point', [() => getC()], { visible: false, withLabel: false });
+    
+    const startPoint = board.create('point', [
+        () => signedArea(getC(), A, B) > 0 ? A : B
+    ], { visible: false, withLabel: false });
+
+    const endPoint = board.create('point', [
+        () => signedArea(getC(), A, B) > 0 ? B : A
     ], { visible: false, withLabel: false });
     
     return board.create('arc', [arcCenter, startPoint, endPoint], style);
