@@ -124,7 +124,7 @@ export function hyperlineEndPoint(A, B) {
  * @param A first point
  * @param B second point
  * @param style optional circle style
- * @returns hyperline
+ * @returns hyperbolic line
  */
 export function hyperline(board, A, B, style = circleStyle) {
     const getC = () => clineCenter(A, B);
@@ -150,7 +150,7 @@ export function hyperline(board, A, B, style = circleStyle) {
  * @param A first point
  * @param B second point
  * @param style optional circle style
- * @returns hyperline
+ * @returns hyperbolic line segment
  */
 export function hyperlineSegment(board, A, B, style = circleStyle) {
     const getC = () => clineCenter(A, B);
