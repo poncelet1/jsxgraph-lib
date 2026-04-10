@@ -12,11 +12,13 @@
 <body>
     <div id="jxgbox" class="jxgbox"></div>
     <script type="module">
-      const board = JXG.JSXGraph.initBoard('jxgbox', jg.style.boardStyle);
+      const board = JXG.JSXGraph.initBoard('jxgbox', jg.style.boardStyleHyperbolic);
       
 const A = board.create('point', [-0.2, 0.5], {name: 'A'});
 const Z = board.create('point', [0.3, 0.1], {name: 'Z'});
 //const W = board.create('point', [() => jg.hyperbolic.movePointToOrigin(Z, A)], {name: 'W', ...jg.style.pointStyle});
+
+const unitcircle = board.create('circle', [[0, 0], 1], jg.style.circleStyle);
 
     </script>
 </body>
