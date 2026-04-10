@@ -132,8 +132,8 @@ export function hyperline(board, A, B, style = circleStyle) {
     const C = clineCenter(A, B);
 
     if (signedArea(C, A, B) > 0) {
-      return board.create('arc', [P, C, Q]);
+      return board.create('arc', [C, P, Q]);
     } else {
-      return board.create('arc', [Q, C, P]);
+      return board.create('arc', [C, Q, P]);
     }
 }
