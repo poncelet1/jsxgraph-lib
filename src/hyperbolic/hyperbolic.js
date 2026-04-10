@@ -88,7 +88,7 @@ export function hyperRot(C, t, P) {
      * @returns center of cline
      */
 export function clineCenter(A, B) {
-    const N = complexDifference(pointScale(A, 1 + dist(B) ** 2), pointscale(B, 1 + dist(A) ** 2));
+    const N = complexDifference(pointScale(A, 1 + dist(B) ** 2), pointScale(B, 1 + dist(A) ** 2));
     const D = complexDifference(complexProduct(A, complexConjugate(B)), complexProduct(complexConjugate(A), B));
     return complexQuotient(N, D);
 }
