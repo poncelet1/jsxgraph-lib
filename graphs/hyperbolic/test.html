@@ -17,8 +17,8 @@
 const A = board.create('point', [-0.2, 0.5], {name: 'A'});
 const B = board.create('point', [0.3, 0.1], {name: 'B'});
 const M = board.create('point', [() => jg.hyperbolic.hyperMidpoint(A, B)], {name: 'M', ...jg.style.pointStyle});
-const P = board.create('point', [() => jg.hyperbolic.hyperlineEndPoint(A, B)], {name: 'P', ...jg.style.pointStyle});
-const Q = board.create('point', [() => jg.hyperbolic.hyperlineEndPoint(B, A)], {name: 'Q', ...jg.style.pointStyle});
+//const P = board.create('point', [() => jg.hyperbolic.hyperlineEndPoint(A, B)], {name: 'P', ...jg.style.pointStyle});
+//const Q = board.create('point', [() => jg.hyperbolic.hyperlineEndPoint(B, A)], {name: 'Q', ...jg.style.pointStyle});
 
 const lineAB = jg.hyperbolic.hyperline(board, A, B);
 const unitcircle = board.create('circle', [[0, 0], 1], jg.style.circleStyle);
