@@ -17,7 +17,7 @@ export function pointScale(A, k) {
      * @param B second point
      * @returns distance
      */
-export function dist(A, B) {
+export function dist(A, B = [0, 0]) {
     const [ax, ay] = getXY(A);
     const [bx, by] = getXY(B);
     return Math.hypot(bx - ax, by - ay);
