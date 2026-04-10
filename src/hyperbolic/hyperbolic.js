@@ -92,3 +92,15 @@ export function clineCenter(A, B) {
     const D = complexDifference(complexProduct(A, complexConjugate(B)), complexProduct(complexConjugate(A), B));
     return complexQuotient(N, D);
 }
+
+/**
+     * Given points A, B, returns the hyperbolic midpoint of A and B
+     * @param A first point
+     * @param B second point
+     * @returns midpoint
+     */
+export function hyperMidpoint(A, B) {
+    const N = complexSum(pointScale(B, 1 - dist(A) ** 2), pointScale(A, 1 - dist(B) ** 2));
+    const D = 1 - dist(A) ** 2 * dist(B) ** 2 + dist(complexDifference([1, 0], complexProduct(complexConjugate(A), B))) * Math.sqrt((1 - dist(A) ** 2)*(1 - dist(B) ** 2));
+    return pointScale(N, 1/D);
+}
