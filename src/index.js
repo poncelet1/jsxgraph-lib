@@ -1,4 +1,4 @@
-import * as complex from '/complex/complex.js';
+import * as complex from './complex/complex.js';
 import * as core from './core/core.js';
 //import * as hyperbolic from './hyperbolic/hyperbolic.js';
 import * as point from './point/point.js';
