@@ -104,3 +104,15 @@ export function hyperMidpoint(A, B) {
     const D = 1 - dist(A) ** 2 * dist(B) ** 2 + dist(complexDifference([1, 0], complexProduct(complexConjugate(A), B))) * Math.sqrt((1 - dist(A) ** 2)*(1 - dist(B) ** 2));
     return pointScale(N, 1/D);
 }
+
+/**
+     * Given points A, B, returns the endpoint of line AB past A
+     * @param A first point
+     * @param B second point
+     * @returns endpoint
+     */
+export function hyperlineEndPoint(A, B) {
+    const Bp = movePointToOrigin(B, A);
+    Ep = pointScale(Bp, -1/dist(Bp));
+    return movePointFromOrigin(Ep, A);
+}
