@@ -1,6 +1,17 @@
 import { getXY } from '../core/core.js';
 
 /**
+     * Given point A and real number k, return kA
+     * @param A point
+     * @param k real number
+     * @returns kA
+     */
+export function pointScale(A, k) {
+    const [ax, ay] = getXY(A);
+    return [k * ax, k * ay];
+}
+
+/**
      * Given points A, B, returns the distance betweeen A and B
      * @param A first point
      * @param B second point
