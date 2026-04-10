@@ -128,7 +128,7 @@ export function hyperlineEndPoint(A, B) {
 export function hyperline(board, A, B, style = circleStyle) {
     const P = hyperlineEndPoint(A, B);
     const Q = hyperlineEndPoint(B, A);
-    const C = clinecenter(A, B);
+    const C = clineCenter(A, B);
 
     if (signedArea(C, A, B) > 0) {
       return board.create('arc', [P, C, Q]);
