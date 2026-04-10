@@ -23,7 +23,7 @@ const M = board.create('point', [() => jg.hyperbolic.hyperMidpoint(A, B)], {name
 //const Q = board.create('point', [() => jg.hyperbolic.hyperlineEndPoint(B, A)], {name: 'Q', ...jg.style.pointStyle});
 
 const lineAB = jg.hyperbolic.hyperline(board, A, B);
-const lineCD = jg.hyperbolic.hyperlineSegment(board, C, D);
+const lineCD = jg.hyperbolic.hyperlineSegment2(board, C, D);
 const unitcircle = board.create('circle', [[0, 0], 1], jg.style.circleStyle);
 
     </script>
