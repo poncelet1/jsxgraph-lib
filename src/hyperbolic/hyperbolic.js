@@ -1,5 +1,6 @@
 import { getXY } from '../core/core.js';
 import { complexConjugate, complexDifference, complexProduct, complexQuotient, complexSum } from '../complex/complex.js';
+import { circleStyle } from '../style/style.js';
 
 /**
      * Given points Z, A, returns (Z - A)/(1 - conj(A)*Z)
