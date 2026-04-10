@@ -20,6 +20,7 @@ const M = board.create('point', [() => jg.hyperbolic.hyperMidpoint(A, B)], {name
 const P = board.create('point', [() => jg.hyperbolic.hyperlineEndPoint(A, B)], {name: 'P', ...jg.style.pointStyle});
 const Q = board.create('point', [() => jg.hyperbolic.hyperlineEndPoint(B, A)], {name: 'Q', ...jg.style.pointStyle});
 
+const bigcirc = jg.triangle.circumcircle(board, A, B, M);
 const unitcircle = board.create('circle', [[0, 0], 1], jg.style.circleStyle);
 
     </script>
