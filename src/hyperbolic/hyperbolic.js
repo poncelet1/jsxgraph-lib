@@ -143,3 +143,29 @@ export function hyperline(board, A, B, style = circleStyle) {
     
     return board.create('arc', [arcCenter, startPoint, endPoint], style);
 }
+
+export function hyperline2(board, A, B, style = circleStyle) {
+    const C = () => clineCenter(A, B);
+    const P = () => hyperlineEndPoint(A, B);
+    const Q = () => hyperlineEndPoint(B, A);
+
+    const orientation = () => signedArea(C(), A, B);
+
+    return board.create('arc', [
+        () => orientation() > 0 ? P() : Q(),
+        C,
+        () => orientation() > 0 ? Q() : P()
+    ], {
+        ...style,
+
+        // REQUIRED to suppress implicit point creation
+        point: {
+            visible: false,
+            withLabel: false,
+            fixed: true
+        },
+
+        // Some JSXGraph builds require this too
+        withLines: false
+    });
+}
