@@ -136,7 +136,7 @@ export function hyperline(board, A, B, style = circleStyle) {
         () => (signedArea(getC(), A, B) > 0 ? getP() : getQ()),
         () => (signedArea(getC(), A, B) > 0 ? getQ() : getP())
     ], {...style,
-    center: { visible: false, withLabel: false },
-    point1: { visible: false, withLabel: false },
-    point2: { visible: false, withLabel: false }});
+    center: { visible: false, withLabel: false, size: 0 },
+        point1: { visible: false, withLabel: false, size: 0 },
+        point2: { visible: false, withLabel: false, size: 0 }});
 }
