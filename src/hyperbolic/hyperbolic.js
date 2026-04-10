@@ -49,3 +49,29 @@ export function hyperCircleCenter(A, r) {
     const Bp = movePointToOrigin(B, A);
     return pointScale(A, (1 - p ** 2)/(1 - p ** 2 * A.L() ** 2));
 }
+
+/**
+     * Given point A and number r, returns the (Euclidean) radius of the hyperbolic circle centered at A with radius r
+     * @param A center
+     * @param r radius
+     * @returns (Euclidean) radius of hyperbolic circle
+     */
+export function hyperCircleRadius(A, r) {
+    const p = (Math.exp(r) - 1)/(Math.exp(r) + 1);
+    const Bp = movePointToOrigin(B, A);
+    return p * (1 - A.L() ** 2)/(1 - p ** 2 * A.L() ** 2);
+}
+
+/**
+ * Creates a hyperbolic circle on a given board
+ * @param board JSXGraph board
+ * @param A center
+ * @param r radius
+ * @param style optional circle style
+ * @returns hyperbolic circle
+ */
+export function hyperCircle(board, A, r, style = circleStyle) {
+    const center = () => hyperCircleCenter(A, r);
+    const radius = () => hyperCircleRadius(A, r);
+    return board.create('circle', [center, radius], style);
+}
