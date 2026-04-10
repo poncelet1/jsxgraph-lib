@@ -10,7 +10,7 @@ import { dist, pointScale, rotate } from '../point/point.js';
      * @returns (Z - A)/(1 - conj(A)*Z)
      */
 export function movePointToOrigin(Z, A) {
-    return complexQuotient(complexDifference(Z, A), complexDifference([1, 0], complexProduct(complexConjugate(Z), A)));
+    return complexQuotient(complexDifference(Z, A), complexDifference([1, 0], complexProduct(complexConjugate(A), Z)));
 }
 
 /**
@@ -20,7 +20,7 @@ export function movePointToOrigin(Z, A) {
      * @returns (Z + A)/(1 + conj(A)*Z)
      */
 export function movePointFromOrigin(Z, A) {
-    return complexQuotient(complexSum(Z, A), complexSum([1, 0], complexProduct(complexConjugate(Z), A)));
+    return complexQuotient(complexSum(Z, A), complexSum([1, 0], complexProduct(complexConjugate(A), Z)));
 }
 
 /**
