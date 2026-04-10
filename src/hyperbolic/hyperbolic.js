@@ -1,7 +1,7 @@
 import { getXY } from '../core/core.js';
 import { complexConjugate, complexDifference, complexProduct, complexQuotient, complexSum } from '../complex/complex.js';
 import { circleStyle } from '../style/style.js';
-import { dist, pointScale } from '../point/point.js';
+import { dist, pointScale, rotate } from '../point/point.js';
 
 /**
      * Given points Z, A, returns (Z - A)/(1 - conj(A)*Z)
@@ -74,4 +74,15 @@ export function hyperCircle(board, A, r, style = circleStyle) {
     const center = () => hyperCircleCenter(A, r);
     const radius = () => hyperCircleRadius(A, r);
     return board.create('circle', [center, radius], style);
+}
+
+/**
+     * Given point C, real number t, and point P, returns the rotation of P around C by an angle of t
+     * @param C center of rotation
+     * @param t angle of rotation
+     * @param P point being rotated
+     * @returns rotated point
+     */
+export function hyperRot(C, t, P) {
+    return movePointFromOrigin(rotate([0, 0], t, movePointToOrigin(P, C)), C);
 }
