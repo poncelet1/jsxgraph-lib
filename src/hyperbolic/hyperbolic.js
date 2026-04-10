@@ -2,6 +2,7 @@ import { getXY } from '../core/core.js';
 import { complexConjugate, complexDifference, complexProduct, complexQuotient, complexSum } from '../complex/complex.js';
 import { circleStyle } from '../style/style.js';
 import { dist, pointScale, rotate } from '../point/point.js';
+import { signedArea } from '../triangle/triangle.js';
 
 /**
      * Given points Z, A, returns (Z - A)/(1 - conj(A)*Z)
