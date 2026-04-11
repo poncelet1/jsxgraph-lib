@@ -29,8 +29,8 @@ const diamCirc = board.create('circle', [
 
 const Tp1 = board.create('intersection', [hypercircAp, diamCirc, 0], { visible: false, withLabel: false });
 const Tp2 = board.create('intersection', [hypercircAp, diamCirc, 1], { visible: false, withLabel: false });
-const T1 = board.create('point', [() => jg.hyperbolic.movePointFromOrigin(Tp1, P)], jg.style.pointStyle);
-const T2 = board.create('point', [() => jg.hyperbolic.movePointFromOrigin(Tp2, P)], jg.style.pointStyle);
+const T1 = board.create('point', [() => jg.hyperbolic.movePointFromOrigin(Tp1, P)], {...jg.style.pointStyle, withLabel : false});
+const T2 = board.create('point', [() => jg.hyperbolic.movePointFromOrigin(Tp2, P)], {...jg.style.pointStyle, withLabel : false});
 
 const tangent1 = jg.hyperbolic.hyperline(board, P, T1);
 const tangent2 = jg.hyperbolic.hyperline(board, P, T2);
