@@ -35,7 +35,7 @@ const hypercircP = jg.hyperbolic.hyperCircle(board, P, 1);
 const unitcircle = board.create('circle', [[0, 0], 1], jg.style.circleStyle);
         
 board.create('text', [-1, -1, () => `${jg.triangle.signedArea(X, C, D).toFixed(4)}`]);
-board.create('text', [-1, -1.2, () => `${jg.hyperbolic.hyperDist(O, A).toFixed(4)}`]);
+board.create('text', [-1, -1.2, () => `${R1.X().toFixed(4)}`]);
 board.create('text', [-1, -1.4, () => `${jg.hyperbolic.hyperDist(O, B).toFixed(4)}`]);
     </script>
 </body>
