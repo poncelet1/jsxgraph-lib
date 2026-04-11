@@ -25,8 +25,10 @@ const G = board.create('point', [() => jg.hyperbolic.clineIntersect(A, D, B, E)]
 const lineAB = jg.hyperbolic.hyperline(board, A, B);
 const lineAC = jg.hyperbolic.hyperline(board, A, C);
 const lineBC = jg.hyperbolic.hyperline(board, B, C);
-
-const incircABC = jg.triangle.circumcircle(D, E, F);
+const linesegAD = jg.hyperbolic.hyperline(board, A, D);
+const linesegBE = jg.hyperbolic.hyperline(board, B, E);
+const linesegCF = jg.hyperbolic.hyperline(board, C, F);
+        
 const unitcircle = board.create('circle', [[0, 0], 1], jg.style.circleStyle);
 
     </script>
