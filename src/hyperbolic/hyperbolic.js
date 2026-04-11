@@ -209,6 +209,25 @@ export function hyperPerpBisCenter(A, B) {
 }
 
 /**
+ * Creates perpendicular bisector A and B on a given board
+ * @param board JSXGraph board
+ * @param A first point
+ * @param B second point
+ * @param style optional circle style
+ * @returns hyperbolic line segment
+ */
+export function hyperPerpBis(board, A, B, style = circleStyle) {
+    const M = board.create('point', [
+        () => hyperMidpoint(A, B)
+    ], { visible: false, withLabel: false });
+    const R = board.create('point', [
+        () => hyperRot(M, Math.PI/2, A)
+    ], { visible: false, withLabel: false });
+
+    return hyperline(board, M, R, style);
+}
+
+/**
      * Given points A, B, and real number d, returns point P such that P lies on AB extended past B, and AP = d
      * @param A first point
      * @param B second point
