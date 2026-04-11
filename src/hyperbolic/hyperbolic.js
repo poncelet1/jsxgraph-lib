@@ -363,6 +363,59 @@ export function hyperIncircle(board, A, B, C, style = circleStyle) {
 }
 
 /**
+     * Given points A, B, C, returns the A-excenter hyperbolic triangle ABC
+     * @param A first point
+     * @param B second point
+     * @param C third point
+     * @returns incenter
+     */
+export function hyperExcenter(A, B, C) {
+    const a = hyperDist(B, C);
+    const b = hyperDist(C, A);
+    const c = hyperDist(A, B);
+    const s = (a + b + c)/2;
+    
+    const T = extendSegment(A, B, s);
+    const U = extendSegment(A, C, s);
+
+    return clineIntersect(T, hyperRot(T, Math.PI/2, A), U, hyperRot(U, Math.PI/2, A));
+}
+
+/**
+ * Creates A-excircle of hyperbolic triangle ABC on a given board
+ * @param board JSXGraph board
+ * @param A first point
+ * @param B second point
+ * @param C second point
+ * @param style optional circle style
+ * @returns A-excircle
+ */
+export function hyperExcircle(board, A, B, C, style = circleStyle) {
+    const rA = () => hyperExradius(A, B, C);
+
+    const getIA = () => hyperExcenter(A, B, C);
+    const IA = board.create('point', [getIA], { visible: false, withLabel: false });
+
+    return hyperCircle(board, IA, rA, style);
+}
+
+/**
+     * Given points A, B, C, returns the A-exradius of hyperbolic triangle ABC
+     * @param A first point
+     * @param B second point
+     * @param C third point
+     * @returns A-exradius
+     */
+export function hyperExradius(A, B, C) {
+    const a = hyperDist(B, C);
+    const b = hyperDist(C, A);
+    const c = hyperDist(A, B);
+    const s = (a + b + c)/2;
+    
+    return Math.atanh(Math.sqrt(Math.sinh(s) * Math.sinh(s - b) * Math.sinh(s - c) / Math.sinh(s - a)));
+}
+
+/**
      * Given points A, B, C, returns the hyperbolic orthocenter of triangle ABC
      * @param A first point
      * @param B second point
