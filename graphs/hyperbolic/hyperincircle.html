@@ -17,13 +17,9 @@
 const A = board.create('point', [-0.2, 0.5], {name: 'A'});
 const B = board.create('point', [0.3, 0.1], {name: 'B'});
 const C = board.create('point', [-0.4, -0.1], {name: 'C'});
-const a = jg.hyperbolic.hyperDist(B, C);
-const b = jg.hyperbolic.hyperDist(A, C);
-const c = jg.hyperbolic.hyperDist(A, B);
-const s = (a + b + c)/2;
-const D = board.create('point', [() => jg.hyperbolic.extendSegment(B, C, s - b)], {name: 'D', ...jg.style.pointStyle});
-const E = board.create('point', [() => jg.hyperbolic.extendSegment(C, A, s - c)], {name: 'E', ...jg.style.pointStyle});
-const F = board.create('point', [() => jg.hyperbolic.extendSegment(A, B, s - a)], {name: 'F', ...jg.style.pointStyle});
+const D = board.create('point', [() => jg.hyperbolic.hyperIntouchPoint(A, B, C)], {name: 'D', ...jg.style.pointStyle});
+const E = board.create('point', [() => jg.hyperbolic.extendSegment(B, C, A)], {name: 'E', ...jg.style.pointStyle});
+const F = board.create('point', [() => jg.hyperbolic.extendSegment(C, A, B)], {name: 'F', ...jg.style.pointStyle});
 
 const lineAB = jg.hyperbolic.hyperline(board, A, B);
 const lineAC = jg.hyperbolic.hyperline(board, A, C);
