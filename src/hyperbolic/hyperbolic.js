@@ -153,22 +153,6 @@ export function hyperline(board, A, B, style = circleStyle) {
  * @returns hyperbolic line segment
  */
 export function hyperlineSegment(board, A, B, style = circleStyle) {
-    const getC = () => clineCenter(A, B);
-    
-    const arcCenter = board.create('point', [() => getC()], { visible: false, withLabel: false });
-    
-    const startPoint = board.create('point', [
-        () => signedArea(getC(), A, B) > 0 ? A : B
-    ], { visible: false, withLabel: false });
-
-    const endPoint = board.create('point', [
-        () => signedArea(getC(), A, B) > 0 ? B : A
-    ], { visible: false, withLabel: false });
-    
-    return board.create('arc', [arcCenter, startPoint, endPoint], style);
-}
-
-export function hyperlineSegment2(board, A, B, style = circleStyle) {
     const getA = () => [A.X(), A.Y()];
     const getB = () => [B.X(), B.Y()];
     const getC = () => clineCenter(A, B);
@@ -185,3 +169,21 @@ export function hyperlineSegment2(board, A, B, style = circleStyle) {
 
     return board.create('arc', [arcCenter, startPoint, endPoint], style);
 }
+
+/**
+     * Given points A, B, P, returns the reflection of P over line AB
+     * @param A first point
+     * @param B second point
+     * @param P third point
+     * @returns reflection
+     */
+export function hyperReflect(A, B, P) {
+    const Z1 = complexDifference(pointScale(A, (1 + dist(B) ** 2)), pointScale(A, (1 + dist(A) ** 2)));
+    const Z2 = complexDifference(complexProduct(A, complexConjugate(B)), complexProduct(complexConjugate(A), B));
+    const N = complexDifference(complexProduct(Z1, complexConjugate(P)), Z2);
+    const D = complexSum(complexProduct(Z2, complexConjugate(P)), complexConjugate(Z1));
+    return complexQuotient(N, D);
+}
+
+
+
