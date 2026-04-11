@@ -238,7 +238,7 @@ export function clineIntersect(A, B, C, D) {
     const Bp = hyperlineEndPoint(B, A);
     const Cp = hyperlineEndPoint(C, D);
     const Dp = hyperlineEndPoint(D, C);
-    const X = intersection(Ap, Bp, Cp, Dp);
+    const X = jg.point.intersection(Ap, Bp, Cp, Dp);
     const [u,v] = getXY(X);
     const w = -Math.sqrt(1 - u **2 - v ** 2);
 
