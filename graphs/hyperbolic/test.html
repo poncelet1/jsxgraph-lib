@@ -27,7 +27,7 @@ const X = board.create('point', [() => jg.hyperbolic.clineCenter(C, D)], {name: 
 const O = board.create('point', [() => jg.hyperbolic.hyperPerpBisCenter(A, B)], {name: 'O', ...jg.style.pointStyle});
 
 const lineAB = jg.hyperbolic.hyperline(board, A, B);
-const lineCD = jg.hyperbolic.hyperlineSegment2(board, C, D);
+const lineCD = jg.hyperbolic.hyperlineSegment(board, C, D);
 const hypercircP = jg.hyperbolic.hyperCircle(board, P, 1);
 const unitcircle = board.create('circle', [[0, 0], 1], jg.style.circleStyle);
         
