@@ -307,15 +307,47 @@ export function hyperIntouchPoint(A, B, C) {
      * @param A first point
      * @param B second point
      * @param C third point
-     * @returns intouch point
+     * @returns inradius point
      */
-export function hyperIntouchPoint(A, B, C) {
+export function hyperInradius(A, B, C) {
     const a = hyperDist(B, C);
     const b = hyperDist(C, A);
     const c = hyperDist(A, B);
     const s = (a + b + c)/2;
     
     return Math.atanh(Math.sqrt(Math.sinh(s - a) * Math.sinh(s - b) * Math.sinh(s - c) / Math.sinh(s)));
+}
+
+/**
+     * Given points A, B, C, returns the point where the incenter of hyperbolic triangle ABC
+     * @param A first point
+     * @param B second point
+     * @param C third point
+     * @returns incenter
+     */
+export function hyperIncenter(A, B, C) {
+    const D = hyperIntouchPoint(A, B, C);
+    const E = hyperIntouchPoint(B, C, A);
+
+    return clineIntersect(D, hyperRot(D, Math.PI/2, B), E, hyperRot(E, Math.PI/2, C));
+}
+
+/**
+ * Creates incircle of hyperbolic triangle ABC on a given board
+ * @param board JSXGraph board
+ * @param A first point
+ * @param B second point
+ * @param C second point
+ * @param style optional circle style
+ * @returns incircle
+ */
+export function hyperIncircle(board, A, B, C, style = circleStyle) {
+    const r = hyperInradius(A, B, C);
+    const I = board.create('point', [
+        () => hyperIncenter(A, B, C)
+    ], { visible: false, withLabel: false });
+
+    return hyperCircle(board, r, I, style);
 }
 
 /**
