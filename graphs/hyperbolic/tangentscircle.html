@@ -16,21 +16,21 @@
       
 const A = board.create('point', [-0.2, 0.5], {name: 'A'});
 const P = board.create('point', [0.2, -0.5], {name: 'P'});
-const hypercircA = jg.hyperbolic.hyperCircle(board, A, 1);
+const hypercircA = jg.hyperbolic.hyperCircle(board, A, 1, { visible: false, withLabel: false });
         
-const Ap = board.create('point', [() => jg.hyperbolic.movePointToOrigin(A, P)], {name: 'Ap', ...jg.style.pointStyle});
-const hypercircAp = jg.hyperbolic.hyperCircle(board, Ap, 1);
-const Op = board.create('point', [() => jg.hyperbolic.hyperCircleCenter(Ap, 1)], {name: 'Op', ...jg.style.pointStyle});
+const Ap = board.create('point', [() => jg.hyperbolic.movePointToOrigin(A, P)], { visible: false, withLabel: false });
+const hypercircAp = jg.hyperbolic.hyperCircle(board, Ap, 1, { visible: false, withLabel: false });
+const Op = board.create('point', [() => jg.hyperbolic.hyperCircleCenter(Ap, 1)], { visible: false, withLabel: false });
 
 const diamCirc = board.create('circle', [
     () => jg.point.pointScale(Op, 1/2), 
     () => jg.point.dist(Op)/2
-], jg.style.circleStyle);
+], { visible: false, withLabel: false });
 
-const Tp1 = board.create('intersection', [hypercircAp, diamCirc, 0], { name: 'Tp1' });
-const Tp2 = board.create('intersection', [hypercircAp, diamCirc, 1], { name: 'Tp2' });
-const T1 = board.create('point', [() => jg.hyperbolic.movePointFromOrigin(Tp1, P)], {name: 'T1', ...jg.style.pointStyle});
-const T2 = board.create('point', [() => jg.hyperbolic.movePointFromOrigin(Tp2, P)], {name: 'T2', ...jg.style.pointStyle});
+const Tp1 = board.create('intersection', [hypercircAp, diamCirc, 0], { visible: false, withLabel: false });
+const Tp2 = board.create('intersection', [hypercircAp, diamCirc, 1], { visible: false, withLabel: false });
+const T1 = board.create('point', [() => jg.hyperbolic.movePointFromOrigin(Tp1, P)], jg.style.pointStyle);
+const T2 = board.create('point', [() => jg.hyperbolic.movePointFromOrigin(Tp2, P)], jg.style.pointStyle);
 
 const tangent1 = jg.hyperbolic.hyperline(board, P, T1);
 const tangent2 = jg.hyperbolic.hyperline(board, P, T2);
