@@ -224,3 +224,23 @@ export function hyperAngle(A, B, C) {
 
     return Math.acos((Math.cosh(a)*Math.cosh(c) - Math.cosh(b))/(Math.sinh(a)*Math.sinh(c)));
 }
+
+/**
+     * Given points A, B, C, D, returns the intersection of lines AB and CD
+     * @param A first point
+     * @param B second point
+     * @param C third point
+     * @param D fourth point
+     * @returns intersection of AB and CD
+     */
+export function clineIntersect(A, B, C, D) {
+    const Ap = hyperlineEndPoint(A, B);
+    const Bp = hyperlineEndPoint(B, A);
+    const Cp = hyperlineEndPoint(C, D);
+    const Dp = hyperlineEndPoint(D, C);
+    const X = intersection(Ap, Bp, Cp, Dp);
+    const [u,v] = getXY(X);
+    const w = -Math.sqrt(1 - u **2 - v ** 2);
+
+    return [ u / (1 - w), v / (1 - w) ];
+}
