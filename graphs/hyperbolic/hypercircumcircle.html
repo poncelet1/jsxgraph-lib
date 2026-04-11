@@ -17,17 +17,10 @@
 const A = board.create('point', [-0.2, 0.5], {name: 'A'});
 const B = board.create('point', [0.3, 0.1], {name: 'B'});
 const C = board.create('point', [-0.4, -0.1], {name: 'C'});
-const D = board.create('point', [() => jg.hyperbolic.hyperMidpoint(B, C)], {name: 'D', ...jg.style.pointStyle});
-const E = board.create('point', [() => jg.hyperbolic.hyperMidpoint(C, A)], {name: 'E', ...jg.style.pointStyle});
-const F = board.create('point', [() => jg.hyperbolic.hyperMidpoint(A, B)], {name: 'F', ...jg.style.pointStyle});
-const G = board.create('point', [() => jg.hyperbolic.hyperCentroid(A, B, C)], {name: 'G', ...jg.style.pointStyle});
 
-const linesegAB = jg.hyperbolic.hyperlineSegment(board, A, B);
-const linesegAC = jg.hyperbolic.hyperlineSegment(board, A, C);
-const linesegBC = jg.hyperbolic.hyperlineSegment(board, B, C);
-const linesegAD = jg.hyperbolic.hyperlineSegment(board, A, D);
-const linesegBE = jg.hyperbolic.hyperlineSegment(board, B, E);
-const linesegCF = jg.hyperbolic.hyperlineSegment(board, C, F);
+const perpBisAB = jg.hyperbolic.hyperPerpBis(board, A, B);
+const perpBisAC = jg.hyperbolic.hyperPerpBis(board, A, C);
+const perpBisBC = jg.hyperbolic.hyperPerpBis(board, B, C);
         
 const unitcircle = board.create('circle', [[0, 0], 1], jg.style.circleStyle);
 
