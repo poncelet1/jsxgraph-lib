@@ -27,9 +27,9 @@ const lineAC = jg.hyperbolic.hyperline(board, A, C);
 const lineBC = jg.hyperbolic.hyperline(board, B, C);
 
 const incircABC = jg.hyperbolic.hyperIncircle(board, A, B, C);
-const AexcircABC = jg.hyperbolic.hyperIncircle(board, A, B, C);
-const BexcircABC = jg.hyperbolic.hyperIncircle(board, B, C, A);
-const CexcircABC = jg.hyperbolic.hyperIncircle(board, C, A, B);
+const AexcircABC = jg.hyperbolic.hyperExcircle(board, A, B, C);
+const BexcircABC = jg.hyperbolic.hyperExcircle(board, B, C, A);
+const CexcircABC = jg.hyperbolic.hyperExcircle(board, C, A, B);
 const unitcircle = board.create('circle', [[0, 0], 1], jg.style.circleStyle);
 
     </script>
