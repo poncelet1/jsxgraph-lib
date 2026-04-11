@@ -18,6 +18,9 @@ const A = board.create('point', [-0.2, 0.5], {name: 'A'});
 const B = board.create('point', [0.3, 0.1], {name: 'B'});
 const C = board.create('point', [-0.4, -0.1], {name: 'C'});
 
+const lineSegAB = jg.hyperbolic.hyperlineSegment(board, A, B);
+const lineSegAC = jg.hyperbolic.hyperlineSegment(board, A, C);
+const lineSegBC = jg.hyperbolic.hyperlineSegment(board, B, C);
 const perpBisAB = jg.hyperbolic.hyperPerpBis(board, A, B);
 const perpBisAC = jg.hyperbolic.hyperPerpBis(board, A, C);
 const perpBisBC = jg.hyperbolic.hyperPerpBis(board, B, C);
