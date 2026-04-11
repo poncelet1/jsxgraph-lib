@@ -21,9 +21,9 @@ const D = board.create('point', [() => jg.hyperbolic.hyperIntouchPoint(A, B, C)]
 const E = board.create('point', [() => jg.hyperbolic.hyperIntouchPoint(B, C, A)], {name: 'E', ...jg.style.pointStyle});
 const F = board.create('point', [() => jg.hyperbolic.hyperIntouchPoint(C, A, B)], {name: 'F', ...jg.style.pointStyle});
 
-const lineAB = jg.hyperbolic.hyperline(board, A, B);
-const lineAC = jg.hyperbolic.hyperline(board, A, C);
-const lineBC = jg.hyperbolic.hyperline(board, B, C);
+const lineSegAB = jg.hyperbolic.hyperlineSegment(board, A, B);
+const lineSegAC = jg.hyperbolic.hyperlineSegment(board, A, C);
+const lineSEgBC = jg.hyperbolic.hyperlineSegment(board, B, C);
 
 const incircABC = jg.triangle.circumcircle(board, D, E, F);
 const unitcircle = board.create('circle', [[0, 0], 1], jg.style.circleStyle);
