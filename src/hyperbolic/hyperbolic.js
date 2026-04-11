@@ -66,52 +66,6 @@ export function hyperCircleRadius(A, r) {
  * @returns hyperbolic circle
  */
 export function hyperCircle(board, A, r, style = circleStyle) {
-    const center = () => hyperCircleCenter(A, r);
-    const radius = () => hyperCircleRadius(A, r);
-    return board.create('circle', [center, radius], style);
-}
-
-/**
- * Creates a hyperbolic circle on a given board
- */
-export function hyperCircle2(board, A, r, style = circleStyle) {
-    // 1. Resolve the center coordinates [x, y]
-    const getEuclCenter = () => {
-        // If A is a JSXGraph point, use .X() and .Y()
-        // If it's a function (like () => hyperIncenter), call it
-        // Otherwise assume it's an array [x, y]
-        let pos;
-        if (A && typeof A.X === 'function') {
-            pos = [A.X(), A.Y()];
-        } else if (typeof A === 'function') {
-            pos = A();
-        } else {
-            pos = A;
-        }
-        
-        const radiusValue = (typeof r === 'function') ? r() : r;
-        return hyperCircleCenter(pos, radiusValue);
-    };
-
-    // 2. Resolve the Euclidean radius
-    const getEuclRadius = () => {
-        let pos;
-        if (A && typeof A.X === 'function') {
-            pos = [A.X(), A.Y()];
-        } else if (typeof A === 'function') {
-            pos = A();
-        } else {
-            pos = A;
-        }
-
-        const radiusValue = (typeof r === 'function') ? r() : r;
-        return hyperCircleRadius(pos, radiusValue);
-    };
-
-    return board.create('circle', [getEuclCenter, getEuclRadius], style);
-}
-
-export function hyperCircle3(board, A, r, style = circleStyle) {
     const getCoords = () => (typeof A.X === 'function') ? [A.X(), A.Y()] : A;
     const center = () => hyperCircleCenter(getCoords(), typeof r === 'function' ? r() : r);
     const radius = () => hyperCircleRadius(getCoords(), typeof r === 'function' ? r() : r);
@@ -400,15 +354,12 @@ export function hyperIncenter(A, B, C) {
  * @returns incircle
  */
 export function hyperIncircle(board, A, B, C, style = circleStyle) {
-    //const r = () => hyperInradius(A, B, C);
+    const r = () => hyperInradius(A, B, C);
 
-    //const getI = () => hyperIncenter(A, B, C);
-    //const I = board.create('point', [getI], { visible: false, withLabel: false });
+    const getI = () => hyperIncenter(A, B, C);
+    const I = board.create('point', [getI], { visible: false, withLabel: false });
 
-    r = hyperInradius(A, B, C);
-    I = hyperIncenter(A, B, C);
-
-    return hyperCircle3(board, I, r, style);
+    return hyperCircle(board, I, r, style);
 }
 
 /**
