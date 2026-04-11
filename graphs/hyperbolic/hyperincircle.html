@@ -20,6 +20,7 @@ const C = board.create('point', [-0.4, -0.1], {name: 'C'});
 const D = board.create('point', [() => jg.hyperbolic.hyperIntouchPoint(A, B, C)], {name: 'D', ...jg.style.pointStyle});
 const E = board.create('point', [() => jg.hyperbolic.hyperIntouchPoint(B, C, A)], {name: 'E', ...jg.style.pointStyle});
 const F = board.create('point', [() => jg.hyperbolic.hyperIntouchPoint(C, A, B)], {name: 'F', ...jg.style.pointStyle});
+const I = board.create('point', [() => jg.hyperbolic.hyperIncenter(A, B, C)], {name: 'I', ...jg.style.pointStyle});
 
 const lineSegAB = jg.hyperbolic.hyperlineSegment(board, A, B);
 const lineSegAC = jg.hyperbolic.hyperlineSegment(board, A, C);
