@@ -185,5 +185,16 @@ export function hyperReflect(A, B, P) {
     return complexQuotient(N, D);
 }
 
+/**
+     * Given points A, B, returns the center of the perpendicular bisector of AB
+     * @param A first point
+     * @param B second point
+     * @returns center of perpendicular bisector of AB
+     */
+export function hyperPerpBisCenter(A, B) {
+    const N = complexDifference(pointScale(A, 1 - dist(B) ** 2), ponitScale(B, 1 - dist(A) ** 2));
+    const k = dist(A) ** 2 - dist(B) ** 2;
+    return pointScale(N, 1/k);
+}
 
 
