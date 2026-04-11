@@ -72,6 +72,46 @@ export function hyperCircle(board, A, r, style = circleStyle) {
 }
 
 /**
+ * Creates a hyperbolic circle on a given board
+ */
+export function hyperCircle2(board, A, r, style = circleStyle) {
+    // 1. Resolve the center coordinates [x, y]
+    const getEuclCenter = () => {
+        // If A is a JSXGraph point, use .X() and .Y()
+        // If it's a function (like () => hyperIncenter), call it
+        // Otherwise assume it's an array [x, y]
+        let pos;
+        if (A && typeof A.X === 'function') {
+            pos = [A.X(), A.Y()];
+        } else if (typeof A === 'function') {
+            pos = A();
+        } else {
+            pos = A;
+        }
+        
+        const radiusValue = (typeof r === 'function') ? r() : r;
+        return hyperCircleCenter(pos, radiusValue);
+    };
+
+    // 2. Resolve the Euclidean radius
+    const getEuclRadius = () => {
+        let pos;
+        if (A && typeof A.X === 'function') {
+            pos = [A.X(), A.Y()];
+        } else if (typeof A === 'function') {
+            pos = A();
+        } else {
+            pos = A;
+        }
+
+        const radiusValue = (typeof r === 'function') ? r() : r;
+        return hyperCircleRadius(pos, radiusValue);
+    };
+
+    return board.create('circle', [getEuclCenter, getEuclRadius], style);
+}
+
+/**
      * Given point C, real number t, and point P, returns the rotation of P around C by an angle of t
      * @param C center of rotation
      * @param t angle of rotation
@@ -358,7 +398,7 @@ export function hyperIncircle(board, A, B, C, style = circleStyle) {
     const getI = () => hyperIncenter(A, B, C);
     const I = board.create('point', [getI], { visible: false, withLabel: false });
 
-    return hyperCircle(board, I, r, style);
+    return hyperCircle2(board, I, r, style);
 }
 
 /**
