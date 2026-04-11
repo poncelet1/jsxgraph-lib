@@ -400,10 +400,13 @@ export function hyperIncenter(A, B, C) {
  * @returns incircle
  */
 export function hyperIncircle(board, A, B, C, style = circleStyle) {
-    const r = () => hyperInradius(A, B, C);
+    //const r = () => hyperInradius(A, B, C);
 
-    const getI = () => hyperIncenter(A, B, C);
-    const I = board.create('point', [getI], { visible: false, withLabel: false });
+    //const getI = () => hyperIncenter(A, B, C);
+    //const I = board.create('point', [getI], { visible: false, withLabel: false });
+
+    r = hyperInradius(A, B, C);
+    I = hyperIncenter(A, B, C);
 
     return hyperCircle3(board, I, r, style);
 }
