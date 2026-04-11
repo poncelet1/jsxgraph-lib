@@ -14,9 +14,9 @@
     <script type="module">
       const board = JXG.JSXGraph.initBoard('jxgbox', jg.style.boardStyleHyperbolic);
       
-const A = board.create('point', [-0.2, 0.5], {name: 'A'});
-const B = board.create('point', [0.3, 0.1], {name: 'B'});
-const C = board.create('point', [-0.4, -0.1], {name: 'C'});
+const A = board.create('point', [-0.3, 0.7], {name: 'A'});
+const B = board.create('point', [-0.6, -0.1], {name: 'B'});
+const C = board.create('point', [0.5, -0.3], {name: 'C'});
 const O = board.create('point', [() => jg.hyperbolic.hyperCircumcenter(A, B, C)], {name: 'O', ...jg.style.pointStyle});
 
 const lineSegAB = jg.hyperbolic.hyperlineSegment(board, A, B);
