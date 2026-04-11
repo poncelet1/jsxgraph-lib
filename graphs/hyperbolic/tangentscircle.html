@@ -18,7 +18,7 @@ const A = board.create('point', [-0.2, 0.5], {name: 'A'});
 const P = board.create('point', [0.2, -0.5], {name: 'P'});
 const hypercircA = jg.hyperbolic.hyperCircle(board, A, 1);
 
-const Pp = movePointToOrigin(P, A);
+const Pp = jg.hyperbolic.movePointToOrigin(P, A);
 const hypercircAp = jg.hyperbolic.hyperCircle(board, [0, 0], 1, {...jg.style.circleStyle, visible: false, withLabel: false});
 //const hypercircPp = 
 
