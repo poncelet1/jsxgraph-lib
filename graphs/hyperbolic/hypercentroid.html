@@ -22,12 +22,12 @@ const E = board.create('point', [() => jg.hyperbolic.hyperMidpoint(C, A)], {name
 const F = board.create('point', [() => jg.hyperbolic.hyperMidpoint(A, B)], {name: 'F', ...jg.style.pointStyle});
 const G = board.create('point', [() => jg.hyperbolic.hyperCentroid(A, B, C)], {name: 'G', ...jg.style.pointStyle});
 
-const lineAB = jg.hyperbolic.hyperline(board, A, B);
-const lineAC = jg.hyperbolic.hyperline(board, A, C);
-const lineBC = jg.hyperbolic.hyperline(board, B, C);
-const linesegAD = jg.hyperbolic.hyperline(board, A, D);
-const linesegBE = jg.hyperbolic.hyperline(board, B, E);
-const linesegCF = jg.hyperbolic.hyperline(board, C, F);
+const linesegAB = jg.hyperbolic.hyperlineSegment(board, A, B);
+const linesegAC = jg.hyperbolic.hyperlineSegment(board, A, C);
+const linesegBC = jg.hyperbolic.hyperlineSegment(board, B, C);
+const linesegAD = jg.hyperbolic.hyperlineSegment(board, A, D);
+const linesegBE = jg.hyperbolic.hyperlineSegment(board, B, E);
+const linesegCF = jg.hyperbolic.hyperlineSegment(board, C, F);
         
 const unitcircle = board.create('circle', [[0, 0], 1], jg.style.circleStyle);
 
