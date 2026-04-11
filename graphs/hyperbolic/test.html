@@ -25,8 +25,8 @@ const P = board.create('point', [0.5, -0.2], {name: 'P'});
 const Q = board.create('point', [0.2, -0.4], {name: 'Q'});
 const X = board.create('point', [() => jg.hyperbolic.clineCenter(C, D)], {name: 'X', ...jg.style.pointStyle});
 const O = board.create('point', [() => jg.hyperbolic.hyperPerpBisCenter(A, B)], {name: 'O', ...jg.style.pointStyle});
-const R1 = board.create('point', [() => jg.hyperbolic.hyperRotate(M, Math.Pi/2, A)], {name: 'R1', ...jg.style.pointStyle});
-const R2 = board.create('point', [() => jg.hyperbolic.hyperRotate(M, -Math.Pi/2, A)], {name: 'R2', ...jg.style.pointStyle});
+const R1 = board.create('point', [() => jg.hyperbolic.hyperRot(M, Math.Pi/2, A)], {name: 'R1', ...jg.style.pointStyle});
+const R2 = board.create('point', [() => jg.hyperbolic.hyperRot(M, -Math.Pi/2, A)], {name: 'R2', ...jg.style.pointStyle});
 const O1 = board.create('point', [() => jg.triangle.circumcenter(M, R1, R2)], {name: 'O1', ...jg.style.pointStyle});
 
 const lineAB = jg.hyperbolic.hyperline(board, A, B);
