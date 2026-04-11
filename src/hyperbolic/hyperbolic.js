@@ -178,7 +178,7 @@ export function hyperlineSegment(board, A, B, style = circleStyle) {
      * @returns reflection
      */
 export function hyperReflect(A, B, P) {
-    const Z1 = complexDifference(pointScale(A, (1 + dist(B) ** 2)), pointScale(A, (1 + dist(A) ** 2)));
+    const Z1 = complexDifference(pointScale(A, (1 + dist(B) ** 2)), pointScale(B, (1 + dist(A) ** 2)));
     const Z2 = complexDifference(complexProduct(A, complexConjugate(B)), complexProduct(complexConjugate(A), B));
     const N = complexDifference(complexProduct(Z1, complexConjugate(P)), Z2);
     const D = complexSum(complexProduct(Z2, complexConjugate(P)), complexConjugate(Z1));
