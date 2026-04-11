@@ -303,6 +303,22 @@ export function hyperIntouchPoint(A, B, C) {
 }
 
 /**
+     * Given points A, B, C, returns the point where the inradius of hyperbolic triangle ABC
+     * @param A first point
+     * @param B second point
+     * @param C third point
+     * @returns intouch point
+     */
+export function hyperIntouchPoint(A, B, C) {
+    const a = hyperDist(B, C);
+    const b = hyperDist(C, A);
+    const c = hyperDist(A, B);
+    const s = (a + b + c)/2;
+    
+    return Math.atanh(Math.sqrt(Math.sinh(s - a) * Math.sinh(s - b) * Math.sinh(s - c) / Math.sinh(s)));
+}
+
+/**
      * Given points A, B, C, returns the hyperbolic orthocenter of triangle ABC
      * @param A first point
      * @param B second point
