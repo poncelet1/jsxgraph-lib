@@ -303,6 +303,17 @@ export function hyperIntouchPoint(A, B, C) {
 }
 
 /**
+     * Given points A, B, C, returns the hyperbolic orthocenter of triangle ABC
+     * @param A first point
+     * @param B second point
+     * @param C third point
+     * @returns orthocenter
+     */
+export function hyperOrthocenter(A, B, C) {
+    return clineIntersect(A, hyperProject(B, C, A), B, hyperProject(C, A, B));
+}
+
+/**
      * Given points A, B, C, returns the hyperbolic circumcenter of triangle ABC
      * @param A first point
      * @param B second point
