@@ -23,7 +23,6 @@ const hypercircAp = jg.hyperbolic.hyperCircle(board, [0, 0], 1);
 
 const diamCirc = board.create('circle', [
     () => jg.point.pointScale(Pp, 1/2), 
-    // 2. Wrap the radius in a function
     () => jg.point.dist(Pp)/2
 ], jg.style.circleStyle);
 
