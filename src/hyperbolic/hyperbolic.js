@@ -192,7 +192,7 @@ export function hyperReflect(A, B, P) {
      * @param P third point
      * @returns projection
      */
-export function hyperReflect(A, B, P) {
+export function hyperProject(A, B, P) {
     return midpoint(P, hyperProject(A, B, P));
 }
 
