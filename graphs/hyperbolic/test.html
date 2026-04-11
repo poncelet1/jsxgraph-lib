@@ -23,6 +23,7 @@ const M = board.create('point', [() => jg.hyperbolic.hyperMidpoint(A, B)], {name
 //const Q = board.create('point', [() => jg.hyperbolic.hyperlineEndPoint(B, A)], {name: 'Q', ...jg.style.pointStyle});
 const P = board.create('point', [0.5, -0.2], {name: 'P'});
 const Q = board.create('point', [0.2, -0.4], {name: 'Q'});
+const X = board.create('point', [() => jg.hyperbolic.clineCenter(C, D)], {name: 'X', ...jg.style.pointStyle});
 board.create('text', [-1, -1, () => `${jg.triangle.signedArea(X, C, D).toFixed(4)}`]);
 board.create('text', [-1, -1.2, () => `${hyperDist(P, Q).toFixed(4)}`]);
 
