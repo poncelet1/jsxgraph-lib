@@ -256,6 +256,17 @@ export function hyperAngle(A, B, C) {
 }
 
 /**
+     * Given points A, B, C, returns area of hyperbolic triangle ABC
+     * @param A first point
+     * @param B second point
+     * @param C third point
+     * @returns area
+     */
+export function hyperArea(A, B, C) {
+    return Math.PI - hyperAngle(B, A, C) - hyperAngle(A, B, C) - hyperAngle(A, C, B);
+}
+
+/**
      * Given points A, B, C, D, returns the intersection of lines AB and CD
      * @param A first point
      * @param B second point
@@ -359,6 +370,22 @@ export function hyperIncircle(board, A, B, C, style = circleStyle) {
      */
 export function hyperOrthocenter(A, B, C) {
     return clineIntersect(A, hyperProject(B, C, A), B, hyperProject(C, A, B));
+}
+
+/**
+     * Given points A, B, C, returns the hyperbolic circumradius of triangle ABC
+     * @param A first point
+     * @param B second point
+     * @param C third point
+     * @returns circumradius
+     */
+export function hyperCircumradius(A, B, C) {
+    const a = hyperDist(B, C);
+    const b = hyperDist(A, C);
+    const c = hyperDist(A, B);
+    const K = hyperArea(A, B, C);
+
+    return Math.atanh(Math.tanh(a / 2) * Math.tanh(b / 2) * Math.tanh(c / 2) / Math.sin(K / 2));
 }
 
 /**
