@@ -111,6 +111,13 @@ export function hyperCircle2(board, A, r, style = circleStyle) {
     return board.create('circle', [getEuclCenter, getEuclRadius], style);
 }
 
+export function hyperCircle3(board, A, r, style = circleStyle) {
+    const getCoords = () => (typeof A.X === 'function') ? [A.X(), A.Y()] : A;
+    const center = () => hyperCircleCenter(getCoords(), typeof r === 'function' ? r() : r);
+    const radius = () => hyperCircleRadius(getCoords(), typeof r === 'function' ? r() : r);
+    return board.create('circle', [center, radius], style);
+}
+
 /**
      * Given point C, real number t, and point P, returns the rotation of P around C by an angle of t
      * @param C center of rotation
@@ -398,7 +405,7 @@ export function hyperIncircle(board, A, B, C, style = circleStyle) {
     const getI = () => hyperIncenter(A, B, C);
     const I = board.create('point', [getI], { visible: false, withLabel: false });
 
-    return hyperCircle2(board, I, r, style);
+    return hyperCircle3(board, I, r, style);
 }
 
 /**
