@@ -20,10 +20,11 @@ const hypercircA = jg.hyperbolic.hyperCircle(board, A, 1);
         
 const Ap = board.create('point', [() => jg.hyperbolic.movePointToOrigin(A, P)], {name: 'Ap', ...jg.style.pointStyle});
 const hypercircAp = jg.hyperbolic.hyperCircle(board, Ap, 1);
+const Op = jg.hyperbolic.hyperCircleCenter(Ap, 1);
 
 const diamCirc = board.create('circle', [
-    () => jg.point.pointScale(Ap, 1/2), 
-    () => jg.point.dist(Ap)/2
+    () => jg.point.pointScale(Op, 1/2), 
+    () => jg.point.dist(Op)/2
 ], jg.style.circleStyle);
 
 const Tp1 = board.create('intersection', [hypercircAp, diamCirc, 0], { name: 'Tp1' });
