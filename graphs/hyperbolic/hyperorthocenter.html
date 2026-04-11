@@ -20,7 +20,7 @@ const C = board.create('point', [-0.4, -0.1], {name: 'C'});
 const D = board.create('point', [() => jg.hyperbolic.hyperProject(B, C, A)], {name: 'D', ...jg.style.pointStyle});
 const E = board.create('point', [() => jg.hyperbolic.hyperProject(C, A, B)], {name: 'E', ...jg.style.pointStyle});
 const F = board.create('point', [() => jg.hyperbolic.hyperProject(A, B, C)], {name: 'F', ...jg.style.pointStyle});
-const G = board.create('point', [() => jg.hyperbolic.clineIntersect(A, D, B, E)], {name: 'H', ...jg.style.pointStyle});
+const H = board.create('point', [() => jg.hyperbolic.hyperOrthocenter(A, B, C)], {name: 'H', ...jg.style.pointStyle});
 
 const lineAB = jg.hyperbolic.hyperline(board, A, B);
 const lineAC = jg.hyperbolic.hyperline(board, A, C);
