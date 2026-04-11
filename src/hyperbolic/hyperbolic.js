@@ -301,3 +301,14 @@ export function hyperIntouchPoint(A, B, C) {
     
     return extendSegment(B, C, s - b);
 }
+
+/**
+     * Given points A, B, C, returns the hyperbolic circumcenter of triangle ABC
+     * @param A first point
+     * @param B second point
+     * @param C third point
+     * @returns circumcenter
+     */
+export function hyperCircumcenter(A, B, C) {
+    return clineIntersect(hyperMidpoint(A, B), hyperRot(hyperMidpoint(A, B), Math.PI/2, A), hyperMidpoint(A, C), hyperRot(hyperMidpoint(A, C), Math.PI/2, A));
+}
