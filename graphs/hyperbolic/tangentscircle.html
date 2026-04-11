@@ -20,7 +20,7 @@ const hypercircA = jg.hyperbolic.hyperCircle(board, A, 1);
         
 const Pp = board.create('point', [() => jg.hyperbolic.movePointToOrigin(P, A)], {name: 'Pp', ...jg.style.pointStyle});
 const hypercircAp = jg.hyperbolic.hyperCircle(board, [0, 0], 1);
-const diamCirc = board.create('circle', [Pp/2, jg.point.dist(Pp)/2], jg.style.circleStyle);
+const diamCirc = board.create('circle', [js.point.pointScale(Pp, 1/2), jg.point.dist(Pp)/2], jg.style.circleStyle);
 
 const unitcircle = board.create('circle', [[0, 0], 1], jg.style.circleStyle);
 
