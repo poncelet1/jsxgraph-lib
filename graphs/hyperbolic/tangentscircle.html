@@ -26,6 +26,9 @@ const diamCirc = board.create('circle', [
     () => jg.point.dist(Pp)/2
 ], jg.style.circleStyle);
 
+const Tp1 = board.create('intersection', [hypercircAp, diamCirc, 0], { name: 'Tp1' });
+const Tp2 = board.create('intersection', [hypercircAp, diamCirc, 1], { name: 'Tp2' });
+        
 const unitcircle = board.create('circle', [[0, 0], 1], jg.style.circleStyle);
 
     </script>
