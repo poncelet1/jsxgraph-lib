@@ -399,3 +399,21 @@ export function hyperCircumradius(A, B, C) {
 export function hyperCircumcenter(A, B, C) {
     return clineIntersect(hyperMidpoint(A, B), hyperRot(hyperMidpoint(A, B), Math.PI/2, A), hyperMidpoint(A, C), hyperRot(hyperMidpoint(A, C), Math.PI/2, A));
 }
+
+/**
+ * Creates circumcircle of hyperbolic triangle ABC on a given board
+ * @param board JSXGraph board
+ * @param A first point
+ * @param B second point
+ * @param C second point
+ * @param style optional circle style
+ * @returns circumcircle
+ */
+export function hyperCircumcircle(board, A, B, C, style = circleStyle) {
+    const R = () => hyperCircumradius(A, B, C);
+
+    const getO = () => hyperCircumcenter(A, B, C);
+    const O = board.create('point', [getO], { visible: false, withLabel: false });
+
+    return hyperCircle(board, O, R, style);
+}
