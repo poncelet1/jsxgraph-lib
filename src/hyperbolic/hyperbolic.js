@@ -1,7 +1,7 @@
 import { getXY } from '../core/core.js';
 import { complexConjugate, complexDifference, complexProduct, complexQuotient, complexSum } from '../complex/complex.js';
 import { circleStyle } from '../style/style.js';
-import { dist, pointScale, rotate } from '../point/point.js';
+import { dist, midpoint, pointScale, rotate } from '../point/point.js';
 import { signedArea } from '../triangle/triangle.js';
 
 /**
@@ -183,6 +183,17 @@ export function hyperReflect(A, B, P) {
     const N = complexDifference(complexProduct(Z1, complexConjugate(P)), Z2);
     const D = complexSum(complexProduct(Z2, complexConjugate(P)), complexConjugate(Z1));
     return complexQuotient(N, D);
+}
+
+/**
+     * Given points A, B, P, returns the projection of P onto line AB
+     * @param A first point
+     * @param B second point
+     * @param P third point
+     * @returns projection
+     */
+export function hyperReflect(A, B, P) {
+    return midpoint(P, hyperProject(A, B, P));
 }
 
 /**
