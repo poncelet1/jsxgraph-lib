@@ -255,3 +255,19 @@ export function clineIntersect(A, B, C, D) {
 export function hyperCentroid(A, B, C) {
     return clineIntersect(A, hyperMidpoint(B, C), B, hyperMidpoint(A, C));
 }
+
+/**
+     * Given points A, B, C, returns the point where the incircle of hyperbolic triangle ABC touches side BC
+     * @param A first point
+     * @param B second point
+     * @param C third point
+     * @returns intouch point
+     */
+export function hyperIntouchPoint(A, B, C) {
+    const a = hyperDist(B, C);
+    const b = hyperDist(C, A);
+    const c = hyperDist(A, B);
+    const s = (a + b + c)/2;
+    
+    return extendSegment(B, C, s - b);
+}
