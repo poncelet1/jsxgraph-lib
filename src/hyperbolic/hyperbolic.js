@@ -244,3 +244,14 @@ export function clineIntersect(A, B, C, D) {
 
     return [ u / (1 - w), v / (1 - w) ];
 }
+
+/**
+     * Given points A, B, C, returns the hyperbolic centroid of triangle ABC
+     * @param A first point
+     * @param B second point
+     * @param C third point
+     * @returns centroid
+     */
+export function hyperCentorid(A, B, C) {
+    return clineIntersect(A, hyperMidpoint(B, C), B, hyperMidpoint(A, C));
+}
