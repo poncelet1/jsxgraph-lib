@@ -252,6 +252,6 @@ export function clineIntersect(A, B, C, D) {
      * @param C third point
      * @returns centroid
      */
-export function hyperCentorid(A, B, C) {
+export function hyperCentroid(A, B, C) {
     return clineIntersect(A, hyperMidpoint(B, C), B, hyperMidpoint(A, C));
 }
