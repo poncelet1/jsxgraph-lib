@@ -353,12 +353,12 @@ export function hyperIncenter(A, B, C) {
  * @returns incircle
  */
 export function hyperIncircle(board, A, B, C, style = circleStyle) {
-    const r = hyperInradius(A, B, C);
+    const r = () => hyperInradius(A, B, C);
     const I = board.create('point', [
         () => hyperIncenter(A, B, C)
     ], { visible: false, withLabel: false });
 
-    return hyperCircle(board, r, I, style);
+    return hyperCircle(board, I, r, style);
 }
 
 /**
