@@ -192,7 +192,7 @@ export function hyperReflect(A, B, P) {
      * @returns center of perpendicular bisector of AB
      */
 export function hyperPerpBisCenter(A, B) {
-    const N = complexDifference(pointScale(A, 1 - dist(B) ** 2), ponitScale(B, 1 - dist(A) ** 2));
+    const N = complexDifference(pointScale(A, 1 - dist(B) ** 2), pointScale(B, 1 - dist(A) ** 2));
     const k = dist(A) ** 2 - dist(B) ** 2;
     return pointScale(N, 1/k);
 }
