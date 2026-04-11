@@ -197,4 +197,15 @@ export function hyperPerpBisCenter(A, B) {
     return pointScale(N, 1/k);
 }
 
-
+/**
+     * Given points A, B, and real number d, returns point P such that P lies on AB extended past B, and AP = d
+     * @param A first point
+     * @param B second point
+     * @param d number
+     * @returns extended point P
+     */
+export function extendSegment(A, B, d) {
+    const Bp = movePointToOrigin(B, A);
+    const Ep = scalePoint(Bp, (Math.exp(d) - 1)/(Math.exp(d) + 1)*1/dist(Bp));
+    return movePointFromOrigin(Ep, A);
+}
