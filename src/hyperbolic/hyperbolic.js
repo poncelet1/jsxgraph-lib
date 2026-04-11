@@ -209,3 +209,18 @@ export function extendSegment(A, B, d) {
     const Ep = scalePoint(Bp, (Math.exp(d) - 1)/(Math.exp(d) + 1)*1/dist(Bp));
     return movePointFromOrigin(Ep, A);
 }
+
+/**
+     * Given points A, B, C, returns hyperbolic angle ABC
+     * @param A first point
+     * @param B second point
+     * @param C third point
+     * @returns hyperbolic angle ABC
+     */
+export function hyperAngle(A, B, C) {
+    const a = hyperDist(B, C);
+    const b = hyperDist(A, C);
+    const c = hyperDist(A, B);
+
+    return Math.acos((Math.cosh(a)*Math.cosh(c) - Math.cosh(b))/(Math.sinh(a)*Math.sinh(c)));
+}
