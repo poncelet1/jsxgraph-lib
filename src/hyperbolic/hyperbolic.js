@@ -206,7 +206,7 @@ export function hyperPerpBisCenter(A, B) {
      */
 export function extendSegment(A, B, d) {
     const Bp = movePointToOrigin(B, A);
-    const Ep = scalePoint(Bp, (Math.exp(d) - 1)/(Math.exp(d) + 1)*1/dist(Bp));
+    const Ep = pointScale(Bp, (Math.exp(d) - 1)/(Math.exp(d) + 1)*1/dist(Bp));
     return movePointFromOrigin(Ep, A);
 }
 
