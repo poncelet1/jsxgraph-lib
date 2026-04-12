@@ -14,43 +14,21 @@
     <script type="module">
       const board = JXG.JSXGraph.initBoard('jxgbox', jg.style.boardStyle);
       
-const A = board.create('point', [0, 0], { name: 'A' });
-const B = board.create('point', [2, 2], { name: 'B' });
+const O = board.create('point', [-2, 1], {name: 'O'});
+const OR = board.create('point', [1, 0], {name: 'OR'});
 
-let prevX, prevY;
+// 1. Create a transformation that follows O's coordinates
+const transform = board.create('transform', [
+    () => O.X(), 
+    () => O.Y()
+], {type: 'translate'});
 
-A.on('drag', function() {
-  const dx = A.X() - prevX;
-  const dy = A.Y() - prevY;
+// 2. Link OR to O's movement
+// This makes OR move when O moves, but OR remains draggable on its own
+OR.addTransform(O, transform);
 
-  B.moveTo([B.X() + dx, B.Y() + dy]);
-
-  prevX = A.X();
-  prevY = A.Y();
-});
-
-A.on('down', function() {
-  prevX = A.X();
-  prevY = A.Y();
-});
-
-const C = board.create('point', [1, 1], {name: 'C'});
-const D = board.create('point', [4, 2], {name: 'D'});
-
-// Store initial offset
-let dx = D.X() - C.X();
-let dy = D.Y() - C.Y();
-
-// When C moves, update D by the same displacement
-C.on('drag', () => {
-    D.moveTo([C.X() + dx, C.Y() + dy]);
-});
-
-// When D moves, update the stored offset
-D.on('drag', () => {
-    dx = D.X() - C.X();
-    dy = D.Y() - C.Y();
-});
+const circO = board.create('circle', [O, OR], jg.style.circleStyleInverse);
+        
     </script>
 </body>
 </html>
