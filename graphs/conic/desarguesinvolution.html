@@ -38,15 +38,13 @@ const XBC = board.create('point', [() => jg.point.intersection(B, C, L1, L2)], {
 const XBD = board.create('point', [() => jg.point.intersection(B, D, L1, L2)], {name: 'XBD', ...jg.style.pointStyle});
 const XCD = board.create('point', [() => jg.point.intersection(C, D, L1, L2)], {name: 'XCD', ...jg.style.pointStyle});
 
-const [xabx, xaby] = jg.core.getXY(XAB);
-const [xacx, xacy] = jg.core.getXY(XAC);
-const [xadx, xady] = jg.core.getXY(XAD);
-const [xbcx, xbcy] = jg.core.getXY(XBC);
-const [xbdx, xbdy] = jg.core.getXY(XBD);
-const [xcdx, xcdy] = jg.core.getXY(XCD);
-
-const k = (xabx - xacx) * (xabx - xbdx) * (xcdx - xacx) * (xcdx - xbdx) / (xabx + xcdx - xacx - xbdx) ** 2;
-const ox = () => (xabx * xcdx - xacx * xbdx) / (xabx + xcdx - xacx - xbdx);
+const xabx = () => jg.core.getXY(XAB)[0];
+const xacx = () => jg.core.getXY(XAC)[0];
+const xbdx = () => jg.core.getXY(XBD)[0];
+const xcdx = () => jg.core.getXY(XCD)[0];
+        
+const k = () => (xabx() - xacx()) * (xabx() - xbdx()) * (xcdx() - xacx()) * (xcdx() - xbdx()) / (xabx() + xcdx() - xacx() - xbdx()) ** 2;
+const ox = () => (xabx() * xcdx() - xacx() * xbdx()) / (xabx() + xcdx() - xacx() - xbdx());
 
 const O = board.create('point', [ox, () => jg.point.slope(L1, L2) * ox() + jg.point.yintercept(L1, L2)], {name: 'O', ...jg.style.pointStyle});
         
