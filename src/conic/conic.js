@@ -1,5 +1,6 @@
 import { signedArea } from '../triangle/triangle.js';
 import { getXY } from '../core/core.js';
+import { intersection } from '../point/point.js';
 
 /**
      * Given points A, B, C, D, E, returns the coefficient of x^2 in the equation of the conic passing through the five points
@@ -155,4 +156,17 @@ export function conicCenterByPoints(A, B, C, D, E) {
     const Fcoeff = conic1(A, B, C, D, E);
     
     return conicCenter(Acoeff, Bcoeff, Ccoeff, Dcoeff, Ecoeff, Fcoeff);
+}
+
+/**
+     * Given points A, B, C, D, E, returns point where inscribed conic is tangent to AB
+     * @param A first point
+     * @param B second point
+     * @param C third point
+     * @param D fourth point
+     * @param E fifth point
+     * @returns brianchon point
+     */
+export function brianchonPoint(A, B, C, D, E) {
+    return intersection(A, B, D, intersection(A, C, B, E));
 }
