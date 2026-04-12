@@ -135,5 +135,24 @@ export function conicCenter(A, B, C, D, E, F) {
         (2 * C * D - B * E)/(B ** 2 - 4 * A * C),
         (2 * A * E - B * D)/(B ** 2 - 4 * A * C)
     ];
-    ]
+}
+
+/**
+     * Returns the center of the conic passing through the points A, B, C, D, E
+     * @param A first point
+     * @param B second point
+     * @param C third point
+     * @param D fourth point
+     * @param E fifth point
+     * @returns center of conic
+     */
+export function conicCenterByPoints(A, B, C, D, E) {
+    const Acoeff = conicxx(A, B, C, D, E);
+    const Bcoeff = conicxy(A, B, C, D, E);
+    const Ccoeff = conicyy(A, B, C, D, E);
+    const Dcoeff = conicx(A, B, C, D, E);
+    const Ecoeff = conicy(A, B, C, D, E);
+    const Fcoeff = conic1(A, B, C, D, E);
+    
+    return conicCenter(Acoeff, Bcoeff, Ccoeff, Dcoeff, Ecoeff, Fcoeff);
 }
