@@ -32,7 +32,7 @@ for (let i = 1; i <= 15; i++) {
 const linesB = [];
         
 for (let i = 0; i <= 5; i++) {
-    linesB[i] = jg.hyperbolic.hyperline(board, hyperRot(A, i * Math.PI / 12, B), (A, (i + 6) * Math.PI / 12, B));
+    linesB[i] = jg.hyperbolic.hyperline(board, jg.hyperbolic.hyperRot(A, i * Math.PI / 12, B), jg.hyperbolic.hyperRot(A, (i + 6) * Math.PI / 12, B));
 }
         
     </script>
