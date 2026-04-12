@@ -19,6 +19,7 @@ const B = board.create('point', [-3.3, -1.7], {name: 'B'});
 const C = board.create('point', [3.4, -2.6], {name: 'C'});
 const D = board.create('point', [1.2, 1.5], {name: 'D'});
 const E = board.create('point', [-0.5, -2.2], {name: 'E'});
+const conicABCDEcenter = board.create('point', [() => jg.conic.conicCenterByPoints(A, B, C, D, E)], {name: 'O', ...jg.style.pointStyle});
 
 const conicABCDE = board.create('conic', [A, B, C, D, E], jg.style.circleStyle);
 
