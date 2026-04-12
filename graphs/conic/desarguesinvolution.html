@@ -31,12 +31,12 @@ const lineBC = board.create('line', [B, C], {...jg.style.lineStyle, strokeColor:
 const lineBD = board.create('line', [B, D], {...jg.style.lineStyle, strokeColor: 'lightgray'});
 const lineCD = board.create('line', [C, D], {...jg.style.lineStyle, strokeColor: 'lightgray'});
 
-const XAB = board.create('point', [() => jg.point.intersect(A, B, L1, L2)], {name: 'XAB', ...jg.style.pointStyle});
-const XAC = board.create('point', [() => jg.point.intersect(A, C, L1, L2)], {name: 'XAC', ...jg.style.pointStyle});
-const XAD = board.create('point', [() => jg.point.intersect(A, D, L1, L2)], {name: 'XAD', ...jg.style.pointStyle});
-const XBC = board.create('point', [() => jg.point.intersect(B, C, L1, L2)], {name: 'XBC', ...jg.style.pointStyle});
-const XBD = board.create('point', [() => jg.point.intersect(B, D, L1, L2)], {name: 'XBD', ...jg.style.pointStyle});
-const XCD = board.create('point', [() => jg.point.intersect(C, D, L1, L2)], {name: 'XCD', ...jg.style.pointStyle});
+const XAB = board.create('point', [() => jg.point.intersection(A, B, L1, L2)], {name: 'XAB', ...jg.style.pointStyle});
+const XAC = board.create('point', [() => jg.point.intersection(A, C, L1, L2)], {name: 'XAC', ...jg.style.pointStyle});
+const XAD = board.create('point', [() => jg.point.intersection(A, D, L1, L2)], {name: 'XAD', ...jg.style.pointStyle});
+const XBC = board.create('point', [() => jg.point.intersection(B, C, L1, L2)], {name: 'XBC', ...jg.style.pointStyle});
+const XBD = board.create('point', [() => jg.point.intersection(B, D, L1, L2)], {name: 'XBD', ...jg.style.pointStyle});
+const XCD = board.create('point', [() => jg.point.intersection(C, D, L1, L2)], {name: 'XCD', ...jg.style.pointStyle});
 
 const conicABCDP = board.create('conic', [A, B, C, D, P], jg.style.circleStyle);
                
