@@ -55,6 +55,8 @@ const invO = board.create('point', [invOx, invOy], {name: 'O', ...jg.style.point
 const invCirc = board.create('circle', [[invOx, invOy], invR], jg.style.circleStyleInverse);
         
 const conicABCDP = board.create('conic', [A, B, C, D, P], jg.style.circleStyle);
+
+board.create('text', [-1, -1.2, `${invR().toFixed(4)}`]);
                
     </script>
 </body>
