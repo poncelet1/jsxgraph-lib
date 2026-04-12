@@ -1,4 +1,5 @@
 import { signedArea } from '../triangle/triangle.js';
+import { getXY } from '../core/core.js';
 
 /**
      * Given points A, B, C, D, E, returns the coefficient of x^2 in the equation of the conic passing through the five points
