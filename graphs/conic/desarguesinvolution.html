@@ -46,9 +46,9 @@ const [xbdx, xbdy] = jg.core.getXY(XBD);
 const [xcdx, xcdy] = jg.core.getXY(XCD);
 
 const k = (xabx - xacx) * (xabx - xbdx) * (xcdx - xacx) * (xcdx - xbdx) / (xabx + xcdx - xacx - xbdx) ** 2;
-const o = (xabx * xcdx - xacx * xbdx) / (xabx + xcdx - xacx - xbdx);
+const ox = () => (xabx * xcdx - xacx * xbdx) / (xabx + xcdx - xacx - xbdx);
 
-const O = board.create('point', [() => o, () => jg.point.slope(L1, L2) * o + jg.point.yintercept(L1, L2)], {name: 'O', ...jg.style.pointStyle});
+const O = board.create('point', [ox, () => jg.point.slope(L1, L2) * ox() + jg.point.yintercept(L1, L2)], {name: 'O', ...jg.style.pointStyle});
         
 const conicABCDP = board.create('conic', [A, B, C, D, P], jg.style.circleStyle);
                
