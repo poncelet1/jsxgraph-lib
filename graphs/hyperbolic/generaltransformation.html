@@ -25,8 +25,14 @@ for (let i = 1; i <= 15; i++) {
     if (i % 4 == 0) {
         circlesA[i] = jg.hyperbolic.hyperCircle(board, A, r);
     } else {
-        circlesA[i] = jg.hyperbolic.hyperCircle(board, A, r, {...jg.circleStyle, strokeColor: 'gray'});
+        circlesA[i] = jg.hyperbolic.hyperCircle(board, A, r, {...jg.circleStyle, strokeColor: 'lightgray'});
     }
+}
+
+const linesB = [];
+        
+for (let i = 0; i <= 5; i++) {
+    linesB[i] = jg.hyperbolic.hyperline(board, hyperRot(A, i * Math.PI / 12, B), (A, (i + 6) * Math.PI / 12, B));
 }
         
     </script>
