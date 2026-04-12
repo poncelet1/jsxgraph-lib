@@ -34,9 +34,9 @@ OR.on('drag', () => {
 });
 
 const P = board.create('point', [0, -2], {name: 'P'});
-const P = board.create('point', [() => jg.inversion.invertpoint(O, () => dist(O, OR), P)], {name: 'R', ...jg.style.pointStyle});
+const P = board.create('point', [() => jg.inversion.invertpoint(O, () => jg.point.dist(O, OR), P)], {name: 'R', ...jg.style.pointStyle});
 
-const circO = board.create('circle', [() => O, () => dist(O, OR)], jg.style.circleStyle);
+const circO = board.create('circle', [() => O, () => jg.point.dist(O, OR)], jg.style.circleStyle);
         
     </script>
 </body>
