@@ -163,9 +163,7 @@ export function excenter(A, B, C) {
  * @returns A-excircle
  */
 export function excircle(board, A, B, C, style = circleStyle) {
-    const center = () => excenter(A, B, C);
-    const radius = () => exradius(A, B, C);
-    return board.create('circle', [center, radius], style);
+    return board.create('circle', [() => excenter(A, B, C), () => exradius(A, B, C)], style);
 }
 
 /**
