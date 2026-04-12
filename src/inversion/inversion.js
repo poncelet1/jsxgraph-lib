@@ -1,5 +1,5 @@
 import { getXY } from '../core/core.js';
-import { dist, intersection, midpoint, project, rotate } from '../point/point.js';
+import { dist, pointDifference, pointScale } from '../point/point.js';
 import { circleStyle } from '../style/style.js';
 
 /**
@@ -9,6 +9,6 @@ import { circleStyle } from '../style/style.js';
      * @param P point
      * @returns inverse of P
      */
-export function invertPoint(A, B, C) {
-    return (dist(A, B) + dist(A, C) + dist(B, C)) / 2;
+export function invertPoint(O, r, P) {
+    return pointSum(O, pointScale(pointDifference(P, O), r ** 2 / dist(P, O) ** 2));
 }
