@@ -63,11 +63,10 @@ export function barycoord(A, B, C, x, y, z) {
     const [ax, ay] = getXY(A);
     const [bx, by] = getXY(B);
     const [cx, cy] = getXY(C);
-    const s = x + y + z;
 
     return [
-        (ax * x + bx * y + cx * z) / s,
-        (ay * x + by * y + cy * z) / s
+        (ax * x + bx * y + cx * z) / (x + y + z),
+        (ay * x + by * y + cy * z) / (x + y + z)
     ];
 }
 
