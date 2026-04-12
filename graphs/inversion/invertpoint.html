@@ -36,7 +36,7 @@ OR.on('drag', () => {
 const P = board.create('point', [0, -2], {name: 'P'});
 const Pp = board.create('point', [() => jg.inversion.invertPoint(O, jg.point.dist(O, OR), P)], {name: 'Pp', ...jg.style.pointStyle});
 
-const circO = board.create('circle', [O, OR], jg.style.circleStyle);
+const circO = board.create('circle', [O, OR], jg.style.circleStyleInverse);
         
     </script>
 </body>
