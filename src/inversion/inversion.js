@@ -1,5 +1,5 @@
 import { getXY } from '../core/core.js';
-import { dist, pointDifference, pointScale } from '../point/point.js';
+import { dist, pointDifference, pointScale, pointSum } from '../point/point.js';
 import { circleStyle } from '../style/style.js';
 
 /**
