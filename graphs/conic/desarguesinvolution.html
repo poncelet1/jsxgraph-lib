@@ -46,6 +46,7 @@ const [xbdx, xbdy] = getXY(XBD);
 const [xcdx, xcdy] = getXY(XCD);
 
 const k = (xabx - xacx) * (xabx - xbdx) * (xcdx - xacx) * (xcdx - xbdx) / (xabx + xcdx - xacx - xbdx) ** 2;
+const o = (xabx * xcdx - xacx * xbdx) / (xabx + xcdx - xacx - xbdx);
 
 const conicABCDP = board.create('conic', [A, B, C, D, P], jg.style.circleStyle);
                
