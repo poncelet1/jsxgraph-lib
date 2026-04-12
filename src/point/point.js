@@ -152,10 +152,7 @@ export function project(A, B, C) {
      * @returns reflection
      */
 export function reflect(A, B, C) {
-    const [cx, cy] = getXY(C);
-    const [px, py] = getXY(project(A, B, C));
-
-    return [2*px - cx, 2*py - cy];
+    return interp(C, project(A, B, C), 2);
 }
 
 /**
