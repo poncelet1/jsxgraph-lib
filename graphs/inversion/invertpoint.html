@@ -17,7 +17,6 @@
 const O = board.create('point', [-2, 1], {name: 'O'});
 // OR is the point on the circle that regulates its radius
 const OR = board.create('point', [1, 0], {name: 'OR'});
-const P = board.create('point', [0, -2], {name: 'P'});
 
 // Store initial offset
 let ORoffsetx = OR.X() - O.X();
@@ -33,6 +32,9 @@ OR.on('drag', () => {
     ORoffsetx = OR.X() - O.X();
     ORoffsety = OR.Y() - O.Y();
 });
+
+const P = board.create('point', [0, -2], {name: 'P'});
+const P = board.create('point', [() => jg.inversion.invertpoint(O, () => dist(O, OR), P)], {name: 'R', ...jg.style.pointStyle});
 
 const circO = board.create('circle', [() => O, () => dist(O, OR)], jg.style.circleStyle);
         
