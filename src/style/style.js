@@ -51,3 +51,12 @@ export const circleStyle = {
     draggable: false,
     highlight: false
 };
+
+export const circleStyleInverse = {
+    strokeColor: 'red',
+    dash: 2,
+    strokeWidth: 1,
+    fixed: true,
+    draggable: false,
+    highlight: false
+};
