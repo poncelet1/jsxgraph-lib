@@ -18,3 +18,28 @@ export function conicxx(A, B, C, D, E) {
   
     return signedArea(B, C, E) * signedArea(D, A, E) * (ay - by) * (cy - dy) - signedArea(A, B, E) * signedArea (C, D, E) * (by - cy) * (dy - ay);
 }
+
+
+/**
+     * Given points A, B, C, D, E, returns the coefficient of xy in the equation of the conic passing through the five points
+     * @param A first point
+     * @param B second point
+     * @param C third point
+     * @param D fourth point
+     * @param E fifth point
+     * @returns coefficient of xy
+     */
+export function conicxy(A, B, C, D, E) {
+    const [ax, ay] = getXY(A);
+    const [bx, by] = getXY(B);
+    const [cx, cy] = getXY(C);
+    const [dx, dy] = getXY(D);
+    const [ex, ey] = getXY(E);
+  
+    return signedArea(B, C, E) * signedArea(D, A, E) * ((ay - by) * (dx - cx) + (bx - ax) * (cy - dy)) - signedArea(A, B, E) * signedArea (C, D, E) * ((by - cy) * (ax - dx) + (cx - bx) * (dy - ay));
+}
+
+
+
+
+
