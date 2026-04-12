@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraphcore.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraph.css" />
+    <script type="module" src="../../src/index.js"></script>
+    <style>
+        body { margin: 0; overflow: hidden; } /* Removes scrollbars inside the frame */
+        .jxgbox { width: 100vw; height: 100vh; border: none; } /* Fills the frame */
+    </style>
+</head>
+<body>
+    <div id="jxgbox" class="jxgbox"></div>
+    <script type="module">
+      const board = JXG.JSXGraph.initBoard('jxgbox', jg.style.boardStyle);
+      
+const A = board.create('point', [-0.3, 2.5], {name: 'A'});
+const B = board.create('point', [-2.1, 2.1], {name: 'B'});
+const C = board.create('point', [0.7, 0.3], {name: 'C'});
+const D = board.create('point', [1.1, 2.0], {name: 'D'});
+const L1 = board.create('point', [-1.2, -0.4], {name: 'L1'});
+const L2 = board.create('point', [1.5, -1], {name: 'L1'});
+
+const lineL = board.create('line', [L1, L2], jg.style.lineStyle);
+const P = board.create('glider', [-4.3, 0.3, lineL], {name: 'P'});
+
+const conicABCDP = board.create('conic', [A, B, C, D, P], jg.style.circleStyle);
+               
+    </script>
+</body>
+</html>
