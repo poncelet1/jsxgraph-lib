@@ -205,9 +205,7 @@ export function circumcenter(A, B, C) {
  * @returns circumcircle
  */
 export function circumcircle(board, A, B, C, style = circleStyle) {
-    const center = () => circumcenter(A, B, C);
-    const radius = () => circumradius(A, B, C);
-    return board.create('circle', [center, radius], style);
+    return board.create('circle', [() => circumcenter(A, B, C), () => circumradius(A, B, C)], style);
 }
 
 /**
