@@ -51,7 +51,7 @@ const invOx = () => (xabx() * xcdx() - xacx() * xbdx()) / (xabx() + xcdx() - xac
 const invOy = () => (xaby() * xcdy() - xacy() * xbdy()) / (xaby() + xcdy() - xacy() - xbdy());
 const invR = () => Math.sqrt(jg.point.dist([invOx(), invOy()], XAB) * jg.point.dist([invOx(), invOy()], XCD));
 
-const invO = board.create('point', [invOx, invOy], {name: 'O', ...jg.style.pointStyle});
+const invO = board.create('point', [invOx, invOy], {name: 'O', ...jg.style.pointStyle, strokeColor: 'green'});
 const invCirc = board.create('circle', [invO, invR], {
     ...jg.style.circleStyleInverse,
     strokeColor: () => (invOx() - xabx()) * (invOx() - xcdx()) > 0 ? 'red' : 'purple'
