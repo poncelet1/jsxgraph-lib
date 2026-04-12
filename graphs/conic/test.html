@@ -23,11 +23,11 @@ const E = board.create('point', [-0.5, -2.2], {name: 'E'});
 const conicABCDE = board.create('conic', [A, B, C, D, E], jg.style.circleStyle);
 
 board.create('text', [4, 4, () => `${jg.conic.conicxx(A, B, C, D, E).toFixed(4)}`]);
-
-        console.log(signedArea(B, C, E));
-console.log(signedArea(D, A, E));
-console.log(signedArea(A, B, E));
-console.log(signedArea(C, D, E));
+board.create('text', [4, 3.5, () => `${jg.conic.conicxy(A, B, C, D, E).toFixed(4)}`]);
+board.create('text', [4, 3, () => `${jg.conic.conicyy(A, B, C, D, E).toFixed(4)}`]);
+board.create('text', [4, 2.5, () => `${jg.conic.conicx(A, B, C, D, E).toFixed(4)}`]);
+board.create('text', [4, 2, () => `${jg.conic.conicy(A, B, C, D, E).toFixed(4)}`]);
+board.create('text', [4, 1.5, () => `${jg.conic.conic1(A, B, C, D, E).toFixed(4)}`]);
                
     </script>
 </body>
