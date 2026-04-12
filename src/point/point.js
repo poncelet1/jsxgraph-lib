@@ -1,6 +1,38 @@
 import { getXY } from '../core/core.js';
 
 /**
+     * Given points A, B, returns the sum of A and B
+     * @param A first point
+     * @param B second dpoint
+     * @returns sum
+     */
+export function pointSum(A, B) {
+    const [ax, ay] = getXY(A);
+    const [bx, by] = getXY(B);
+    
+    return [
+        ax + bx,
+        ay + by
+    ];
+}
+
+/**
+     * Given points A, B, returns the difference of A and B
+     * @param A first point
+     * @param B second dpoint
+     * @returns difference
+     */
+export function pointDifference(A, B) {
+    const [ax, ay] = getXY(A);
+    const [bx, by] = getXY(B);
+    
+    return [
+        ax - bx,
+        ay - by
+    ];
+}
+
+/**
      * Given point A and real number k, return kA
      * @param A point
      * @param k real number
