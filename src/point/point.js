@@ -76,7 +76,7 @@ export function slope(A, B) {
 export function yintercept(A, B) {
     const [ax, ay] = getXY(A);
     const [bx, by] = getXY(B);
-    return (ay * bx - ay * bx)/(ax - bx);
+    return (ax * by - ay * bx)/(ax - bx);
 }
 
 /**
