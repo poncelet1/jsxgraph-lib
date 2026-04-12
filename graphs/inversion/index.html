@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JSXGraph + Asy Library Test</title>
+    <script type="text/javascript" charset="UTF-8"
+     src="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraphcore.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraph.css" />
+
+    <style>
+        /* This forces the border to show up on your custom IDs */
+        .jxgbox { 
+            border: 1px solid #ccc; 
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .graph-container {
+    width: 500px; 
+    height: 500px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+}
+iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+    </style>
+</head>
+<body>
+    <h1>Inversion Graphs</h1>
+
+    <h3>Inverting a point</h3>
+    <div class="graph-container">
+        <iframe src="invertpoint.html"></iframe>
+    </div>
+</body>
+</html>
