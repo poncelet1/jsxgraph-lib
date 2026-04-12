@@ -18,6 +18,17 @@ const A = board.create('point', [-0.3, 0.7], {name: 'A'});
 const unitCircle = board.create('circle', [[0, 0], 1], jg.style.circleStyle);
 const B = board.create('glider', [1, 0, unitCircle], {name: 'B'});
 
+const circlesA = [];
+        
+for (let i = 1; i <= 15; i++) {
+    const r = Math.log((1 + i / 15) / (1 - i / 15));
+    if (i % 4 == 0) {
+        circlesA[i] = jg.hyperbolic.hyperCircle(board, A, r);
+    } else {
+        circlesA[i] = jg.hyperbolic.hyperCircle(board, A, r, {...jg.circleStyle, strokeColor: 'gray'});
+    }
+}
+        
     </script>
 </body>
 </html>
