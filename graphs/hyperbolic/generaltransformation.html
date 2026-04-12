@@ -21,7 +21,7 @@ const B = board.create('glider', [1, 0, unitCircle], {name: 'B'});
 const circlesA = [];
         
 for (let i = 1; i <= 15; i++) {
-    const r = Math.log((1 + i / 15) / (1 - i / 15));
+    const r = Math.log((1 + i / 16) / (1 - i / 16));
     if (i % 4 == 0) {
         circlesA[i] = jg.hyperbolic.hyperCircle(board, A, r);
     } else {
