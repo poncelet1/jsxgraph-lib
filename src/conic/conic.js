@@ -37,7 +37,8 @@ export function conicxy(A, B, C, D, E) {
     const [dx, dy] = getXY(D);
     const [ex, ey] = getXY(E);
   
-    return signedArea(B, C, E) * signedArea(D, A, E) * ((ay - by) * (dx - cx) + (bx - ax) * (cy - dy)) - signedArea(A, B, E) * signedArea (C, D, E) * ((by - cy) * (ax - dx) + (cx - bx) * (dy - ay));
+    return signedArea(B, C, E) * signedArea(D, A, E) * ((ay - by) * (dx - cx) + (bx - ax) * (cy - dy))
+        - signedArea(A, B, E) * signedArea (C, D, E) * ((by - cy) * (ax - dx) + (cx - bx) * (dy - ay));
 }
 
 /**
@@ -119,4 +120,20 @@ export function conic1(A, B, C, D, E) {
         - signedArea(A, B, E) * signedArea (C, D, E) * ((bx * cy - by * cx) * (dx * ay - dy * ax));
 }
 
-
+/**
+     * Returns the center of the conic Ax^2 + Bxy + Cy^2 + Dx + Ey + F = 0
+     * @param A coefficient of x^2
+     * @param B coefficient of xy
+     * @param C coefficient of y^2
+     * @param D coefficient of x
+     * @param E coefficient of y
+     * @param E coefficient of 1
+     * @returns center of conic
+     */
+export function conicCenter(A, B, C, D, E, F) {
+    return [
+        (2 * C * D - B * E)/(B ** 2 - 4 * A * C),
+        (2 * A * E - B * D)/(B ** 2 - 4 * A * C)
+    ];
+    ]
+}
