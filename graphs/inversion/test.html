@@ -17,14 +17,6 @@
 const O = board.create('point', [-2, 1], {name: 'O'});
 const OR = board.create('point', [1, 0], {name: 'OR'});
 
-// Define a transform that only tracks the DELTA (change) of O
-const transformO = board.create('transform', [
-    () => O.X() - O.startPos[1], // Change in X
-    () => O.Y() - O.startPos[2]  // Change in Y
-], {type: 'translate'});
-
-// Link OR to O using that relative change
-OR.addTransform(O, transformO);
 
 const circO = board.create('circle', [O, OR], jg.style.circleStyleInverse);
         
