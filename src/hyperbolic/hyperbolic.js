@@ -131,7 +131,7 @@ export function hyperline(board, A, B, style = circleStyle) {
     const getP = () => hyperlineEndPoint(A, B);
     const getQ = () => hyperlineEndPoint(B, A);
 
-    const arcCenter = board.create('point', [() => getC()], { visible: false, withLabel: false });
+    const arcCenter = board.create('point', [getC], { visible: false, withLabel: false });
     
     const startPoint = board.create('point', [
         () => signedArea(getC(), A, B) > 0 ? getP() : getQ()
@@ -153,18 +153,16 @@ export function hyperline(board, A, B, style = circleStyle) {
  * @returns hyperbolic line segment
  */
 export function hyperlineSegment(board, A, B, style = circleStyle) {
-    const getA = () => [A.X(), A.Y()];
-    const getB = () => [B.X(), B.Y()];
     const getC = () => clineCenter(A, B);
 
-    const arcCenter = board.create('point', [() => getC()], { visible: false, withLabel: false });
+    const arcCenter = board.create('point', [getC], { visible: false, withLabel: false });
 
     const startPoint = board.create('point', [
-        () => signedArea(getC(), A, B) > 0 ? getA() : getB()
+        () => signedArea(getC(), A, B) > 0 ? getXY(A) : getXY(B)
     ], { visible: false, withLabel: false });
 
     const endPoint = board.create('point', [
-        () => signedArea(getC(), A, B) > 0 ? getB() : getA()
+        () => signedArea(getC(), A, B) > 0 ? getXY(B) : getXY(A)
     ], { visible: false, withLabel: false });
 
     return board.create('arc', [arcCenter, startPoint, endPoint], style);
