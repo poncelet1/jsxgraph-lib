@@ -38,6 +38,15 @@ const XBC = board.create('point', [() => jg.point.intersection(B, C, L1, L2)], {
 const XBD = board.create('point', [() => jg.point.intersection(B, D, L1, L2)], {name: 'XBD', ...jg.style.pointStyle});
 const XCD = board.create('point', [() => jg.point.intersection(C, D, L1, L2)], {name: 'XCD', ...jg.style.pointStyle});
 
+const [xabx, xaby] = getXY(XAB);
+const [xacx, xacy] = getXY(XAC);
+const [xadx, xady] = getXY(XAD);
+const [xbcx, xbcy] = getXY(XBC);
+const [xbdx, xbdy] = getXY(XBD);
+const [xcdx, xcdy] = getXY(XCD);
+
+const k = (xabx - xacx) * (xabx - xbdx) * (xcdx - xacx) * (xcdx - xbdx) / (xabx + xcdx - xacx - xbdx) ** 2;
+
 const conicABCDP = board.create('conic', [A, B, C, D, P], jg.style.circleStyle);
                
     </script>
