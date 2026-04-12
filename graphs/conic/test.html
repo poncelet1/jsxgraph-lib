@@ -22,7 +22,7 @@ const E = board.create('point', [-0.5, -2.2], {name: 'E'});
 
 const conicABCDE = board.create('conic', [A, B, C, D, E], jg.style.circleStyle);
 
-board.create('text', [4, 4, () => `${jg.conic.conicxx(A, B, C, C, E).toFixed(4)}`]);
+board.create('text', [4, 4, () => `${jg.conic.conicxx(A, B, C, D, E).toFixed(4)}`]);
 
         console.log(signedArea(B, C, E));
 console.log(signedArea(D, A, E));
