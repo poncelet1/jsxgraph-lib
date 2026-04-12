@@ -261,9 +261,7 @@ export function innerSoddyCenter(A, B, C) {
  * @returns inner Soddy circle
  */
 export function innerSoddyCircle(board, A, B, C, style = circleStyle) {
-    const center = () => innerSoddyCenter(A, B, C);
-    const radius = () => innerSoddyRadius(A, B, C);
-    return board.create('circle', [center, radius], style);
+    return board.create('circle', [() => innerSoddyCenter(A, B, C), () => innerSoddyRadius(A, B, C)], style);
 }
 
 /**
@@ -310,7 +308,5 @@ export function outerSoddyCenter(A, B, C) {
  * @returns outer Soddy circle
  */
 export function outerSoddyCircle(board, A, B, C, style = circleStyle) {
-    const center = () => outerSoddyCenter(A, B, C);
-    const radius = () => outerSoddyRadius(A, B, C);
-    return board.create('circle', [center, radius], style);
+    return board.create('circle', [() => outerSoddyCenter(A, B, C), () => outerSoddyRadius(A, B, C)], style);
 }
