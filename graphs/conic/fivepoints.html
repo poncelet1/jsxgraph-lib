@@ -21,19 +21,7 @@ const D = board.create('point', [1.2, 1.5], {name: 'D'});
 const E = board.create('point', [-0.5, -2.2], {name: 'E'});
 
 const conicABCDE = board.create('conic', [A, B, C, D, E], jg.style.circleStyle);
-        
-// 3. The Center (using the built-in helper)
-const center = board.create('point', [
-    () => {
-        const res = JXG.Math.Geometry.getConicCenter(conicABCDE);
-        return [res[1], res[2]];
-    }
-], { name: 'C', color: 'red', size: 2 });
-
-// 4. The Foci
-const f1 = board.create('point', [() => conicABCDE.z_focus1.usrCoords.slice(1)], { name: 'F1', color: 'orange' });
-const f2 = board.create('point', [() => conicABCDE.z_focus2.usrCoords.slice(1)], { name: 'F2', color: 'orange' });
-        
+               
     </script>
 </body>
 </html>
