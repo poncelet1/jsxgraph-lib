@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraphcore.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraph.css" />
+    <script type="module" src="../../src/index.js"></script>
+    <style>
+        body { margin: 0; overflow: hidden; } /* Removes scrollbars inside the frame */
+        .jxgbox { width: 100vw; height: 100vh; border: none; } /* Fills the frame */
+    </style>
+</head>
+<body>
+    <div id="jxgbox" class="jxgbox"></div>
+    <script type="module">
+      const board = JXG.JSXGraph.initBoard('jxgbox', jg.style.boardStyle);
+      
+const A = board.create('point', [0, 0], { name: 'A' });
+const B = board.create('point', [2, 2], { name: 'B' });
+
+let prevX, prevY;
+
+A.on('drag', function() {
+  const dx = A.X() - prevX;
+  const dy = A.Y() - prevY;
+
+  B.moveTo([B.X() + dx, B.Y() + dy]);
+
+  prevX = A.X();
+  prevY = A.Y();
+});
+
+A.on('down', function() {
+  prevX = A.X();
+  prevY = A.Y();
+});
+
+    </script>
+</body>
+</html>
