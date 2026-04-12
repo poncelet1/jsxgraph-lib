@@ -39,14 +39,19 @@ const XBD = board.create('point', [() => jg.point.intersection(B, D, L1, L2)], {
 const XCD = board.create('point', [() => jg.point.intersection(C, D, L1, L2)], {name: 'XCD', ...jg.style.pointStyle});
 
 const xabx = () => jg.core.getXY(XAB)[0];
+const xaby = () => jg.core.getXY(XAB)[1];
 const xacx = () => jg.core.getXY(XAC)[0];
+const xacy = () => jg.core.getXY(XAC)[1];
 const xbdx = () => jg.core.getXY(XBD)[0];
+const xbdy = () => jg.core.getXY(XBD)[1];
 const xcdx = () => jg.core.getXY(XCD)[0];
+const xcdy = () => jg.core.getXY(XCD)[1];
         
 const k = () => (xabx() - xacx()) * (xabx() - xbdx()) * (xcdx() - xacx()) * (xcdx() - xbdx()) / (xabx() + xcdx() - xacx() - xbdx()) ** 2;
 const ox = () => (xabx() * xcdx() - xacx() * xbdx()) / (xabx() + xcdx() - xacx() - xbdx());
+const oy = () => (xaby() * xcdy() - xacy() * xbdy()) / (xaby() + xcdy() - xacy() - xbdy());
 
-const O = board.create('point', [ox, () => jg.point.slope(L1, L2) * ox() + jg.point.yintercept(L1, L2)], {name: 'O', ...jg.style.pointStyle});
+const O = board.create('point', [ox, oy], {name: 'O', ...jg.style.pointStyle});
         
 const conicABCDP = board.create('conic', [A, B, C, D, P], jg.style.circleStyle);
                
