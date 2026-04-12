@@ -120,9 +120,7 @@ export function incenter(A, B, C) {
  * @returns incircle
  */
 export function incircle(board, A, B, C, style = circleStyle) {
-    const center = () => incenter(A, B, C);
-    const radius = () => inradius(A, B, C);
-    return board.create('circle', [center, radius], style);
+    return board.create('circle', [() => incenter(A, B, C), () => inradius(A, B, C)], style);
 }
 
 /**
