@@ -17,15 +17,14 @@
 const O = board.create('point', [-2, 1], {name: 'O'});
 const OR = board.create('point', [1, 0], {name: 'OR'});
 
-// 1. Create a transformation that follows O's coordinates
-const transform = board.create('transform', [
-    () => O.X(), 
-    () => O.Y()
+// Define a transform that only tracks the DELTA (change) of O
+const transformO = board.create('transform', [
+    () => O.X() - O.startPos[1], // Change in X
+    () => O.Y() - O.startPos[2]  // Change in Y
 ], {type: 'translate'});
 
-// 2. Link OR to O's movement
-// This makes OR move when O moves, but OR remains draggable on its own
-OR.addTransform(O, transform);
+// Link OR to O using that relative change
+OR.addTransform(O, transformO);
 
 const circO = board.create('circle', [O, OR], jg.style.circleStyleInverse);
         
