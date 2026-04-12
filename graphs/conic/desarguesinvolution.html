@@ -49,14 +49,14 @@ const xcdy = () => jg.core.getXY(XCD)[1];
 
 const invOx = () => (xabx() * xcdx() - xacx() * xbdx()) / (xabx() + xcdx() - xacx() - xbdx());
 const invOy = () => (xaby() * xcdy() - xacy() * xbdy()) / (xaby() + xcdy() - xacy() - xbdy());
-const invR = () => Math.sqrt(jg.point.dist([invOx, invOy], XAB), jg.point.dist([invOx, invOy], XCD));
+const invR = () => Math.sqrt(jg.point.dist([invOx(), invOy()], XAB) * jg.point.dist([invOx, invOy], XCD));
 
 const invO = board.create('point', [invOx, invOy], {name: 'O', ...jg.style.pointStyle});
-const invCirc = board.create('circle', [[invOx, invOy], invR], jg.style.circleStyleInverse);
+const invCirc = board.create('circle', [invO, invR], jg.style.circleStyleInverse);
         
 const conicABCDP = board.create('conic', [A, B, C, D, P], jg.style.circleStyle);
 
-board.create('text', [-1, -1, `${invR().toFixed(4)}`]);
+board.create('text', [-1, -1, () => `${invR().toFixed(4)}`]);
                
     </script>
 </body>
