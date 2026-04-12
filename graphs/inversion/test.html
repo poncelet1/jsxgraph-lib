@@ -34,6 +34,23 @@ A.on('down', function() {
   prevY = A.Y();
 });
 
+const C = board.create('point', [1, 1], {name: 'C'});
+const D = board.create('point', [4, 2], {name: 'D'});
+
+// Store initial offset
+let dx = D.X() - C.X();
+let dy = D.Y() - C.Y();
+
+// When C moves, update D by the same displacement
+C.on('drag', () => {
+    D.moveTo([C.X() + dx, C.Y() + dy]);
+});
+
+// When D moves, update the stored offset
+D.on('drag', () => {
+    dx = D.X() - C.X();
+    dy = D.Y() - C.Y();
+});
     </script>
 </body>
 </html>
