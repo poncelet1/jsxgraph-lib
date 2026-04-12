@@ -66,9 +66,8 @@ export function hyperCircleRadius(A, r) {
  * @returns hyperbolic circle
  */
 export function hyperCircle(board, A, r, style = circleStyle) {
-    const getCoords = () => (typeof A.X === 'function') ? [A.X(), A.Y()] : A;
-    const center = () => hyperCircleCenter(getCoords(), typeof r === 'function' ? r() : r);
-    const radius = () => hyperCircleRadius(getCoords(), typeof r === 'function' ? r() : r);
+    const center = () => hyperCircleCenter(getXY(A), typeof r === 'function' ? r() : r);
+    const radius = () => hyperCircleRadius(getXY(A), typeof r === 'function' ? r() : r);
     return board.create('circle', [center, radius], style);
 }
 
