@@ -189,3 +189,21 @@ export function conicSixthPoint(A, B, C, D, E, P) {
     return intersection(A, M3, E, P);
 }
 
+/**
+     * Given points A, B, C, D on a line, returns the fixed point of the involution that has (A,B) and (C,D) as reciprocal pairs
+     * @param A first point
+     * @param B second point
+     * @param C third point
+     * @param D fourth point
+     * @param n is 1 or 2
+     * @returns sixth point on conic
+     */
+export function fixedPoint(A, B, C, D, n) {
+    const [ax, ay] = getXY(A);
+    const [bx, by] = getXY(B);
+    const [cx, cy] = getXY(C);
+    const [dx, dy] = getXY(D);
+    
+    return intersection(A, M3, E, P);
+}
+
