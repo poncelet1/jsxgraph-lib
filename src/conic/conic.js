@@ -180,15 +180,14 @@ export function brianchonPoint(A, B, C, D, E) {
      * @param E fifth point
      * @returns brianchon point
      */
-export function conicByLines(A, B, C, D, E) {
-
+export function conicByLines(A, B, C, D, E, style = jg.style.circleStyle) {
     const TAB = () => brianchonPoint(A, B, C, D, E);
     const TBC = () => brianchonPoint(B, C, D, E, A);
     const TCD = () => brianchonPoint(C, D, E, A, B);
     const TDE = () => brianchonPoint(D, E, A, B, C);
     const TEA = () => brianchonPoint(E, A, B, C, D);
     
-    return board.create('conic', [TAB, TBC, TCD, TDE, TEA], jg.style.circleStyle);
+    return board.create('conic', [TAB, TBC, TCD, TDE, TEA], style);
 }
 
 /**
