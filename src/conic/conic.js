@@ -173,6 +173,7 @@ export function brianchonPoint(A, B, C, D, E) {
 
 /**
      * Given points A, B, C, D, E, returns the conic that is tangent to lines AB, BC, CD, DE, EA
+     * @param JSXgraph board
      * @param A first point
      * @param B second point
      * @param C third point
@@ -180,7 +181,7 @@ export function brianchonPoint(A, B, C, D, E) {
      * @param E fifth point
      * @returns brianchon point
      */
-export function conicByLines(A, B, C, D, E, style = jg.style.circleStyle) {
+export function conicByLine(board, A, B, C, D, E, style = jg.style.circleStyle) {
     const TAB = () => brianchonPoint(A, B, C, D, E);
     const TBC = () => brianchonPoint(B, C, D, E, A);
     const TCD = () => brianchonPoint(C, D, E, A, B);
