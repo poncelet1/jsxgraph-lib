@@ -195,15 +195,17 @@ export function conicSixthPoint(A, B, C, D, E, P) {
      * @param B second point
      * @param C third point
      * @param D fourth point
-     * @param n is 1 or 2
-     * @returns sixth point on conic
+     * @param n is 0 or 1
+     * @returns fixed point
      */
 export function fixedPoint(A, B, C, D, n) {
     const [ax, ay] = getXY(A);
     const [bx, by] = getXY(B);
     const [cx, cy] = getXY(C);
     const [dx, dy] = getXY(D);
-    
-    return intersection(A, M3, E, P);
+
+    fx = jg.core.quadraticRoot(ax + bx - cx - dx, -2 * (ax * bx - cx * dx), ax * bx * cx + ax * bx * dx - ax * cx * dx - bx * cx * dx, n);
+    fy = jg.core.quadraticRoot(ay + by - cy - dy, -2 * (ay * by - cy * dy), ay * by * cy + ay * by * dy - ay * cy * dy - by * cy * dy, n);
+    return [fx, fy];
 }
 
