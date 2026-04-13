@@ -172,6 +172,26 @@ export function brianchonPoint(A, B, C, D, E) {
 }
 
 /**
+     * Given points A, B, C, D, E, returns the conic that is tangent to lines AB, BC, CD, DE, EA
+     * @param A first point
+     * @param B second point
+     * @param C third point
+     * @param D fourth point
+     * @param E fifth point
+     * @returns brianchon point
+     */
+export function conicByLines(A, B, C, D, E) {
+
+    const TAB = () => brianchonPoint(A, B, C, D, E);
+    const TBC = () => brianchonPoint(B, C, D, E, A);
+    const TCD = () => brianchonPoint(C, D, E, A, B);
+    const TDE = () => brianchonPoint(D, E, A, B, C);
+    const TEA = () => brianchonPoint(E, A, B, C, D);
+    
+    return board.create('conic', [TAB, TBC, TCD, TDE, TEA], jg.style.circleStyle);
+}
+
+/**
      * Given points A, B, C, D, E lying on a conic, and a point P (not on conic), returns the point where line EP intersects the conic (again)
      * @param A first point
      * @param B second point
