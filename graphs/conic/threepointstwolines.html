@@ -30,9 +30,23 @@ const X1 = board.create('point', [() => jg.conic.fixedPoint(A, B, H, I, 0)], { v
 const X2 = board.create('point', [() => jg.conic.fixedPoint(A, B, H, I, 1)], { visible: false, withLabel: false });
 const Y1 = board.create('point', [() => jg.conic.fixedPoint(A, C, F, G, 0)], { visible: false, withLabel: false });
 const Y2 = board.create('point', [() => jg.conic.fixedPoint(A, C, F, G, 1)], { visible: false, withLabel: false });
-        
+
+const I1 = board.create('point', [() => jg.point.intersection(P, Q, X1, Y1)], { visible: false, withLabel: false });
+const I2 = board.create('point', [() => jg.point.intersection(P, R, X1, Y1)], { visible: false, withLabel: false });
+const I3 = board.create('point', [() => jg.point.intersection(P, Q, X1, Y2)], { visible: false, withLabel: false });
+const I4 = board.create('point', [() => jg.point.intersection(P, R, X1, Y2)], { visible: false, withLabel: false });
+const I5 = board.create('point', [() => jg.point.intersection(P, Q, X2, Y1)], { visible: false, withLabel: false });
+const I6 = board.create('point', [() => jg.point.intersection(P, R, X2, Y1)], { visible: false, withLabel: false });
+const I7 = board.create('point', [() => jg.point.intersection(P, Q, X2, Y2)], { visible: false, withLabel: false });
+const I8 = board.create('point', [() => jg.point.intersection(P, R, X2, Y2)], { visible: false, withLabel: false });
+
 const linePQ = board.create('line', [P, Q], jg.style.lineStyle);
 const linePR = board.create('line', [P, R], jg.style.lineStyle);
+
+const conic1 = jg.conic.conicByLines(board, A, B, C, I1, I2);
+const conic2 = jg.conic.conicByLines(board, A, B, C, I3, I4);
+const conic3 = jg.conic.conicByLines(board, A, B, C, I5, I6);
+const conic4 = jg.conic.conicByLines(board, A, B, C, I7, I8);
             
     </script>
 </body>
