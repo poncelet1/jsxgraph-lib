@@ -26,8 +26,8 @@ const X2 = board.create('point', [() => jg.point.intersection(C, D, P, Q)], {nam
 const Y1 = board.create('point', [() => jg.point.intersection(A, D, P, Q)], {name: 'Y1', ...jg.style.pointStyle});
 const Y2 = board.create('point', [() => jg.point.intersection(B, C, P, Q)], {name: 'Y2', ...jg.style.pointStyle});
 
-const E1 = board.create('point', [() => jg.conic.fixedPoint.(X1, X2, Y1, Y2, 0)], {name: 'E1', ...jg.style.pointStyle});
-const E2 = board.create('point', [() => jg.conic.fixedPoint.(X1, X2, Y1, Y2, 1)], {name: 'E1', ...jg.style.pointStyle});
+const E1 = board.create('point', [() => jg.conic.fixedPoint(X1, X2, Y1, Y2, 0)], {name: 'E1', ...jg.style.pointStyle});
+const E2 = board.create('point', [() => jg.conic.fixedPoint(X1, X2, Y1, Y2, 1)], {name: 'E1', ...jg.style.pointStyle});
 
 const linePQ = board.create('line', [P, Q], jg.style.lineStyle);
 const conic1 = board.create('conic', [A, B, C, D, E1], jg.style.circleStyle);
