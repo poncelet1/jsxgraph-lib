@@ -23,7 +23,7 @@ const L2 = board.create('point', [1.5, -1], {name: 'L2'});
 
 const lineL = board.create('line', [L1, L2], jg.style.lineStyle);
 const P = board.create('glider', [-4.3, 0.3, lineL], {name: 'P'});
-const QB= board.create('point', [() => jg.point.conicSixthPoint(A, B, C, D, P, L1)], {name: 'Q', ...jg.style.pointStyle});
+const Q = board.create('point', [() => jg.point.conicSixthPoint(A, B, C, D, P, L1)], {name: 'Q', ...jg.style.pointStyle});
 
 const lineAB = board.create('line', [A, B], {...jg.style.lineStyle, strokeColor: 'lightgray'});
 const lineAC = board.create('line', [A, C], {...jg.style.lineStyle, strokeColor: 'lightgray'});
