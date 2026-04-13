@@ -21,6 +21,11 @@ const D = board.create('point', [1.1, 2.0], {name: 'D'});
 const P = board.create('point', [-1.2, -0.4], {name: 'P'});
 const Q = board.create('point', [1.5, -1], {name: 'Q'});
 
+const X1 = board.create('point', [() => jg.point.intersection(A, B, P, Q)], {name: 'X1', ...jg.style.pointStyle});
+const X2 = board.create('point', [() => jg.point.intersection(C, D, P, Q)], {name: 'X2', ...jg.style.pointStyle});
+const Y1 = board.create('point', [() => jg.point.intersection(A, D, P, Q)], {name: 'Y1', ...jg.style.pointStyle});
+const Y2 = board.create('point', [() => jg.point.intersection(B, C, P, Q)], {name: 'Y2', ...jg.style.pointStyle});
+
 const linePQ = board.create('line', [P, Q], jg.style.lineStyle);
             
     </script>
