@@ -31,7 +31,7 @@ const lineCD = board.create('line', [C, D], {...jg.style.lineStyle, strokeColor:
 const lineDE = board.create('line', [D, E], {...jg.style.lineStyle, strokeColor: 'lightgray'});
 const lineEA = board.create('line', [E, A], {...jg.style.lineStyle, strokeColor: 'lightgray'});
 
-const conicABCDE = jg.conic.conicByLines(A, B, C, D, E);
+const conicABCDE = jg.conic.conicByLines(board, A, B, C, D, E);
                
     </script>
 </body>
