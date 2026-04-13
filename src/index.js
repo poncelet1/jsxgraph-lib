@@ -8,14 +8,14 @@ import * as style from './style/style.js';
 import * as triangle from './triangle/triangle.js';
 
 export const jg = {
-    complex,
-    conic,
-    core,
-    hyperbolic,
-    inversion,
-    point,
-    style,
-    triangle
+  complex,
+  conic,
+  core,
+  hyperbolic,
+  inversion,
+  point,
+  style,
+  triangle
 };
 
 window.jg = jg;
