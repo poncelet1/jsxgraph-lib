@@ -43,10 +43,10 @@ const I8 = board.create('point', [() => jg.point.intersection(P, R, X2, Y2)], { 
 const linePQ = board.create('line', [P, Q], jg.style.lineStyle);
 const linePR = board.create('line', [P, R], jg.style.lineStyle);
 
-const conic1 = jg.conic.conicByLines(board, A, B, C, I1, I2);
-const conic2 = jg.conic.conicByLines(board, A, B, C, I3, I4);
-const conic3 = jg.conic.conicByLines(board, A, B, C, I5, I6);
-const conic4 = jg.conic.conicByLines(board, A, B, C, I7, I8);
+const conic1 = board.create('conic', [A, B, C, I1, I2], jg.style.circleStyle);
+const conic2 = board.create('conic', [A, B, C, I3, I4], jg.style.circleStyle);
+const conic3 = board.create('conic', [A, B, C, I5, I6], jg.style.circleStyle);
+const conic4 = board.create('conic', [A, B, C, I7, I8], jg.style.circleStyle);
             
     </script>
 </body>
