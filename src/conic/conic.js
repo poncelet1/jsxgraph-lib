@@ -182,11 +182,11 @@ export function brianchonPoint(A, B, C, D, E) {
      * @returns brianchon point
      */
 export function conicByLines(board, A, B, C, D, E, style = jg.style.circleStyle) {
-    const TAB = () => brianchonPoint(A, B, C, D, E);
-    const TBC = () => brianchonPoint(B, C, D, E, A);
-    const TCD = () => brianchonPoint(C, D, E, A, B);
-    const TDE = () => brianchonPoint(D, E, A, B, C);
-    const TEA = () => brianchonPoint(E, A, B, C, D);
+    const TAB = board.create('point', [() => brianchonPoint(A, B, C, D, E)], { visible: false, withLabel: false });
+    const TBC = board.create('point', [() => brianchonPoint(B, C, D, E, A)], { visible: false, withLabel: false });
+    const TCD = board.create('point', [() => brianchonPoint(C, D, E, A, B)], { visible: false, withLabel: false });
+    const TDE = board.create('point', [() => brianchonPoint(D, E, A, B, C)], { visible: false, withLabel: false });
+    const TEA = board.create('point', [() => brianchonPoint(E, A, B, C, D)], { visible: false, withLabel: false });
     
     return board.create('conic', [TAB, TBC, TCD, TDE, TEA], style);
 }
