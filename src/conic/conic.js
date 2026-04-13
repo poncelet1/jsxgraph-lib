@@ -181,7 +181,7 @@ export function brianchonPoint(A, B, C, D, E) {
      * @param E fifth point
      * @returns brianchon point
      */
-export function conicByLine(board, A, B, C, D, E, style = jg.style.circleStyle) {
+export function conicByLines(board, A, B, C, D, E, style = jg.style.circleStyle) {
     const TAB = () => brianchonPoint(A, B, C, D, E);
     const TBC = () => brianchonPoint(B, C, D, E, A);
     const TCD = () => brianchonPoint(C, D, E, A, B);
