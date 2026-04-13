@@ -15,10 +15,10 @@
       const board = JXG.JSXGraph.initBoard('jxgbox', jg.style.boardStyle);
       
 const A = board.create('point', [-1.2, 1.5], {name: 'A'});
-const B = board.create('point', [1.7, -2.1], {name: 'B'});
+const B = board.create('point', [0.5, -2.1], {name: 'B'});
 const P = board.create('point', [-1.2, 3.4], {name: 'P'});
 const Q = board.create('point', [-4.2, -2.9], {name: 'Q'});
-const R = board.create('point', [3.7, -0.7], {name: 'R'});
+const R = board.create('point', [3.7, -3.2], {name: 'R'});
 
 const F = board.create('point', [() => jg.point.intersection(A, P, Q, R)], { visible: false, withLabel: false });
 const G = board.create('point', [() => jg.point.intersection(B, P, Q, R)], { visible: false, withLabel: false });
