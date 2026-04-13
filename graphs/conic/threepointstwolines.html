@@ -21,6 +21,16 @@ const P = board.create('point', [3.2, -1.4], {name: 'P'});
 const Q = board.create('point', [-4.2, 0.8], {name: 'Q'});
 const R = board.create('point', [-0.5, 3.7], {name: 'R'});
 
+const F = board.create('point', [() => jg.point.intersection(A, C, P, Q)], { visible: false, withLabel: false });
+const G = board.create('point', [() => jg.point.intersection(A, C, P, R)], { visible: false, withLabel: false });
+const H = board.create('point', [() => jg.point.intersection(A, B, P, R)], { visible: false, withLabel: false });
+const I = board.create('point', [() => jg.point.intersection(A, B, P, Q)], { visible: false, withLabel: false });
+
+const X1 = board.create('point', [() => jg.conic.fixedPoint(A, B, H, I, 0)], { visible: false, withLabel: false });
+const X2 = board.create('point', [() => jg.conic.fixedPoint(A, B, H, I, 1)], { visible: false, withLabel: false });
+const Y1 = board.create('point', [() => jg.conic.fixedPoint(A, C, F, G, 0)], { visible: false, withLabel: false });
+const Y2 = board.create('point', [() => jg.conic.fixedPoint(A, C, F, G, 1)], { visible: false, withLabel: false });
+        
 const linePQ = board.create('line', [P, Q], jg.style.lineStyle);
 const linePR = board.create('line', [P, R], jg.style.lineStyle);
             
