@@ -20,6 +20,11 @@ const Q = board.create('point', [-2.9, -1.7], {name: 'Q'});
 const R = board.create('point', [4.1, -3.5], {name: 'R'});
 const S = board.create('point', [2.5, 3.1], {name: 'S'});
 
+const X1 = board.create('point', [() => jg.point.intersection(A, Q, P, S)], {name: 'X1', ...jg.style.pointStyle});
+const X2 = board.create('point', [() => jg.point.intersection(A, R, P, S)], {name: 'X1', ...jg.style.pointStyle});
+const T1 = board.create('point', [() => jg.conic.fixedPoint(P, X2, S, X1, 0)], {...jg.style.pointStyle, withLabel: false});
+const T2 = board.create('point', [() => jg.conic.fixedPoint(P, X2, S, X1, 1)], {...jg.style.pointStyle, withLabel: false});
+        
 const linePQ = board.create('line', [P, Q], {...jg.style.lineStyle, strokeColor: 'lightgray'});
 const lineQR = board.create('line', [Q, R], {...jg.style.lineStyle, strokeColor: 'lightgray'});
 const lineRS = board.create('line', [R, S], {...jg.style.lineStyle, strokeColor: 'lightgray'});
