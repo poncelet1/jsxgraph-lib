@@ -14,24 +14,15 @@
     <script type="module">
       const board = JXG.JSXGraph.initBoard('jxgbox', jg.style.boardStyle);
       
-const A = board.create('point', [-0.3, 2.5], {name: 'A'});
-const B = board.create('point', [-2.1, 2.1], {name: 'B'});
-const C = board.create('point', [0.7, 0.3], {name: 'C'});
-const D = board.create('point', [1.1, 2.0], {name: 'D'});
-const P = board.create('point', [-1.2, -0.4], {name: 'P'});
-const Q = board.create('point', [1.5, -1], {name: 'Q'});
-
-const X1 = board.create('point', [() => jg.point.intersection(A, B, P, Q)], { visible: false, withLabel: false });
-const X2 = board.create('point', [() => jg.point.intersection(C, D, P, Q)], { visible: false, withLabel: false });
-const Y1 = board.create('point', [() => jg.point.intersection(A, D, P, Q)], { visible: false, withLabel: false });
-const Y2 = board.create('point', [() => jg.point.intersection(B, C, P, Q)], { visible: false, withLabel: false });
-
-const E1 = board.create('point', [() => jg.conic.fixedPoint(X1, X2, Y1, Y2, 0)], {...jg.style.pointStyle, withLabel: false});
-const E2 = board.create('point', [() => jg.conic.fixedPoint(X1, X2, Y1, Y2, 1)], {...jg.style.pointStyle, withLabel: false});
+const A = board.create('point', [-3.1, 1.5], {name: 'A'});
+const B = board.create('point', [-0.7, 0.8], {name: 'B'});
+const C = board.create('point', [0.7, 1.2], {name: 'C'});
+const P = board.create('point', [3.2, -1.4], {name: 'P'});
+const Q = board.create('point', [-4.2, 0.8], {name: 'Q'});
+const R = board.create('point', [-0.5, 3.7], {name: 'R'});
 
 const linePQ = board.create('line', [P, Q], jg.style.lineStyle);
-const conic1 = board.create('conic', [A, B, C, D, E1], jg.style.circleStyle);
-const conic2 = board.create('conic', [A, B, C, D, E2], jg.style.circleStyle);
+const linePR = board.create('line', [P, R], jg.style.lineStyle);
             
     </script>
 </body>
