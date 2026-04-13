@@ -29,6 +29,9 @@ const linePQ = board.create('line', [P, Q], {...jg.style.lineStyle, strokeColor:
 const lineQR = board.create('line', [Q, R], {...jg.style.lineStyle, strokeColor: 'lightgray'});
 const lineRS = board.create('line', [R, S], {...jg.style.lineStyle, strokeColor: 'lightgray'});
 const lineSP = board.create('line', [S, P], {...jg.style.lineStyle, strokeColor: 'lightgray'});
+
+const conic1 = jg.conic.conicByLines(board, jg.point.intersection(A, T1, P, Q), Q, R, S, T1);
+const conic2 = jg.conic.conicByLines(board, jg.point.intersection(A, T2, P, Q), Q, R, S, T2);
             
     </script>
 </body>
