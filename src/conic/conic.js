@@ -204,8 +204,9 @@ export function fixedPoint(A, B, C, D, n) {
     const [cx, cy] = getXY(C);
     const [dx, dy] = getXY(D);
 
-    fx = jg.core.quadraticRoot(ax + bx - cx - dx, -2 * (ax * bx - cx * dx), ax * bx * cx + ax * bx * dx - ax * cx * dx - bx * cx * dx, n);
-    fy = jg.core.quadraticRoot(ay + by - cy - dy, -2 * (ay * by - cy * dy), ay * by * cy + ay * by * dy - ay * cy * dy - by * cy * dy, n);
+    const fx = jg.core.quadraticRoot(ax + bx - cx - dx, -2 * (ax * bx - cx * dx), ax * bx * cx + ax * bx * dx - ax * cx * dx - bx * cx * dx, n);
+    const fy = jg.core.quadraticRoot(ay + by - cy - dy, -2 * (ay * by - cy * dy), ay * by * cy + ay * by * dy - ay * cy * dy - by * cy * dy, n);
+    
     return [fx, fy];
 }
 
