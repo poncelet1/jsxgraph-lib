@@ -170,3 +170,22 @@ export function conicCenterByPoints(A, B, C, D, E) {
 export function brianchonPoint(A, B, C, D, E) {
     return intersection(A, B, D, intersection(A, C, B, E));
 }
+
+/**
+     * Given points A, B, C, D, E lying on a conic, and a point P (not on conic), returns the point where line EP intersects the conic (again)
+     * @param A first point
+     * @param B second point
+     * @param C third point
+     * @param D fourth point
+     * @param E fifth point
+     * @param P sixth point
+     * @returns sixth point on conic
+     */
+export function conicSixthPoint(A, B, C, D, E, P) {
+    const M1 = jg.point.intersection(A, B, D, E);
+    const M2 = jg.point.intersection(B, C, E, P);
+    const M3 = jg.point.intersection(C, D, M1, M2);
+    
+    return intersection(A, M3, E, P);
+}
+
