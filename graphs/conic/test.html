@@ -23,7 +23,7 @@ const conicABCDEcenter = board.create('point', [() => jg.conic.conicCenterByPoin
 const P = board.create('point', [0.1, 0.2], {name: 'P'});
 const M1 = board.create('point', [() => jg.point.intersection(A, B, D, E)], {name: 'M1', ...jg.style.pointStyle});
 const M2 = board.create('point', [() => jg.point.intersection(B, C, E, P)], {name: 'M2', ...jg.style.pointStyle});
-const M3 = board.create('point', [() => jg.point.intersection(C, D, M1, M3)], {name: 'M2', ...jg.style.pointStyle});
+const M3 = board.create('point', [() => jg.point.intersection(C, D, M1, M2)], {name: 'M2', ...jg.style.pointStyle});
 const Q = board.create('point', [() => jg.point.intersection(A, M3, E, P)], {name: 'Q', ...jg.style.pointStyle});
 
 const lineEP = board.create('point', [E, P], jg.style.lineStyle);
