@@ -277,7 +277,7 @@ export function hyperPerpBisCenter(A, B) {
  * @param A first point
  * @param B second point
  * @param style optional circle style
- * @returns hyperbolic line segment
+ * @returns perpendicular bisector
  */
 export function hyperPerpBis(board, A, B, style = circleStyle) {
   const M = board.create("point", [() => hyperMidpoint(A, B)], {
@@ -387,11 +387,11 @@ export function hyperIntouchPoint(A, B, C) {
 }
 
 /**
- * Given points A, B, C, returns the point where the inradius of hyperbolic triangle ABC
+ * Given points A, B, C, returns the inradius of hyperbolic triangle ABC
  * @param A first point
  * @param B second point
  * @param C third point
- * @returns inradius point
+ * @returns inradius
  */
 export function hyperInradius(A, B, C) {
   const a = hyperDist(B, C);
@@ -407,7 +407,7 @@ export function hyperInradius(A, B, C) {
 }
 
 /**
- * Given points A, B, C, returns the point where the incenter of hyperbolic triangle ABC
+ * Given points A, B, C, returns the incenter of hyperbolic triangle ABC
  * @param A first point
  * @param B second point
  * @param C third point
@@ -447,11 +447,31 @@ export function hyperIncircle(board, A, B, C, style = circleStyle) {
 }
 
 /**
+ * Given points A, B, C, returns the A-exradius of hyperbolic triangle ABC
+ * @param A first point
+ * @param B second point
+ * @param C third point
+ * @returns A-exradius
+ */
+export function hyperExradius(A, B, C) {
+  const a = hyperDist(B, C);
+  const b = hyperDist(C, A);
+  const c = hyperDist(A, B);
+  const s = (a + b + c) / 2;
+
+  return Math.atanh(
+    Math.sqrt(
+      (Math.sinh(s) * Math.sinh(s - b) * Math.sinh(s - c)) / Math.sinh(s - a),
+    ),
+  );
+}
+
+/**
  * Given points A, B, C, returns the A-excenter hyperbolic triangle ABC
  * @param A first point
  * @param B second point
  * @param C third point
- * @returns incenter
+ * @returns A-excenter
  */
 export function hyperExcenter(A, B, C) {
   const a = hyperDist(B, C);
@@ -489,26 +509,6 @@ export function hyperExcircle(board, A, B, C, style = circleStyle) {
   });
 
   return hyperCircle(board, IA, rA, style);
-}
-
-/**
- * Given points A, B, C, returns the A-exradius of hyperbolic triangle ABC
- * @param A first point
- * @param B second point
- * @param C third point
- * @returns A-exradius
- */
-export function hyperExradius(A, B, C) {
-  const a = hyperDist(B, C);
-  const b = hyperDist(C, A);
-  const c = hyperDist(A, B);
-  const s = (a + b + c) / 2;
-
-  return Math.atanh(
-    Math.sqrt(
-      (Math.sinh(s) * Math.sinh(s - b) * Math.sinh(s - c)) / Math.sinh(s - a),
-    ),
-  );
 }
 
 /**
