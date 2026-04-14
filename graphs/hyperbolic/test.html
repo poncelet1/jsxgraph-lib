@@ -1,34 +1,34 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraphcore.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraph.css" />
-    <script type="module" src="../../src/index.js"></script>
-    <style>
-        body { margin: 0; overflow: hidden; } /* Removes scrollbars inside the frame */
-        .jxgbox { width: 100vw; height: 100vh; border: none; } /* Fills the frame */
-    </style>
-</head>
-<body>
-    <div id="jxgbox" class="jxgbox"></div>
-    <script type="module">
-      const board = JXG.JSXGraph.initBoard('jxgbox', jg.style.boardStyleHyperbolic);
-      
-const A = board.create('point', [-0.2, 0.5], {name: 'A'});
-const B = board.create('point', [0.3, 0.1], {name: 'B'});
-const C = board.create('point', [-0.4, -0.1], {name: 'C'});
-const D = board.create('point', [0.2, 0.4], {name: 'D'});
-const M = board.create('point', [() => jg.hyperbolic.hyperMidpoint(A, B)], {name: 'M', ...jg.style.pointStyle});
-const X = board.create('point', [() => jg.hyperbolic.clineIntersect(A, B, C, D)], {name: 'X', ...jg.style.pointStyle});
-
-const lineAB = jg.hyperbolic.hyperline(board, A, B);
-const lineCD = jg.hyperbolic.hyperlineSegment(board, C, D);
-const perpBisAB = jg.hyperbolic.hyperPerpBis(board, A, B);
-const unitcircle = board.create('circle', [[0, 0], 1], jg.style.circleStyle);
-        
-//board.create('text', [-1, -1, () => `${jg.triangle.signedArea(X, C, D).toFixed(4)}`]);
-//board.create('text', [-1, -1.2, () => `${R1.X().toFixed(4)}`]);
-//board.create('text', [-1, -1.4, () => `${jg.hyperbolic.hyperDist(O, B).toFixed(4)}`]);
-    </script>
-</body>
+   <head>
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraphcore.js"></script>
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraph.css" />
+      <script type="module" src="../../src/index.js"></script>
+      <style>
+         body { margin: 0; overflow: hidden; } /* Removes scrollbars inside the frame */
+         .jxgbox { width: 100vw; height: 100vh; border: none; } /* Fills the frame */
+      </style>
+   </head>
+   <body>
+      <div id="jxgbox" class="jxgbox"></div>
+      <script type="module">
+         const board = JXG.JSXGraph.initBoard('jxgbox', jg.style.boardStyleHyperbolic);
+         
+         const A = board.create('point', [-0.2, 0.5], {name: 'A'});
+         const B = board.create('point', [0.3, 0.1], {name: 'B'});
+         const C = board.create('point', [-0.4, -0.1], {name: 'C'});
+         const D = board.create('point', [0.2, 0.4], {name: 'D'});
+         const M = board.create('point', [() => jg.hyperbolic.hyperMidpoint(A, B)], {name: 'M', ...jg.style.pointStyle});
+         const X = board.create('point', [() => jg.hyperbolic.clineIntersect(A, B, C, D)], {name: 'X', ...jg.style.pointStyle});
+         
+         const lineAB = jg.hyperbolic.hyperline(board, A, B);
+         const lineCD = jg.hyperbolic.hyperlineSegment(board, C, D);
+         const perpBisAB = jg.hyperbolic.hyperPerpBis(board, A, B);
+         const unitcircle = board.create('circle', [[0, 0], 1], jg.style.circleStyle);
+           
+         //board.create('text', [-1, -1, () => `${jg.triangle.signedArea(X, C, D).toFixed(4)}`]);
+         //board.create('text', [-1, -1.2, () => `${R1.X().toFixed(4)}`]);
+         //board.create('text', [-1, -1.4, () => `${jg.hyperbolic.hyperDist(O, B).toFixed(4)}`]);
+      </script>
+   </body>
 </html>
