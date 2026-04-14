@@ -14,35 +14,35 @@
       <script type="module">
          const board = JXG.JSXGraph.initBoard('jxgbox', jg.style.boardStyle);
          
-         const A = board.create('point', [-1.2, 1.5], {name: 'A'});
-         const B = board.create('point', [0.5, -2.1], {name: 'B'});
-         const P = board.create('point', [-1.2, 3.4], {name: 'P'});
-         const Q = board.create('point', [-4.2, -2.9], {name: 'Q'});
-         const R = board.create('point', [3.7, -3.2], {name: 'R'});
+         const A = board.create('point', [-1.2, 1.5], {name: 'A', ...jg.style.pointStyleDrag});
+         const B = board.create('point', [0.5, -2.1], {name: 'B', ...jg.style.pointStyleDrag});
+         const P = board.create('point', [-1.2, 3.4], {name: 'P', ...jg.style.pointStyleDrag});
+         const Q = board.create('point', [-4.2, -2.9], {name: 'Q', ...jg.style.pointStyleDrag});
+         const R = board.create('point', [3.7, -3.2], {name: 'R', ...jg.style.pointStyleDrag});
          
-         const F = board.create('point', [() => jg.point.intersection(A, P, Q, R)], { visible: false, withLabel: false });
-         const G = board.create('point', [() => jg.point.intersection(B, P, Q, R)], { visible: false, withLabel: false });
-         const H = board.create('point', [() => jg.point.intersection(A, Q, P, R)], { visible: false, withLabel: false });
-         const I = board.create('point', [() => jg.point.intersection(B, Q, P, R)], { visible: false, withLabel: false });
+         const F = board.create('point', [() => jg.point.intersection(A, P, Q, R)], jg.style.pointStyleNoShow);
+         const G = board.create('point', [() => jg.point.intersection(B, P, Q, R)], jg.style.pointStyleNoShow);
+         const H = board.create('point', [() => jg.point.intersection(A, Q, P, R)], jg.style.pointStyleNoShow);
+         const I = board.create('point', [() => jg.point.intersection(B, Q, P, R)], jg.style.pointStyleNoShow);
          
-         const T1 = board.create('point', [() => jg.conic.fixedPoint(Q, R, F, G, 0)], { visible: false, withLabel: false });
-         const T2 = board.create('point', [() => jg.conic.fixedPoint(Q, R, F, G, 1)], { visible: false, withLabel: false });
-         const U1 = board.create('point', [() => jg.conic.fixedPoint(P, R, H, I, 0)], { visible: false, withLabel: false });
-         const U2 = board.create('point', [() => jg.conic.fixedPoint(P, R, H, I, 1)], { visible: false, withLabel: false });
+         const T1 = board.create('point', [() => jg.conic.fixedPoint(Q, R, F, G, 0)], jg.style.pointStyleNoShow);
+         const T2 = board.create('point', [() => jg.conic.fixedPoint(Q, R, F, G, 1)], jg.style.pointStyleNoShow);
+         const U1 = board.create('point', [() => jg.conic.fixedPoint(P, R, H, I, 0)], jg.style.pointStyleNoShow);
+         const U2 = board.create('point', [() => jg.conic.fixedPoint(P, R, H, I, 1)], jg.style.pointStyleNoShow);
          
-         const X11 = board.create('point', [() => jg.point.intersection(P, T1, Q, U1)], { visible: false, withLabel: false });
-         const X12 = board.create('point', [() => jg.point.intersection(P, T1, Q, U2)], { visible: false, withLabel: false });
-         const X21 = board.create('point', [() => jg.point.intersection(P, T2, Q, U1)], { visible: false, withLabel: false });
-         const X22 = board.create('point', [() => jg.point.intersection(P, T2, Q, U2)], { visible: false, withLabel: false });
+         const X11 = board.create('point', [() => jg.point.intersection(P, T1, Q, U1)], jg.style.pointStyleNoShow);
+         const X12 = board.create('point', [() => jg.point.intersection(P, T1, Q, U2)], jg.style.pointStyleNoShow);
+         const X21 = board.create('point', [() => jg.point.intersection(P, T2, Q, U1)], jg.style.pointStyleNoShow);
+         const X22 = board.create('point', [() => jg.point.intersection(P, T2, Q, U2)], jg.style.pointStyleNoShow);
          
-         const I1 = board.create('point', [() => jg.point.intersection(X11, A, R, P)], { visible: false, withLabel: false });
-         const I2 = board.create('point', [() => jg.point.intersection(X11, B, R, Q)], { visible: false, withLabel: false });
-         const I3 = board.create('point', [() => jg.point.intersection(X12, A, R, P)], { visible: false, withLabel: false });
-         const I4 = board.create('point', [() => jg.point.intersection(X12, B, R, Q)], { visible: false, withLabel: false });
-         const I5 = board.create('point', [() => jg.point.intersection(X21, A, R, P)], { visible: false, withLabel: false });
-         const I6 = board.create('point', [() => jg.point.intersection(X21, B, R, Q)], { visible: false, withLabel: false });
-         const I7 = board.create('point', [() => jg.point.intersection(X22, A, R, P)], { visible: false, withLabel: false });
-         const I8 = board.create('point', [() => jg.point.intersection(X22, B, R, Q)], { visible: false, withLabel: false });
+         const I1 = board.create('point', [() => jg.point.intersection(X11, A, R, P)], jg.style.pointStyleNoShow);
+         const I2 = board.create('point', [() => jg.point.intersection(X11, B, R, Q)], jg.style.pointStyleNoShow);
+         const I3 = board.create('point', [() => jg.point.intersection(X12, A, R, P)], jg.style.pointStyleNoShow);
+         const I4 = board.create('point', [() => jg.point.intersection(X12, B, R, Q)], jg.style.pointStyleNoShow);
+         const I5 = board.create('point', [() => jg.point.intersection(X21, A, R, P)], jg.style.pointStyleNoShow);
+         const I6 = board.create('point', [() => jg.point.intersection(X21, B, R, Q)], jg.style.pointStyleNoShow);
+         const I7 = board.create('point', [() => jg.point.intersection(X22, A, R, P)], jg.style.pointStyleNoShow);
+         const I8 = board.create('point', [() => jg.point.intersection(X22, B, R, Q)], jg.style.pointStyleNoShow);
            
          const linePQ = board.create('line', [P, Q], jg.style.lineStyle);
          const linePR = board.create('line', [P, R], jg.style.lineStyle);
