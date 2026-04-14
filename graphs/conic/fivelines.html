@@ -1,38 +1,38 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraphcore.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraph.css" />
-    <script type="module" src="../../src/index.js"></script>
-    <style>
-        body { margin: 0; overflow: hidden; } /* Removes scrollbars inside the frame */
-        .jxgbox { width: 100vw; height: 100vh; border: none; } /* Fills the frame */
-    </style>
-</head>
-<body>
-    <div id="jxgbox" class="jxgbox"></div>
-    <script type="module">
-      const board = JXG.JSXGraph.initBoard('jxgbox', jg.style.boardStyle);
-      
-const A = board.create('point', [-1.8, 3.1], {name: 'A'});
-const B = board.create('point', [-3.3, -1.7], {name: 'B'});
-const C = board.create('point', [-1.2, -2.6], {name: 'C'});
-const D = board.create('point', [3.5, -0.4], {name: 'D'});
-const E = board.create('point', [1.1, 2.9], {name: 'E'});
-const TAB = board.create('point', [() => jg.conic.brianchonPoint(A, B, C, D, E)], {...jg.style.pointStyle, withLabel : false});
-const TBC = board.create('point', [() => jg.conic.brianchonPoint(B, C, D, E, A)], {...jg.style.pointStyle, withLabel : false});
-const TCD = board.create('point', [() => jg.conic.brianchonPoint(C, D, E, A, B)], {...jg.style.pointStyle, withLabel : false});
-const TDE = board.create('point', [() => jg.conic.brianchonPoint(D, E, A, B, C)], {...jg.style.pointStyle, withLabel : false});
-const TEA = board.create('point', [() => jg.conic.brianchonPoint(E, A, B, C, D)], {...jg.style.pointStyle, withLabel : false});
-
-const lineAB = board.create('line', [A, B], {...jg.style.lineStyle, strokeColor: 'lightgray'});
-const lineBC = board.create('line', [B, C], {...jg.style.lineStyle, strokeColor: 'lightgray'});
-const lineCD = board.create('line', [C, D], {...jg.style.lineStyle, strokeColor: 'lightgray'});
-const lineDE = board.create('line', [D, E], {...jg.style.lineStyle, strokeColor: 'lightgray'});
-const lineEA = board.create('line', [E, A], {...jg.style.lineStyle, strokeColor: 'lightgray'});
-
-const conicABCDE = jg.conic.conicByLines(board, A, B, C, D, E);
-               
-    </script>
-</body>
+   <head>
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraphcore.js"></script>
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraph.css" />
+      <script type="module" src="../../src/index.js"></script>
+      <style>
+         body { margin: 0; overflow: hidden; } /* Removes scrollbars inside the frame */
+         .jxgbox { width: 100vw; height: 100vh; border: none; } /* Fills the frame */
+      </style>
+   </head>
+   <body>
+      <div id="jxgbox" class="jxgbox"></div>
+      <script type="module">
+         const board = JXG.JSXGraph.initBoard('jxgbox', jg.style.boardStyle);
+         
+         const A = board.create('point', [-1.8, 3.1], {name: 'A'});
+         const B = board.create('point', [-3.3, -1.7], {name: 'B'});
+         const C = board.create('point', [-1.2, -2.6], {name: 'C'});
+         const D = board.create('point', [3.5, -0.4], {name: 'D'});
+         const E = board.create('point', [1.1, 2.9], {name: 'E'});
+         const TAB = board.create('point', [() => jg.conic.brianchonPoint(A, B, C, D, E)], {...jg.style.pointStyle, withLabel : false});
+         const TBC = board.create('point', [() => jg.conic.brianchonPoint(B, C, D, E, A)], {...jg.style.pointStyle, withLabel : false});
+         const TCD = board.create('point', [() => jg.conic.brianchonPoint(C, D, E, A, B)], {...jg.style.pointStyle, withLabel : false});
+         const TDE = board.create('point', [() => jg.conic.brianchonPoint(D, E, A, B, C)], {...jg.style.pointStyle, withLabel : false});
+         const TEA = board.create('point', [() => jg.conic.brianchonPoint(E, A, B, C, D)], {...jg.style.pointStyle, withLabel : false});
+         
+         const lineAB = board.create('line', [A, B], {...jg.style.lineStyle, strokeColor: 'lightgray'});
+         const lineBC = board.create('line', [B, C], {...jg.style.lineStyle, strokeColor: 'lightgray'});
+         const lineCD = board.create('line', [C, D], {...jg.style.lineStyle, strokeColor: 'lightgray'});
+         const lineDE = board.create('line', [D, E], {...jg.style.lineStyle, strokeColor: 'lightgray'});
+         const lineEA = board.create('line', [E, A], {...jg.style.lineStyle, strokeColor: 'lightgray'});
+         
+         const conicABCDE = jg.conic.conicByLines(board, A, B, C, D, E);
+                  
+      </script>
+   </body>
 </html>
