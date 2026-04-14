@@ -15,7 +15,6 @@
          const board = JXG.JSXGraph.initBoard('jxgbox', jg.style.boardStyleHyperbolic);
          
          const A = board.create('point', [-0.2, 0.5], {name: 'A', ...jg.style.pointStyleDrag});
-         const P = board.create('point', [0.1, 0.4], {name: 'P', ...jg.style.pointStyleDrag});
          const hypercircA = jg.hyperbolic.hyperCircle(board, A, 1);
          
          const unitCircle = board.create('circle', [[0, 0], 1], jg.style.circleStyle);
