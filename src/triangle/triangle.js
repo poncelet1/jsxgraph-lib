@@ -1,113 +1,115 @@
-import { getXY } from '../core/core.js';
-import { dist, intersection, midpoint, project, rotate } from '../point/point.js';
-import { circleStyle } from '../style/style.js';
+import { getXY } from "../core/core.js";
+import {
+  dist,
+  intersection,
+  midpoint,
+  project,
+  rotate,
+} from "../point/point.js";
+import { circleStyle } from "../style/style.js";
 
 /**
-     * Given points A, B, C, returns the semiperimeter of triangle ABC
-     * @param A first point
-     * @param B second point
-     * @param C third point
-     * @returns semiperimeter
-     */
+ * Given points A, B, C, returns the semiperimeter of triangle ABC
+ * @param A first point
+ * @param B second point
+ * @param C third point
+ * @returns semiperimeter
+ */
 export function semiperimeter(A, B, C) {
-    return (dist(A, B) + dist(A, C) + dist(B, C)) / 2;
+  return (dist(A, B) + dist(A, C) + dist(B, C)) / 2;
 }
 
 /**
-     * Given points A, B, C, returns the area of triangle ABC
-     * @param A first point
-     * @param B second point
-     * @param C third point
-     * @returns area
-     */
+ * Given points A, B, C, returns the area of triangle ABC
+ * @param A first point
+ * @param B second point
+ * @param C third point
+ * @returns area
+ */
 export function area(A, B, C) {
-    const [ax, ay] = getXY(A);
-    const [bx, by] = getXY(B);
-    const [cx, cy] = getXY(C);
+  const [ax, ay] = getXY(A);
+  const [bx, by] = getXY(B);
+  const [cx, cy] = getXY(C);
 
-    return Math.abs(
-        ax * by + bx * cy + cx * ay -
-        ay * bx - by * cx - cy * ax
-    ) / 2;
+  return (
+    Math.abs(ax * by + bx * cy + cx * ay - ay * bx - by * cx - cy * ax) / 2
+  );
 }
 
- /**
-     * Given points A, B, C, returns the signed area of triangle ABC
-     * @param A first point
-     * @param B second point
-     * @param C third point
-     * @returns signed area
-     */
+/**
+ * Given points A, B, C, returns the signed area of triangle ABC
+ * @param A first point
+ * @param B second point
+ * @param C third point
+ * @returns signed area
+ */
 export function signedArea(A, B, C) {
-    const [ax, ay] = getXY(A);
-    const [bx, by] = getXY(B);
-    const [cx, cy] = getXY(C);
+  const [ax, ay] = getXY(A);
+  const [bx, by] = getXY(B);
+  const [cx, cy] = getXY(C);
 
-    return (
-        ax * by + bx * cy + cx * ay -
-        ay * bx - by * cx - cy * ax
-    ) / 2;
+  return (ax * by + bx * cy + cx * ay - ay * bx - by * cx - cy * ax) / 2;
 }
 
 /**
-     * Given points A, B, C and real numbers x, y, z, returns the point with barycentric coordinates x:y:z
-     * @param A first point
-     * @param B second point
-     * @param C third point
-     * @param x A-coordinate
-     * @param y B-coordinate
-     * @param z C-coordinate
-     * @returns barycentric point
-     */
+ * Given points A, B, C and real numbers x, y, z, returns the point with barycentric coordinates x:y:z
+ * @param A first point
+ * @param B second point
+ * @param C third point
+ * @param x A-coordinate
+ * @param y B-coordinate
+ * @param z C-coordinate
+ * @returns barycentric point
+ */
 export function barycoord(A, B, C, x, y, z) {
-    const [ax, ay] = getXY(A);
-    const [bx, by] = getXY(B);
-    const [cx, cy] = getXY(C);
+  const [ax, ay] = getXY(A);
+  const [bx, by] = getXY(B);
+  const [cx, cy] = getXY(C);
 
-    return [
-        (ax * x + bx * y + cx * z) / (x + y + z),
-        (ay * x + by * y + cy * z) / (x + y + z)
-    ];
+  return [
+    (ax * x + bx * y + cx * z) / (x + y + z),
+    (ay * x + by * y + cy * z) / (x + y + z),
+  ];
 }
 
 /**
-     * Given points A, B, C, returns the centroid of triangle ABC
-     * @param A first point
-     * @param B second point
-     * @param C third point
-     * @returns centroid
-     */
+ * Given points A, B, C, returns the centroid of triangle ABC
+ * @param A first point
+ * @param B second point
+ * @param C third point
+ * @returns centroid
+ */
 export function centroid(A, B, C) {
   return barycoord(A, B, C, 1, 1, 1);
 }
 
 /**
-     * Given points A, B, C, returns the inradius of triangle ABC
-     * @param A first point
-     * @param B second point
-     * @param C third point
-     * @returns inradius
-     */
+ * Given points A, B, C, returns the inradius of triangle ABC
+ * @param A first point
+ * @param B second point
+ * @param C third point
+ * @returns inradius
+ */
 export function inradius(A, B, C) {
-    const s = semiperimeter(A, B, C);
-    const K = area(A, B, C);
+  const s = semiperimeter(A, B, C);
+  const K = area(A, B, C);
 
-    return K / s;
+  return K / s;
 }
 
 /**
-     * Given points A, B, C, returns the incenter of triangle ABC
-     * @param A first point
-     * @param B second point
-     * @param C third point
-     * @returns incenter
-     */
+ * Given points A, B, C, returns the incenter of triangle ABC
+ * @param A first point
+ * @param B second point
+ * @param C third point
+ * @returns incenter
+ */
 export function incenter(A, B, C) {
-    const a = dist(B, C);
-    const b = dist(C, A);
-    const c = dist(A, B);
+  const a = dist(B, C);
+  const b = dist(C, A);
+  const c = dist(A, B);
 
-    return barycoord(A, B, C, a, b, c);
+  return barycoord(A, B, C, a, b, c);
 }
 
 /**
@@ -120,40 +122,44 @@ export function incenter(A, B, C) {
  * @returns incircle
  */
 export function incircle(board, A, B, C, style = circleStyle) {
-    return board.create('circle', [() => incenter(A, B, C), () => inradius(A, B, C)], style);
+  return board.create(
+    "circle",
+    [() => incenter(A, B, C), () => inradius(A, B, C)],
+    style,
+  );
 }
 
 /**
-     * Given points A, B, C, returns the A-exradius of triangle ABC
-     * @param A first point
-     * @param B second point
-     * @param C third point
-     * @returns A-exradius
-     */
+ * Given points A, B, C, returns the A-exradius of triangle ABC
+ * @param A first point
+ * @param B second point
+ * @param C third point
+ * @returns A-exradius
+ */
 export function exradius(A, B, C) {
-    const a = dist(B, C);
-    const s = semiperimeter(A, B, C);
-    const K = area(A, B, C);
+  const a = dist(B, C);
+  const s = semiperimeter(A, B, C);
+  const K = area(A, B, C);
 
-    return K / (s - a);
+  return K / (s - a);
 }
 
 /**
-     * Given points A, B, C, returns the A-excenter of triangle ABC
-     * @param A first point
-     * @param B second point
-     * @param C third point
-     * @returns A-excenter
-     */
+ * Given points A, B, C, returns the A-excenter of triangle ABC
+ * @param A first point
+ * @param B second point
+ * @param C third point
+ * @returns A-excenter
+ */
 export function excenter(A, B, C) {
-    const a = dist(B, C);
-    const b = dist(C, A);
-    const c = dist(A, B);
+  const a = dist(B, C);
+  const b = dist(C, A);
+  const c = dist(A, B);
 
-    return barycoord(A, B, C, -a, b, c);
+  return barycoord(A, B, C, -a, b, c);
 }
 
-  /**
+/**
  * Creates the A-excircle of triangle ABC on a given board
  * @param board JSXGraph board
  * @param A first point
@@ -163,37 +169,46 @@ export function excenter(A, B, C) {
  * @returns A-excircle
  */
 export function excircle(board, A, B, C, style = circleStyle) {
-    return board.create('circle', [() => excenter(A, B, C), () => exradius(A, B, C)], style);
+  return board.create(
+    "circle",
+    [() => excenter(A, B, C), () => exradius(A, B, C)],
+    style,
+  );
 }
 
 /**
-     * Given points A, B, C, returns the circumradius of triangle ABC
-     * @param A first point
-     * @param B second point
-     * @param C third point
-     * @returns circumradius
-     */
+ * Given points A, B, C, returns the circumradius of triangle ABC
+ * @param A first point
+ * @param B second point
+ * @param C third point
+ * @returns circumradius
+ */
 export function circumradius(A, B, C) {
-    const a = dist(B,C);
-    const b = dist(A,C);
-    const c = dist(A,B);
-    const K = area(A, B, C);
+  const a = dist(B, C);
+  const b = dist(A, C);
+  const c = dist(A, B);
+  const K = area(A, B, C);
 
-    return (a * b * c)/(4 * K);
+  return (a * b * c) / (4 * K);
 }
 
 /**
-     * Given points A, B, C, returns the circumcenter of triangle ABC
-     * @param A first point
-     * @param B second point
-     * @param C third point
-     * @returns circumcenter
-     */
+ * Given points A, B, C, returns the circumcenter of triangle ABC
+ * @param A first point
+ * @param B second point
+ * @param C third point
+ * @returns circumcenter
+ */
 export function circumcenter(A, B, C) {
-    return intersection(midpoint(A, B), rotate(midpoint(A,B), Math.PI/2, A), midpoint(A, C), rotate(midpoint(A, C), Math.PI/2, A));
+  return intersection(
+    midpoint(A, B),
+    rotate(midpoint(A, B), Math.PI / 2, A),
+    midpoint(A, C),
+    rotate(midpoint(A, C), Math.PI / 2, A),
+  );
 }
 
- /**
+/**
  * Creates the circumcircle of triangle ABC on a given board
  * @param board JSXGraph board
  * @param A first point
@@ -203,52 +218,56 @@ export function circumcenter(A, B, C) {
  * @returns circumcircle
  */
 export function circumcircle(board, A, B, C, style = circleStyle) {
-    return board.create('circle', [() => circumcenter(A, B, C), () => circumradius(A, B, C)], style);
+  return board.create(
+    "circle",
+    [() => circumcenter(A, B, C), () => circumradius(A, B, C)],
+    style,
+  );
 }
 
 /**
-     * Given points A, B, C, returns the orthocenter of triangle ABC
-     * @param A first point
-     * @param B second point
-     * @param C third point
-     * @returns orthocenter
-     */
+ * Given points A, B, C, returns the orthocenter of triangle ABC
+ * @param A first point
+ * @param B second point
+ * @param C third point
+ * @returns orthocenter
+ */
 export function orthocenter(A, B, C) {
-    return intersection(A, project(B, C, A), B, project(C, A, B));
+  return intersection(A, project(B, C, A), B, project(C, A, B));
 }
 
 /**
-     * Given points A, B, C, returns the inner Soddy radius of triangle ABC
-     * @param A first point
-     * @param B second point
-     * @param C third point
-     * @returns inner Soddy radius
-     */
+ * Given points A, B, C, returns the inner Soddy radius of triangle ABC
+ * @param A first point
+ * @param B second point
+ * @param C third point
+ * @returns inner Soddy radius
+ */
 export function innerSoddyRadius(A, B, C) {
-    const r = inradius(A, B, C);
-    const R = circumradius(A, B, C);
-    const s = semiperimeter(A, B, C);
-    const K = area(A, B, C);
+  const r = inradius(A, B, C);
+  const R = circumradius(A, B, C);
+  const s = semiperimeter(A, B, C);
+  const K = area(A, B, C);
 
-    return K / (4 * R + r + 2 * s);
+  return K / (4 * R + r + 2 * s);
 }
 
 /**
-     * Given points A, B, C, returns the inner Soddy center of triangle ABC
-     * @param A first point
-     * @param B second point
-     * @param C third point
-     * @returns inner Soddy center
-     */
+ * Given points A, B, C, returns the inner Soddy center of triangle ABC
+ * @param A first point
+ * @param B second point
+ * @param C third point
+ * @returns inner Soddy center
+ */
 export function innerSoddyCenter(A, B, C) {
-    const a = dist(B,C);
-    const b = dist(A,C);
-    const c = dist(A,B);
-    const rA = exradius(A, B, C);
-    const rB = exradius(B, C, A);
-    const rC = exradius(C, A, B);
+  const a = dist(B, C);
+  const b = dist(A, C);
+  const c = dist(A, B);
+  const rA = exradius(A, B, C);
+  const rB = exradius(B, C, A);
+  const rC = exradius(C, A, B);
 
-    return barycoord(A, B, C, a + rA, b + rB, c + rC);
+  return barycoord(A, B, C, a + rA, b + rB, c + rC);
 }
 
 /**
@@ -261,41 +280,45 @@ export function innerSoddyCenter(A, B, C) {
  * @returns inner Soddy circle
  */
 export function innerSoddyCircle(board, A, B, C, style = circleStyle) {
-    return board.create('circle', [() => innerSoddyCenter(A, B, C), () => innerSoddyRadius(A, B, C)], style);
+  return board.create(
+    "circle",
+    [() => innerSoddyCenter(A, B, C), () => innerSoddyRadius(A, B, C)],
+    style,
+  );
 }
 
 /**
-     * Given points A, B, C, returns the outer Soddy radius of triangle ABC
-     * @param A first point
-     * @param B second point
-     * @param C third point
-     * @returns outer Soddy radius
-     */
+ * Given points A, B, C, returns the outer Soddy radius of triangle ABC
+ * @param A first point
+ * @param B second point
+ * @param C third point
+ * @returns outer Soddy radius
+ */
 export function outerSoddyRadius(A, B, C) {
-    const r = inradius(A, B, C);
-    const R = circumradius(A, B, C);
-    const s = semiperimeter(A, B, C);
-    const K = area(A, B, C);
+  const r = inradius(A, B, C);
+  const R = circumradius(A, B, C);
+  const s = semiperimeter(A, B, C);
+  const K = area(A, B, C);
 
-    return K / (4 * R + r - 2 * s);
+  return K / (4 * R + r - 2 * s);
 }
 
 /**
-     * Given points A, B, C, returns the outer Soddy center of triangle ABC
-     * @param A first point
-     * @param B second point
-     * @param C third point
-     * @returns outer Soddy center
-     */
+ * Given points A, B, C, returns the outer Soddy center of triangle ABC
+ * @param A first point
+ * @param B second point
+ * @param C third point
+ * @returns outer Soddy center
+ */
 export function outerSoddyCenter(A, B, C) {
-    const a = dist(B,C);
-    const b = dist(A,C);
-    const c = dist(A,B);
-    const rA = exradius(A, B, C);
-    const rB = exradius(B, C, A);
-    const rC = exradius(C, A, B);
+  const a = dist(B, C);
+  const b = dist(A, C);
+  const c = dist(A, B);
+  const rA = exradius(A, B, C);
+  const rB = exradius(B, C, A);
+  const rC = exradius(C, A, B);
 
-    return barycoord(A, B, C, -a + rA, -b + rB, -c + rC);
+  return barycoord(A, B, C, -a + rA, -b + rB, -c + rC);
 }
 
 /**
@@ -308,5 +331,9 @@ export function outerSoddyCenter(A, B, C) {
  * @returns outer Soddy circle
  */
 export function outerSoddyCircle(board, A, B, C, style = circleStyle) {
-    return board.create('circle', [() => outerSoddyCenter(A, B, C), () => outerSoddyRadius(A, B, C)], style);
+  return board.create(
+    "circle",
+    [() => outerSoddyCenter(A, B, C), () => outerSoddyRadius(A, B, C)],
+    style,
+  );
 }
