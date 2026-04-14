@@ -12,12 +12,21 @@ export const boardStyleHyperbolic = {
   pan: { enabled: true, needShift: false, needCtrl: false },
 };
 
-export const pointStyle = {
+export const pointStyleDrag = {
+  showInfobox: false,
+};
+
+export const pointStyleNoDrag = {
   size: 2,
   strokeColor: "black",
   fillColor: "black",
   highlight: false,
   showInfobox: false,
+};
+
+export const pointStyleNoShow = {
+  visible: false,
+  withLabel: false,
 };
 
 export const pointStyleNoLabel = {
