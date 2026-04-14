@@ -1,41 +1,41 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraphcore.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraph.css" />
-    <script type="module" src="../../src/index.js"></script>
-    <style>
-        body { margin: 0; overflow: hidden; } /* Removes scrollbars inside the frame */
-        .jxgbox { width: 100vw; height: 100vh; border: none; } /* Fills the frame */
-    </style>
-</head>
-<body>
-    <div id="jxgbox" class="jxgbox"></div>
-    <script type="module">
-      const board = JXG.JSXGraph.initBoard('jxgbox', jg.style.boardStyle);
-      
-const A = board.create('point', [-1.8, 3.1], {name: 'A'});
-const B = board.create('point', [-3.3, -1.7], {name: 'B'});
-const C = board.create('point', [3.4, -2.6], {name: 'C'});
-const D = board.create('point', [1.2, 1.5], {name: 'D'});
-const E = board.create('point', [-0.5, -2.2], {name: 'E'});
-const conicABCDEcenter = board.create('point', [() => jg.conic.conicCenterByPoints(A, B, C, D, E)], {name: 'O', ...jg.style.pointStyle});
-const P = board.create('point', [0.1, 0.2], {name: 'P'});
-const M1 = board.create('point', [() => jg.point.intersection(A, B, D, E)], {name: 'M1', ...jg.style.pointStyle});
-const M2 = board.create('point', [() => jg.point.intersection(B, C, E, P)], {name: 'M2', ...jg.style.pointStyle});
-const M3 = board.create('point', [() => jg.point.intersection(C, D, M1, M2)], {name: 'M3', ...jg.style.pointStyle});
-const Q = board.create('point', [() => jg.point.intersection(A, M3, E, P)], {name: 'Q', ...jg.style.pointStyle});
-
-const lineEP = board.create('line', [E, P], jg.style.lineStyle);
-const conicABCDE = board.create('conic', [A, B, C, D, E], jg.style.circleStyle);
-
-board.create('text', [4, 4, () => `${jg.conic.conicxx(A, B, C, D, E).toFixed(4)}`]);
-board.create('text', [4, 3.5, () => `${jg.conic.conicxy(A, B, C, D, E).toFixed(4)}`]);
-board.create('text', [4, 3, () => `${jg.conic.conicyy(A, B, C, D, E).toFixed(4)}`]);
-board.create('text', [4, 2.5, () => `${jg.conic.conicx(A, B, C, D, E).toFixed(4)}`]);
-board.create('text', [4, 2, () => `${jg.conic.conicy(A, B, C, D, E).toFixed(4)}`]);
-board.create('text', [4, 1.5, () => `${jg.conic.conic1(A, B, C, D, E).toFixed(4)}`]);
-               
-    </script>
-</body>
+   <head>
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraphcore.js"></script>
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraph.css" />
+      <script type="module" src="../../src/index.js"></script>
+      <style>
+         body { margin: 0; overflow: hidden; } /* Removes scrollbars inside the frame */
+         .jxgbox { width: 100vw; height: 100vh; border: none; } /* Fills the frame */
+      </style>
+   </head>
+   <body>
+      <div id="jxgbox" class="jxgbox"></div>
+      <script type="module">
+         const board = JXG.JSXGraph.initBoard('jxgbox', jg.style.boardStyle);
+         
+         const A = board.create('point', [-1.8, 3.1], {name: 'A'});
+         const B = board.create('point', [-3.3, -1.7], {name: 'B'});
+         const C = board.create('point', [3.4, -2.6], {name: 'C'});
+         const D = board.create('point', [1.2, 1.5], {name: 'D'});
+         const E = board.create('point', [-0.5, -2.2], {name: 'E'});
+         const conicABCDEcenter = board.create('point', [() => jg.conic.conicCenterByPoints(A, B, C, D, E)], {name: 'O', ...jg.style.pointStyle});
+         const P = board.create('point', [0.1, 0.2], {name: 'P'});
+         const M1 = board.create('point', [() => jg.point.intersection(A, B, D, E)], {name: 'M1', ...jg.style.pointStyle});
+         const M2 = board.create('point', [() => jg.point.intersection(B, C, E, P)], {name: 'M2', ...jg.style.pointStyle});
+         const M3 = board.create('point', [() => jg.point.intersection(C, D, M1, M2)], {name: 'M3', ...jg.style.pointStyle});
+         const Q = board.create('point', [() => jg.point.intersection(A, M3, E, P)], {name: 'Q', ...jg.style.pointStyle});
+         
+         const lineEP = board.create('line', [E, P], jg.style.lineStyle);
+         const conicABCDE = board.create('conic', [A, B, C, D, E], jg.style.circleStyle);
+         
+         board.create('text', [4, 4, () => `${jg.conic.conicxx(A, B, C, D, E).toFixed(4)}`]);
+         board.create('text', [4, 3.5, () => `${jg.conic.conicxy(A, B, C, D, E).toFixed(4)}`]);
+         board.create('text', [4, 3, () => `${jg.conic.conicyy(A, B, C, D, E).toFixed(4)}`]);
+         board.create('text', [4, 2.5, () => `${jg.conic.conicx(A, B, C, D, E).toFixed(4)}`]);
+         board.create('text', [4, 2, () => `${jg.conic.conicy(A, B, C, D, E).toFixed(4)}`]);
+         board.create('text', [4, 1.5, () => `${jg.conic.conic1(A, B, C, D, E).toFixed(4)}`]);
+                  
+      </script>
+   </body>
 </html>
