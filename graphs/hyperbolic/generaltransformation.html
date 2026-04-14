@@ -14,9 +14,9 @@
       <script type="module">
          const board = JXG.JSXGraph.initBoard('jxgbox', jg.style.boardStyleHyperbolic);
          
-         const A = board.create('point', [-0.3, 0.7], {name: 'A'});
+         const A = board.create('point', [-0.3, 0.7], {name: 'A', ...jg.style.pointStyleDrag});
          const unitCircle = board.create('circle', [[0, 0], 1], jg.style.circleStyle);
-         const B = board.create('glider', [1, 0, unitCircle], {name: 'B'});
+         const B = board.create('glider', [1, 0, unitCircle], {name: 'B', ...jg.style.pointStyleDrag});
          
          const circlesA = [];
            
