@@ -14,24 +14,24 @@
       <script type="module">
          const board = JXG.JSXGraph.initBoard('jxgbox', jg.style.boardStyle);
          
-         const A = board.create('point', [-1.5, -1.1], {name: 'A'});
-         const P = board.create('point', [-2.5, 2.8], {name: 'P'});
-         const Q = board.create('point', [-2.9, -1.7], {name: 'Q'});
-         const R = board.create('point', [4.1, -3.5], {name: 'R'});
-         const S = board.create('point', [2.5, 3.1], {name: 'S'});
+         const A = board.create('point', [-1.5, -1.1], {name: 'A'}, js.style.pointStyleDrag);
+         const P = board.create('point', [-2.5, 2.8], {name: 'P'}, js.style.pointStyleDrag);
+         const Q = board.create('point', [-2.9, -1.7], {name: 'Q'}, js.style.pointStyleDrag);
+         const R = board.create('point', [4.1, -3.5], {name: 'R'}, js.style.pointStyleDrag);
+         const S = board.create('point', [2.5, 3.1], {name: 'S'}, js.style.pointStyleDrag);
          
-         const X1 = board.create('point', [() => jg.point.intersection(A, Q, P, S)], { visible: false, withLabel: false });
-         const X2 = board.create('point', [() => jg.point.intersection(A, R, P, S)], { visible: false, withLabel: false });
-         const T1 = board.create('point', [() => jg.conic.fixedPoint(P, X2, S, X1, 0)], { visible: false, withLabel: false });
-         const T2 = board.create('point', [() => jg.conic.fixedPoint(P, X2, S, X1, 1)], { visible: false, withLabel: false });
+         const X1 = board.create('point', [() => jg.point.intersection(A, Q, P, S)], js.pointStyleNoShow);
+         const X2 = board.create('point', [() => jg.point.intersection(A, R, P, S)], js.pointStyleNoShow);
+         const T1 = board.create('point', [() => jg.conic.fixedPoint(P, X2, S, X1, 0)], js.pointStyleNoShow);
+         const T2 = board.create('point', [() => jg.conic.fixedPoint(P, X2, S, X1, 1)], js.pointStyleNoShow);
            
          const linePQ = board.create('line', [P, Q], {...jg.style.lineStyle, strokeColor: 'lightgray'});
          const lineQR = board.create('line', [Q, R], {...jg.style.lineStyle, strokeColor: 'lightgray'});
          const lineRS = board.create('line', [R, S], {...jg.style.lineStyle, strokeColor: 'lightgray'});
          const lineSP = board.create('line', [S, P], {...jg.style.lineStyle, strokeColor: 'lightgray'});
          
-         const I1 = board.create('point', [() => jg.point.intersection(A, T1, P, Q)], { visible: false, withLabel: false });
-         const I2 = board.create('point', [() => jg.point.intersection(A, T2, P, Q)], { visible: false, withLabel: false });
+         const I1 = board.create('point', [() => jg.point.intersection(A, T1, P, Q)], js.pointStyleNoShow);
+         const I2 = board.create('point', [() => jg.point.intersection(A, T2, P, Q)], js.pointStyleNoShow);
          
          const conic1 = jg.conic.conicByLines(board, I1, Q, R, S, T1);
          const conic2 = jg.conic.conicByLines(board, I2, Q, R, S, T2);
