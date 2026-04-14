@@ -1,65 +1,65 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraphcore.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraph.css" />
-    <script type="module" src="../../src/index.js"></script>
-    <style>
-        body { margin: 0; overflow: hidden; } /* Removes scrollbars inside the frame */
-        .jxgbox { width: 100vw; height: 100vh; border: none; } /* Fills the frame */
-    </style>
-</head>
-<body>
-    <div id="jxgbox" class="jxgbox"></div>
-    <script type="module">
-      const board = JXG.JSXGraph.initBoard('jxgbox', jg.style.boardStyle);
-      
-const A = board.create('point', [-0.3, 2.5], {name: 'A'});
-const B = board.create('point', [-2.1, 2.1], {name: 'B'});
-const C = board.create('point', [0.7, 0.3], {name: 'C'});
-const D = board.create('point', [1.1, 2.0], {name: 'D'});
-const L1 = board.create('point', [-1.2, -0.4], {name: 'L1'});
-const L2 = board.create('point', [1.5, -1], {name: 'L2'});
-
-const lineL = board.create('line', [L1, L2], jg.style.lineStyle);
-const P = board.create('glider', [-4.3, 0.3, lineL], {name: 'P'});
-const Q = board.create('point', [() => jg.conic.conicSixthPoint(A, B, C, D, P, L1)], {name: 'Q', ...jg.style.pointStyle});
-
-const lineAB = board.create('line', [A, B], {...jg.style.lineStyle, strokeColor: 'lightgray'});
-const lineAC = board.create('line', [A, C], {...jg.style.lineStyle, strokeColor: 'lightgray'});
-const lineAD = board.create('line', [A, D], {...jg.style.lineStyle, strokeColor: 'lightgray'});
-const lineBC = board.create('line', [B, C], {...jg.style.lineStyle, strokeColor: 'lightgray'});
-const lineBD = board.create('line', [B, D], {...jg.style.lineStyle, strokeColor: 'lightgray'});
-const lineCD = board.create('line', [C, D], {...jg.style.lineStyle, strokeColor: 'lightgray'});
-
-const XAB = board.create('point', [() => jg.point.intersection(A, B, L1, L2)], {name: 'XAB', ...jg.style.pointStyle});
-const XAC = board.create('point', [() => jg.point.intersection(A, C, L1, L2)], {name: 'XAC', ...jg.style.pointStyle});
-const XAD = board.create('point', [() => jg.point.intersection(A, D, L1, L2)], {name: 'XAD', ...jg.style.pointStyle});
-const XBC = board.create('point', [() => jg.point.intersection(B, C, L1, L2)], {name: 'XBC', ...jg.style.pointStyle});
-const XBD = board.create('point', [() => jg.point.intersection(B, D, L1, L2)], {name: 'XBD', ...jg.style.pointStyle});
-const XCD = board.create('point', [() => jg.point.intersection(C, D, L1, L2)], {name: 'XCD', ...jg.style.pointStyle});
-
-const xabx = () => jg.core.getXY(XAB)[0];
-const xaby = () => jg.core.getXY(XAB)[1];
-const xacx = () => jg.core.getXY(XAC)[0];
-const xacy = () => jg.core.getXY(XAC)[1];
-const xbdx = () => jg.core.getXY(XBD)[0];
-const xbdy = () => jg.core.getXY(XBD)[1];
-const xcdx = () => jg.core.getXY(XCD)[0];
-const xcdy = () => jg.core.getXY(XCD)[1];
-
-const invOx = () => (xabx() * xcdx() - xacx() * xbdx()) / (xabx() + xcdx() - xacx() - xbdx());
-const invOy = () => (xaby() * xcdy() - xacy() * xbdy()) / (xaby() + xcdy() - xacy() - xbdy());
-const invR = () => Math.sqrt(jg.point.dist([invOx(), invOy()], XAB) * jg.point.dist([invOx(), invOy()], XCD));
-
-const invO = board.create('point', [invOx, invOy], {name: 'O', ...jg.style.pointStyle, strokeColor: 'green', fillColor : 'green'});
-const invCirc = board.create('circle', [invO, invR], {
-    ...jg.style.circleStyleInverse,
-    strokeColor: () => (invOx() - xabx()) * (invOx() - xcdx()) > 0 ? 'red' : 'purple'
-});
-        
-const conicABCDP = board.create('conic', [A, B, C, D, P], jg.style.circleStyle);
-              
-    </script>
-</body>
+   <head>
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraphcore.js"></script>
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraph.css" />
+      <script type="module" src="../../src/index.js"></script>
+      <style>
+         body { margin: 0; overflow: hidden; } /* Removes scrollbars inside the frame */
+         .jxgbox { width: 100vw; height: 100vh; border: none; } /* Fills the frame */
+      </style>
+   </head>
+   <body>
+      <div id="jxgbox" class="jxgbox"></div>
+      <script type="module">
+         const board = JXG.JSXGraph.initBoard('jxgbox', jg.style.boardStyle);
+         
+         const A = board.create('point', [-0.3, 2.5], {name: 'A'});
+         const B = board.create('point', [-2.1, 2.1], {name: 'B'});
+         const C = board.create('point', [0.7, 0.3], {name: 'C'});
+         const D = board.create('point', [1.1, 2.0], {name: 'D'});
+         const L1 = board.create('point', [-1.2, -0.4], {name: 'L1'});
+         const L2 = board.create('point', [1.5, -1], {name: 'L2'});
+         
+         const lineL = board.create('line', [L1, L2], jg.style.lineStyle);
+         const P = board.create('glider', [-4.3, 0.3, lineL], {name: 'P'});
+         const Q = board.create('point', [() => jg.conic.conicSixthPoint(A, B, C, D, P, L1)], {name: 'Q', ...jg.style.pointStyle});
+         
+         const lineAB = board.create('line', [A, B], {...jg.style.lineStyle, strokeColor: 'lightgray'});
+         const lineAC = board.create('line', [A, C], {...jg.style.lineStyle, strokeColor: 'lightgray'});
+         const lineAD = board.create('line', [A, D], {...jg.style.lineStyle, strokeColor: 'lightgray'});
+         const lineBC = board.create('line', [B, C], {...jg.style.lineStyle, strokeColor: 'lightgray'});
+         const lineBD = board.create('line', [B, D], {...jg.style.lineStyle, strokeColor: 'lightgray'});
+         const lineCD = board.create('line', [C, D], {...jg.style.lineStyle, strokeColor: 'lightgray'});
+         
+         const XAB = board.create('point', [() => jg.point.intersection(A, B, L1, L2)], {name: 'XAB', ...jg.style.pointStyle});
+         const XAC = board.create('point', [() => jg.point.intersection(A, C, L1, L2)], {name: 'XAC', ...jg.style.pointStyle});
+         const XAD = board.create('point', [() => jg.point.intersection(A, D, L1, L2)], {name: 'XAD', ...jg.style.pointStyle});
+         const XBC = board.create('point', [() => jg.point.intersection(B, C, L1, L2)], {name: 'XBC', ...jg.style.pointStyle});
+         const XBD = board.create('point', [() => jg.point.intersection(B, D, L1, L2)], {name: 'XBD', ...jg.style.pointStyle});
+         const XCD = board.create('point', [() => jg.point.intersection(C, D, L1, L2)], {name: 'XCD', ...jg.style.pointStyle});
+         
+         const xabx = () => jg.core.getXY(XAB)[0];
+         const xaby = () => jg.core.getXY(XAB)[1];
+         const xacx = () => jg.core.getXY(XAC)[0];
+         const xacy = () => jg.core.getXY(XAC)[1];
+         const xbdx = () => jg.core.getXY(XBD)[0];
+         const xbdy = () => jg.core.getXY(XBD)[1];
+         const xcdx = () => jg.core.getXY(XCD)[0];
+         const xcdy = () => jg.core.getXY(XCD)[1];
+         
+         const invOx = () => (xabx() * xcdx() - xacx() * xbdx()) / (xabx() + xcdx() - xacx() - xbdx());
+         const invOy = () => (xaby() * xcdy() - xacy() * xbdy()) / (xaby() + xcdy() - xacy() - xbdy());
+         const invR = () => Math.sqrt(jg.point.dist([invOx(), invOy()], XAB) * jg.point.dist([invOx(), invOy()], XCD));
+         
+         const invO = board.create('point', [invOx, invOy], {name: 'O', ...jg.style.pointStyle, strokeColor: 'green', fillColor : 'green'});
+         const invCirc = board.create('circle', [invO, invR], {
+         ...jg.style.circleStyleInverse,
+         strokeColor: () => (invOx() - xabx()) * (invOx() - xcdx()) > 0 ? 'red' : 'purple'
+         });
+           
+         const conicABCDP = board.create('conic', [A, B, C, D, P], jg.style.circleStyle);
+                 
+      </script>
+   </body>
 </html>
