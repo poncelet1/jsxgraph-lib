@@ -21,9 +21,9 @@
          const board = JXG.JSXGraph.initBoard('jxgbox', jg.style.boardStyle);
          
          // 2. Create the vertices
-         const A = board.create('point', [-1.8, 3.1], {name: 'A'});
-         const B = board.create('point', [-3.3, -1.7], {name: 'B'});
-         const C = board.create('point', [3.4, -2.6], {name: 'C'});
+         const A = board.create('point', [-1.8, 3.1], {name: 'A', ...jg.style.pointStyleDrag});
+         const B = board.create('point', [-3.3, -1.7], {name: 'B', ...jg.style.pointStyleDrag});
+         const C = board.create('point', [3.4, -2.6], {name: 'C', ...jg.style.pointStyleDrag});
          
          const circA = board.create('circle', [A, function() {return (A.Dist(B) - B.Dist(C) + C.Dist(A))/2;}], jg.style.circleStyle);
          const circB = board.create('circle', [B, function() {return (A.Dist(B) + B.Dist(C) - C.Dist(A))/2;}], jg.style.circleStyle);
