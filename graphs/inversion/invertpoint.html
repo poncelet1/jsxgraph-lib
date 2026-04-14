@@ -14,9 +14,9 @@
       <script type="module">
          const board = JXG.JSXGraph.initBoard('jxgbox', jg.style.boardStyle);
          
-         const O = board.create('point', [-2, 1], {name: 'O'});
+         const O = board.create('point', [-2, 1], {name: 'O', ...jg.style.pointStyleDrag});
          // OR is the point on the circle that regulates its radius
-         const OR = board.create('point', [1, 0], {name: 'OR'});
+         const OR = board.create('point', [1, 0], {name: 'OR', ...jg.style.pointStyleDrag});
          
          // Store initial offset
          let ORoffsetx = OR.X() - O.X();
@@ -33,7 +33,7 @@
          ORoffsety = OR.Y() - O.Y();
          });
          
-         const P = board.create('point', [0, -2], {name: 'P'});
+         const P = board.create('point', [0, -2], {name: 'P', ...jg.style.pointStyleDrag});
          const Pp = board.create('point', [() => jg.inversion.invertPoint(O, jg.point.dist(O, OR), P)], {name: 'Pp', ...jg.style.pointStyle});
          
          const circO = board.create('circle', [O, OR], jg.style.circleStyleInverse);
