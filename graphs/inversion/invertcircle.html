@@ -1,61 +1,61 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraphcore.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraph.css" />
-    <script type="module" src="../../src/index.js"></script>
-    <style>
-        body { margin: 0; overflow: hidden; } /* Removes scrollbars inside the frame */
-        .jxgbox { width: 100vw; height: 100vh; border: none; } /* Fills the frame */
-    </style>
-</head>
-<body>
-    <div id="jxgbox" class="jxgbox"></div>
-    <script type="module">
-      const board = JXG.JSXGraph.initBoard('jxgbox', jg.style.boardStyle);
-      
-const O = board.create('point', [-2, 1], {name: 'O'});
-// OR is the point on the circle that regulates its radius
-const OR = board.create('point', [1, 0], {name: 'OR'});
-
-// Store initial offset
-let ORoffsetx = OR.X() - O.X();
-let ORoffsety = OR.Y() - O.Y();
-
-// When O moves, update OR by the same displacement
-O.on('drag', () => {
-    OR.moveTo([O.X() + ORoffsetx, O.Y() + ORoffsety]);
-});
-
-// When D moves, update the stored offset
-OR.on('drag', () => {
-    ORoffsetx = OR.X() - O.X();
-    ORoffsety = OR.Y() - O.Y();
-});
-
-const P = board.create('point', [0, -2], {name: 'P'});
-// PR is the point on the circle that regulates its radius
-const PR = board.create('point', [1, -1], {name: 'PR'});
-
-// Store initial offset
-let PRoffsetx = PR.X() - P.X();
-let PRoffsety = PR.Y() - P.Y();
-
-// When P moves, update PR by the same displacement
-P.on('drag', () => {
-    PR.moveTo([P.X() + PRoffsetx, P.Y() + PRoffsety]);
-});
-
-// When D moves, update the stored offset
-PR.on('drag', () => {
-    PRoffsetx = PR.X() - P.X();
-    PRoffsety = PR.Y() - P.Y();
-});
-
-const circO = board.create('circle', [O, OR], jg.style.circleStyleInverse);
-const circP = board.create('circle', [P, PR], jg.style.circleStyle);
-const circPp = jg.inversion.invertCircle(board, O, jg.point.dist(O, OR), P, jg.point.dist(P, PR));
-        
-    </script>
-</body>
+   <head>
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraphcore.js"></script>
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraph.css" />
+      <script type="module" src="../../src/index.js"></script>
+      <style>
+         body { margin: 0; overflow: hidden; } /* Removes scrollbars inside the frame */
+         .jxgbox { width: 100vw; height: 100vh; border: none; } /* Fills the frame */
+      </style>
+   </head>
+   <body>
+      <div id="jxgbox" class="jxgbox"></div>
+      <script type="module">
+         const board = JXG.JSXGraph.initBoard('jxgbox', jg.style.boardStyle);
+         
+         const O = board.create('point', [-2, 1], {name: 'O'});
+         // OR is the point on the circle that regulates its radius
+         const OR = board.create('point', [1, 0], {name: 'OR'});
+         
+         // Store initial offset
+         let ORoffsetx = OR.X() - O.X();
+         let ORoffsety = OR.Y() - O.Y();
+         
+         // When O moves, update OR by the same displacement
+         O.on('drag', () => {
+         OR.moveTo([O.X() + ORoffsetx, O.Y() + ORoffsety]);
+         });
+         
+         // When D moves, update the stored offset
+         OR.on('drag', () => {
+         ORoffsetx = OR.X() - O.X();
+         ORoffsety = OR.Y() - O.Y();
+         });
+         
+         const P = board.create('point', [0, -2], {name: 'P'});
+         // PR is the point on the circle that regulates its radius
+         const PR = board.create('point', [1, -1], {name: 'PR'});
+         
+         // Store initial offset
+         let PRoffsetx = PR.X() - P.X();
+         let PRoffsety = PR.Y() - P.Y();
+         
+         // When P moves, update PR by the same displacement
+         P.on('drag', () => {
+         PR.moveTo([P.X() + PRoffsetx, P.Y() + PRoffsety]);
+         });
+         
+         // When D moves, update the stored offset
+         PR.on('drag', () => {
+         PRoffsetx = PR.X() - P.X();
+         PRoffsety = PR.Y() - P.Y();
+         });
+         
+         const circO = board.create('circle', [O, OR], jg.style.circleStyleInverse);
+         const circP = board.create('circle', [P, PR], jg.style.circleStyle);
+         const circPp = jg.inversion.invertCircle(board, O, jg.point.dist(O, OR), P, jg.point.dist(P, PR));
+           
+      </script>
+   </body>
 </html>
