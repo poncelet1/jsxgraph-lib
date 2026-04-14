@@ -14,11 +14,11 @@
       <script type="module">
          const board = JXG.JSXGraph.initBoard('jxgbox', jg.style.boardStyleHyperbolic);
          
-         const A = board.create('point', [-0.2, 0.5], {name: 'A'});
-         const B = board.create('point', [0.3, 0.1], {name: 'B'});
-         const P = board.create('point', [-0.1, 0.2], {name: 'P'});
-         const R = board.create('point', [() => jg.hyperbolic.hyperReflect(A, B, P)], {name: 'R', ...jg.style.pointStyle});
-         const Q = board.create('point', [() => jg.hyperbolic.hyperProject(A, B, P)], {name: 'Q', ...jg.style.pointStyle});
+         const A = board.create('point', [-0.2, 0.5], {name: 'A', ...jg.style.pointStyleDrag});
+         const B = board.create('point', [0.3, 0.1], {name: 'B', ...jg.style.pointStyleDrag});
+         const P = board.create('point', [-0.1, 0.2], {name: 'P', ...jg.style.pointStyleDrag});
+         const R = board.create('point', [() => jg.hyperbolic.hyperReflect(A, B, P)], {name: 'R', ...jg.style.pointStyleNoDrag});
+         const Q = board.create('point', [() => jg.hyperbolic.hyperProject(A, B, P)], {name: 'Q', ...jg.style.pointStyleNoDrag});
          
          const lineAB = jg.hyperbolic.hyperline(board, A, B);
          const linePR = jg.hyperbolic.hyperlineSegment(board, P, R);
