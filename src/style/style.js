@@ -29,14 +29,6 @@ export const pointStyleNoShow = {
   withLabel: false,
 };
 
-export const pointStyleNoLabel = {
-  size: 2,
-  strokeColor: "black",
-  fillColor: "black",
-  withLabel: false,
-  highlight: false,
-};
-
 export const lineStyle = {
   strokeWidth: 1,
   fixed: true,
