@@ -1,34 +1,33 @@
-
 <!DOCTYPE html>
 <html>
-<head>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraphcore.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraph.css" />
-    <script type="module" src="../../src/index.js"></script>
-    <style>
-        body { margin: 0; overflow: hidden; } /* Removes scrollbars inside the frame */
-        .jxgbox { width: 100vw; height: 100vh; border: none; } /* Fills the frame */
-    </style>
-</head>
-<body>
-    <div id="jxgbox" class="jxgbox"></div>
-    <script type="module">
-        const board = JXG.JSXGraph.initBoard('jxgbox', jg.style.boardStyle);
-
-        // 2. Create the vertices
-const A = board.create('point', [-1.8, 3.1], {name: 'A'});
-const B = board.create('point', [-3.3, -1.7], {name: 'B'});
-const C = board.create('point', [3.4, -2.6], {name: 'C'});
-const D = board.create('point', [2.5, 2.2], {name: 'D'});
-const X = board.create('point', [() => jg.point.intersection(A, B, C, D)], {name: 'X', ...jg.style.pointStyle});
-const P = board.create('point', [1.2, 0.5], {name: 'P'});
-const Q = board.create('point', [() => jg.point.project(A, B, P)], {name: 'Q', ...jg.style.pointStyle});
-const R = board.create('point', [() => jg.point.reflect(A, B, P)], {name: 'R', ...jg.style.pointStyle});
-
-const lineAB = board.create('line', [A, B], jg.style.lineStyle);
-const lineCD = board.create('line', [C, D], jg.style.lineStyle);
-const lineSegPR = board.create('segment', [P, R], jg.style.lineStyle);
-        
-    </script>
-</body>
+   <head>
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraphcore.js"></script>
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraph.css" />
+      <script type="module" src="../../src/index.js"></script>
+      <style>
+         body { margin: 0; overflow: hidden; } /* Removes scrollbars inside the frame */
+         .jxgbox { width: 100vw; height: 100vh; border: none; } /* Fills the frame */
+      </style>
+   </head>
+   <body>
+      <div id="jxgbox" class="jxgbox"></div>
+      <script type="module">
+         const board = JXG.JSXGraph.initBoard('jxgbox', jg.style.boardStyle);
+         
+         // 2. Create the vertices
+         const A = board.create('point', [-1.8, 3.1], {name: 'A'});
+         const B = board.create('point', [-3.3, -1.7], {name: 'B'});
+         const C = board.create('point', [3.4, -2.6], {name: 'C'});
+         const D = board.create('point', [2.5, 2.2], {name: 'D'});
+         const X = board.create('point', [() => jg.point.intersection(A, B, C, D)], {name: 'X', ...jg.style.pointStyle});
+         const P = board.create('point', [1.2, 0.5], {name: 'P'});
+         const Q = board.create('point', [() => jg.point.project(A, B, P)], {name: 'Q', ...jg.style.pointStyle});
+         const R = board.create('point', [() => jg.point.reflect(A, B, P)], {name: 'R', ...jg.style.pointStyle});
+         
+         const lineAB = board.create('line', [A, B], jg.style.lineStyle);
+         const lineCD = board.create('line', [C, D], jg.style.lineStyle);
+         const lineSegPR = board.create('segment', [P, R], jg.style.lineStyle);
+         
+      </script>
+   </body>
 </html>
