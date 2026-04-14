@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraphcore.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraph.css" />
-    <script type="module" src="../../src/index.js"></script>
-    <style>
-        body { margin: 0; overflow: hidden; } /* Removes scrollbars inside the frame */
-        .jxgbox { width: 100vw; height: 100vh; border: none; } /* Fills the frame */
-    </style>
-</head>
-<body>
-    <div id="jxgbox" class="jxgbox"></div>
-    <script type="module">
-      const board = JXG.JSXGraph.initBoard('jxgbox', jg.style.boardStyleHyperbolic);
-      
-const A = board.create('point', [-0.2, 0.5], {name: 'A'});
-const Z = board.create('point', [0.3, 0.1], {name: 'Z'});
-const W = board.create('point', [() => jg.hyperbolic.movePointToOrigin(Z, A)], {name: 'W', ...jg.style.pointStyle});
-
-const unitCircle = board.create('circle', [[0, 0], 1], jg.style.circleStyle);
-
-    </script>
-</body>
+   <head>
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraphcore.js"></script>
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraph.css" />
+      <script type="module" src="../../src/index.js"></script>
+      <style>
+         body { margin: 0; overflow: hidden; } /* Removes scrollbars inside the frame */
+         .jxgbox { width: 100vw; height: 100vh; border: none; } /* Fills the frame */
+      </style>
+   </head>
+   <body>
+      <div id="jxgbox" class="jxgbox"></div>
+      <script type="module">
+         const board = JXG.JSXGraph.initBoard('jxgbox', jg.style.boardStyleHyperbolic);
+         
+         const A = board.create('point', [-0.2, 0.5], {name: 'A'});
+         const Z = board.create('point', [0.3, 0.1], {name: 'Z'});
+         const W = board.create('point', [() => jg.hyperbolic.movePointToOrigin(Z, A)], {name: 'W', ...jg.style.pointStyle});
+         
+         const unitCircle = board.create('circle', [[0, 0], 1], jg.style.circleStyle);
+         
+      </script>
+   </body>
 </html>
