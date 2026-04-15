@@ -35,21 +35,24 @@
 
          const drawCircles2 = (n, A, a, B, b, C, c, D, d) => {
     if (n >= 1) {
-        // 1. Define curvature 'e' as a function
-        // This ensures children can calculate their curvature based on current positions
-        const e = () => 2 * (a() + b() + c()) - d();
+        // Helper: This treats 'v' as a function if it can be called, 
+        // otherwise it treats it as a static value.
+        const val = (v) => (typeof v === 'function' ? v() : v);
 
-        // 2. Create point E using functional coordinates
+        // 1. Define curvature 'e' as a function
+        const e = () => 2 * (val(a) + val(b) + val(c)) - val(d);
+
+        // 2. Create point E with reactive coordinates
         const E = board.create('point', [
-            () => (2 * (a() * A.X() + b() * B.X() + c() * C.X()) - d() * D.X()) / e(),
-            () => (2 * (a() * A.Y() + b() * B.Y() + c() * C.Y()) - d() * D.Y()) / e()
+            () => (2 * (val(a) * A.X() + val(b) * B.X() + val(c) * C.X()) - val(d) * D.X()) / e(),
+            () => (2 * (val(a) * A.Y() + val(b) * B.Y() + val(c) * C.Y()) - val(d) * D.Y()) / e()
         ], jg.style.pointStyleNoShow);
 
-        // 3. Create circle with functional radius
+        // 3. Create the circle
         const currentCirc = board.create("circle", [E, () => 1 / e()], jg.style.circleStyle);
         circArray.push(currentCirc);
 
-        // 4. Recurse, passing the functions themselves rather than fixed numbers
+        // 4. Recurse (passing 'e' as the function for the next generation)
         drawCircles2(n - 1, A, a, B, b, E, e, C, c);
         drawCircles2(n - 1, A, a, C, c, E, e, B, b);
         drawCircles2(n - 1, B, b, C, c, E, e, A, a);
