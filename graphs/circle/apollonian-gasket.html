@@ -21,7 +21,7 @@
                const e = 2 * (a + b + c) - d;
                const Ex = (2 * (a * A.X() + b * B.X() + c * C.X()) - d * D.X()) / e;
                const Ey = (2 * (a * A.Y() + b * B.Y() + c * C.Y()) - d * D.Y()) / e;
-               const E = board.create('point', [Ex, Ey], jg.style.pointNoShow);
+               const E = board.create('point', [Ex, Ey], jg.style.pointStyleNoShow);
                
                currentCirc = board.create("circle", [E, 1/e], jg.style.circleStyle);
 
@@ -39,8 +39,8 @@
          const A = board.create('point', [-1.0, 2.0], {name: 'A', ...jg.style.pointStyleDrag});
          const B = board.create('point', [-2.3, -1.1], {name: 'B', ...jg.style.pointStyleDrag});
          const C = board.create('point', [1.2, -1.7], {name: 'C', ...jg.style.pointStyleDrag});
-         const innerSoddyCenter = board.create('point', [() => jg.triangle.innerSoddyCenter(A, B, C)], jg.style.pointNoShow);
-         const outerSoddyCenter = board.create('point', [() => jg.triangle.outerSoddyCenter(A, B, C)], jg.style.pointNoShow);
+         const innerSoddyCenter = board.create('point', [() => jg.triangle.innerSoddyCenter(A, B, C)], jg.style.pointStyleNoShow);
+         const outerSoddyCenter = board.create('point', [() => jg.triangle.outerSoddyCenter(A, B, C)], jg.style.pointStyleNoShow);
 
          const rA = () => (jg.point.dist(A,B) + jg.point.dist(A,C) - jg.point.dist(B,C))/2;
          const rB = () => (jg.point.dist(A,B) - jg.point.dist(A,C) + jg.point.dist(B,C))/2;
