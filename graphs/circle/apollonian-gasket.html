@@ -12,6 +12,8 @@
    <body>
       <div id="jxgbox" class="jxgbox"></div>
       <script type="module">
+         const circArray = [];
+         
          const disc = (a, b, c) => Math.sqrt(a * b + a * c + b * c);
          
          const curvaturefive = (a, b, c, d) => 2*(a + b + c) - d;
@@ -22,7 +24,25 @@
                (2 * (a * A.Y() + b * B.Y() + c * C.Y()) - d * D.Y()) / curvaturefive(a, b, c, d)
             ];
          };
-                 
+
+         const drawCircles = (n, A, a, B, b, C, c, D, d) => {
+            let currentCirc;
+            
+            if (n >= 1) {
+               const e = 2 * (a + b + c) - d;
+               const Ex = (2 * (a * A.X() + b * B.X() + c * C.X()) - d * D.X()) / e;
+               const Ey = (2 * (a * A.Y() + b * B.Y() + c * C.Y()) - d * D.Y()) / e;
+
+               currentCirc = board.create("circle", [[Ex, Ey], e], jg.style.circleStyle);
+
+               circArray.push(currentCirc);
+
+               drawCircles(n - 1, A, a, B, b, E, e, C, c);
+               drawCircles(n - 1, A, a, C, c, E, e, B, b);
+               drawCircles(n - 1, B, b, C, c, E, e, A, a);
+            }
+         }
+
          const board = JXG.JSXGraph.initBoard('jxgbox', jg.style.boardStyle);
          
          // 2. Create the vertices
