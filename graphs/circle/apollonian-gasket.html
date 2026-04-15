@@ -50,8 +50,8 @@
          const A = board.create('point', [-1.0, 2.0], {name: 'A', ...jg.style.pointStyleDrag});
          const B = board.create('point', [-2.3, -1.1], {name: 'B', ...jg.style.pointStyleDrag});
          const C = board.create('point', [1.2, -1.7], {name: 'C', ...jg.style.pointStyleDrag});
-         const innerSoddyCenter = board.create('point', () => jg.triangle.innerSoddyCenter(A, B, C), jg.style.pointNoShow);
-         const outerSoddyCenter = board.create('point', () => jg.triangle.outerSoddyCenter(A, B, C), jg.style.pointNoShow);
+         const innerSoddyCenter = board.create('point', [() => jg.triangle.innerSoddyCenter(A, B, C)], jg.style.pointNoShow);
+         const outerSoddyCenter = board.create('point', [() => jg.triangle.outerSoddyCenter(A, B, C)], jg.style.pointNoShow);
 
          const rA = () => (jg.point.dist(A,B) + jg.point.dist(A,C) - jg.point.dist(B,C))/2;
          const rB = () => (jg.point.dist(A,B) - jg.point.dist(A,C) + jg.point.dist(B,C))/2;
