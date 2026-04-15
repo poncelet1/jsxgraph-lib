@@ -16,7 +16,12 @@
          
          const curvaturefive = (a, b, c, d) => 2*(a + b + c) - d;
          
-         
+         const centerfive = (A, a, B, b, C, c, D, d) => {
+            return [
+               (2 * (a * A.X() + b * B.X() + c * C.X()) - d * D.X()) / curvaturefive(a, b, c, d),
+               (2 * (a * A.Y() + b * B.Y() + c * C.Y()) - d * D.Y()) / curvaturefive(a, b, c, d)
+            ];
+         };
                  
          const board = JXG.JSXGraph.initBoard('jxgbox', jg.style.boardStyle);
          
