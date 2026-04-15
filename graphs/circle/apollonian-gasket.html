@@ -60,9 +60,9 @@
         circArray.push(currentCirc);
 
         // 4. Recurse, passing the new center E and the function e
-        drawCircles(n - 1, A, a, B, b, E, e, C, c);
-        drawCircles(n - 1, A, a, C, c, E, e, B, b);
-        drawCircles(n - 1, B, b, C, c, E, e, A, a);
+        drawCircles2(n - 1, A, a, B, b, E, e, C, c);
+        drawCircles2(n - 1, A, a, C, c, E, e, B, b);
+        drawCircles2(n - 1, B, b, C, c, E, e, A, a);
     }
 }
 
