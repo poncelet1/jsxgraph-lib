@@ -65,6 +65,11 @@
          const innerSoddyCircle = jg.triangle.innerSoddyCircle(board, A, B, C);
          const outerSoddyCircle = jg.triangle.outerSoddyCircle(board, A, B, C);
 
+         console.log("innerSoddyCenter X:", innerSoddyCenter.X());
+console.log("innerSoddyCenter Y:", innerSoddyCenter.Y());
+console.log("innerSoddyRadius:", innerSoddyRadius);
+console.log("rA:", rA(), "rB:", rB(), "rC:", rC());
+         
          drawCircles(3, B, 1/rB(), C, 1/rC(), innerSoddyCenter, 1/innerSoddyRadius, A, 1/rA());
       </script>
    </body>
