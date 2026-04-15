@@ -34,37 +34,23 @@
          }
 
          const drawCircles2 = (n, A, a, B, b, C, c, D, d) => {
-    if (n >= 1) {
-        // 1. Curvature is a function of the input curvatures
-        // Note: If a, b, c, d are already functions, we call them
-        const getK = (val) => (typeof val === 'function' ? val() : val);
+            let currentCirc;
+            
+            if (n >= 1) {
+               const e = () => 2 * (a + b + c) - d;
+               const Ex = () => (2 * (a * A.X() + b * B.X() + c * C.X()) - d * D.X()) / e;
+               const Ey = () => (2 * (a * A.Y() + b * B.Y() + c * C.Y()) - d * D.Y()) / e;
+               const E = board.create('point', [Ex, Ey], jg.style.pointStyleNoShow);
+               
+               currentCirc = board.create("circle", [E, 1/e], jg.style.circleStyle);
 
-        const e = () => 2 * (getK(a) + getK(b) + getK(c)) - getK(d);
+               circArray.push(currentCirc);
 
-        // 2. Create the point E with reactive coordinate functions
-        const E = board.create('point', [
-            () => {
-                const ka = getK(a), kb = getK(b), kc = getK(c), kd = getK(d);
-                const ke = 2 * (ka + kb + kc) - kd;
-                return (2 * (ka * A.X() + kb * B.X() + kc * C.X()) - kd * D.X()) / ke;
-            },
-            () => {
-                const ka = getK(a), kb = getK(b), kc = getK(c), kd = getK(d);
-                const ke = 2 * (ka + kb + kc) - kd;
-                return (2 * (ka * A.Y() + kb * B.Y() + kc * C.Y()) - kd * D.Y()) / ke;
+               drawCircles2(n - 1, A, a, B, b, E, e, C, c);
+               drawCircles2(n - 1, A, a, C, c, E, e, B, b);
+               drawCircles2(n - 1, B, b, C, c, E, e, A, a);
             }
-        ], jg.style.pointStyleNoShow);
-
-        // 3. Create the circle with a reactive radius
-        const currentCirc = board.create("circle", [E, () => 1 / e()], jg.style.circleStyle);
-        circArray.push(currentCirc);
-
-        // 4. Recurse, passing the new center E and the function e
-        drawCircles2(n - 1, A, a, B, b, E, e, C, c);
-        drawCircles2(n - 1, A, a, C, c, E, e, B, b);
-        drawCircles2(n - 1, B, b, C, c, E, e, A, a);
-    }
-}
+         }
 
          const board = JXG.JSXGraph.initBoard('jxgbox', jg.style.boardStyle);
          
