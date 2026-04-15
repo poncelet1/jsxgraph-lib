@@ -33,6 +33,39 @@
             }
          }
 
+         const drawCircles2 = (n, A, a, B, b, C, c, D, d) => {
+    if (n >= 1) {
+        // 1. Curvature is a function of the input curvatures
+        // Note: If a, b, c, d are already functions, we call them
+        const getK = (val) => (typeof val === 'function' ? val() : val);
+
+        const e = () => 2 * (getK(a) + getK(b) + getK(c)) - getK(d);
+
+        // 2. Create the point E with reactive coordinate functions
+        const E = board.create('point', [
+            () => {
+                const ka = getK(a), kb = getK(b), kc = getK(c), kd = getK(d);
+                const ke = 2 * (ka + kb + kc) - kd;
+                return (2 * (ka * A.X() + kb * B.X() + kc * C.X()) - kd * D.X()) / ke;
+            },
+            () => {
+                const ka = getK(a), kb = getK(b), kc = getK(c), kd = getK(d);
+                const ke = 2 * (ka + kb + kc) - kd;
+                return (2 * (ka * A.Y() + kb * B.Y() + kc * C.Y()) - kd * D.Y()) / ke;
+            }
+        ], jg.style.pointStyleNoShow);
+
+        // 3. Create the circle with a reactive radius
+        const currentCirc = board.create("circle", [E, () => 1 / e()], jg.style.circleStyle);
+        circArray.push(currentCirc);
+
+        // 4. Recurse, passing the new center E and the function e
+        drawCircles(n - 1, A, a, B, b, E, e, C, c);
+        drawCircles(n - 1, A, a, C, c, E, e, B, b);
+        drawCircles(n - 1, B, b, C, c, E, e, A, a);
+    }
+}
+
          const board = JXG.JSXGraph.initBoard('jxgbox', jg.style.boardStyle);
          
          // 2. Create the vertices
@@ -54,7 +87,7 @@
          const innerSoddyCircle = jg.triangle.innerSoddyCircle(board, A, B, C);
          const outerSoddyCircle = jg.triangle.outerSoddyCircle(board, A, B, C);
          
-         drawCircles(3, B, 1/rB(), C, 1/rC(), innerSoddyCenter, 1/innerSoddyRadius, A, 1/rA());
+         drawCircles2(3, B, 1/rB(), C, 1/rC(), innerSoddyCenter, 1/innerSoddyRadius, A, 1/rA());
       </script>
    </body>
 </html>
