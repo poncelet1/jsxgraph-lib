@@ -23,7 +23,7 @@
                const Ey = (2 * (a * A.Y() + b * B.Y() + c * C.Y()) - d * D.Y()) / e;
                const E = board.create('point', [Ex, Ey], jg.style.pointNoShow);
                
-               currentCirc = board.create("circle", [[Ex, Ey], 1/e], jg.style.circleStyle);
+               currentCirc = board.create("circle", [E, 1/e], jg.style.circleStyle);
 
                circArray.push(currentCirc);
 
