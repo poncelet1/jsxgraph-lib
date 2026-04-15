@@ -49,18 +49,22 @@
          const A = board.create('point', [-1.0, 2.0], {name: 'A', ...jg.style.pointStyleDrag});
          const B = board.create('point', [-2.3, -1.1], {name: 'B', ...jg.style.pointStyleDrag});
          const C = board.create('point', [1.2, -1.7], {name: 'C', ...jg.style.pointStyleDrag});
+         const innerSoddyCenter = board.create('point', () => jg.triangle.innerSoddyCenter(A, B, C), jg.style.pointNoShow);
+         const outerSoddyCenter = board.create('point', () => jg.triangle.outerSoddyCenter(A, B, C), jg.style.pointNoShow);
 
          const rA = () => (jg.point.dist(A,B) + jg.point.dist(A,C) - jg.point.dist(B,C))/2;
          const rB = () => (jg.point.dist(A,B) - jg.point.dist(A,C) + jg.point.dist(B,C))/2;
          const rC = () => (-jg.point.dist(A,B) + jg.point.dist(A,C) + jg.point.dist(B,C))/2;
+         const innerSoddyRadius = jg.triangle.innerSoddyRadius(A, B, C);
+         const outerSoddyRadius = jg.triangle.outerSoddyRadius(A, B, C);
          
          const circA = board.create('circle', [A, rA], jg.style.circleStyle);
          const circB = board.create('circle', [B, rB], jg.style.circleStyle);
          const circC = board.create('circle', [C, rC], jg.style.circleStyle);
          const innerSoddyCircle = jg.triangle.innerSoddyCircle(board, A, B, C);
          const outerSoddyCircle = jg.triangle.outerSoddyCircle(board, A, B, C);
-         
-             
+
+         drawCircles(3, B, 1/rB, C, 1/rC, innerSoddyCenter, 1/innerSoddyRadius, A, 1/rA);
       </script>
    </body>
 </html>
