@@ -13,17 +13,6 @@
       <div id="jxgbox" class="jxgbox"></div>
       <script type="module">
          const circArray = [];
-         
-         const disc = (a, b, c) => Math.sqrt(a * b + a * c + b * c);
-         
-         const curvaturefive = (a, b, c, d) => 2*(a + b + c) - d;
-         
-         const centerfive = (A, a, B, b, C, c, D, d) => {
-            return [
-               (2 * (a * A.X() + b * B.X() + c * C.X()) - d * D.X()) / curvaturefive(a, b, c, d),
-               (2 * (a * A.Y() + b * B.Y() + c * C.Y()) - d * D.Y()) / curvaturefive(a, b, c, d)
-            ];
-         };
 
          const drawCircles = (n, A, a, B, b, C, c, D, d) => {
             let currentCirc;
@@ -64,11 +53,6 @@
          const circC = board.create('circle', [C, rC], jg.style.circleStyle);
          const innerSoddyCircle = jg.triangle.innerSoddyCircle(board, A, B, C);
          const outerSoddyCircle = jg.triangle.outerSoddyCircle(board, A, B, C);
-
-         console.log("innerSoddyCenter X:", innerSoddyCenter.X());
-console.log("innerSoddyCenter Y:", innerSoddyCenter.Y());
-console.log("innerSoddyRadius:", innerSoddyRadius);
-console.log("rA:", rA(), "rB:", rB(), "rC:", rC());
          
          drawCircles(3, B, 1/rB(), C, 1/rC(), innerSoddyCenter, 1/innerSoddyRadius, A, 1/rA());
       </script>
