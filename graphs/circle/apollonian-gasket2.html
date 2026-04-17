@@ -30,7 +30,7 @@
         ], jg.style.pointStyleNoShow);
 
         // 3. Create the circle
-        const currentCirc = board.create("circle", [E, () => 1 / e()]);
+        const currentCirc = board.create("circle", [E, () => 1 / e()], jg.style.circleStyle);
         circArray.push(currentCirc);
 
         // 4. Recurse (passing 'e' as the function for the next generation)
