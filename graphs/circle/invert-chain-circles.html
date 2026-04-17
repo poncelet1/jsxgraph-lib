@@ -13,6 +13,13 @@
       <div id="jxgbox" class="jxgbox"></div>
       <script type="module">
          const board = JXG.JSXGraph.initBoard('jxgbox', jg.style.boardStyle);
+
+         const n = 12;
+         const rInside = Math.sin(Math.PI / n) / (1 - Math.sin(Math.PI / n));
+         const circInside = board.create('circle', [[0, 0], 1], jg.style.circleStyle);
+         const circOutside = board.create('circle', [[0, 0], 1 + 2 * rInside], jg.style.circleStyle);
+         const circInner = board.create('circle', [[0, 0], 1 + rInside], jg.style.pointStyleNoShow);
+         const P = board.create('glider', [1 + rInside, 0, circInner], {name: 'P', ...jg.style.pointStyleDrag});
          
          const O = board.create('point', [-2, 1], {name: 'O', ...jg.style.pointStyleDrag});
          // OR is the point on the circle that regulates its radius
