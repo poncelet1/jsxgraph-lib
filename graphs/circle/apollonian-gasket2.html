@@ -53,7 +53,7 @@
          const rB = () => (jg.point.dist(A,B) - jg.point.dist(A,C) + jg.point.dist(B,C))/2;
          const rC = () => (-jg.point.dist(A,B) + jg.point.dist(A,C) + jg.point.dist(B,C))/2;
          const innerSoddyRadius = () => jg.triangle.innerSoddyRadius(A, B, C);
-         const outerSoddyRadius = jg.triangle.outerSoddyRadius(A, B, C);
+         const outerSoddyRadius = () => jg.triangle.outerSoddyRadius(A, B, C);
          
          const circA = board.create('circle', [A, rA], jg.style.circleStyle);
          const circB = board.create('circle', [B, rB], jg.style.circleStyle);
