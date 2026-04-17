@@ -27,7 +27,7 @@
         const E = board.create('point', [
             () => (2 * (val(a) * A.X() + val(b) * B.X() + val(c) * C.X()) - val(d) * D.X()) / e(),
             () => (2 * (val(a) * A.Y() + val(b) * B.Y() + val(c) * C.Y()) - val(d) * D.Y()) / e()
-        ]);
+        ], jg.style.pointStyleNoShow);
 
         // 3. Create the circle
         const currentCirc = board.create("circle", [E, () => 1 / e()]);
