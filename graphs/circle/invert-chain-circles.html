@@ -47,6 +47,9 @@
          });
          
          const circInverse = board.create('circle', [O, A], jg.style.circleStyleInverse);
+         const circInsideInverse = jg.inversion.invertCircle(board, O, jg.point.dist(O, A), [0, 0], 1, {...jg.style.circleStyle, strokeColor: "red"});
+         const circOutsideInverse = jg.inversion.invertCircle(board, O, jg.point.dist(O, A), [0, 0], 1 + 2 * rInside, {...jg.style.circleStyle, strokeColor: "red"});
+         
       </script>
    </body>
 </html>
