@@ -27,7 +27,26 @@
             const newCircle = board.create('circle', [newCenter, rInside], jg.style.circleStyle);
             chainCirc.push(newCircle);
          }
-           
+
+         const O = board.create('point', [-2.5, 1.5], {name: 'O', ...jg.style.pointStyleDrag});
+         const A = board.create('point', [-2.2, 0.4], {name: 'A', ...jg.style.pointStyleDrag});
+
+         // Store initial offset
+         let Aoffsetx = A.X() - O.X();
+         let Aoffsety = A.Y() - O.Y();
+         
+         // When O moves, update A by the same displacement
+         O.on('drag', () => {
+         A.moveTo([O.X() + Aoffsetx, O.Y() + Aoffsety]);
+         });
+         
+         // When A moves, update the stored offset
+         A.on('drag', () => {
+         Aoffsetx = A.X() - O.X();
+         Aoffsety = A.Y() - O.Y();
+         });
+         
+         const circInner = board.create('circle', [O, A], jg.style.circleStyleInverse);
       </script>
    </body>
 </html>
