@@ -65,8 +65,12 @@
          const radB = () => 1 / rB();
          const radC = () => 1 / rC();
          const radIn = () => 1 / innerSoddyRadius(A, B, C);
+
+         const depth = 5;
          
-         drawCircles(3, B, radB, C, radC, innerSoddyCenter, radIn, A, radA);
+         drawCircles(depth, B, radB, C, radC, innerSoddyCenter, radIn, A, radA);
+         drawCircles(depth, A, radA, C, radC, innerSoddyCenter, radIn, B, radB);
+         drawCircles(depth, A, radA, B, radB, innerSoddyCenter, radIn, C, radC);
       </script>
    </body>
 </html>
