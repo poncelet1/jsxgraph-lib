@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraphcore.js"></script>
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraph.css" />
+      <script type="module" src="../../src/index.js"></script>
+      <style>
+         body { margin: 0; overflow: hidden; } /* Removes scrollbars inside the frame */
+         .jxgbox { width: 100vw; height: 100vh; border: none; } /* Fills the frame */
+      </style>
+   </head>
+   <body>
+      <div id="jxgbox" class="jxgbox"></div>
+      <script type="module">
+         const board = JXG.JSXGraph.initBoard('jxgbox', jg.style.boardStyle);
+         
+         const O = board.create('point', [-2, 1], {name: 'O', ...jg.style.pointStyleDrag});
+         // OR is the point on the circle that regulates its radius
+         const OR = board.create('point', [1, 0], {name: 'OR', ...jg.style.pointStyleDrag});
+         
+         // Store initial offset
+         let ORoffsetx = OR.X() - O.X();
+         let ORoffsety = OR.Y() - O.Y();
+         
+         // When O moves, update OR by the same displacement
+         O.on('drag', () => {
+         OR.moveTo([O.X() + ORoffsetx, O.Y() + ORoffsety]);
+         });
+         
+         // When D moves, update the stored offset
+         OR.on('drag', () => {
+         ORoffsetx = OR.X() - O.X();
+         ORoffsety = OR.Y() - O.Y();
+         });
+         
+         const P = board.create('point', [0, -2], {name: 'P', ...jg.style.pointStyleDrag});
+         const Pp = board.create('point', [() => jg.inversion.invertPoint(O, jg.point.dist(O, OR), P)], {name: 'Pp', ...jg.style.pointStyleNoDrag});
+         
+         const circO = board.create('circle', [O, OR], jg.style.circleStyleInverse);
+           
+      </script>
+   </body>
+</html>
