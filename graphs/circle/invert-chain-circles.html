@@ -50,7 +50,7 @@
          const circInsideInv = jg.inversion.invertCircle(board, O, jg.point.dist(O, A), [0, 0], 1, {...jg.style.circleStyle, strokeColor: "red"});
          const circOutsideInv = jg.inversion.invertCircle(board, O, jg.point.dist(O, A), [0, 0], 1 + 2 * rInside, {...jg.style.circleStyle, strokeColor: "red"});
 
-         const chainCircinv = [];
+         const chainCircInv = [];
          for (let i = 0; i < n; ++i) {
             const newCenter = board.create('point', [() => jg.point.rotate([0, 0], i * 2 * Math.PI / n, P)], jg.style.pointStyleNoShow);
             const newCircle = jg.inversion.invertCircle(board, O, jg.point.dist(O, A), newCenter, rInside, {...jg.style.circleStyle, strokeColor: "red"});
