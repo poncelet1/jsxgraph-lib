@@ -23,7 +23,7 @@
 
          const chainCirc = [];
          for (let i = 0; i < n; i++) {
-            const newCenter = board.create('point', [() => jg.point.rotate([0, 0], i * 2 * Math.PI / n]), jg.style.pointStyleNoShow);
+            const newCenter = board.create('point', [() => jg.point.rotate([0, 0], i * 2 * Math.PI / n)], jg.style.pointStyleNoShow);
             const newCircle = new Circle('circle', [newCenter, rInside], jg.style.circleStyle);
             chainCirc.push(newCircle);
          }
