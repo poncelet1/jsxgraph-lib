@@ -2,17 +2,21 @@ import { dist, pointDifference, pointScale, pointSum } from "../point/point.js";
 import { circleStyle } from "../style/style.js";
 
 /**
- * Given point O, radius r, and point P, returns the inverse of P with respect to the circle centered at O with radius r.
- * @param O center
- * @param r radius
+ * Given circle circ and point P, returns the inverse of P with respect to the circle circ
+ * @param circ circle
  * @param P point
  * @returns inverse of P
  */
-export function invertPoint(O, r, P) {
-  return pointSum(
-    O,
-    pointScale(pointDifference(P, O), r ** 2 / dist(P, O) ** 2),
-  );
+export function invertPoint(circ, P) {
+  const ox = circ.center.X();
+  const oy = circ.center.Y();
+  const r = circ.Radius();
+  const [px, py] = getXY(P);
+  
+  return [
+    ox + r ** 2 / Math.hypot(ox - px, oy - py) ** 2 * (px - ox),
+    ox + r ** 2 / Math.hypot(ox - px, oy - py) ** 2 * (px - ox)
+  ];
 }
 
 /**
