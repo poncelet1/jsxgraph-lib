@@ -21,20 +21,23 @@ export function invertPoint(circ, P) {
 }
 
 /**
- * Given point O, radius r, and point P, radius s, returns the inverse of the circle centered at P with radius s
- * with respect to the circle centered at O with radius r
- * @param O center
- * @param r radius
- * @param P center
- * @param s radius
+ * Given circles circ1 and circ2, returns the inverse of the circ2 with respect to circ1
+ * @param circ1 circle
+ * @param circ2 circle
  * @returns inverse of circle
  */
-export function invertCircle(board, O, r, P, s, style = circleStyle) {
-  const center = () =>
-    pointSum(
-      O,
-      pointScale(pointDifference(P, O), r ** 2 / (dist(O, P) ** 2 - s ** 2)),
-    );
-  const radius = () => (r ** 2 * s) / (dist(O, P) ** 2 - s ** 2);
+export function invertCircle(board, circ1, circ2, style = circleStyle) {
+  const o1x = circ1.center.X();
+  const o1y = circ1.center.Y();
+  const r1 = circ1.Radius();
+  const o2x = circ2.center.X();
+  const o2y = circ2.center.Y();
+  const r2 = circ2.Radius();
+  
+  const center = () => [
+    r1 ** 2 / (Math.hypot(o1x - o2x, o1y - o2y) ** 2 - s ** 2) * (o2x - o1x) + o1x,
+    r1 ** 2 / (Math.hypot(o1x - o2x, o1y - o2y) ** 2 - s ** 2) * (o2y - o1y) + o1y
+  ];
+  const radius = () => (r ** 2 * s) / (Math.hypot(o1x - o2x, o1y - o2y) ** 2 - s ** 2);
   return board.create("circle", [center, radius], style);
 }
