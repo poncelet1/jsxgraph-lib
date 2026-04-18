@@ -33,10 +33,10 @@
             ORoffsety = OR.Y() - O.Y();
          });
          
-         const P = board.create('point', [0, -2], {name: 'P', ...jg.style.pointStyleDrag});
-         const Pp = board.create('point', [() => jg.inversion.invertPoint(O, jg.point.dist(O, OR), P)], {name: 'Pp', ...jg.style.pointStyleNoDrag});
-         
          const circO = board.create('circle', [O, OR], jg.style.circleStyleInverse);
+         const P = board.create('point', [0, -2], {name: 'P', ...jg.style.pointStyleDrag});
+         const Pp = board.create('point', [() => jg.inversion.invertPoint(circO, P)], {name: 'Pp', ...jg.style.pointStyleNoDrag});
+         
            
       </script>
    </body>
