@@ -34,7 +34,6 @@
          const lineCD = board.create('line', [C, D], jg.style.lineStyle);
          const lineXY = board.create('line', [X, Y], jg.style.lineStyle);
          const lineAZ = board.create('line', [A, Z], jg.style.lineStyle);
-         const lineEP = board.create('line', [E, P], jg.style.lineStyle);
          const conicABCDE = board.create('conic', [A, B, C, D, E], jg.style.circleStyle);
          
          board.create('text', [4, 4, () => `${jg.conic.conicxx(A, B, C, D, E).toFixed(4)}`]);
