@@ -200,7 +200,7 @@ export function triangleCircumradius(A, B, C) {
  * @returns circumcenter
  */
 export function triangleCircumcenter(A, B, C) {
-  return intersection(
+  return intersectionPoint(
     midpoint(A, B),
     rotatePoint(midpoint(A, B), Math.PI / 2, A),
     midpoint(A, C),
