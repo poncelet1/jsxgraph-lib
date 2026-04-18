@@ -24,13 +24,13 @@
          
          // When O moves, update OR by the same displacement
          O.on('drag', () => {
-         OR.moveTo([O.X() + ORoffsetx, O.Y() + ORoffsety]);
+            OR.moveTo([O.X() + ORoffsetx, O.Y() + ORoffsety]);
          });
          
          // When D moves, update the stored offset
          OR.on('drag', () => {
-         ORoffsetx = OR.X() - O.X();
-         ORoffsety = OR.Y() - O.Y();
+            ORoffsetx = OR.X() - O.X();
+            ORoffsety = OR.Y() - O.Y();
          });
          
          const P = board.create('point', [0, -2], {name: 'P', ...jg.style.pointStyleDrag});
