@@ -20,7 +20,7 @@
          const D = board.create('point', [1.2, 1.5], {name: 'D'});
          const E = board.create('point', [-0.5, -2.2], {name: 'E'});
          //const conicABCDEcenter = board.create('point', [() => jg.conic.conicCenterByPoints(A, B, C, D, E)], {name: 'O', ...jg.style.pointStyle});
-         const L = board.create('point', [0.1, 0.2], {name: 'P'});
+         const L = board.create('point', [0.1, 0.2], {name: 'L'});
          const X = board.create('point', [() => jg.point.intersectionPoint(A, B, D, E)], {name: 'X', ...jg.style.pointStyle});
          const Y = board.create('point', [() => jg.point.intersectionPoint(B, C, E, L)], {name: 'Y', ...jg.style.pointStyle});
          const Z = board.create('point', [() => jg.point.intersectionPoint(C, D, X, Y)], {name: 'Z', ...jg.style.pointStyle});
