@@ -1,6 +1,6 @@
-import { signedArea } from "../triangle/triangle.js";
+import { triangleSignedArea } from "../triangle/triangle.js";
 import { getXY } from "../core/core.js";
-import { intersection } from "../point/point.js";
+import { intersectionPoint } from "../point/point.js";
 
 /**
  * Given points A, B, C, D, E, returns the coefficient of x^2 in the equation of the conic passing through the five points
@@ -19,8 +19,8 @@ export function conicxx(A, B, C, D, E) {
   const [ex, ey] = getXY(E);
 
   return (
-    signedArea(B, C, E) * signedArea(D, A, E) * (ay - by) * (cy - dy) -
-    signedArea(A, B, E) * signedArea(C, D, E) * (by - cy) * (dy - ay)
+    triangleSignedArea(B, C, E) * triangleSignedArea(D, A, E) * (ay - by) * (cy - dy) -
+    triangleSignedArea(A, B, E) * triangleSignedArea(C, D, E) * (by - cy) * (dy - ay)
   );
 }
 
@@ -41,11 +41,11 @@ export function conicxy(A, B, C, D, E) {
   const [ex, ey] = getXY(E);
 
   return (
-    signedArea(B, C, E) *
-      signedArea(D, A, E) *
+    triangleSignedArea(B, C, E) *
+      triangleSignedArea(D, A, E) *
       ((ay - by) * (dx - cx) + (bx - ax) * (cy - dy)) -
-    signedArea(A, B, E) *
-      signedArea(C, D, E) *
+    triangleSignedArea(A, B, E) *
+      triangleSignedArea(C, D, E) *
       ((by - cy) * (ax - dx) + (cx - bx) * (dy - ay))
   );
 }
@@ -67,8 +67,8 @@ export function conicyy(A, B, C, D, E) {
   const [ex, ey] = getXY(E);
 
   return (
-    signedArea(B, C, E) * signedArea(D, A, E) * (bx - ax) * (dx - cx) -
-    signedArea(A, B, E) * signedArea(C, D, E) * (cx - bx) * (ax - dx)
+    triangleSignedArea(B, C, E) * triangleSignedArea(D, A, E) * (bx - ax) * (dx - cx) -
+    triangleSignedArea(A, B, E) * triangleSignedArea(C, D, E) * (cx - bx) * (ax - dx)
   );
 }
 
@@ -89,11 +89,11 @@ export function conicx(A, B, C, D, E) {
   const [ex, ey] = getXY(E);
 
   return (
-    signedArea(B, C, E) *
-      signedArea(D, A, E) *
+    triangleSignedArea(B, C, E) *
+      triangleSignedArea(D, A, E) *
       ((ay - by) * (cx * dy - cy * dx) + (ax * by - ay * bx) * (cy - dy)) -
-    signedArea(A, B, E) *
-      signedArea(C, D, E) *
+    triangleSignedArea(A, B, E) *
+      triangleSignedArea(C, D, E) *
       ((by - cy) * (dx * ay - dy * ax) + (bx * cy - by * cx) * (dy - ay))
   );
 }
@@ -115,11 +115,11 @@ export function conicy(A, B, C, D, E) {
   const [ex, ey] = getXY(E);
 
   return (
-    signedArea(B, C, E) *
-      signedArea(D, A, E) *
+    triangleSignedArea(B, C, E) *
+      triangleSignedArea(D, A, E) *
       ((bx - ax) * (cx * dy - cy * dx) + (ax * by - ay * bx) * (dx - cx)) -
-    signedArea(A, B, E) *
-      signedArea(C, D, E) *
+    triangleSignedArea(A, B, E) *
+      triangleSignedArea(C, D, E) *
       ((cx - bx) * (dx * ay - dy * ax) + (bx * cy - by * cx) * (ax - dx))
   );
 }
@@ -141,11 +141,11 @@ export function conic1(A, B, C, D, E) {
   const [ex, ey] = getXY(E);
 
   return (
-    signedArea(B, C, E) *
-      signedArea(D, A, E) *
+    triangleSignedArea(B, C, E) *
+      triangleSignedArea(D, A, E) *
       ((ax * by - ay * bx) * (cx * dy - cy * dx)) -
-    signedArea(A, B, E) *
-      signedArea(C, D, E) *
+    triangleSignedArea(A, B, E) *
+      triangleSignedArea(C, D, E) *
       ((bx * cy - by * cx) * (dx * ay - dy * ax))
   );
 }
@@ -197,7 +197,7 @@ export function conicCenterByPoints(A, B, C, D, E) {
  * @returns brianchon point
  */
 export function brianchonPoint(A, B, C, D, E) {
-  return intersection(A, B, D, intersection(A, C, B, E));
+  return intersectionPoint(A, B, D, intersectionPoint(A, C, B, E));
 }
 
 /**
@@ -254,11 +254,11 @@ export function conicByLines(
  * @returns sixth point on conic
  */
 export function conicSixthPoint(A, B, C, D, E, P) {
-  const M1 = jg.point.intersection(A, B, D, E);
-  const M2 = jg.point.intersection(B, C, E, P);
-  const M3 = jg.point.intersection(C, D, M1, M2);
+  const X = jg.point.intersectionPoint(A, B, D, E);
+  const Y = jg.point.intersectionPoint(B, C, E, P);
+  const Z = jg.point.intersectionPoint(C, D, X, Y);
 
-  return intersection(A, M3, E, P);
+  return intersection(A, Z, E, P);
 }
 
 /**
