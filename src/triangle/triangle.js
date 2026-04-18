@@ -1,10 +1,10 @@
 import { getXY } from "../core/core.js";
 import {
-  dist,
-  intersection,
+  pointDist,
+  intersectionPoint,
   midpoint,
-  project,
-  rotate,
+  projectPoint,
+  rotatePoint,
 } from "../point/point.js";
 import { circleStyle } from "../style/style.js";
 
@@ -15,8 +15,8 @@ import { circleStyle } from "../style/style.js";
  * @param C third point
  * @returns semiperimeter
  */
-export function semiperimeter(A, B, C) {
-  return (dist(A, B) + dist(A, C) + dist(B, C)) / 2;
+export function triangleSemiperimeter(A, B, C) {
+  return (pointDist(A, B) + pointDist(A, C) + pointDist(B, C)) / 2;
 }
 
 /**
@@ -26,7 +26,7 @@ export function semiperimeter(A, B, C) {
  * @param C third point
  * @returns area
  */
-export function area(A, B, C) {
+export function triangleArea(A, B, C) {
   const [ax, ay] = getXY(A);
   const [bx, by] = getXY(B);
   const [cx, cy] = getXY(C);
@@ -43,7 +43,7 @@ export function area(A, B, C) {
  * @param C third point
  * @returns signed area
  */
-export function signedArea(A, B, C) {
+export function triangleSignedArea(A, B, C) {
   const [ax, ay] = getXY(A);
   const [bx, by] = getXY(B);
   const [cx, cy] = getXY(C);
@@ -61,7 +61,7 @@ export function signedArea(A, B, C) {
  * @param z C-coordinate
  * @returns barycentric point
  */
-export function barycoord(A, B, C, x, y, z) {
+export function barycoordPoint(A, B, C, x, y, z) {
   const [ax, ay] = getXY(A);
   const [bx, by] = getXY(B);
   const [cx, cy] = getXY(C);
@@ -79,8 +79,8 @@ export function barycoord(A, B, C, x, y, z) {
  * @param C third point
  * @returns centroid
  */
-export function centroid(A, B, C) {
-  return barycoord(A, B, C, 1, 1, 1);
+export function triangleCentroid(A, B, C) {
+  return barycoordPoint(A, B, C, 1, 1, 1);
 }
 
 /**
@@ -90,9 +90,9 @@ export function centroid(A, B, C) {
  * @param C third point
  * @returns inradius
  */
-export function inradius(A, B, C) {
-  const s = semiperimeter(A, B, C);
-  const K = area(A, B, C);
+export function triangleInradius(A, B, C) {
+  const s = triangleSemiperimeter(A, B, C);
+  const K = triangleArea(A, B, C);
 
   return K / s;
 }
@@ -104,12 +104,12 @@ export function inradius(A, B, C) {
  * @param C third point
  * @returns incenter
  */
-export function incenter(A, B, C) {
-  const a = dist(B, C);
-  const b = dist(C, A);
-  const c = dist(A, B);
+export function triangleIncenter(A, B, C) {
+  const a = pointDist(B, C);
+  const b = pointDist(C, A);
+  const c = pointDist(A, B);
 
-  return barycoord(A, B, C, a, b, c);
+  return barycoordPoint(A, B, C, a, b, c);
 }
 
 /**
@@ -121,10 +121,10 @@ export function incenter(A, B, C) {
  * @param style optional circle style
  * @returns incircle
  */
-export function incircle(board, A, B, C, style = circleStyle) {
+export function triangleIncircle(board, A, B, C, style = circleStyle) {
   return board.create(
     "circle",
-    [() => incenter(A, B, C), () => inradius(A, B, C)],
+    [() => triangleIncenter(A, B, C), () => triangleInradius(A, B, C)],
     style,
   );
 }
@@ -136,10 +136,10 @@ export function incircle(board, A, B, C, style = circleStyle) {
  * @param C third point
  * @returns A-exradius
  */
-export function exradius(A, B, C) {
-  const a = dist(B, C);
-  const s = semiperimeter(A, B, C);
-  const K = area(A, B, C);
+export function triangleExradius(A, B, C) {
+  const a = pointDist(B, C);
+  const s = triangleSemiperimeter(A, B, C);
+  const K = triangleArea(A, B, C);
 
   return K / (s - a);
 }
@@ -151,12 +151,12 @@ export function exradius(A, B, C) {
  * @param C third point
  * @returns A-excenter
  */
-export function excenter(A, B, C) {
-  const a = dist(B, C);
-  const b = dist(C, A);
-  const c = dist(A, B);
+export function triangleExcenter(A, B, C) {
+  const a = pointDist(B, C);
+  const b = pointDist(C, A);
+  const c = pointDist(A, B);
 
-  return barycoord(A, B, C, -a, b, c);
+  return barycoordPoint(A, B, C, -a, b, c);
 }
 
 /**
@@ -168,10 +168,10 @@ export function excenter(A, B, C) {
  * @param style optional circle style
  * @returns A-excircle
  */
-export function excircle(board, A, B, C, style = circleStyle) {
+export function triangleExcircle(board, A, B, C, style = circleStyle) {
   return board.create(
     "circle",
-    [() => excenter(A, B, C), () => exradius(A, B, C)],
+    [() => triangleExcenter(A, B, C), () => triangleExradius(A, B, C)],
     style,
   );
 }
@@ -183,11 +183,11 @@ export function excircle(board, A, B, C, style = circleStyle) {
  * @param C third point
  * @returns circumradius
  */
-export function circumradius(A, B, C) {
-  const a = dist(B, C);
-  const b = dist(A, C);
-  const c = dist(A, B);
-  const K = area(A, B, C);
+export function triangleCircumradius(A, B, C) {
+  const a = pointDist(B, C);
+  const b = pointDist(A, C);
+  const c = pointDist(A, B);
+  const K = triangleArea(A, B, C);
 
   return (a * b * c) / (4 * K);
 }
@@ -199,12 +199,12 @@ export function circumradius(A, B, C) {
  * @param C third point
  * @returns circumcenter
  */
-export function circumcenter(A, B, C) {
+export function triangleCircumcenter(A, B, C) {
   return intersection(
     midpoint(A, B),
-    rotate(midpoint(A, B), Math.PI / 2, A),
+    rotatePoint(midpoint(A, B), Math.PI / 2, A),
     midpoint(A, C),
-    rotate(midpoint(A, C), Math.PI / 2, A),
+    rotatePoint(midpoint(A, C), Math.PI / 2, A),
   );
 }
 
@@ -217,10 +217,10 @@ export function circumcenter(A, B, C) {
  * @param style optional circle style
  * @returns circumcircle
  */
-export function circumcircle(board, A, B, C, style = circleStyle) {
+export function triangleCircumcircle(board, A, B, C, style = circleStyle) {
   return board.create(
     "circle",
-    [() => circumcenter(A, B, C), () => circumradius(A, B, C)],
+    [() => triangleCircumcenter(A, B, C), () => triangleCircumradius(A, B, C)],
     style,
   );
 }
@@ -232,8 +232,8 @@ export function circumcircle(board, A, B, C, style = circleStyle) {
  * @param C third point
  * @returns orthocenter
  */
-export function orthocenter(A, B, C) {
-  return intersection(A, project(B, C, A), B, project(C, A, B));
+export function triangleOrthocenter(A, B, C) {
+  return intersectionPoint(A, projectPoint(B, C, A), B, projectPoint(C, A, B));
 }
 
 /**
@@ -243,11 +243,11 @@ export function orthocenter(A, B, C) {
  * @param C third point
  * @returns inner Soddy radius
  */
-export function innerSoddyRadius(A, B, C) {
-  const r = inradius(A, B, C);
-  const R = circumradius(A, B, C);
-  const s = semiperimeter(A, B, C);
-  const K = area(A, B, C);
+export function triangleInnerSoddyRadius(A, B, C) {
+  const r = triangleInradius(A, B, C);
+  const R = triangleCircumradius(A, B, C);
+  const s = triangleSemiperimeter(A, B, C);
+  const K = triangleArea(A, B, C);
 
   return K / (4 * R + r + 2 * s);
 }
@@ -259,15 +259,15 @@ export function innerSoddyRadius(A, B, C) {
  * @param C third point
  * @returns inner Soddy center
  */
-export function innerSoddyCenter(A, B, C) {
-  const a = dist(B, C);
-  const b = dist(A, C);
-  const c = dist(A, B);
-  const rA = exradius(A, B, C);
-  const rB = exradius(B, C, A);
-  const rC = exradius(C, A, B);
+export function triangleInnerSoddyCenter(A, B, C) {
+  const a = pointDist(B, C);
+  const b = pointDist(A, C);
+  const c = pointDist(A, B);
+  const rA = triangleExradius(A, B, C);
+  const rB = triangleExradius(B, C, A);
+  const rC = triangleExradius(C, A, B);
 
-  return barycoord(A, B, C, a + rA, b + rB, c + rC);
+  return barycoordPoint(A, B, C, a + rA, b + rB, c + rC);
 }
 
 /**
@@ -279,10 +279,10 @@ export function innerSoddyCenter(A, B, C) {
  * @param style optional circle style
  * @returns inner Soddy circle
  */
-export function innerSoddyCircle(board, A, B, C, style = circleStyle) {
+export function triangleInnerSoddyCircle(board, A, B, C, style = circleStyle) {
   return board.create(
     "circle",
-    [() => innerSoddyCenter(A, B, C), () => innerSoddyRadius(A, B, C)],
+    [() => triangleInnerSoddyCenter(A, B, C), () => triangleInnerSoddyRadius(A, B, C)],
     style,
   );
 }
@@ -294,11 +294,11 @@ export function innerSoddyCircle(board, A, B, C, style = circleStyle) {
  * @param C third point
  * @returns outer Soddy radius
  */
-export function outerSoddyRadius(A, B, C) {
-  const r = inradius(A, B, C);
-  const R = circumradius(A, B, C);
-  const s = semiperimeter(A, B, C);
-  const K = area(A, B, C);
+export function triangleOuterSoddyRadius(A, B, C) {
+  const r = triangleInradius(A, B, C);
+  const R = triangleCircumradius(A, B, C);
+  const s = triangleSemiperimeter(A, B, C);
+  const K = triangleArea(A, B, C);
 
   return K / (4 * R + r - 2 * s);
 }
@@ -310,15 +310,15 @@ export function outerSoddyRadius(A, B, C) {
  * @param C third point
  * @returns outer Soddy center
  */
-export function outerSoddyCenter(A, B, C) {
-  const a = dist(B, C);
-  const b = dist(A, C);
-  const c = dist(A, B);
-  const rA = exradius(A, B, C);
-  const rB = exradius(B, C, A);
-  const rC = exradius(C, A, B);
+export function triangleOuterSoddyCenter(A, B, C) {
+  const a = pointDist(B, C);
+  const b = pointDist(A, C);
+  const c = pointDist(A, B);
+  const rA = triangleExradius(A, B, C);
+  const rB = triangleExradius(B, C, A);
+  const rC = triangleExradius(C, A, B);
 
-  return barycoord(A, B, C, -a + rA, -b + rB, -c + rC);
+  return barycoordPoint(A, B, C, -a + rA, -b + rB, -c + rC);
 }
 
 /**
@@ -330,10 +330,10 @@ export function outerSoddyCenter(A, B, C) {
  * @param style optional circle style
  * @returns outer Soddy circle
  */
-export function outerSoddyCircle(board, A, B, C, style = circleStyle) {
+export function triangleOuterSoddyCircle(board, A, B, C, style = circleStyle) {
   return board.create(
     "circle",
-    [() => outerSoddyCenter(A, B, C), () => outerSoddyRadius(A, B, C)],
+    [() => triangleOuterSoddyCenter(A, B, C), () => triangleOuterSoddyRadius(A, B, C)],
     style,
   );
 }
