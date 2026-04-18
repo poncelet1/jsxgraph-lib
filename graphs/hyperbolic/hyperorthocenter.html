@@ -17,9 +17,9 @@
          const A = board.create('point', [-0.3, 0.7], {name: 'A', ...jg.style.pointStyleDrag});
          const B = board.create('point', [-0.6, -0.1], {name: 'B', ...jg.style.pointStyleDrag});
          const C = board.create('point', [0.5, -0.3], {name: 'C', ...jg.style.pointStyleDrag});
-         const D = board.create('point', [() => jg.hyperbolic.hyperProject(B, C, A)], {name: 'D', ...jg.style.pointStyleNoDrag});
-         const E = board.create('point', [() => jg.hyperbolic.hyperProject(C, A, B)], {name: 'E', ...jg.style.pointStyleNoDrag});
-         const F = board.create('point', [() => jg.hyperbolic.hyperProject(A, B, C)], {name: 'F', ...jg.style.pointStyleNoDrag});
+         const D = board.create('point', [() => jg.hyperbolic.hyperProjectPoint(B, C, A)], {name: 'D', ...jg.style.pointStyleNoDrag});
+         const E = board.create('point', [() => jg.hyperbolic.hyperProjectPoint(C, A, B)], {name: 'E', ...jg.style.pointStyleNoDrag});
+         const F = board.create('point', [() => jg.hyperbolic.hyperProjectPoint(A, B, C)], {name: 'F', ...jg.style.pointStyleNoDrag});
          const H = board.create('point', [() => jg.hyperbolic.hyperOrthocenter(A, B, C)], {name: 'H', ...jg.style.pointStyleNoDrag});
          
          const lineAB = jg.hyperbolic.hyperline(board, A, B);
