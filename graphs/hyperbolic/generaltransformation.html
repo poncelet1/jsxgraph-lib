@@ -14,30 +14,33 @@
       <script type="module">
          const board = JXG.JSXGraph.initBoard('jxgbox', jg.style.boardStyleHyperbolic);
          
-         const A = board.create('point', [-0.2, 0.5], {name: 'A', ...jg.style.pointStyleDrag});
-         const P = board.create('point', [0.2, -0.5], {name: 'P', ...jg.style.pointStyleDrag});
-         const hypercircA = jg.hyperbolic.hyperCircle(board, A, 1);
-           
-         const Ap = board.create('point', [() => jg.hyperbolic.movePointToOrigin(A, P)], jg.style.pointStyleNoShow);
-         const hypercircAp = jg.hyperbolic.hyperCircle(board, Ap, 1, jg.style.pointStyleNoShow);
-         const Op = board.create('point', [() => jg.hyperbolic.hyperCircleCenter(Ap, 1)], jg.style.pointStyleNoShow);
-         
-         const diamCirc = board.create('circle', [
-            () => jg.point.pointScale(Op, 1/2), 
-            () => jg.point.dist(Op)/2
-            ], { visible: false, withLabel: false }
-         );
-         
-         const Tp1 = board.create('intersection', [hypercircAp, diamCirc, 0], jg.style.pointStyleNoShow);
-         const Tp2 = board.create('intersection', [hypercircAp, diamCirc, 1], jg.style.pointStyleNoShow);
-         const T1 = board.create('point', [() => jg.hyperbolic.movePointFromOrigin(Tp1, P)], {...jg.style.pointStyleNoDrag, withLabel : false});
-         const T2 = board.create('point', [() => jg.hyperbolic.movePointFromOrigin(Tp2, P)], {...jg.style.pointStyleNoDrag, withLabel : false});
-         
-         const tangent1 = jg.hyperbolic.hyperline(board, P, T1);
-         const tangent2 = jg.hyperbolic.hyperline(board, P, T2);
-           
+         const A = board.create('point', [-0.3, 0.7], {name: 'A', ...jg.style.pointStyleDrag});
          const unitCircle = board.create('circle', [[0, 0], 1], jg.style.circleStyle);
+         const B = board.create('glider', [1, 0, unitCircle], {name: 'B', ...jg.style.pointStyleDrag});
          
+         const circlesA = [];
+           
+         for (let i = 1; i <= 15; i++) {
+         const r = Math.log((1 + i / 16) / (1 - i / 16));
+         let currentCirc;
+         
+         if (i % 4 == 0) {
+            currentCirc = jg.hyperbolic.hyperCircle(board, A, r);
+         } else {
+            currentCirc = jg.hyperbolic.hyperCircle(board, A, r, {...jg.style.circleStyle, strokeColor: 'lightgray'});
+         }
+         
+         circlesA.push(currentCirc);
+         }
+         
+         const linesB = [];
+           
+         for (let i = 0; i <= 5; i++) {
+            const startPoint = board.create('point', [() => jg.hyperbolic.hyperRot(A, i * Math.PI / 6, B)], {visible: false});
+            const endPoint = board.create('point', [() => jg.hyperbolic.hyperRot(A, (i + 6) * Math.PI / 6, B)], {visible: false});
+            linesB.push(jg.hyperbolic.hyperline(board, startPoint, endPoint));
+         }
+           
       </script>
    </body>
 </html>
