@@ -17,7 +17,7 @@
          const A = board.create('point', [-0.3, 0.7], {name: 'A', ...jg.style.pointStyleDrag});
          const B = board.create('point', [-0.6, -0.1], {name: 'B', ...jg.style.pointStyleDrag});
          const C = board.create('point', [0.5, -0.3], {name: 'C', ...jg.style.pointStyleDrag});
-         const O = board.create('point', [() => jg.hyperbolic.hyperCircumcenter(A, B, C)], {name: 'O', ...jg.style.pointStyleNoDrag});
+         const O = board.create('point', [() => jg.hyperbolic.hyperTriangleCircumcenter(A, B, C)], {name: 'O', ...jg.style.pointStyleNoDrag});
          
          const lineSegAB = jg.hyperbolic.hyperlineSegment(board, A, B);
          const lineSegAC = jg.hyperbolic.hyperlineSegment(board, A, C);
@@ -26,7 +26,7 @@
          const perpBisAC = jg.hyperbolic.hyperPerpBis(board, A, C);
          const perpBisBC = jg.hyperbolic.hyperPerpBis(board, B, C);
          
-         const circABC = jg.hyperbolic.hyperCircumcircle(board, A, B, C);
+         const circABC = jg.hyperbolic.hyperTriangleCircumcircle(board, A, B, C);
          const unitCircle = board.create('circle', [[0, 0], 1], jg.style.circleStyle);
          
       </script>
