@@ -132,11 +132,9 @@ export function projectPoint(A, B, C) {
 
   return [
     (((cx - ax) * (bx - ax) + (cy - ay) * (by - ay)) * (bx - ax)) /
-      dist(A, B) ** 2 +
-      ax,
+      pointDist(A, B) ** 2 + ax,
     (((cx - ax) * (bx - ax) + (cy - ay) * (by - ay)) * (by - ay)) /
-      dist(A, B) ** 2 +
-      ay,
+      pointDist(A, B) ** 2 + ay
   ];
 }
 
