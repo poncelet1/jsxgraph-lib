@@ -7,7 +7,7 @@ import {
   complexSum,
 } from "../complex/complex.js";
 import { circleStyle, pointStyleNoShow } from "../style/style.js";
-import { pointDist, midpoint, pointScale, rotatePoint } from "../point/point.js";
+import { pointDist, midpoint, pointScale, rotatePoint, intersectionPoint } from "../point/point.js";
 import { triangleSignedArea } from "../triangle/triangle.js";
 
 /**
@@ -92,7 +92,7 @@ export function hyperCircle(board, A, r, style = circleStyle) {
  * @param P point being rotated
  * @returns rotated point
  */
-export function hyperRot(C, t, P) {
+export function hyperRotatePoint(C, t, P) {
   return movePointFromOrigin(rotatePoint([0, 0], t, movePointToOrigin(P, C)), C);
 }
 
@@ -210,7 +210,7 @@ export function hyperlineSegment(board, A, B, style = circleStyle) {
  * @param P third point
  * @returns reflection
  */
-export function hyperReflect(A, B, P) {
+export function hyperReflectPoint(A, B, P) {
   const Z1 = complexDifference(
     pointScale(A, 1 + pointDist(B) ** 2),
     pointScale(B, 1 + pointDist(A) ** 2),
@@ -234,8 +234,8 @@ export function hyperReflect(A, B, P) {
  * @param P third point
  * @returns projection
  */
-export function hyperProject(A, B, P) {
-  return hyperMidpoint(P, hyperReflect(A, B, P));
+export function hyperProjectPoint(A, B, P) {
+  return hyperMidpoint(P, hyperReflectPoint(A, B, P));
 }
 
 /**
@@ -275,7 +275,7 @@ export function hyperPerpBis(board, A, B, style = circleStyle) {
  * @param d number
  * @returns extended point P
  */
-export function extendSegment(A, B, d) {
+export function extendSegmentPoint(A, B, d) {
   const Bp = movePointToOrigin(B, A);
   const Ep = pointScale(
     Bp,
@@ -309,7 +309,7 @@ export function hyperAngle(A, B, C) {
  * @param C third point
  * @returns area
  */
-export function hyperArea(A, B, C) {
+export function hyperTriangleArea(A, B, C) {
   return (
     Math.PI - hyperAngle(B, A, C) - hyperAngle(A, B, C) - hyperAngle(A, C, B)
   );
@@ -323,12 +323,12 @@ export function hyperArea(A, B, C) {
  * @param D fourth point
  * @returns intersection of AB and CD
  */
-export function clineIntersect(A, B, C, D) {
+export function hyperIntersectionPoint(A, B, C, D) {
   const Ap = hyperlineEndPoint(A, B);
   const Bp = hyperlineEndPoint(B, A);
   const Cp = hyperlineEndPoint(C, D);
   const Dp = hyperlineEndPoint(D, C);
-  const X = jg.point.intersectionPoint(Ap, Bp, Cp, Dp);
+  const X = intersectionPoint(Ap, Bp, Cp, Dp);
   const [u, v] = getXY(X);
   const w = -Math.sqrt(1 - u ** 2 - v ** 2);
 
@@ -343,7 +343,7 @@ export function clineIntersect(A, B, C, D) {
  * @returns centroid
  */
 export function hyperCentroid(A, B, C) {
-  return clineIntersect(A, hyperMidpoint(B, C), B, hyperMidpoint(A, C));
+  return hyperIntersectionPoint(A, hyperMidpoint(B, C), B, hyperMidpoint(A, C));
 }
 
 /**
@@ -359,7 +359,7 @@ export function hyperIntouchPoint(A, B, C) {
   const c = hyperDist(A, B);
   const s = (a + b + c) / 2;
 
-  return extendSegment(B, C, s - b);
+  return extendSegmentPoint(B, C, s - b);
 }
 
 /**
@@ -393,11 +393,11 @@ export function hyperIncenter(A, B, C) {
   const D = hyperIntouchPoint(A, B, C);
   const E = hyperIntouchPoint(B, C, A);
 
-  return clineIntersect(
+  return hyperIntersectionPoint(
     D,
-    hyperRot(D, Math.PI / 2, B),
+    hyperRotatePoint(D, Math.PI / 2, B),
     E,
-    hyperRot(E, Math.PI / 2, C),
+    hyperRotatePoint(E, Math.PI / 2, C),
   );
 }
 
@@ -452,14 +452,14 @@ export function hyperExcenter(A, B, C) {
   const c = hyperDist(A, B);
   const s = (a + b + c) / 2;
 
-  const T = extendSegment(A, B, s);
-  const U = extendSegment(A, C, s);
+  const T = extendSegmentPoint(A, B, s);
+  const U = extendSegmentPoint(A, C, s);
 
-  return clineIntersect(
+  return hyperIntersectionPoint(
     T,
-    hyperRot(T, Math.PI / 2, A),
+    hyperRotatePoint(T, Math.PI / 2, A),
     U,
-    hyperRot(U, Math.PI / 2, A),
+    hyperRotatePoint(U, Math.PI / 2, A),
   );
 }
 
@@ -489,7 +489,7 @@ export function hyperExcircle(board, A, B, C, style = circleStyle) {
  * @returns orthocenter
  */
 export function hyperOrthocenter(A, B, C) {
-  return clineIntersect(A, hyperProject(B, C, A), B, hyperProject(C, A, B));
+  return hyperIntersectionPoint(A, hyperProjectPoint(B, C, A), B, hyperProjectPoint(C, A, B));
 }
 
 /**
@@ -503,7 +503,7 @@ export function hyperCircumradius(A, B, C) {
   const a = hyperDist(B, C);
   const b = hyperDist(A, C);
   const c = hyperDist(A, B);
-  const K = hyperArea(A, B, C);
+  const K = hyperTriangleArea(A, B, C);
 
   return Math.atanh(
     (Math.tanh(a / 2) * Math.tanh(b / 2) * Math.tanh(c / 2)) / Math.sin(K / 2),
@@ -518,11 +518,11 @@ export function hyperCircumradius(A, B, C) {
  * @returns circumcenter
  */
 export function hyperCircumcenter(A, B, C) {
-  return clineIntersect(
+  return hyperIntersectionPoint(
     hyperMidpoint(A, B),
-    hyperRot(hyperMidpoint(A, B), Math.PI / 2, A),
+    hyperRotatePoint(hyperMidpoint(A, B), Math.PI / 2, A),
     hyperMidpoint(A, C),
-    hyperRot(hyperMidpoint(A, C), Math.PI / 2, A),
+    hyperRotatePoint(hyperMidpoint(A, C), Math.PI / 2, A),
   );
 }
 
