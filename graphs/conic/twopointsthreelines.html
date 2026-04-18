@@ -47,10 +47,10 @@
          const linePQ = board.create('line', [P, Q], jg.style.lineStyle);
          const linePR = board.create('line', [P, R], jg.style.lineStyle);
          const lineQR = board.create('line', [Q, R], jg.style.lineStyle);
-         const conic1 = jg.conic.conicByLines(board, X11, I1, P, Q, I2);
-         const conic2 = jg.conic.conicByLines(board, X12, I3, P, Q, I4);
-         const conic3 = jg.conic.conicByLines(board, X21, I5, P, Q, I6);
-         const conic4 = jg.conic.conicByLines(board, X22, I7, P, Q, I8);
+         const conic1 = jg.conic.conicByLines(board, X11, I1, P, Q, I2, {...jg.style.circleStyle, strokeColor : "orange"});
+         const conic2 = jg.conic.conicByLines(board, X12, I3, P, Q, I4, {...jg.style.circleStyle, strokeColor : "purple"});
+         const conic3 = jg.conic.conicByLines(board, X21, I5, P, Q, I6, {...jg.style.circleStyle, strokeColor : "yellow"});
+         const conic4 = jg.conic.conicByLines(board, X22, I7, P, Q, I8, {...jg.style.circleStyle, strokeColor : "green"});
               
       </script>
    </body>
