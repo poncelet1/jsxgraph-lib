@@ -43,13 +43,13 @@
          
          // When P moves, update PR by the same displacement
          P.on('drag', () => {
-           PR.moveTo([P.X() + PRoffsetx, P.Y() + PRoffsety]);
+            PR.moveTo([P.X() + PRoffsetx, P.Y() + PRoffsety]);
          });
          
          // When D moves, update the stored offset
          PR.on('drag', () => {
-           PRoffsetx = PR.X() - P.X();
-           PRoffsety = PR.Y() - P.Y();
+            PRoffsetx = PR.X() - P.X();
+            PRoffsety = PR.Y() - P.Y();
          });
          
          const circO = board.create('circle', [O, OR], jg.style.circleStyleInverse);
