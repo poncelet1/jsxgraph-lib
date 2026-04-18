@@ -18,7 +18,7 @@
          const A = board.create('point', [-1.8, 3.1], {name: 'A'});
          const B = board.create('point', [-3.3, -1.7], {name: 'B'});
          const C = board.create('point', [3.4, -2.6], {name: 'C'});
-         const O = board.create('point', [() => jg.triangle.circumcenter(A, B, C)], {name: 'O', ...jg.style.pointStyleNoDrag});
+         const O = board.create('point', [() => jg.triangle.triangleCircumcenter(A, B, C)], {name: 'O', ...jg.style.pointStyleNoDrag});
          
          // 3. Create the triangle (Polygon)
          const triABC = board.create('polygon', [A, B, C], {
@@ -27,7 +27,7 @@
             ...jg.style.triangleStyle
          });
          
-         const circABC = jg.triangle.circumcircle(board, A, B, C);
+         const circABC = jg.triangle.triangleCircumcircle(board, A, B, C);
       </script>
    </body>
 </html>
