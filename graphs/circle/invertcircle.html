@@ -54,7 +54,7 @@
          
          const circO = board.create('circle', [O, OR], jg.style.circleStyleInverse);
          const circP = board.create('circle', [P, PR], jg.style.circleStyle);
-         const circPp = jg.inversion.invertCircle(board, circO, circP);
+         const circPp = jg.inversion.invertCircle(board, circO, circP, {...jg.style.circleStyle, strokeColor: "red" });
            
       </script>
    </body>
