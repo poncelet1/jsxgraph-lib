@@ -279,7 +279,7 @@ export function extendSegment(A, B, d) {
   const Bp = movePointToOrigin(B, A);
   const Ep = pointScale(
     Bp,
-    (((Math.exp(d) - 1) / (Math.exp(d) + 1)) * 1) / dist(Bp),
+    (((Math.exp(d) - 1) / (Math.exp(d) + 1)) * 1) / pointDist(Bp),
   );
   return movePointFromOrigin(Ep, A);
 }
@@ -328,7 +328,7 @@ export function clineIntersect(A, B, C, D) {
   const Bp = hyperlineEndPoint(B, A);
   const Cp = hyperlineEndPoint(C, D);
   const Dp = hyperlineEndPoint(D, C);
-  const X = jg.point.intersection(Ap, Bp, Cp, Dp);
+  const X = jg.point.intersectionPoint(Ap, Bp, Cp, Dp);
   const [u, v] = getXY(X);
   const w = -Math.sqrt(1 - u ** 2 - v ** 2);
 
