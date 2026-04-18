@@ -19,7 +19,7 @@
          const C = board.create('point', [-0.4, -0.1], {name: 'C'});
          const D = board.create('point', [0.2, 0.4], {name: 'D'});
          const M = board.create('point', [() => jg.hyperbolic.hyperMidpoint(A, B)], {name: 'M', ...jg.style.pointStyle});
-         const X = board.create('point', [() => jg.hyperbolic.clineIntersect(A, B, C, D)], {name: 'X', ...jg.style.pointStyle});
+         const X = board.create('point', [() => jg.hyperbolic.hyperIntersectionPoint(A, B, C, D)], {name: 'X', ...jg.style.pointStyle});
          
          const lineAB = jg.hyperbolic.hyperline(board, A, B);
          const lineCD = jg.hyperbolic.hyperlineSegment(board, C, D);
