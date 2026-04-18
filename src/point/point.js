@@ -43,7 +43,7 @@ export function pointScale(A, k) {
  * @param B second point
  * @returns distance
  */
-export function dist(A, B = [0, 0]) {
+export function pointDist(A, B = [0, 0]) {
   const [ax, ay] = getXY(A);
   const [bx, by] = getXY(B);
   return Math.hypot(bx - ax, by - ay);
@@ -55,7 +55,7 @@ export function dist(A, B = [0, 0]) {
  * @param B second point
  * @returns slope
  */
-export function slope(A, B) {
+export function lineSlope(A, B) {
   const [ax, ay] = getXY(A);
   const [bx, by] = getXY(B);
   return (by - ay) / (bx - ax);
@@ -67,7 +67,7 @@ export function slope(A, B) {
  * @param B second point
  * @returns y-intercept
  */
-export function yintercept(A, B) {
+export function lineYintercept(A, B) {
   const [ax, ay] = getXY(A);
   const [bx, by] = getXY(B);
   return (ax * by - ay * bx) / (ax - bx);
@@ -81,7 +81,7 @@ export function yintercept(A, B) {
  * @param D fourth point
  * @returns intersection
  */
-export function intersection(A, B, C, D) {
+export function intersectionPoint(A, B, C, D) {
   const [ax, ay] = getXY(A);
   const [bx, by] = getXY(B);
   const [cx, cy] = getXY(C);
@@ -101,7 +101,7 @@ export function intersection(A, B, C, D) {
  * @param t real number
  * @returns interpolated point
  */
-export function interp(A, B, t) {
+export function interpPoint(A, B, t) {
   const [ax, ay] = getXY(A);
   const [bx, by] = getXY(B);
 
@@ -125,7 +125,7 @@ export function midpoint(A, B) {
  * @param C second point
  * @returns projection
  */
-export function project(A, B, C) {
+export function projectPoint(A, B, C) {
   const [ax, ay] = getXY(A);
   const [bx, by] = getXY(B);
   const [cx, cy] = getXY(C);
@@ -147,7 +147,7 @@ export function project(A, B, C) {
  * @param C second point
  * @returns reflection
  */
-export function reflect(A, B, C) {
+export function reflectPoint(A, B, C) {
   return interp(C, project(A, B, C), 2);
 }
 
@@ -158,7 +158,7 @@ export function reflect(A, B, C) {
  * @param P point being rotated
  * @returns rotated point
  */
-export function rotate(C, t, P) {
+export function rotatePoint(C, t, P) {
   const [cx, cy] = getXY(C);
   const [px, py] = getXY(P);
 
