@@ -20,7 +20,7 @@
          const D = board.create('point', [() => jg.hyperbolic.hyperProjectPoint(B, C, A)], {name: 'D', ...jg.style.pointStyleNoDrag});
          const E = board.create('point', [() => jg.hyperbolic.hyperProjectPoint(C, A, B)], {name: 'E', ...jg.style.pointStyleNoDrag});
          const F = board.create('point', [() => jg.hyperbolic.hyperProjectPoint(A, B, C)], {name: 'F', ...jg.style.pointStyleNoDrag});
-         const H = board.create('point', [() => jg.hyperbolic.hyperOrthocenter(A, B, C)], {name: 'H', ...jg.style.pointStyleNoDrag});
+         const H = board.create('point', [() => jg.hyperbolic.hyperTriangleOrthocenter(A, B, C)], {name: 'H', ...jg.style.pointStyleNoDrag});
          
          const lineAB = jg.hyperbolic.hyperline(board, A, B);
          const lineAC = jg.hyperbolic.hyperline(board, A, C);
