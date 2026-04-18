@@ -141,7 +141,7 @@ export function hyperMidpoint(A, B) {
  */
 export function hyperlineEndPoint(A, B) {
   const Bp = movePointToOrigin(B, A);
-  const Ep = pointScale(Bp, -1 / dist(Bp));
+  const Ep = pointScale(Bp, -1 / pointDist(Bp));
   return movePointFromOrigin(Ep, A);
 }
 
