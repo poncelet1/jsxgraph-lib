@@ -22,9 +22,9 @@
          
          // 3. Create the triangle (Polygon)
          const triABC = board.create('polygon', [A, B, C], {
-         fillColor: '#ffff00', 
-         fillOpacity: 0.2,
-         ...jg.style.triangleStyle
+            fillColor: '#ffff00', 
+            fillOpacity: 0.2,
+            ...jg.style.triangleStyle
          });
          
          const circABC = jg.triangle.circumcircle(board, A, B, C);
