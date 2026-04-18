@@ -6,9 +6,9 @@ import {
   complexQuotient,
   complexSum,
 } from "../complex/complex.js";
-import { circleStyle } from "../style/style.js";
-import { dist, midpoint, pointScale, rotate } from "../point/point.js";
-import { signedArea } from "../triangle/triangle.js";
+import { circleStyle, pointStyleNoShow } from "../style/style.js";
+import { pointDist, midpoint, pointScale, rotatePoint } from "../point/point.js";
+import { triangleSignedArea } from "../triangle/triangle.js";
 
 /**
  * Given points Z, A, returns (Z - A)/(1 - conj(A)*Z)
@@ -44,7 +44,7 @@ export function movePointFromOrigin(Z, A) {
  */
 export function hyperDist(A, B) {
   const Bp = movePointToOrigin(B, A);
-  return Math.log((1 + dist(Bp)) / (1 - dist(Bp)));
+  return Math.log((1 + pointDist(Bp)) / (1 - pointDist(Bp)));
 }
 
 /**
@@ -55,7 +55,7 @@ export function hyperDist(A, B) {
  */
 export function hyperCircleCenter(A, r) {
   const p = (Math.exp(r) - 1) / (Math.exp(r) + 1);
-  return pointScale(A, (1 - p ** 2) / (1 - p ** 2 * dist(A) ** 2));
+  return pointScale(A, (1 - p ** 2) / (1 - p ** 2 * pointDist(A) ** 2));
 }
 
 /**
@@ -66,7 +66,7 @@ export function hyperCircleCenter(A, r) {
  */
 export function hyperCircleRadius(A, r) {
   const p = (Math.exp(r) - 1) / (Math.exp(r) + 1);
-  return (p * (1 - dist(A) ** 2)) / (1 - p ** 2 * dist(A) ** 2);
+  return (p * (1 - pointDist(A) ** 2)) / (1 - p ** 2 * pointDist(A) ** 2);
 }
 
 /**
@@ -93,7 +93,7 @@ export function hyperCircle(board, A, r, style = circleStyle) {
  * @returns rotated point
  */
 export function hyperRot(C, t, P) {
-  return movePointFromOrigin(rotate([0, 0], t, movePointToOrigin(P, C)), C);
+  return movePointFromOrigin(rotatePoint([0, 0], t, movePointToOrigin(P, C)), C);
 }
 
 /**
@@ -104,8 +104,8 @@ export function hyperRot(C, t, P) {
  */
 export function clineCenter(A, B) {
   const N = complexDifference(
-    pointScale(A, 1 + dist(B) ** 2),
-    pointScale(B, 1 + dist(A) ** 2),
+    pointScale(A, 1 + pointDist(B) ** 2),
+    pointScale(B, 1 + pointDist(A) ** 2),
   );
   const D = complexDifference(
     complexProduct(A, complexConjugate(B)),
@@ -122,14 +122,14 @@ export function clineCenter(A, B) {
  */
 export function hyperMidpoint(A, B) {
   const N = complexSum(
-    pointScale(B, 1 - dist(A) ** 2),
-    pointScale(A, 1 - dist(B) ** 2),
+    pointScale(B, 1 - pointDist(A) ** 2),
+    pointScale(A, 1 - pointDist(B) ** 2),
   );
   const k =
     1 -
-    dist(A) ** 2 * dist(B) ** 2 +
-    dist(complexDifference([1, 0], complexProduct(complexConjugate(A), B))) *
-      Math.sqrt((1 - dist(A) ** 2) * (1 - dist(B) ** 2));
+    pointDist(A) ** 2 * pointDist(B) ** 2 +
+    pointDist(complexDifference([1, 0], complexProduct(complexConjugate(A), B))) *
+      Math.sqrt((1 - pointDist(A) ** 2) * (1 - pointDist(B) ** 2));
   return pointScale(N, 1 / k);
 }
 
@@ -158,27 +158,18 @@ export function hyperline(board, A, B, style = circleStyle) {
   const getP = () => hyperlineEndPoint(A, B);
   const getQ = () => hyperlineEndPoint(B, A);
 
-  const arcCenter = board.create("point", [getC], {
-    visible: false,
-    withLabel: false,
-  });
-
+  const arcCenter = board.create("point", [getC], pointStyleNoShow);
+  
   const startPoint = board.create(
     "point",
-    [() => (signedArea(getC(), A, B) > 0 ? getP() : getQ())],
-    {
-      visible: false,
-      withLabel: false,
-    },
+    [() => (triangleSignedArea(getC(), A, B) > 0 ? getP() : getQ())],
+    pointStyleNoShow
   );
 
   const endPoint = board.create(
     "point",
-    [() => (signedArea(getC(), A, B) > 0 ? getQ() : getP())],
-    {
-      visible: false,
-      withLabel: false,
-    },
+    [() => (triangleSignedArea(getC(), A, B) > 0 ? getQ() : getP())],
+    pointStyleNoShow
   );
 
   return board.create("arc", [arcCenter, startPoint, endPoint], style);
@@ -195,27 +186,18 @@ export function hyperline(board, A, B, style = circleStyle) {
 export function hyperlineSegment(board, A, B, style = circleStyle) {
   const getC = () => clineCenter(A, B);
 
-  const arcCenter = board.create("point", [getC], {
-    visible: false,
-    withLabel: false,
-  });
+  const arcCenter = board.create("point", [getC], pointStyleNoShow);
 
   const startPoint = board.create(
     "point",
-    [() => (signedArea(getC(), A, B) > 0 ? getXY(A) : getXY(B))],
-    {
-      visible: false,
-      withLabel: false,
-    },
+    [() => (triangleSignedArea(getC(), A, B) > 0 ? getXY(A) : getXY(B))],
+    pointStyleNoShow
   );
 
   const endPoint = board.create(
     "point",
-    [() => (signedArea(getC(), A, B) > 0 ? getXY(B) : getXY(A))],
-    {
-      visible: false,
-      withLabel: false,
-    },
+    [() => (triangleSignedArea(getC(), A, B) > 0 ? getXY(B) : getXY(A))],
+    pointStyleNoShow
   );
 
   return board.create("arc", [arcCenter, startPoint, endPoint], style);
@@ -230,8 +212,8 @@ export function hyperlineSegment(board, A, B, style = circleStyle) {
  */
 export function hyperReflect(A, B, P) {
   const Z1 = complexDifference(
-    pointScale(A, 1 + dist(B) ** 2),
-    pointScale(B, 1 + dist(A) ** 2),
+    pointScale(A, 1 + pointDist(B) ** 2),
+    pointScale(B, 1 + pointDist(A) ** 2),
   );
   const Z2 = complexDifference(
     complexProduct(A, complexConjugate(B)),
@@ -264,10 +246,10 @@ export function hyperProject(A, B, P) {
  */
 export function hyperPerpBisCenter(A, B) {
   const N = complexDifference(
-    pointScale(A, 1 - dist(B) ** 2),
-    pointScale(B, 1 - dist(A) ** 2),
+    pointScale(A, 1 - pointDist(B) ** 2),
+    pointScale(B, 1 - pointDist(A) ** 2),
   );
-  const k = dist(A) ** 2 - dist(B) ** 2;
+  const k = pointDist(A) ** 2 - pointDist(B) ** 2;
   return pointScale(N, 1 / k);
 }
 
@@ -280,14 +262,8 @@ export function hyperPerpBisCenter(A, B) {
  * @returns perpendicular bisector
  */
 export function hyperPerpBis(board, A, B, style = circleStyle) {
-  const M = board.create("point", [() => hyperMidpoint(A, B)], {
-    visible: false,
-    withLabel: false,
-  });
-  const R = board.create("point", [() => hyperRot(M, Math.PI / 2, A)], {
-    visible: false,
-    withLabel: false,
-  });
+  const M = board.create("point", [() => hyperMidpoint(A, B)], pointStyleNoShow);
+  const R = board.create("point", [() => hyperRot(M, Math.PI / 2, A)], pointStyleNoShow);
 
   return hyperline(board, M, R, style);
 }
@@ -438,10 +414,7 @@ export function hyperIncircle(board, A, B, C, style = circleStyle) {
   const r = () => hyperInradius(A, B, C);
 
   const getI = () => hyperIncenter(A, B, C);
-  const I = board.create("point", [getI], {
-    visible: false,
-    withLabel: false,
-  });
+  const I = board.create("point", [getI], pointStyleNoShow);
 
   return hyperCircle(board, I, r, style);
 }
@@ -503,10 +476,7 @@ export function hyperExcircle(board, A, B, C, style = circleStyle) {
   const rA = () => hyperExradius(A, B, C);
 
   const getIA = () => hyperExcenter(A, B, C);
-  const IA = board.create("point", [getIA], {
-    visible: false,
-    withLabel: false,
-  });
+  const IA = board.create("point", [getIA], pointStyleNoShow);
 
   return hyperCircle(board, IA, rA, style);
 }
@@ -569,10 +539,7 @@ export function hyperCircumcircle(board, A, B, C, style = circleStyle) {
   const R = () => hyperCircumradius(A, B, C);
 
   const getO = () => hyperCircumcenter(A, B, C);
-  const O = board.create("point", [getO], {
-    visible: false,
-    withLabel: false,
-  });
+  const O = board.create("point", [getO], pointStyleNoShow);
 
   return hyperCircle(board, O, R, style);
 }
