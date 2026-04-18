@@ -51,7 +51,7 @@
          const circOutsideInv = jg.inversion.invertCircle(board, circInv, circOutside, {...jg.style.circleStyle, strokeColor: "red"});
          
          const chainCircInv = [];
-         for (const origCirc of chainCirc)
+         for (const origCirc of chainCirc) {
             const newCircle = jg.inversion.invertCircle(board, circInv, origCirc, {...jg.style.circleStyle, strokeColor: "red"});
             chainCircInv.push(newCircle);
          }
