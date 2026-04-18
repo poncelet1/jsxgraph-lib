@@ -32,12 +32,12 @@
          const lineBD = board.create('line', [B, D], {...jg.style.lineStyle, strokeColor: 'lightgray'});
          const lineCD = board.create('line', [C, D], {...jg.style.lineStyle, strokeColor: 'lightgray'});
          
-         const XAB = board.create('point', [() => jg.point.intersection(A, B, L1, L2)], {name: 'XAB', ...jg.style.pointStyleNoDrag});
-         const XAC = board.create('point', [() => jg.point.intersection(A, C, L1, L2)], {name: 'XAC', ...jg.style.pointStyleNoDrag});
-         const XAD = board.create('point', [() => jg.point.intersection(A, D, L1, L2)], {name: 'XAD', ...jg.style.pointStyleNoDrag});
-         const XBC = board.create('point', [() => jg.point.intersection(B, C, L1, L2)], {name: 'XBC', ...jg.style.pointStyleNoDrag});
-         const XBD = board.create('point', [() => jg.point.intersection(B, D, L1, L2)], {name: 'XBD', ...jg.style.pointStyleNoDrag});
-         const XCD = board.create('point', [() => jg.point.intersection(C, D, L1, L2)], {name: 'XCD', ...jg.style.pointStyleNoDrag});
+         const XAB = board.create('point', [() => jg.point.intersectionPoint(A, B, L1, L2)], {name: 'XAB', ...jg.style.pointStyleNoDrag});
+         const XAC = board.create('point', [() => jg.point.intersectionPoint(A, C, L1, L2)], {name: 'XAC', ...jg.style.pointStyleNoDrag});
+         const XAD = board.create('point', [() => jg.point.intersectionPoint(A, D, L1, L2)], {name: 'XAD', ...jg.style.pointStyleNoDrag});
+         const XBC = board.create('point', [() => jg.point.intersectionPoint(B, C, L1, L2)], {name: 'XBC', ...jg.style.pointStyleNoDrag});
+         const XBD = board.create('point', [() => jg.point.intersectionPoint(B, D, L1, L2)], {name: 'XBD', ...jg.style.pointStyleNoDrag});
+         const XCD = board.create('point', [() => jg.point.intersectionPoint(C, D, L1, L2)], {name: 'XCD', ...jg.style.pointStyleNoDrag});
          
          const xabx = () => jg.core.getXY(XAB)[0];
          const xaby = () => jg.core.getXY(XAB)[1];
