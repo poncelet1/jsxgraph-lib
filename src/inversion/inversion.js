@@ -1,5 +1,6 @@
 import { dist, pointDifference, pointScale, pointSum } from "../point/point.js";
 import { circleStyle } from "../style/style.js";
+import { getXY } from "../core/core.js";
 
 /**
  * Given circle circ and point P, returns the inverse of P with respect to the circle circ
