@@ -13,24 +13,24 @@
       <div id="jxgbox" class="jxgbox"></div>
       <script type="module">
          const board = JXG.JSXGraph.initBoard('jxgbox', jg.style.boardStyle);
-
+         
          const n = 12;
          const rInside = Math.sin(Math.PI / n) / (1 - Math.sin(Math.PI / n));
          const circInside = board.create('circle', [[0, 0], 1], jg.style.circleStyle);
          const circOutside = board.create('circle', [[0, 0], 1 + 2 * rInside], jg.style.circleStyle);
          const circInner = board.create('circle', [[0, 0], 1 + rInside], jg.style.pointStyleNoShow);
          const P = board.create('glider', [1 + rInside, 0, circInner], {name: 'P', ...jg.style.pointStyleDrag});
-
+         
          const chainCirc = [];
          for (let i = 0; i < n; i++) {
             const newCenter = board.create('point', [() => jg.point.rotate([0, 0], i * 2 * Math.PI / n, P)], jg.style.pointStyleNoShow);
             const newCircle = board.create('circle', [newCenter, rInside], jg.style.circleStyle);
             chainCirc.push(newCircle);
          }
-
+         
          const O = board.create('point', [-2.5, 1.5], {name: 'O', ...jg.style.pointStyleDrag});
          const A = board.create('point', [-2.2, 0.4], {name: 'A', ...jg.style.pointStyleDrag});
-
+         
          // Store initial offset
          let Aoffsetx = A.X() - O.X();
          let Aoffsety = A.Y() - O.Y();
@@ -49,7 +49,7 @@
          const circInv = board.create('circle', [O, A], jg.style.circleStyleInverse);
          const circInsideInv = jg.inversion.invertCircle(board, O, jg.point.dist(O, A), [0, 0], 1, {...jg.style.circleStyle, strokeColor: "red"});
          const circOutsideInv = jg.inversion.invertCircle(board, O, jg.point.dist(O, A), [0, 0], 1 + 2 * rInside, {...jg.style.circleStyle, strokeColor: "red"});
-
+         
          const chainCircInv = [];
          for (let i = 0; i < n; ++i) {
             const newCenter = board.create('point', [() => jg.point.rotate([0, 0], i * 2 * Math.PI / n, P)], jg.style.pointStyleNoShow);
