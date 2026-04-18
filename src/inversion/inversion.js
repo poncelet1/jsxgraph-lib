@@ -35,9 +35,9 @@ export function invertCircle(board, circ1, circ2, style = circleStyle) {
   const r2 = circ2.Radius();
   
   const center = () => [
-    r1 ** 2 / (Math.hypot(o1x - o2x, o1y - o2y) ** 2 - s ** 2) * (o2x - o1x) + o1x,
-    r1 ** 2 / (Math.hypot(o1x - o2x, o1y - o2y) ** 2 - s ** 2) * (o2y - o1y) + o1y
+    r1 ** 2 / (Math.hypot(o1x - o2x, o1y - o2y) ** 2 - r2 ** 2) * (o2x - o1x) + o1x,
+    r1 ** 2 / (Math.hypot(o1x - o2x, o1y - o2y) ** 2 - r2 ** 2) * (o2y - o1y) + o1y
   ];
-  const radius = () => (r ** 2 * s) / (Math.hypot(o1x - o2x, o1y - o2y) ** 2 - s ** 2);
+  const radius = () => (r1 ** 2 * r2) / (Math.hypot(o1x - o2x, o1y - o2y) ** 2 - r2 ** 2);
   return board.create("circle", [center, radius], style);
 }
