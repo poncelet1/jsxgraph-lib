@@ -1,6 +1,7 @@
 import { triangleSignedArea } from "../triangle/triangle.js";
-import { getXY } from "../core/core.js";
+import { getXY, quadraticRoot } from "../core/core.js";
 import { intersectionPoint } from "../point/point.js";
+import { circleStyle, pointStyleNoShow} from "../style/style.js";
 
 /**
  * Given points A, B, C, D, E, returns the coefficient of x^2 in the equation of the conic passing through the five points
@@ -217,28 +218,13 @@ export function conicByLines(
   C,
   D,
   E,
-  style = jg.style.circleStyle,
+  style = circleStyle,
 ) {
-  const TAB = board.create("point", [() => brianchonPoint(A, B, C, D, E)], {
-    visible: false,
-    withLabel: false,
-  });
-  const TBC = board.create("point", [() => brianchonPoint(B, C, D, E, A)], {
-    visible: false,
-    withLabel: false,
-  });
-  const TCD = board.create("point", [() => brianchonPoint(C, D, E, A, B)], {
-    visible: false,
-    withLabel: false,
-  });
-  const TDE = board.create("point", [() => brianchonPoint(D, E, A, B, C)], {
-    visible: false,
-    withLabel: false,
-  });
-  const TEA = board.create("point", [() => brianchonPoint(E, A, B, C, D)], {
-    visible: false,
-    withLabel: false,
-  });
+  const TAB = board.create("point", [() => brianchonPoint(A, B, C, D, E)], pointStyleNoShow);
+  const TBC = board.create("point", [() => brianchonPoint(B, C, D, E, A)], pointStyleNoShow);
+  const TCD = board.create("point", [() => brianchonPoint(C, D, E, A, B)], pointStyleNoShow);
+  const TDE = board.create("point", [() => brianchonPoint(D, E, A, B, C)], pointStyleNoShow);
+  const TEA = board.create("point", [() => brianchonPoint(E, A, B, C, D)], pointStyleNoShow);
 
   return board.create("conic", [TAB, TBC, TCD, TDE, TEA], style);
 }
@@ -254,9 +240,9 @@ export function conicByLines(
  * @returns sixth point on conic
  */
 export function conicSixthPoint(A, B, C, D, E, P) {
-  const X = jg.point.intersectionPoint(A, B, D, E);
-  const Y = jg.point.intersectionPoint(B, C, E, P);
-  const Z = jg.point.intersectionPoint(C, D, X, Y);
+  const X = intersectionPoint(A, B, D, E);
+  const Y = intersectionPoint(B, C, E, P);
+  const Z = intersectionPoint(C, D, X, Y);
 
   return intersectionPoint(A, Z, E, P);
 }
@@ -276,13 +262,13 @@ export function fixedPoint(A, B, C, D, n) {
   const [cx, cy] = getXY(C);
   const [dx, dy] = getXY(D);
 
-  const fx = jg.core.quadraticRoot(
+  const fx = quadraticRoot(
     ax + bx - cx - dx,
     -2 * (ax * bx - cx * dx),
     ax * bx * cx + ax * bx * dx - ax * cx * dx - bx * cx * dx,
     n,
   );
-  const fy = jg.core.quadraticRoot(
+  const fy = quadraticRoot(
     ay + by - cy - dy,
     -2 * (ay * by - cy * dy),
     ay * by * cy + ay * by * dy - ay * cy * dy - by * cy * dy,
