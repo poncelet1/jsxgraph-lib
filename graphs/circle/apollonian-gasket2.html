@@ -22,6 +22,7 @@
 
                // 1. Define curvature 'e' as a function
                const e = () => 2 * (val(a) + val(b) + val(c)) - val(d);
+               if (Math.abs(e()) < 0.01) then return;
 
                // 2. Create point E with reactive coordinates
                const E = board.create('point', [
