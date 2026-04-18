@@ -19,13 +19,21 @@
          const C = board.create('point', [3.4, -2.6], {name: 'C'});
          const D = board.create('point', [1.2, 1.5], {name: 'D'});
          const E = board.create('point', [-0.5, -2.2], {name: 'E'});
-         const conicABCDEcenter = board.create('point', [() => jg.conic.conicCenterByPoints(A, B, C, D, E)], {name: 'O', ...jg.style.pointStyle});
-         const P = board.create('point', [0.1, 0.2], {name: 'P'});
-         const M1 = board.create('point', [() => jg.point.intersectionPoint(A, B, D, E)], {name: 'M1', ...jg.style.pointStyle});
-         const M2 = board.create('point', [() => jg.point.intersectionPoint(B, C, E, P)], {name: 'M2', ...jg.style.pointStyle});
-         const M3 = board.create('point', [() => jg.point.intersectionPoint(C, D, M1, M2)], {name: 'M3', ...jg.style.pointStyle});
-         const Q = board.create('point', [() => jg.point.intersectionPoint(A, M3, E, P)], {name: 'Q', ...jg.style.pointStyle});
+         //const conicABCDEcenter = board.create('point', [() => jg.conic.conicCenterByPoints(A, B, C, D, E)], {name: 'O', ...jg.style.pointStyle});
+         const L = board.create('point', [0.1, 0.2], {name: 'P'});
+         const X = board.create('point', [() => jg.point.intersectionPoint(A, B, D, E)], {name: 'X', ...jg.style.pointStyle});
+         const Y = board.create('point', [() => jg.point.intersectionPoint(B, C, E, P)], {name: 'Y', ...jg.style.pointStyle});
+         const Z = board.create('point', [() => jg.point.intersectionPoint(C, D, X, Y)], {name: 'Z', ...jg.style.pointStyle});
+         const F = board.create('point', [() => jg.point.intersectionPoint(A, Z, E, P)], {name: 'F', ...jg.style.pointStyle}); 
          
+         const lineL = board.create('line', [E, L], jg.style.lineStyle);
+         const lineAB = board.create('line', [A, B], jg.style.lineStyle);
+         const lineDE = board.create('line', [D, E], jg.style.lineStyle);
+         const lineBC = board.create('line', [B, C], jg.style.lineStyle);
+         const lineEP = board.create('line', [E, P], jg.style.lineStyle);
+         const lineCD = board.create('line', [C, D], jg.style.lineStyle);
+         const lineXY = board.create('line', [X, Y], jg.style.lineStyle);
+         const lineAZ = board.create('line', [A, Z], jg.style.lineStyle);
          const lineEP = board.create('line', [E, P], jg.style.lineStyle);
          const conicABCDE = board.create('conic', [A, B, C, D, E], jg.style.circleStyle);
          
