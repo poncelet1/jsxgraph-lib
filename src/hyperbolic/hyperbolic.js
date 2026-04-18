@@ -342,7 +342,7 @@ export function hyperIntersectionPoint(A, B, C, D) {
  * @param C third point
  * @returns centroid
  */
-export function hyperCentroid(A, B, C) {
+export function hyperTriangleCentroid(A, B, C) {
   return hyperIntersectionPoint(A, hyperMidpoint(B, C), B, hyperMidpoint(A, C));
 }
 
@@ -353,7 +353,7 @@ export function hyperCentroid(A, B, C) {
  * @param C third point
  * @returns intouch point
  */
-export function hyperIntouchPoint(A, B, C) {
+export function hyperTriangleIntouchPoint(A, B, C) {
   const a = hyperDist(B, C);
   const b = hyperDist(C, A);
   const c = hyperDist(A, B);
@@ -369,7 +369,7 @@ export function hyperIntouchPoint(A, B, C) {
  * @param C third point
  * @returns inradius
  */
-export function hyperInradius(A, B, C) {
+export function hyperTriangleInradius(A, B, C) {
   const a = hyperDist(B, C);
   const b = hyperDist(C, A);
   const c = hyperDist(A, B);
@@ -389,9 +389,9 @@ export function hyperInradius(A, B, C) {
  * @param C third point
  * @returns incenter
  */
-export function hyperIncenter(A, B, C) {
-  const D = hyperIntouchPoint(A, B, C);
-  const E = hyperIntouchPoint(B, C, A);
+export function hyperTriangleIncenter(A, B, C) {
+  const D = hyperTriangleIntouchPoint(A, B, C);
+  const E = hyperTriangleIntouchPoint(B, C, A);
 
   return hyperIntersectionPoint(
     D,
@@ -410,10 +410,10 @@ export function hyperIncenter(A, B, C) {
  * @param style optional circle style
  * @returns incircle
  */
-export function hyperIncircle(board, A, B, C, style = circleStyle) {
-  const r = () => hyperInradius(A, B, C);
+export function hyperTriangleIncircle(board, A, B, C, style = circleStyle) {
+  const r = () => hyperTriangleInradius(A, B, C);
 
-  const getI = () => hyperIncenter(A, B, C);
+  const getI = () => hyperTriangleIncenter(A, B, C);
   const I = board.create("point", [getI], pointStyleNoShow);
 
   return hyperCircle(board, I, r, style);
@@ -426,7 +426,7 @@ export function hyperIncircle(board, A, B, C, style = circleStyle) {
  * @param C third point
  * @returns A-exradius
  */
-export function hyperExradius(A, B, C) {
+export function hyperTriangleExradius(A, B, C) {
   const a = hyperDist(B, C);
   const b = hyperDist(C, A);
   const c = hyperDist(A, B);
@@ -446,7 +446,7 @@ export function hyperExradius(A, B, C) {
  * @param C third point
  * @returns A-excenter
  */
-export function hyperExcenter(A, B, C) {
+export function hyperTriangleExcenter(A, B, C) {
   const a = hyperDist(B, C);
   const b = hyperDist(C, A);
   const c = hyperDist(A, B);
@@ -472,10 +472,10 @@ export function hyperExcenter(A, B, C) {
  * @param style optional circle style
  * @returns A-excircle
  */
-export function hyperExcircle(board, A, B, C, style = circleStyle) {
-  const rA = () => hyperExradius(A, B, C);
+export function hyperTriangleExcircle(board, A, B, C, style = circleStyle) {
+  const rA = () => hyperTriangleExradius(A, B, C);
 
-  const getIA = () => hyperExcenter(A, B, C);
+  const getIA = () => hyperTriangleExcenter(A, B, C);
   const IA = board.create("point", [getIA], pointStyleNoShow);
 
   return hyperCircle(board, IA, rA, style);
@@ -488,7 +488,7 @@ export function hyperExcircle(board, A, B, C, style = circleStyle) {
  * @param C third point
  * @returns orthocenter
  */
-export function hyperOrthocenter(A, B, C) {
+export function hyperTriangleOrthocenter(A, B, C) {
   return hyperIntersectionPoint(A, hyperProjectPoint(B, C, A), B, hyperProjectPoint(C, A, B));
 }
 
@@ -499,7 +499,7 @@ export function hyperOrthocenter(A, B, C) {
  * @param C third point
  * @returns circumradius
  */
-export function hyperCircumradius(A, B, C) {
+export function hyperTriangleCircumradius(A, B, C) {
   const a = hyperDist(B, C);
   const b = hyperDist(A, C);
   const c = hyperDist(A, B);
@@ -517,7 +517,7 @@ export function hyperCircumradius(A, B, C) {
  * @param C third point
  * @returns circumcenter
  */
-export function hyperCircumcenter(A, B, C) {
+export function hyperTriangleCircumcenter(A, B, C) {
   return hyperIntersectionPoint(
     hyperMidpoint(A, B),
     hyperRotatePoint(hyperMidpoint(A, B), Math.PI / 2, A),
@@ -535,10 +535,10 @@ export function hyperCircumcenter(A, B, C) {
  * @param style optional circle style
  * @returns circumcircle
  */
-export function hyperCircumcircle(board, A, B, C, style = circleStyle) {
-  const R = () => hyperCircumradius(A, B, C);
+export function hyperTriangleCircumcircle(board, A, B, C, style = circleStyle) {
+  const R = () => hyperTriangleCircumradius(A, B, C);
 
-  const getO = () => hyperCircumcenter(A, B, C);
+  const getO = () => hyperTriangleCircumcenter(A, B, C);
   const O = board.create("point", [getO], pointStyleNoShow);
 
   return hyperCircle(board, O, R, style);
