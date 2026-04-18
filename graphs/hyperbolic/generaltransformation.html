@@ -25,9 +25,9 @@
          let currentCirc;
          
          if (i % 4 == 0) {
-           currentCirc = jg.hyperbolic.hyperCircle(board, A, r);
+            currentCirc = jg.hyperbolic.hyperCircle(board, A, r);
          } else {
-           currentCirc = jg.hyperbolic.hyperCircle(board, A, r, {...jg.style.circleStyle, strokeColor: 'lightgray'});
+            currentCirc = jg.hyperbolic.hyperCircle(board, A, r, {...jg.style.circleStyle, strokeColor: 'lightgray'});
          }
          
          circlesA.push(currentCirc);
@@ -36,9 +36,9 @@
          const linesB = [];
            
          for (let i = 0; i <= 5; i++) {
-         const startPoint = board.create('point', [() => jg.hyperbolic.hyperRot(A, i * Math.PI / 6, B)], {visible: false});
-         const endPoint = board.create('point', [() => jg.hyperbolic.hyperRot(A, (i + 6) * Math.PI / 6, B)], {visible: false});
-         linesB.push(jg.hyperbolic.hyperline(board, startPoint, endPoint));
+            const startPoint = board.create('point', [() => jg.hyperbolic.hyperRot(A, i * Math.PI / 6, B)], {visible: false});
+            const endPoint = board.create('point', [() => jg.hyperbolic.hyperRot(A, (i + 6) * Math.PI / 6, B)], {visible: false});
+            linesB.push(jg.hyperbolic.hyperline(board, startPoint, endPoint));
          }
            
       </script>
