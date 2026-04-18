@@ -34,12 +34,12 @@ export function invertCircle(board, circ1, circ2, style = circleStyle) {
   const o2y = () => circ2.center.Y();
   const r2 = circ2.Radius();
 
-  const denom = () => Math.hypot(o1x() - o2x(), o1y() - o2y()) ** 2 - r2() ** 2;
+  const denom = () => Math.hypot(o1x() - o2x(), o1y() - o2y()) ** 2 - r2 ** 2;
   
   const center = () => [
-    r1() ** 2 / denom() * (o2x() - o1x()) + o1x(),
-    r1() ** 2 / denom() * (o2y() - o1y()) + o1y()
+    r1 ** 2 / denom() * (o2x() - o1x()) + o1x(),
+    r1 ** 2 / denom() * (o2y() - o1y()) + o1y()
   ];
-  const radius = () => (r1() ** 2 * r2()) / denom();
+  const radius = () => (r1 ** 2 * r2) / denom();
   return board.create("circle", [center, radius], style);
 }
