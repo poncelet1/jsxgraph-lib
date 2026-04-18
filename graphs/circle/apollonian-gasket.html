@@ -15,25 +15,6 @@
          const circArray = [];
 
          const drawCircles = (n, A, a, B, b, C, c, D, d) => {
-            let currentCirc;
-            
-            if (n >= 1) {
-               const e = 2 * (a + b + c) - d;
-               const Ex = (2 * (a * A.X() + b * B.X() + c * C.X()) - d * D.X()) / e;
-               const Ey = (2 * (a * A.Y() + b * B.Y() + c * C.Y()) - d * D.Y()) / e;
-               const E = board.create('point', [Ex, Ey], jg.style.pointStyleNoShow);
-               
-               currentCirc = board.create("circle", [E, 1/e], jg.style.circleStyle);
-
-               circArray.push(currentCirc);
-
-               drawCircles(n - 1, A, a, B, b, E, e, C, c);
-               drawCircles(n - 1, A, a, C, c, E, e, B, b);
-               drawCircles(n - 1, B, b, C, c, E, e, A, a);
-            }
-         }
-
-         const drawCircles2 = (n, A, a, B, b, C, c, D, d) => {
     if (n >= 1) {
         // Helper: This treats 'v' as a function if it can be called, 
         // otherwise it treats it as a static value.
@@ -53,9 +34,9 @@
         circArray.push(currentCirc);
 
         // 4. Recurse (passing 'e' as the function for the next generation)
-        drawCircles2(n - 1, A, a, B, b, E, e, C, c);
-        drawCircles2(n - 1, A, a, C, c, E, e, B, b);
-        drawCircles2(n - 1, B, b, C, c, E, e, A, a);
+        drawCircles(n - 1, A, a, B, b, E, e, C, c);
+        drawCircles(n - 1, A, a, C, c, E, e, B, b);
+        drawCircles(n - 1, B, b, C, c, E, e, A, a);
     }
 }
 
@@ -79,8 +60,18 @@
          const circC = board.create('circle', [C, rC], jg.style.circleStyle);
          const innerSoddyCircle = jg.triangle.innerSoddyCircle(board, A, B, C);
          const outerSoddyCircle = jg.triangle.outerSoddyCircle(board, A, B, C);
+
+         const radA = () => 1 / rA();
+         const radB = () => 1 / rB();
+         const radC = () => 1 / rC();
+         const radIn = () => 1 / innerSoddyRadius(A, B, C);
+
+         const depth = 3;
          
-         drawCircles(1, B, 1/rB(), C, 1/rC(), innerSoddyCenter, 1/innerSoddyRadius, A, 1/rA());
+         drawCircles(depth, B, radB, C, radC, innerSoddyCenter, radIn, A, radA);
+         drawCircles(depth, A, radA, C, radC, innerSoddyCenter, radIn, B, radB);
+         drawCircles(depth, A, radA, B, radB, innerSoddyCenter, radIn, C, radC);
+         drawCircles(depth + 1, A, radA, B, radB, C, radC, innerSoddyCenter, radIn);
       </script>
    </body>
 </html>
