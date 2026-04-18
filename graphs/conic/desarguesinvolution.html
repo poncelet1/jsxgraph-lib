@@ -54,8 +54,8 @@
          
          const invO = board.create('point', [invOx, invOy], {name: 'O', ...jg.style.pointStyleNoDrag, strokeColor: 'green', fillColor : 'green'});
          const invCirc = board.create('circle', [invO, invR], {
-         ...jg.style.circleStyleInverse,
-         strokeColor: () => (invOx() - xabx()) * (invOx() - xcdx()) > 0 ? 'red' : 'purple'
+            ...jg.style.circleStyleInverse,
+            strokeColor: () => (invOx() - xabx()) * (invOx() - xcdx()) > 0 ? 'red' : 'purple'
          });
            
          const conicABCDP = board.create('conic', [A, B, C, D, P], jg.style.circleStyle);
