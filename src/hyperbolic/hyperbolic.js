@@ -263,7 +263,7 @@ export function hyperPerpBisCenter(A, B) {
  */
 export function hyperPerpBis(board, A, B, style = circleStyle) {
   const M = board.create("point", [() => hyperMidpoint(A, B)], pointStyleNoShow);
-  const R = board.create("point", [() => hyperRot(M, Math.PI / 2, A)], pointStyleNoShow);
+  const R = board.create("point", [() => hyperRotatePoint(M, Math.PI / 2, A)], pointStyleNoShow);
 
   return hyperline(board, M, R, style);
 }
