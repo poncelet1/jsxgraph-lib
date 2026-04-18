@@ -17,22 +17,22 @@
          const A = board.create('point', [-0.3, 0.7], {name: 'A', ...jg.style.pointStyleDrag});
          const B = board.create('point', [-0.6, -0.1], {name: 'B', ...jg.style.pointStyleDrag});
          const C = board.create('point', [0.5, -0.3], {name: 'C', ...jg.style.pointStyleDrag});
-         const D = board.create('point', [() => jg.hyperbolic.hyperIntouchPoint(A, B, C)], {name: 'D', ...jg.style.pointStyleNoDrag});
-         const E = board.create('point', [() => jg.hyperbolic.hyperIntouchPoint(B, C, A)], {name: 'E', ...jg.style.pointStyleNoDrag});
-         const F = board.create('point', [() => jg.hyperbolic.hyperIntouchPoint(C, A, B)], {name: 'F', ...jg.style.pointStyleNoDrag});
-         const I = board.create('point', [() => jg.hyperbolic.hyperIncenter(A, B, C)], {name: 'I', ...jg.style.pointStyleNoDrag});
-         const IA = board.create('point', [() => jg.hyperbolic.hyperExcenter(A, B, C)], {name: 'IA', ...jg.style.pointStyleNoDrag});
-         const IB = board.create('point', [() => jg.hyperbolic.hyperExcenter(B, C, A)], {name: 'IB', ...jg.style.pointStyleNoDrag});
-         const IC = board.create('point', [() => jg.hyperbolic.hyperExcenter(C, A, B)], {name: 'IC', ...jg.style.pointStyleNoDrag});
+         const D = board.create('point', [() => jg.hyperbolic.hyperTriangleIntouchPoint(A, B, C)], {name: 'D', ...jg.style.pointStyleNoDrag});
+         const E = board.create('point', [() => jg.hyperbolic.hyperTriangleIntouchPoint(B, C, A)], {name: 'E', ...jg.style.pointStyleNoDrag});
+         const F = board.create('point', [() => jg.hyperbolic.hyperTriangleIntouchPoint(C, A, B)], {name: 'F', ...jg.style.pointStyleNoDrag});
+         const I = board.create('point', [() => jg.hyperbolic.hyperTriangleIncenter(A, B, C)], {name: 'I', ...jg.style.pointStyleNoDrag});
+         const IA = board.create('point', [() => jg.hyperbolic.hyperTriangleExcenter(A, B, C)], {name: 'IA', ...jg.style.pointStyleNoDrag});
+         const IB = board.create('point', [() => jg.hyperbolic.hyperTriangleExcenter(B, C, A)], {name: 'IB', ...jg.style.pointStyleNoDrag});
+         const IC = board.create('point', [() => jg.hyperbolic.hyperTriangleExcenter(C, A, B)], {name: 'IC', ...jg.style.pointStyleNoDrag});
          
          const lineAB = jg.hyperbolic.hyperline(board, A, B);
          const lineAC = jg.hyperbolic.hyperline(board, A, C);
          const lineBC = jg.hyperbolic.hyperline(board, B, C);
          
-         const incircABC = jg.hyperbolic.hyperIncircle(board, A, B, C);
-         const AexcircABC = jg.hyperbolic.hyperExcircle(board, A, B, C);
-         const BexcircABC = jg.hyperbolic.hyperExcircle(board, B, C, A);
-         const CexcircABC = jg.hyperbolic.hyperExcircle(board, C, A, B);
+         const incircABC = jg.hyperbolic.hyperTriangleIncircle(board, A, B, C);
+         const AexcircABC = jg.hyperbolic.hyperTriangleExcircle(board, A, B, C);
+         const BexcircABC = jg.hyperbolic.hyperTriangleExcircle(board, B, C, A);
+         const CexcircABC = jg.hyperbolic.hyperTriangleExcircle(board, C, A, B);
          const unitCircle = board.create('circle', [[0, 0], 1], jg.style.circleStyle);
          
       </script>
