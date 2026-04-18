@@ -258,7 +258,7 @@ export function conicSixthPoint(A, B, C, D, E, P) {
   const Y = jg.point.intersectionPoint(B, C, E, P);
   const Z = jg.point.intersectionPoint(C, D, X, Y);
 
-  return intersection(A, Z, E, P);
+  return intersectionPoint(A, Z, E, P);
 }
 
 /**
