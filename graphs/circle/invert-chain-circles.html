@@ -47,13 +47,12 @@
          });
          
          const circInv = board.create('circle', [O, A], jg.style.circleStyleInverse);
-         const circInsideInv = jg.inversion.invertCircle(board, O, jg.point.dist(O, A), [0, 0], 1, {...jg.style.circleStyle, strokeColor: "red"});
-         const circOutsideInv = jg.inversion.invertCircle(board, O, jg.point.dist(O, A), [0, 0], 1 + 2 * rInside, {...jg.style.circleStyle, strokeColor: "red"});
+         const circInsideInv = jg.inversion.invertCircle(board, circInv, circInside, {...jg.style.circleStyle, strokeColor: "red"});
+         const circOutsideInv = jg.inversion.invertCircle(board, circInv, circOutside, {...jg.style.circleStyle, strokeColor: "red"});
          
          const chainCircInv = [];
-         for (let i = 0; i < n; ++i) {
-            const newCenter = board.create('point', [() => jg.point.rotate([0, 0], i * 2 * Math.PI / n, P)], jg.style.pointStyleNoShow);
-            const newCircle = jg.inversion.invertCircle(board, O, jg.point.dist(O, A), newCenter, rInside, {...jg.style.circleStyle, strokeColor: "red"});
+         for (const origCirc of chainCirc)
+            const newCircle = jg.inversion.invertCircle(board, circInv, origCirc, {...jg.style.circleStyle, strokeColor: "red"});
             chainCircInv.push(newCircle);
          }
          
