@@ -16,7 +16,7 @@ export function invertPoint(circ, P) {
   
   return [
     ox + r ** 2 / Math.hypot(ox - px, oy - py) ** 2 * (px - ox),
-    ox + r ** 2 / Math.hypot(ox - px, oy - py) ** 2 * (px - ox)
+    oy + r ** 2 / Math.hypot(ox - px, oy - py) ** 2 * (py - oy)
   ];
 }
 
