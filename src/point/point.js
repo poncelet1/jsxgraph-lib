@@ -146,7 +146,7 @@ export function projectPoint(A, B, C) {
  * @returns reflection
  */
 export function reflectPoint(A, B, C) {
-  return interpPoint(C, project(A, B, C), 2);
+  return interpPoint(C, projectPoint(A, B, C), 2);
 }
 
 /**
