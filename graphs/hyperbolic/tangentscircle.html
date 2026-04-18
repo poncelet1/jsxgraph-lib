@@ -23,9 +23,10 @@
          const Op = board.create('point', [() => jg.hyperbolic.hyperCircleCenter(Ap, 1)], jg.style.pointStyleNoShow);
          
          const diamCirc = board.create('circle', [
-         () => jg.point.pointScale(Op, 1/2), 
-         () => jg.point.dist(Op)/2
-         ], { visible: false, withLabel: false });
+           () => jg.point.pointScale(Op, 1/2), 
+           () => jg.point.dist(Op)/2
+           ], { visible: false, withLabel: false }
+         );
          
          const Tp1 = board.create('intersection', [hypercircAp, diamCirc, 0], jg.style.pointStyleNoShow);
          const Tp2 = board.create('intersection', [hypercircAp, diamCirc, 1], jg.style.pointStyleNoShow);
