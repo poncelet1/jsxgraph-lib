@@ -115,7 +115,7 @@ export function interpPoint(A, B, t) {
  * @returns midpoint
  */
 export function midpoint(A, B) {
-  return interp(A, B, 1 / 2);
+  return interpPoint(A, B, 1 / 2);
 }
 
 /**
@@ -146,7 +146,7 @@ export function projectPoint(A, B, C) {
  * @returns reflection
  */
 export function reflectPoint(A, B, C) {
-  return interp(C, project(A, B, C), 2);
+  return interpPoint(C, project(A, B, C), 2);
 }
 
 /**
