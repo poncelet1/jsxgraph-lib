@@ -19,7 +19,7 @@
          const B = board.create('point', [-3.3, -1.7], {name: 'B'});
          const C = board.create('point', [3.4, -2.6], {name: 'C'});
          const D = board.create('point', [2.5, 2.2], {name: 'D'});
-         const X = board.create('point', [() => jg.point.intersection(A, B, C, D)], {name: 'X', ...jg.style.pointStyle});
+         const X = board.create('point', [() => jg.point.intersectionPoint(A, B, C, D)], {name: 'X', ...jg.style.pointStyle});
          const P = board.create('point', [1.2, 0.5], {name: 'P'});
          const Q = board.create('point', [() => jg.point.project(A, B, P)], {name: 'Q', ...jg.style.pointStyle});
          const R = board.create('point', [() => jg.point.reflect(A, B, P)], {name: 'R', ...jg.style.pointStyle});
