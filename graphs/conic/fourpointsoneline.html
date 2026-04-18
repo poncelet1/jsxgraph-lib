@@ -22,9 +22,9 @@
          const Q = board.create('point', [1.5, -1], {name: 'Q', ...jg.style.pointStyleDrag});
          
          const X1 = board.create('point', [() => jg.point.intersectionPoint(A, B, P, Q)], jg.style.pointStyleNoShow);
-         const X2 = board.create('point', [() => jg.point.intersectionPoint((C, D, P, Q)], jg.style.pointStyleNoShow);
-         const Y1 = board.create('point', [() => jg.point.intersectionPoint((A, D, P, Q)], jg.style.pointStyleNoShow);
-         const Y2 = board.create('point', [() => jg.point.intersectionPoint((B, C, P, Q)], jg.style.pointStyleNoShow);
+         const X2 = board.create('point', [() => jg.point.intersectionPoint(C, D, P, Q)], jg.style.pointStyleNoShow);
+         const Y1 = board.create('point', [() => jg.point.intersectionPoint(A, D, P, Q)], jg.style.pointStyleNoShow);
+         const Y2 = board.create('point', [() => jg.point.intersectionPoint(B, C, P, Q)], jg.style.pointStyleNoShow);
          
          const E1 = board.create('point', [() => jg.conic.fixedPoint(X1, X2, Y1, Y2, 0)], jg.style.pointStyleNoShow);
          const E2 = board.create('point', [() => jg.conic.fixedPoint(X1, X2, Y1, Y2, 1)], jg.style.pointStyleNoShow);
