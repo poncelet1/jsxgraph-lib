@@ -21,16 +21,16 @@
          const circlesA = [];
            
          for (let i = 1; i <= 15; i++) {
-         const r = Math.log((1 + i / 16) / (1 - i / 16));
-         let currentCirc;
+            const r = Math.log((1 + i / 16) / (1 - i / 16));
+            let currentCirc;
          
-         if (i % 4 == 0) {
-            currentCirc = jg.hyperbolic.hyperCircle(board, A, r);
-         } else {
-            currentCirc = jg.hyperbolic.hyperCircle(board, A, r, {...jg.style.circleStyle, strokeColor: 'lightgray'});
-         }
+            if (i % 4 == 0) {
+               currentCirc = jg.hyperbolic.hyperCircle(board, A, r);
+            } else {
+               currentCirc = jg.hyperbolic.hyperCircle(board, A, r, {...jg.style.circleStyle, strokeColor: 'lightgray'});
+            }
          
-         circlesA.push(currentCirc);
+            circlesA.push(currentCirc);
          }
          
          const linesB = [];
